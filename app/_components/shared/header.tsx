@@ -1,124 +1,84 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-import '../styles/header.scss';
-import Link from 'next/link';
 
-function Header() {
-    const [didScroll, setDidScroll] = useState(false);
-    const [lastScrollTop, setLastScrollTop] = useState(0);
-    const delta = 4;
-    const [navbarHeight, setNavbarHeight] = useState(0);
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+
+const ResponsiveNavbar = () => {
+    const [navOpen, setNavOpen] = useState(true);
+
+    const toggleNav = () => {
+        setNavOpen(!navOpen);
+    };
 
     useEffect(() => {
-        function hasScrolled() {
-            const st = window.scrollY;
-
-            if (Math.abs(lastScrollTop - st) <= delta) return;
-
-            if (st > lastScrollTop && st > navbarHeight) {
-                document.querySelector('header')?.classList.remove('show-nav');
-                document.querySelector('header')?.classList.add('hide-nav');
-                document.querySelector('.nav-toggle')?.classList.remove('open');
-                document.querySelector('.menu-left')?.classList.remove('collapse');
-            } else {
-                if (st + window.innerHeight < document.body.scrollHeight) {
-                    document.querySelector('header')?.classList.remove('hide-nav');
-                    document.querySelector('header')?.classList.add('show-nav');
-                }
+        const handleResize = () => {
+            if (window.innerWidth < 640) {
+                setNavOpen(false);
             }
+        };
 
-            setLastScrollTop(st);
-        }
+        window.addEventListener('resize', handleResize);
 
-        function scrollHandler() {
-            setDidScroll(true);
-        }
-
-        window.addEventListener('scroll', scrollHandler);
-
-        // Measure the navbarHeight when the component mounts
-        const headerElement = document.querySelector('header');
-        if (headerElement) {
-            setNavbarHeight(headerElement.offsetHeight);
-        }
-
-        const scrollInterval = setInterval(() => {
-            if (didScroll) {
-                hasScrolled();
-                setDidScroll(false);
-            }
-        }, 250);
+        handleResize();
 
         return () => {
-            window.removeEventListener('scroll', scrollHandler);
-            clearInterval(scrollInterval);
+            window.removeEventListener('resize', handleResize);
         };
-    }, [didScroll, lastScrollTop, navbarHeight]);
-
-    function handleLogoClick(e: any) {
-        e.preventDefault();
-        document.querySelector('.nav-toggle')?.classList.remove('open');
-        document.querySelector('.menu-left')?.classList.remove('collapse');
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-        });
-    }
-
-    function handleNavToggleClick() {
-        document.querySelector('.nav-toggle')?.classList.toggle('open');
-        document.querySelector('.menu-left')?.classList.toggle('collapse');
-    }
-
-    function handleMenuItemClick() {
-        document.querySelector('.nav-toggle')?.classList.remove('open');
-        document.querySelector('.menu-left')?.classList.remove('collapse');
-    }
+    }, []);
 
     return (
-        <div>
-            <header>
-                <div className="headercontainer">
-                    <nav id="navigation">
-                        <div className="Logocontainer">
-                            <Link href='/' className="logo" onClick={handleLogoClick}>
-                                Saif Ur Rehman
-                            </Link>
-                        </div>
+        <nav className=" w-full bg-[#131418] shadow-lg z-10 flex items-center justify-between h-24 px-4">
+            {/* Logo */}
+            <div className="flex items-center pl-4">
+                <Image src="/logo.svg" alt="Logo Image" width={80} height={80} className="h-20 w-20" />
+            </div>
 
-                        <a aria-label="mobile menu" className="nav-toggle" onClick={handleNavToggleClick}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </a>
-                        <ul className="menu-left">
-                            <li>
-                                <Link href="/" onClick={handleMenuItemClick}>
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/about" onClick={handleMenuItemClick}>
-                                    About
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/project" onClick={handleMenuItemClick}>
-                                    Projects
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" onClick={handleMenuItemClick}>
-                                    Contact
-                                </Link>
-                            </li>
-                        </ul>
-                    </nav>
+            {/* Hamburger Icon */}
+            <div className="sm:hidden cursor-pointer" onClick={toggleNav}>
+                <div className={`w-8 h-0.5 bg-gray-200 my-1 transition-all duration-300 ${navOpen ? 'transform rotate-45 translate-y-2' : ''}`} />
+                <div className={`w-8 h-0.5 bg-gray-200 my-1 transition-all duration-300 ${navOpen ? 'opacity-0' : ''}`} />
+                <div className={`w-8 h-0.5 bg-gray-200 my-1 transition-all duration-300 ${navOpen ? 'transform -rotate-45 -translate-y-2' : ''}`} />
+            </div>
+
+            {/* Navigation Links */}
+            <ul
+                className={`fixed top-0 left-0 z-50 w-full h-screen bg-[#131418] flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out sm:static sm:h-auto sm:flex sm:flex-row sm:justify-evenly sm:items-center sm:w-auto sm:bg-transparent ${navOpen ? 'clip-path-open' : 'clip-path-close'
+                    } sm:clip-path-none`}
+            >
+                <li className="transition-all hover:text-[#61DAFB]">
+                    <a href="#">Home</a>
+                </li>
+                <li className="transition-all hover:text-[#61DAFB]">
+                    <a href="#">Solutions</a>
+                </li>
+                <li className="transition-all hover:text-[#61DAFB]">
+                    <a href="#">Products</a>
+                </li>
+                <li className="transition-all hover:text-[#61DAFB]">
+                    <a href="#">Services</a>
+                </li>
+                <li className="transition-all hover:text-[#61DAFB]">
+                    <a href="#">Contact Us</a>
+                </li>
+                <li>
+                    <button className="bg-transparent border-2 border-gray-200 text-gray-200 py-2 px-4 rounded-full hover:bg-gray-200 hover:text-[#131418] transition-all">
+                        Login
+                    </button>
+                </li>
+                <li>
+                    <button className="bg-[#61DAFB] text-[#131418] border-2 border-[#61DAFB] py-2 px-4 rounded-full hover:bg-transparent hover:text-gray-200 transition-all">
+                        Join
+                    </button>
+                </li>
+                <div className="absolute top-5 right-5 sm:hidden z-[100] cursor-pointer" onClick={toggleNav}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </div>
-            </header>
-            {/* Your remaining JSX content */}
-        </div>
-    );
-}
+            </ul>
 
-export default Header;
+        </nav>
+    );
+};
+
+export default ResponsiveNavbar;

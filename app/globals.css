@@ -76,5 +76,25 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   /* background-color: blanchedalmond !important; */
-  background-color: #17212B !important;
+  background-color: black !important;
+}
+
+/* Clip-path for the circular animation */
+.clip-path-close {
+  clip-path: circle(50px at 90% -20%);
+  pointer-events: none;
+  transition: clip-path 1s ease-in-out;
+}
+
+.clip-path-open {
+  clip-path: circle(1000px at 90% -10%);
+  pointer-events: all;
+  transition: clip-path 1s ease-in-out;
+}
+
+/* Ensure normal layout for larger screens */
+@media (min-width: 640px) {
+  .clip-path-none {
+    clip-path: none;
+  }
 }
