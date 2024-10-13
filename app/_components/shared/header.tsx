@@ -39,7 +39,7 @@ const ResponsiveNavbar = () => {
     ];
 
     return (
-        <nav className="w-full bg-black shadow-lg z-10 flex items-center justify-between p-4">
+        <nav className="w-full bg-black shadow-lg z-20 flex items-center justify-between p-4">
             {/* Logo */}
             <Link href={"/"}>
                 <div className="flex items-center pl-4 mt-3 group -rotate-90">
@@ -52,7 +52,7 @@ const ResponsiveNavbar = () => {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden sm:flex space-x-8 items-center">
+            <ul className="hidden sm:flex space-x-8 items-center z-50">
                 {links.map((item: any, index: number) => (
                     <Link href={item.link} key={index}>
                         <li className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110 transition-all"}`}>

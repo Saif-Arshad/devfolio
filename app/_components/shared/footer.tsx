@@ -35,7 +35,7 @@ function Footer() {
     ]
     const currentPath = usePathname()
     return (
-        <footer className="relative flex flex-col md:flex-row justify-evenly items-end w-full  my-6 p-5 sm:p-20 md:p-[5rem_2vw]">
+        <footer className="relative flex flex-col z-20 md:flex-row justify-evenly items-end w-full  my-6 p-5 sm:p-20 md:p-[5rem_2vw]">
             <div className="flex flex-col items-start justify-start  w-full md:w-[28%]">
                 <div className="flex gap-4">
                     <Link href="http://github.com/Saif-Arshad/" target="_blank" className="flex justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem] hover:scale-105 transition-all">
@@ -66,7 +66,7 @@ function Footer() {
             <div className="flex flex-col gap-3 items-start my-10 sm:my-0 justify-start p-[1.2rem_3.2rem] w-full md:w-[28%] bg-[#121212] rounded-[1.8rem]">
 
                 {
-                    links.slice(0, 3).map((item:any, index: number) => (
+                    links.slice(0, 3).map((item: any, index: number) => (
                         <Link className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110 transition-all"}`} key={index} href={item.link}>{item.title}</Link>
                     ))
                 }
