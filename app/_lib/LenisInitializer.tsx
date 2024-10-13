@@ -7,7 +7,7 @@ import NextTopLoader from 'nextjs-toploader';
 const LenisInitializer = () => {
     <NextTopLoader
         color="#3ccf91"
-        height={3}
+        height={5}
         zIndex={1000000}
         showSpinner={false}
     />
