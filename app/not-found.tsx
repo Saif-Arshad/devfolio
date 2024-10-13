@@ -9,14 +9,14 @@ const NotFoundPage = () => {
             </div>
             <button className="mt-5">
                 <Link href={"/"}
-                    className="relative inline-block text-sm font-medium text-[#3ccf91] group active:text-orange-500 focus:outline-none focus:ring"
+                    className="relative inline-block text-sm font-medium text-[#3ccf91] group active:text-green-900 focus:outline-none focus:ring"
                 >
                     <span
                         className="absolute inset-0 transition-transform translate-x-0.5 translate-y-0.5 bg-[#3ccf91] group-hover:translate-y-0 group-hover:translate-x-0"
                     ></span>
 
                     <span className="relative block px-8 py-3 bg-black border border-current">
-                        <Link href="/">Go Home</Link>
+                        Go Home
                     </span>
                 </Link>
             </button>
