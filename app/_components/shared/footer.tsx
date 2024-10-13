@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
-import { useState, useRef, useEffect } from "react";
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Github, Linkedin } from 'lucide-react';
@@ -66,7 +66,7 @@ function Footer() {
             <div className="flex flex-col gap-3 items-start my-10 sm:my-0 justify-start p-[1.2rem_3.2rem] w-full md:w-[28%] bg-[#121212] rounded-[1.8rem]">
 
                 {
-                    links.slice(0, 3).map((item: any, index: number) => (
+                    links.slice(0, 3).map((item:any, index: number) => (
                         <Link className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110 transition-all"}`} key={index} href={item.link}>{item.title}</Link>
                     ))
                 }
