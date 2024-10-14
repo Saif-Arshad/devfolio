@@ -67,27 +67,27 @@ export const PageTransition = ({ children }: any) => {
 
     useEffect(() => {
         if (isFirstLoad) {
-            setIsAnimating(true); // Start the animation on first load
-            setShowContent(false); // Hide content during the animation
+            setIsAnimating(true); 
+            setShowContent(false);
 
             const timeout = setTimeout(() => {
-                setIsAnimating(false); // End the animation
-                setShowContent(true); // Show the content after the animation ends
-                setIsFirstLoad(false); // Mark that the first load has completed
-            }, 1000); // Adjust the duration for your animation
+                setIsAnimating(false); 
+                setShowContent(true); 
+                setIsFirstLoad(false); 
+            }, 1000); 
 
-            return () => clearTimeout(timeout); // Cleanup on unmount
+            return () => clearTimeout(timeout);
         } else {
-            setShowContent(true); // Immediately show content on subsequent page loads
+            setShowContent(true); 
         }
     }, [isFirstLoad]);
 
     return (
         <>
             <AnimatePresence>
-                {isAnimating && <Loading />} {/* Show loading animation on first load */}
+                {isAnimating && <Loading />}
             </AnimatePresence>
-            {showContent && ( // Render content only after the first load animation ends
+            {showContent && ( 
                 <div
                     className={`relative ${isAnimating ? "pointer-events-none" : "pointer-events-auto"
                         }`}
