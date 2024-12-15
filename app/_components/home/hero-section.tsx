@@ -1,24 +1,57 @@
+"use client"
 import React from 'react'
 import GradualSpacing from '../ui/gradual-spacing'
-
+import { ShootingStars } from '../ui/shooting-stars'
+import { StarsBackground } from '../ui/stars-background'
+import { TypeAnimation } from 'react-type-animation'
+import { LinkPreview } from '../ui/link-preview'
 export default function FirstAbout() {
     return (
         <div className="flex flex-wrap h-full w-full">
             <div className="flex flex-col h-full w-full md:w-1/2  mt-7 ">
                 <h3 className="text-primaryColor tracking-wide pl-14 font-semibold text-xl">Hi , I am </h3>
                 <GradualSpacing
-                    className="font-display text-center text-4xl font-bold -tracking-widest  text-black dark:text-white md:text-7xl md:leading-[5rem]"
+                    className="font-display text-center text-4xl font-bold -tracking-widest  text-black dark:text-white md:text-7xl lg:text-[100px] md:my-3  md:ml-24 md:leading-[5rem]"
                     text=" Saif Ur Rehman"
                 />
-                <h3 className="text-primaryColor tracking-wide mt-2 pl-20 font-semibold text-xl">Software Developer</h3>
+                <h3 className="text-primaryColor tracking-wide mt-2 pl-12 font-semibold text-xl">
+                    <TypeAnimation
+                        sequence={[
+                            'A Software Engineer',
+                            3000,
+                            'A MERN Stack Developer',
+                            3000,
+                            'A Next Js Developer',
+                            3000,
+                            'Open Source enthusiast',
+                            3000,
+                            'A Member of the Jedi Order',
+                            3000,
+
+                        ]}
+                        wrapper="h2"
+                        cursor={true}
+                        repeat={Infinity}
+                        style={{ display: 'inline-block' }}
+                    />
+
+                </h3>
                 <div className='pl-12'>
 
-                    <p className="mt-10 text-white text-lg">
-                        🚀 A passionate Software Developer based in Faislabad, Pakistan.
+                    <p className="mt-7 text-white text-lg">
+                        🚀 A passionate Software Developer based in Faislabad,
+                        <LinkPreview url="https://framer.com/motion" className="font-bold">
+                            Pakistan
+                        </LinkPreview>{" "}
+
+                        .
                     </p>
-                    <p className="mt-5 text-white text-lg">
+                    <p className="mt-3 text-white text-lg">
                         💻 I enjoy playing with the latest technologies and continuously
                         strive to improve my skills and knowledge.
+                    </p>
+                    <p className="mt-3 text-white text-lg">
+                        ⚡ My main tech stack currently is MERN in combination with Tailwind CSS, TypeScript and Next Js.
                     </p>
                     <div className="flex flex-wrap mt-10">
                         <a href="https://github.com/Saif-Arshad" target='_blank' rel="noreferrer" className="ml-5 mt-4 hover:text-primaryColor transform hover:scale-110 transition duration-500">
@@ -42,6 +75,8 @@ export default function FirstAbout() {
                 </div>
             </div>
 
+            <ShootingStars />
+            <StarsBackground />
             <div className="flex flex-col h-full w-full md:w-1/2 px-4 md:pl-4 md:pr-8 mt-8 md:mt-0">
                 {/* <p className="text-white">
                     As a <a href="https://www.coursera.org/articles/mern-stack" target='_blank' className="text-primaryColor">Full Stack developer</a>, one of my strongest qualities is my ability to think critically and solve problems...
