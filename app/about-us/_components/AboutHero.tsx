@@ -34,7 +34,7 @@ function AboutHero() {
         "figma",
     ];
     return (
-        <div className="flex flex-wrap w-full px-1 sm:px-5 lg:px-10 items-start">
+        <div className="flex flex-wrap w-full px-1 sm:px-5 lg:px-10 items-start mb-20">
             <div className="flex flex-col w-full lg:w-1/2  mt-7 ">
                 <div className='flex flex-col items-start '>
 

@@ -5,7 +5,7 @@ import { TypeAnimation } from 'react-type-animation'
 export default function FirstAbout() {
     return (
         <div className="flex flex-wrap h-full w-full">
-            <div className="flex flex-col h-full w-full lg:w-1/2  mt-7 px-3 sm:px-5 lg:px-10">
+            <div className="flex flex-col h-full w-full lg:w-8/12  mt-7 px-3 sm:px-5 lg:px-10">
                 <h3 className="text-primaryColor tracking-wide font-semibold md:text-xl">Hi , I am </h3>
                 <div className='flex flex-col items-start'>
 
