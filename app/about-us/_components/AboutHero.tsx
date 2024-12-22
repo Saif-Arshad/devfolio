@@ -6,16 +6,15 @@ function AboutHero() {
     const slugs = [
         "typescript",
         "javascript",
-        "dart",
-        "java",
+        "mysql",
+        "python",
         "react",
-        "flutter",
-        "android",
+        "reactnative",
+        "postman",
         "html5",
         "css3",
         "nodedotjs",
         "express",
-        "nextdotjs",
         "prisma",
         "amazonaws",
         "postgresql",
@@ -31,12 +30,11 @@ function AboutHero() {
         "github",
         "gitlab",
         "visualstudiocode",
-        "androidstudio",
         "nextjs",
         "figma",
     ];
     return (
-        <div className="flex flex-wrap w-full px-5 lg:px-10 items-start">
+        <div className="flex flex-wrap w-full px-1 sm:px-5 lg:px-10 items-start">
             <div className="flex flex-col w-full lg:w-1/2  mt-7 ">
                 <div className='flex flex-col items-start '>
 
@@ -45,21 +43,32 @@ function AboutHero() {
                         text=" Saif Ur Rehman."
                     />
                     <h3 className="text-primaryColor tracking-wide mt-1 ml-3  font-semibold text-xl">
-                        A Software Engineer
+                        Software Engineer
                     </h3>
                 </div>
                 <div >
 
                     <p className="mt-7 text-white text-lg">
-                        🚀I build clean, responsive, engaging, and accessible digital experiences.
+                        ⚡ I help your
+                        <span className="text-primaryColor font-semibold px-1.5">
+                            PRODUCT SHINE
+                        </span>
+                        in a crowded market
+
                     </p>
                     <p className="mt-3 text-white text-lg">
-                        ⚡ Exploring opportunities and side projects.
+                        💻 Exploring opportunities and side projects.
                     </p>
                     <p className="mt-3 text-white text-lg">
-                        💻 I enjoy playing with the latest technologies and continuously
-                        strive to improve my skills and knowledge.
+                        🚀 I create clean, responsive, engaging, and accessible digital experiences.
+                        I specialize in crafting
+                        <span className="text-primaryColor font-semibold px-1.5">complex</span>,
+                        <span className="text-primaryColor font-semibold px-1.5">fast</span>, and
+                        <span className="text-primaryColor font-semibold px-1.5">functional</span>
+                        digital products that deliver
+                        <span className="text-primaryColor font-semibold px-1.5">exceptional user experiences</span>.
                     </p>
+
 
 
                     <div className="flex flex-wrap mt-10">

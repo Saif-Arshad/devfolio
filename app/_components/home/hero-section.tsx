@@ -47,12 +47,31 @@ export default function FirstAbout() {
                         .
                     </p>
                     <p className="mt-3 text-white text-lg">
-                        💻 I specialize in building complex, fast, and functional digital products,
-                        that deliver exceptional user experiences.
+                        ⚡ I help your
+                        <span className="text-primaryColor font-semibold px-1.5">
+                            PRODUCT SHINE
+                        </span>
+                        in a crowded market
+
                     </p>
                     <p className="mt-3 text-white text-lg">
-                        ⚡ My main tech stack currently is MERN in combination with Tailwind CSS, TypeScript and Next Js.
+                        💻
+                        My main tech stack currently is
+                        <span className="text-primaryColor font-semibold px-1.5">MERN</span>
+                        in combination with
+                        Tailwind CSS,
+                        TypeScript,
+                        and
+                        <span className="text-primaryColor font-semibold px-1.5">Next.js</span>.
+                        I specialize in building
+                        <span className="text-primaryColor font-semibold px-1.5">complex</span>,
+                        <span className="text-primaryColor font-semibold px-1.5">fast</span>, and
+                        <span className="text-primaryColor font-semibold px-1.5">functional</span>
+                        digital products that deliver
+                        <span className="text-primaryColor font-semibold px-1.5">exceptional user experiences</span>.
                     </p>
+
+
                     <div className="flex flex-wrap mt-10">
                         <a href="https://github.com/Saif-Arshad" target='_blank' rel="noreferrer" className="ml-5 mt-4 hover:text-primaryColor transform hover:scale-110 transition duration-500">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-6 w-6" aria-hidden="true">
