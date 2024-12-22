@@ -5,6 +5,8 @@ import Header from "./_components/shared/header";
 import Footer from "./_components/shared/footer";
 import LenisInitializer from './_lib/LenisInitializer';
 import { PageTransition } from "./_lib/changePage";
+import { ShootingStars } from "./_components/ui/shooting-stars";
+import { StarsBackground } from "./_components/ui/stars-background";
 
 
 const poppins = Poppins({
@@ -35,8 +37,11 @@ export default function RootLayout({
             <LenisInitializer />
             <div className="pt-6 px-3 mx-auto z-50">
               {children}
+              <ShootingStars />
+              <StarsBackground />
             </div>
             <Footer />
+
           </div>
         </PageTransition>
       </body>

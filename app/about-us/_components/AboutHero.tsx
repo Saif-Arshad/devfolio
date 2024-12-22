@@ -1,56 +1,31 @@
-"use client"
 import React from 'react'
-import GradualSpacing from '../ui/gradual-spacing'
-import { TypeAnimation } from 'react-type-animation'
-export default function FirstAbout() {
+import GradualSpacing from '../../_components/ui/gradual-spacing'
+import { HeroCloud } from '../../_components/home/hero-cloud'
+
+function AboutHero() {
     return (
-        <div className="flex flex-wrap h-full w-full">
-            <div className="flex flex-col h-full w-full lg:w-1/2  mt-7 px-3 sm:px-5 lg:px-10">
-                <h3 className="text-primaryColor tracking-wide font-semibold md:text-xl">Hi , I am </h3>
-                <div className='flex flex-col items-start'>
+        <div className="flex flex-wrap h-full w-full px-5 lg:px-10">
+            <div className="flex flex-col h-full w-full md:w-1/2  mt-7 ">
+                <div className='flex flex-col items-start '>
 
                     <GradualSpacing
-                        className="font-display text-4xl font-bold -tracking-widest  text-black dark:text-white sm:text-7xl lg:text-[100px] md:my-3   md:leading-[5rem]"
-                        text=" Saif Ur Rehman"
+                        className="font-display text-4xl md:text-6xl font-bold -tracking-widest  text-black dark:text-white md:mt-3   md:leading-[5rem]"
+                        text=" Saif Ur Rehman."
                     />
-                    <h3 className="text-primaryColor tracking-wide mt-2 ml-7 font-semibold sm:text-xl">
-                        <TypeAnimation
-                            sequence={[
-                                'A Software Engineer',
-                                3000,
-                                'A MERN Stack Developer',
-                                3000,
-                                'A Next Js Developer',
-                                3000,
-                                'Open Source enthusiast',
-                                3000,
-                                'A Member of the Jedi Order',
-                                3000,
-
-                            ]}
-                            wrapper="h2"
-                            cursor={true}
-                            repeat={Infinity}
-                            style={{ display: 'inline-block' }}
-                        />
-
+                    <h3 className="text-primaryColor tracking-wide mt-1 ml-3  font-semibold text-xl">
+                        A Software Engineer
                     </h3>
                 </div>
-                <div className=''>
+                <div >
 
                     <p className="mt-7 text-white text-lg">
-                        🚀 A passionate Software Developer based in Faislabad,
-                        Pakistan
-
-                        .
+                        🚀I build clean, responsive, engaging, and accessible digital experiences.
                     </p>
                     <p className="mt-3 text-white text-lg">
                         💻 I enjoy playing with the latest technologies and continuously
                         strive to improve my skills and knowledge.
                     </p>
-                    <p className="mt-3 text-white text-lg">
-                        ⚡ My main tech stack currently is MERN in combination with Tailwind CSS, TypeScript and Next Js.
-                    </p>
+
                     <div className="flex flex-wrap mt-10">
                         <a href="https://github.com/Saif-Arshad" target='_blank' rel="noreferrer" className="ml-5 mt-4 hover:text-primaryColor transform hover:scale-110 transition duration-500">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-6 w-6" aria-hidden="true">
@@ -73,9 +48,12 @@ export default function FirstAbout() {
                 </div>
             </div>
 
-            {/* <ShootingStars />
-            <StarsBackground /> */}
 
+            <div className="flex relative flex-col h-full w-full bg-green-600 md:w-1/2 px-4 md:pl-4 md:pr-8 mt-8 md:mt-0">
+                <HeroCloud />
+            </div>
         </div>
     )
 }
+
+export default AboutHero
