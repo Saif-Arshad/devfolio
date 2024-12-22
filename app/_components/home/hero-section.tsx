@@ -16,7 +16,9 @@ export default function FirstAbout() {
                     <h3 className="text-primaryColor tracking-wide mt-2 ml-7 font-semibold sm:text-xl">
                         <TypeAnimation
                             sequence={[
-                                'A Software Engineer',
+                                'Software Engineer',
+                                3000,
+                                'A Full Stack Developer',
                                 3000,
                                 'A MERN Stack Developer',
                                 3000,
@@ -45,8 +47,8 @@ export default function FirstAbout() {
                         .
                     </p>
                     <p className="mt-3 text-white text-lg">
-                        💻 I enjoy playing with the latest technologies and continuously
-                        strive to improve my skills and knowledge.
+                        💻 I specialize in building complex, fast, and functional digital products,
+                        that deliver exceptional user experiences.
                     </p>
                     <p className="mt-3 text-white text-lg">
                         ⚡ My main tech stack currently is MERN in combination with Tailwind CSS, TypeScript and Next Js.

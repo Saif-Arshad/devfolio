@@ -1,11 +1,43 @@
 import React from 'react'
 import GradualSpacing from '../../_components/ui/gradual-spacing'
-import { HeroCloud } from '../../_components/home/hero-cloud'
+import IconCloud from '../../_components/ui/icon-cloud'
 
 function AboutHero() {
+    const slugs = [
+        "typescript",
+        "javascript",
+        "dart",
+        "java",
+        "react",
+        "flutter",
+        "android",
+        "html5",
+        "css3",
+        "nodedotjs",
+        "express",
+        "nextdotjs",
+        "prisma",
+        "amazonaws",
+        "postgresql",
+        "firebase",
+        "nginx",
+        "vercel",
+        "testinglibrary",
+        "jest",
+        "supabase",
+        "docker",
+        "git",
+        "jira",
+        "github",
+        "gitlab",
+        "visualstudiocode",
+        "androidstudio",
+        "nextjs",
+        "figma",
+    ];
     return (
-        <div className="flex flex-wrap h-full w-full px-5 lg:px-10">
-            <div className="flex flex-col h-full w-full md:w-1/2  mt-7 ">
+        <div className="flex flex-wrap w-full px-5 lg:px-10 items-start">
+            <div className="flex flex-col w-full lg:w-1/2  mt-7 ">
                 <div className='flex flex-col items-start '>
 
                     <GradualSpacing
@@ -22,9 +54,13 @@ function AboutHero() {
                         🚀I build clean, responsive, engaging, and accessible digital experiences.
                     </p>
                     <p className="mt-3 text-white text-lg">
+                        ⚡ Exploring opportunities and side projects.
+                    </p>
+                    <p className="mt-3 text-white text-lg">
                         💻 I enjoy playing with the latest technologies and continuously
                         strive to improve my skills and knowledge.
                     </p>
+
 
                     <div className="flex flex-wrap mt-10">
                         <a href="https://github.com/Saif-Arshad" target='_blank' rel="noreferrer" className="ml-5 mt-4 hover:text-primaryColor transform hover:scale-110 transition duration-500">
@@ -49,8 +85,9 @@ function AboutHero() {
             </div>
 
 
-            <div className="flex relative flex-col h-full w-full bg-green-600 md:w-1/2 px-4 md:pl-4 md:pr-8 mt-8 md:mt-0">
-                <HeroCloud />
+            <div className="flex relative flex-col items-center justify-start w-full  lg:w-1/2 ">
+                <IconCloud iconSlugs={slugs} />
+
             </div>
         </div>
     )
