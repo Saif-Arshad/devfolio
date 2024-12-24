@@ -1,6 +1,6 @@
 import React from 'react'
-import GradualSpacing from '../../_components/ui/gradual-spacing'
-import IconCloud from '../../_components/ui/icon-cloud'
+import GradualSpacing from '../../../_components/ui/gradual-spacing'
+import IconCloud from '../../../_components/ui/icon-cloud'
 
 function AboutHero() {
     const slugs = [

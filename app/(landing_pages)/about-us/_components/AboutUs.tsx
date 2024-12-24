@@ -7,6 +7,15 @@ function AboutUs() {
         <section className="py-14 relative xl:mr-0 lg:mr-5 mr-0">
             <div className="w-full max-w-7xl px-2 md:px-5 lg:px-5 mx-auto">
                 <div className="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1">
+                    <div className="w-full justify-center items-start flex">
+                        <div className="w-full h-full relative">
+                            <img
+                                className="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover"
+                                src="/images/icons/Developer activity-bro.png"
+                                alt="About Us image"
+                            />
+                        </div>
+                    </div>
                     <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
                         <div className="w-full flex-col justify-center items-start gap-8 flex">
                             <div className="flex-col justify-start lg:items-start items-center gap-4 flex">
@@ -17,7 +26,30 @@ function AboutUs() {
                                         Let’s create something amazing together! 🚀</h2>
                                     <p
                                         className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
-                                        I am a passionate Full Stack Developer with 3+ years of professional experience (and if you count the sleepless nights, it’s easily 4!). Over the years, I have built dynamic websites and applications that not only meet client expectations but also deliver exceptional user experiences. I take pride in crafting efficient, scalable, and creative solutions to help businesses grow and thrive in the digital world.
+                                        I&apos;m Saif Ur Rehman I&lsquo;ve been working in web development for over 3 years (and if you count the sleepless nights,
+                                        <span className="text-primaryColor font-semibold px-1.5">
+                                            it’s easily 4!
+                                        </span>
+                                        ) doing both
+
+                                        <span className="text-primaryColor font-semibold px-1.5">
+
+                                            frontend
+                                        </span>
+                                        (The stuff you see on the screen)
+                                        and
+                                        <span className="text-primaryColor font-semibold px-1.5">
+                                            backend
+                                        </span>
+                                        (The stuff that happens behind the scenes)
+
+
+
+                                        I focus on building practical and reliable solutions that help businesses solve problems and achieve their goals. I am a firm believer in the
+                                        <span className="text-primaryColor font-semibold px-1.5">
+                                            power of technology
+                                        </span>
+                                        to transform businesses and lives.
                                     </p>
                                 </div>
                             </div>
@@ -53,15 +85,7 @@ function AboutUs() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full justify-center items-start flex">
-                        <div className="w-full h-full relative">
-                            <img
-                                className="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover"
-                                src="/images/icons/Developer activity-bro.png"
-                                alt="About Us image"
-                            />
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
