@@ -1,3 +1,5 @@
+"use service"
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { account } from './appwrite';
 
@@ -9,10 +11,19 @@ import { account } from './appwrite';
 //         console.error('Registration failed:', error.message);
 //     }
 // };
+const setCookie = (cName: string, cValue: any, exDays: any) => {
+    const d = new Date();
+    d.setTime(d.getTime() + exDays * 24 * 60 * 60 * 1000);
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = cName + "=" + cValue + ";" + expires + ";path=/";
+};
 
 export const loginUser = async (email: any, password: any) => {
     try {
-        await account.createEmailPasswordSession(email, password);
+        const res = await account.createEmailPasswordSession(email, password);
+        console.log("🚀 ~ loginUser ~ res:", res)
+        // cookies.setItem('admin-token', res.userId);
+        setCookie("admin-token", res.userId, 7)
         console.log('User logged in successfully');
     } catch (error: any) {
         console.error('Login failed:', error.message);
