@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
     const authRoute = '/admin';
     const isAuthRoute = path === authRoute;
     const isAdminPath = /^\/dashboard(\/[^\/]+)*\/?$/.test(path);
-    const userToken = request.cookies.get('admin-token');
+    const userToken = request.cookies.get('admin-token')?.value;
     try {
         console.log("🚀 ~ middleware ~ user:", userToken)
 
