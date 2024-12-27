@@ -49,7 +49,7 @@ function InputTags({ value, onChange }: InputTagsProps) {
 
             {
                 value.length > 0 &&
-                <div className="flex flex-wrap gap-2 mt-3 p-2 py-3 border border-neutral-700 rounded-xl">
+                <div className="flex flex-wrap gap-2 mt-3 p-2 ">
                     {value.length > 0 ? (
                         value.map((tag, index) => (
                             <div

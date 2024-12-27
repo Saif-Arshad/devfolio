@@ -119,12 +119,17 @@ html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
-.ql-container.ql-snow{
+
+.ql-container.ql-snow {
   border: none !important;
+  background-color: rgb(58, 59, 59) !important;
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
 }
-.ql-toolbar.ql-snow{
+
+.ql-toolbar.ql-snow {
   border: none !important;
   border-top-right-radius: 10px !important;
   border-top-left-radius: 10px !important;
-  background-color:#3ccf91 !important ;
+  background-color: #3ccf91 !important;
 }

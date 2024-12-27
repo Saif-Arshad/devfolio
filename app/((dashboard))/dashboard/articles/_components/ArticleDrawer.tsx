@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import {
     Drawer,
@@ -11,21 +10,51 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "../../../../_components/ui/drawer";
-import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { Input } from "../../../../_components/ui/input";
 import InputTags from "./InputTags";
+import { databases } from "../../../../_lib/appwrite";
+import { uploadImage } from "../../../../_lib/upload-file";
+import RichTextEditor from "./editor";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function ArticleDrawer({ button }: any) {
     const [content, setContent] = useState("");
     const [isClient, setIsClient] = useState(false);
     const [tags, setTags] = useState<string[]>([]);
+    const [title, setTitle] = useState("");
+    const [bannerImage, setBannerImage] = useState<File | null>(null);
 
+
+    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
+    console.log("🚀 ~ ArticleDrawer ~ databaseId:", databaseId)
+    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
+    console.log("🚀 ~ ArticleDrawer ~ collectionId:", collectionId)
     useEffect(() => {
         setIsClient(true);
     }, []);
+
+
+
+    const handleSubmit = async () => {
+        try {
+            const bannerImageUrl = bannerImage ? await uploadImage(bannerImage) : null;
+            console.log("🚀 ~ handleSubmit ~ bannerImageUrl:", bannerImageUrl)
+            console.log(title, tags, content, bannerImageUrl);
+            await databases.createDocument(databaseId, collectionId, "unique()", {
+                title,
+                tags,
+                content,
+                bannerImage: bannerImageUrl,
+            });
+
+            alert("Article published successfully!");
+        } catch (error) {
+            console.log("🚀 ~ handleSubmit ~ error:", error)
+        }
+    };
+
 
     return (
         <Drawer>
@@ -34,25 +63,38 @@ function ArticleDrawer({ button }: any) {
                 <DrawerHeader>
                     <DrawerTitle>Add a new Article</DrawerTitle>
                 </DrawerHeader>
-                <div className="flex flex-col items-center gap-3 px-5 mt-5">
-                    <Input type="text" placeholder="Title" />
+                <div className="flex flex-col items-center gap-3 px-5 mt-5  overflow-y-auto ">
+                    <Input
+                        type="text"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
                     <InputTags value={tags} onChange={(updatedTags) => setTags(updatedTags)} />
+                    <Input
+                        type="file"
+                        placeholder="Banner Image"
+                        onChange={(e) => setBannerImage(e.target.files?.[0] || null)}
+                    />
 
                     {isClient && (
-                        <ReactQuill
+                        <RichTextEditor
                             value={content}
-                            onChange={(value) => setContent(value)}
-                            className="bg-neutral-800 w-full rounded-lg min-h-52 "
+                            setValue={setContent}
                         />
                     )}
                 </div>
                 <DrawerFooter>
                     <div className="flex justify-end gap-3">
-
                         <DrawerClose>
                             <button className="bg-slate-900 p-3 px-4 rounded-full">Cancel</button>
                         </DrawerClose>
-                        <button className="bg-primaryColor p-3 px-5 text-black rounded-full">Publish</button>
+                        <button
+                            onClick={handleSubmit}
+                            className="bg-primaryColor p-3 px-5 text-black rounded-full"
+                        >
+                            Publish
+                        </button>
                     </div>
                 </DrawerFooter>
             </DrawerContent>
