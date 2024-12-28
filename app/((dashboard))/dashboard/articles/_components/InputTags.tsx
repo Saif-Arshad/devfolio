@@ -46,10 +46,9 @@ function InputTags({ value, onChange }: InputTagsProps) {
                     Add
                 </button>
             </div>
-
             {
                 value.length > 0 &&
-                <div className="flex flex-wrap gap-2 mt-3 p-2 ">
+                <div className="flex flex-wrap gap-2 my-1 mt-2  ">
                     {value.length > 0 ? (
                         value.map((tag, index) => (
                             <div
@@ -71,6 +70,9 @@ function InputTags({ value, onChange }: InputTagsProps) {
                     )}
                 </div>
             }
+
+
+
 
         </div>
     );

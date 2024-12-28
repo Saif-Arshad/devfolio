@@ -23,7 +23,7 @@ export const loginUser = async (email: any, password: any) => {
         const res = await account.createEmailPasswordSession(email, password);
         console.log("🚀 ~ loginUser ~ res:", res)
         // cookies.setItem('admin-token', res.userId);
-        setCookie("admin-token", res.userId, 7)
+        setCookie("admin-token", res.userId, 1)
         console.log('User logged in successfully');
     } catch (error: any) {
         console.error('Login failed:', error.message);

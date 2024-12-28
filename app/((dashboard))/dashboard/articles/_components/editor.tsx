@@ -13,7 +13,6 @@ export default function RichTextEditor({ value, setValue }: any) {
 
     const imageHandler = () => {
         const editor = quillRef.current.getEditor();
-        console.log(editor)
         const input = document.createElement("input");
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");
@@ -23,7 +22,6 @@ export default function RichTextEditor({ value, setValue }: any) {
             // @ts-ignore
             const file = input && input?.files[0];
             if (/^image\//.test(file.type)) {
-                console.log(file);
                 const url = await uploadImage(file);
                 console.log("🚀 ~ input.onchange= ~ url:", url)
                 const href = url?.href
@@ -53,7 +51,7 @@ export default function RichTextEditor({ value, setValue }: any) {
         <>
 
             <ReactQuill theme="snow"
-                className="bg-neutral-800 w-full rounded-lg min-h-52 "
+                className="bg-neutral-800 w-full rounded-lg min-h-52 h-full "
                 ref={quillRef} value={value} modules={modules} onChange={setValue} />
 
         </>

@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <div className="w-screen max-w-[100vw]">
+    <div className="w-screen max-w-[98vw] overflow-x-hidden">
       <DashboardHeader />
       {children}
     </div>
