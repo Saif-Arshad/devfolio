@@ -5,10 +5,11 @@ import React, { useState } from "react";
 
 type InputTagsProps = {
     value: string[];
+    placeholder?: string;
     onChange: (updatedTags: string[]) => void;
 };
 
-function InputTags({ value, onChange }: InputTagsProps) {
+function InputTags({ value, onChange, placeholder }: InputTagsProps) {
     const [pendingDataPoint, setPendingDataPoint] = useState("");
 
     const addPendingDataPoint = () => {
@@ -35,7 +36,7 @@ function InputTags({ value, onChange }: InputTagsProps) {
                             addPendingDataPoint();
                         }
                     }}
-                    placeholder="Enter a tag"
+                    placeholder={`${placeholder ? placeholder : "Enter a tag"}`}
                     className="flex-grow px-4 py-2 bg-neutral-700 border border-neutral-800 rounded-l-xl focus:outline-none"
                 />
                 <button
