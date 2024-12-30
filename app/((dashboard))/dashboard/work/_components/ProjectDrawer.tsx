@@ -50,6 +50,7 @@ function ProjectDrawer({ button, project }: any) {
             setTags(project.tags);
             setTech(project.tech);
             setIsEdit(true);
+            setIsFeatured(project.isFeatured);
         }
     }, [project]);
 
@@ -91,7 +92,10 @@ function ProjectDrawer({ button, project }: any) {
                 setLoading(false);
                 return;
             }
-            const bannerImageUrl = project.banner ? project.banner : await uploadImage(bannerImage);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            const bannerImageUrl = bannerImage ? (await uploadImage(bannerImage)).href
+                : project.banner;
             if (!bannerImageUrl) {
                 setErrorMessage("Please upload a banner image.");
                 setLoading(false);
@@ -105,7 +109,7 @@ function ProjectDrawer({ button, project }: any) {
                 slug,
                 tech,
                 discription,
-                banner: bannerImageUrl.href,
+                banner: bannerImageUrl,
                 isFeatured,
                 gallery: galleryState
             };
