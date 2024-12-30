@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} antialiased bg-gray-900 text-white`}
       >
-        <div className="pt-6 px-3 mx-auto relative flex items-center justify-center ">
+        <div className=" mx-auto relative flex items-center justify-center ">
 
           <div className=" max-w-[1440px] ">
             {children}

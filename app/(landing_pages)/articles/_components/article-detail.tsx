@@ -1,0 +1,208 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import { databases } from "@/_lib/appwrite";
+import { Query } from "appwrite";
+import React, { useEffect, useState } from "react";
+import parse, { domToReact } from "html-react-parser";
+import Image from "next/image";
+import { ArrowRightIcon, TimerIcon } from "lucide-react";
+import Link from "next/link";
+
+interface Article {
+    title: string;
+    isPublish: boolean;
+    content: string;
+    tags: string[];
+    bannerImage: string;
+    discription: string;
+    slug: string;
+    $createdAt: string;
+}
+
+function ArticleDetail({ slug }: { slug: string }) {
+    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
+    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
+
+    const [article, setArticle] = useState<Article | null>(null);
+    const [headers, setHeaders] = useState<{ id: string; text: string }[]>([]);
+    const [readTime, setReadTime] = useState<number>(0);
+    const [parsedContent, setParsedContent] = useState<React.ReactNode>(null);
+
+    useEffect(() => {
+        if (slug) {
+            const fetchData = async () => {
+                try {
+                    const result = await databases.listDocuments(databaseId, collectionId, [
+                        Query.equal("slug", slug),
+                    ]);
+                    if (result.documents.length > 0) {
+                        const fetchedArticle = result.documents[0] as any;
+                        setArticle(fetchedArticle);
+
+                        calculateReadTime(fetchedArticle.content);
+                        const parsed = extractHeaders(fetchedArticle.content);
+                        setParsedContent(parsed);
+                    } else {
+                        console.warn("No articles found with the provided slug.");
+                    }
+                } catch (error) {
+                    console.error("Error fetching article:", error);
+                }
+            };
+
+            fetchData();
+        }
+    }, [slug]);
+
+    const calculateReadTime = (htmlContent: string) => {
+        const text = htmlContent.replace(/<[^>]+>/g, "");
+        const words = text.trim().split(/\s+/).length;
+        const time = Math.ceil(words / 400);
+        setReadTime(time);
+    };
+
+    const extractHeaders = (htmlContent: string): React.ReactNode => {
+        const headerList: { id: string; text: string }[] = [];
+
+        const options = {
+            replace: (domNode: any) => {
+                if (domNode.name === "p") {
+                    return (
+                        <p className="mb-4 leading-relaxed text-gray-200">
+                            {domToReact(domNode.children)}
+                        </p>
+                    );
+                }
+
+                if (domNode.name === "li") {
+                    return (
+                        <li className="ml-5 list-disc text-gray-200">
+                            {domToReact(domNode.children)}
+                        </li>
+                    );
+                }
+                if (domNode.name === "img") {
+                    const { src, alt } = domNode.attribs;
+                    return (
+                        <Image
+                            src={src}
+                            height={1000}
+                            width={1000}
+                            alt={alt}
+                            className="my-4 rounded-xl shadow-md w-full h-auto"
+                        />
+                    );
+                }
+
+                if (domNode.name === "h2") {
+                    const textContent = domNode.children
+                        .map((child: any) => {
+                            if (child.type === "text") return child.data;
+                            return child.children?.[0]?.data || "";
+                        })
+                        .join("")
+                        .trim();
+
+                    if (!textContent) {
+                        return null;
+                    }
+
+                    const id = textContent
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, "-")
+                        .replace(/(^-|-$)+/g, "");
+
+                    headerList.push({ id, text: textContent });
+
+                    return React.createElement(
+                        "h2",
+                        {
+                            id,
+                            className:
+                                "mt-8 mb-4 text-2xl font-bold bg-neutral-800 py-2 rounded-tr-md rounded-br-md pl-5 border-l-[5px] border-primaryColor",
+                        },
+                        textContent
+                    );
+                }
+            },
+        };
+
+        const parsedData = parse(htmlContent, options);
+
+        setHeaders(headerList.filter((header) => header.text.trim() !== ""));
+
+        return parsedData;
+    };
+
+    const formatDate = (date: string) => {
+        return new Intl.DateTimeFormat("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        }).format(new Date(date));
+    };
+
+    if (!article) {
+        return (
+            <div className="container mx-auto p-4 flex flex-col lg:flex-row">
+                Loading...
+            </div>
+        );
+    }
+
+    return (
+        <div className="container mx-auto p-4 flex flex-col lg:flex-row">
+            <div className="w-full lg:w-3/4 lg:pr-8">
+                {article.bannerImage && (
+                    <Image
+                        src={article.bannerImage}
+                        alt={article.title}
+                        width={1000}
+                        height={1000}
+                        className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-6"
+                    />
+                )}
+
+                <h1 className="md:text-4xl text-2xl font-semibold md:font-bold mb-4 text-gray-100">
+                    {article.title}
+                </h1>
+                <div className="border-b border-white gap-4 border-dashed flex-wrap my-6 pb-6 flex items-center justify-between">
+                    <p className="text-gray-300 text-sm">
+                        Published on {article.$createdAt && formatDate(article.$createdAt)}
+                    </p>
+                    <p className="text-gray-300 text-sm flex items-center gap-x-1">
+                        <TimerIcon size={18} className="inline" />
+                        {readTime} min read
+                    </p>
+                </div>
+
+                <div className="prose-lg text-gray-200">{parsedContent}</div>
+            </div>
+
+            <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
+                <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-100">
+                        Contents
+                    </h2>
+                    <ul className="space-y-2">
+                        {headers.map((header) => (
+                            <li key={header.id}>
+                                <Link
+                                    href={`#${header.id}`}
+                                    className="text-primaryColor flex items-center hover:underline"
+                                >
+                                    <ArrowRightIcon size={18} className="inline mr-2 mt-1" />
+                                    {header.text}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default ArticleDetail;

@@ -71,7 +71,7 @@ function ArticlesMain() {
     };
 
     return (
-        <div className="flex flex-wrap h-full max-w-screen w-[90vw] z-20">
+        <div className="flex flex-wrap h-full w-full z-20">
             <div className="w-full min-h-[75vh] lg:py-10 py-5 lg:px-10 px-4 flex flex-col">
                 {loading ? (
                     <div
@@ -99,7 +99,7 @@ function ArticlesMain() {
                                     height={1000}
                                     width={1000}
                                     alt="Blog Image"
-                                    className="w-auto h-[500px] object-cover"
+                                    className="w-full h-[500px] object-cover"
                                 />
                             </div>
                             <div className="lg:w-[500px] z-10 bg-white absolute lg:-bottom-10 lg:left-10 -bottom-10 lg:p-8 p-4 rounded-lg shadow-2xl dark:bg-[#151515] dark:text-white mx-3 sm:mx-8">
