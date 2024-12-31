@@ -147,7 +147,7 @@ function ArticleDetail({ slug }: { slug: string }) {
     if (!article) {
         return (
             <div className="container mx-auto p-4 flex flex-col lg:flex-row">
-                <div className="w-full lg:w-3/4 lg:pr-8">
+                <div className="w-full lg:pr-8">
                     <div
                         role="status"
                         className="flex w-full h-[500px] items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-[#151515]"
@@ -165,7 +165,7 @@ function ArticleDetail({ slug }: { slug: string }) {
                         <span className="sr-only">Loading...</span>
                     </div>
                 </div>
-                <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
+                {/* <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
                     <div className="w-full lg:w-3/4 lg:pr-8">
                         <div
                             role="status"
@@ -184,14 +184,14 @@ function ArticleDetail({ slug }: { slug: string }) {
                             <span className="sr-only">Loading...</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     }
 
     return (
         <div className="container mx-auto p-4 flex flex-col lg:flex-row">
-            <div className="w-full lg:w-3/4 lg:pr-8">
+            <div className="w-full lg:pr-8">
                 {article.bannerImage && (
                     <Image
                         src={article.bannerImage}
@@ -215,29 +215,34 @@ function ArticleDetail({ slug }: { slug: string }) {
                     </p>
                 </div>
 
-                <div className="prose-lg text-gray-200">{parsedContent}</div>
-            </div>
+                <div className=" w-full flex">
+                    <div className=" w-full lg:w-3/4 lg:pr-9">
 
-            <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
-                <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">
-                    <h2 className="text-xl font-semibold mb-4 text-gray-100">
-                        Table of Contents
-                    </h2>
-                    <ul className="space-y-2">
-                        {headers.map((header) => (
-                            <li key={header.id}>
-                                <Link
-                                    href={`#${header.id}`}
-                                    className="text-primaryColor flex items-center hover:underline"
-                                >
-                                    <ArrowRightIcon size={18} className="inline mr-2 mt-1" />
-                                    {header.text}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                        <div className="prose-lg text-gray-200">{parsedContent}</div>
+                    </div>
+                    <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
+                        <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">
+                            <h2 className="text-xl font-semibold mb-4 text-gray-100">
+                                Table of Contents
+                            </h2>
+                            <ul className="space-y-2">
+                                {headers.map((header) => (
+                                    <li key={header.id}>
+                                        <Link
+                                            href={`#${header.id}`}
+                                            className="text-primaryColor flex items-center hover:underline"
+                                        >
+                                            <ArrowRightIcon size={18} className="inline mr-2 mt-1" />
+                                            {header.text}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 }
