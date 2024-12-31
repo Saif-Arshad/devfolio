@@ -26,8 +26,6 @@ export default function FirstAbout() {
                                 3000,
                                 'A Next Js Developer',
                                 3000,
-                                'Open Source enthusiast',
-                                3000,
                                 'A Member of the Jedi Order',
                                 3000,
 
@@ -74,12 +72,10 @@ export default function FirstAbout() {
                     </p>
 
 
-                    <SocialLinks/>
+                    <SocialLinks />
                 </div>
             </div>
 
-            {/* <ShootingStars />
-            <StarsBackground /> */}
 
         </div>
     )

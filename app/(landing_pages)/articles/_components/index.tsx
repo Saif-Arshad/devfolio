@@ -13,8 +13,8 @@ const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
 const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 
 function ArticlesMain() {
-    const [allArticles, setAllArticles] = useState<any[]>([]);
     const [randomBlog, setRandomBlog] = useState<any>(null);
+    const [allArticles, setAllArticles] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
