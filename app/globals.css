@@ -134,3 +134,8 @@ html.lenis body {
   border-top-left-radius: 10px !important;
   background-color: #3ccf91 !important;
 }
+
+.content-detail img{
+  border-radius: 7px !important;
+  margin: 10px 0px !important;
+}

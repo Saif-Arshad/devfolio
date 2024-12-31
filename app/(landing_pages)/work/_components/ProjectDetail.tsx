@@ -8,15 +8,24 @@ import parse, { domToReact } from "html-react-parser";
 import Image from 'next/image';
 import { ArrowRightIcon, CircleArrowOutUpRightIcon, GithubIcon } from 'lucide-react';
 import { STACKS } from '@/_lib/stack';
-
+import { EmblaOptionsType } from 'embla-carousel';
+import Carousel, { Slider, SliderContainer, SliderDotButton } from '@/_components/ui/slider';
 
 function ProjectDetail({ slug }: { slug: string }) {
     console.log("🚀 ~ ProjectDetail ~ slug:", slug)
     const [project, setProjects] = useState<any>(null);
     const [headers, setHeaders] = useState<{ id: string; text: string }[]>([]);
     const [parsedContent, setParsedContent] = useState<React.ReactNode>(null);
+    const [slides, setSlides] = useState<any>([])
+    console.log("🚀 ~ ProjectDetail ~ slides:", slides)
     const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
     const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
+    const OPTIONS: EmblaOptionsType = {
+        loop: true,
+
+
+
+    };
     useEffect(() => {
         if (slug) {
             const fetchData = async () => {
@@ -27,11 +36,11 @@ function ProjectDetail({ slug }: { slug: string }) {
                     if (result.documents.length > 0) {
                         const fetchedProject = result.documents[0] as any;
                         setProjects(fetchedProject);
-
+                        setSlides([fetchedProject.banner, ...fetchedProject.gallery])
                         const parsed = extractHeaders(fetchedProject.content);
                         setParsedContent(parsed);
                     } else {
-                        console.warn("No articles found with the provided slug.");
+                        console.log("No articles found with the provided slug.");
                     }
                 } catch (error) {
                     console.error("Error fetching article:", error);
@@ -61,18 +70,7 @@ function ProjectDetail({ slug }: { slug: string }) {
                         </li>
                     );
                 }
-                if (domNode.name === "img") {
-                    const { src, alt } = domNode.attribs;
-                    return (
-                        <Image
-                            src={src}
-                            height={1000}
-                            width={1000}
-                            alt={alt}
-                            className="my-4 rounded-xl shadow-md w-full h-auto"
-                        />
-                    );
-                }
+
 
                 if (domNode.name === "h2") {
                     const textContent = domNode.children
@@ -198,22 +196,51 @@ function ProjectDetail({ slug }: { slug: string }) {
                         </div>
                     </div>
                 </div>
-                {project.banner && (
-                    <Image
-                        src={project.banner}
-                        alt={project.name}
-                        width={1000}
-                        height={1000}
-                        className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-6"
-                    />
-                )}
+
+
+                {
+                    slides.length > 1 ?
+                        <Carousel options={OPTIONS}
+                            isAutoPlay={true}
+                        >
+                            <SliderContainer>
+                                {
+                                    slides.map((slide: string, index: number) => (
+                                        <Slider key={index}>
+                                            <Image
+                                                src={slide}
+                                                alt={project.name}
+                                                width={1000}
+                                                height={1000}
+                                                className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-6"
+                                            />
+                                        </Slider>
+                                    ))
+                                }
+
+                            </SliderContainer>
+                            <div className='flex justify-center py-4'>
+                                <SliderDotButton />
+                            </div>
+                        </Carousel>
+                        :
+                        <>
+                            <Image
+                                src={project.banner}
+                                alt={project.name}
+                                width={1000}
+                                height={1000}
+                                className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-6"
+                            />
+                        </>
+                }
 
 
 
-                <div className=" w-full flex">
+                <div className=" w-full flex mt-6">
                     <div className=" w-full lg:w-3/4 lg:pr-9">
 
-                        <div className="prose-lg text-gray-200">{parsedContent}</div>
+                        <div className="prose-lg content-detail text-gray-200">{parsedContent}</div>
                     </div>
                     <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
                         <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">

@@ -82,18 +82,7 @@ function ArticleDetail({ slug }: { slug: string }) {
                         </li>
                     );
                 }
-                if (domNode.name === "img") {
-                    const { src, alt } = domNode.attribs;
-                    return (
-                        <Image
-                            src={src}
-                            height={1000}
-                            width={1000}
-                            alt={alt}
-                            className="my-4 rounded-xl shadow-md w-full h-auto"
-                        />
-                    );
-                }
+
 
                 if (domNode.name === "h2") {
                     const textContent = domNode.children
@@ -216,7 +205,7 @@ function ArticleDetail({ slug }: { slug: string }) {
                             </span>
                         ))}
                     </div>
-                    <div className="flex items-center gap-4 flex-col sm:flex-row">
+                    <div className="flex sm:items-center gap-4 flex-col sm:flex-row">
 
                         <p className="text-gray-300 text-sm">
                             Published on {article.$createdAt && formatDate(article.$createdAt)}
@@ -231,7 +220,7 @@ function ArticleDetail({ slug }: { slug: string }) {
                 <div className=" w-full flex">
                     <div className=" w-full lg:w-3/4 lg:pr-9">
 
-                        <div className="prose-lg text-gray-200">{parsedContent}</div>
+                        <div className="prose-lg content-detail text-gray-200">{parsedContent}</div>
                     </div>
                     <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
                         <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">

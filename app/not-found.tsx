@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 const NotFoundPage = () => {
     return (
-        <main className="z-50 w-full flex flex-col justify-center items-center bg-black">
+        <main className="z-50 w-full h-screen flex flex-col justify-center items-center bg-black">
             <h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>
             <div className="bg-[#3ccf91] px-2 text-sm rounded rotate-12 absolute text-black">
                 Page Not Found
