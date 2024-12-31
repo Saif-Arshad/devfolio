@@ -1,6 +1,7 @@
 import { BsFillBootstrapFill, BsRobot } from 'react-icons/bs';
 import {
     SiAngular,
+    SiAppwrite,
     SiCss3,
     SiExpress,
     SiFirebase,
@@ -9,11 +10,14 @@ import {
     SiJavascript,
     SiJest,
     SiJquery,
+    SiMongodb,
     SiMui,
+    SiMysql,
     SiNextdotjs,
     SiNginx,
     SiNodedotjs,
     SiNuxtdotjs,
+    SiPostgresql,
     SiPrisma,
     SiPwa,
     SiReact,
@@ -21,6 +25,7 @@ import {
     SiSocketdotio,
     SiStorybook,
     SiStyledcomponents,
+    SiSupabase,
     SiTailwindcss,
     SiTypescript,
     SiVite,
@@ -43,6 +48,11 @@ export const STACKS: stacksProps = {
     Bootstrap: (
         <BsFillBootstrapFill size={iconSize} className='text-purple-500' />
     ),
+    Mongo: <SiMongodb size={iconSize} className='text-green-500' />,
+    SQL: <SiMysql size={iconSize} className='text-blue-500' />,
+    AppWrite: <SiAppwrite size={iconSize} className='text-blue-500' />,
+    Supabase: <SiSupabase size={iconSize} className='text-blue-500' />,
+    Postgres: <SiPostgresql size={iconSize} className='text-blue-500' />,
     GraphQL: <SiGraphql size={iconSize} className='text-pink-600' />,
     MUI: <SiMui size={iconSize} className='text-sky-400' />,
     Vite: <SiVite size={iconSize} className='text-purple-500' />,

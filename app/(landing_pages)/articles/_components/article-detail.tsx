@@ -221,7 +221,7 @@ function ArticleDetail({ slug }: { slug: string }) {
             <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
                 <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">
                     <h2 className="text-xl font-semibold mb-4 text-gray-100">
-                        Contents
+                        Table of Contents
                     </h2>
                     <ul className="space-y-2">
                         {headers.map((header) => (

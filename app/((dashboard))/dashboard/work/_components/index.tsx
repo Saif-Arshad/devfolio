@@ -23,7 +23,7 @@ function Projects() {
     const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
 
 
-    const fetchArticles = async (page: number, query: string) => {
+    const fetchProjects = async (page: number, query: string) => {
         try {
             const offset = (page - 1) * limit;
             const queries = [
@@ -32,7 +32,7 @@ function Projects() {
                 Query.offset(offset),
             ];
             if (query.trim()) {
-                console.log("🚀 ~ fetchArticles ~ query:", query)
+                console.log("🚀 ~ fetchProjects ~ query:", query)
                 queries.unshift(Query.search('title', query));
             }
             const result = await databases.listDocuments(
@@ -41,7 +41,7 @@ function Projects() {
                 queries
 
             );
-            console.log("🚀 ~ fetchArticles ~ result:", result)
+            console.log("🚀 ~ fetchProjects ~ result:", result)
             setAllProjects(result.documents);
             setTotalPages(Math.ceil(result.total / limit));
         } catch (error) {
@@ -50,7 +50,7 @@ function Projects() {
     };
 
     useEffect(() => {
-        fetchArticles(currentPage, searchQuery);
+        fetchProjects(currentPage, searchQuery);
     }, [currentPage, searchQuery]);
 
     const handlePublish = (id: string, isPublish: boolean) => {
@@ -58,7 +58,7 @@ function Projects() {
             isPublish: !isPublish
         })
             .then(() => {
-                fetchArticles(currentPage, searchQuery);
+                fetchProjects(currentPage, searchQuery);
             })
             .catch((error) => {
                 console.error("Error updating article:", error);
@@ -81,7 +81,7 @@ function Projects() {
 
             try {
                 await databases.deleteDocument(databaseId, collectionId, id);
-                fetchArticles(currentPage, searchQuery);
+                fetchProjects(currentPage, searchQuery);
             } catch (error) {
                 console.error("Error deleting article:", error);
             }

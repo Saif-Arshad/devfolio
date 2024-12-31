@@ -25,6 +25,8 @@ function ProjectDrawer({ button, project }: any) {
     const [tags, setTags] = useState<string[]>([]);
     const [tech, setTech] = useState<string[]>([]);
     const [name, setName] = useState("");
+    const [github_url, setGithubURL] = useState("");
+    const [live_url, setLiveURL] = useState("");
     const [slug, setSlug] = useState("");
     const [discription, setDiscription] = useState("");
     const [bannerImage, setBannerImage] = useState<File | null>(null);
@@ -49,6 +51,8 @@ function ProjectDrawer({ button, project }: any) {
             setGallery(project.gallery);
             setTags(project.tags);
             setTech(project.tech);
+            setLiveURL(project.live_url);
+            setGithubURL(project.github_url);
             setIsEdit(true);
             setIsFeatured(project.isFeatured);
         }
@@ -109,6 +113,8 @@ function ProjectDrawer({ button, project }: any) {
                 slug,
                 tech,
                 discription,
+                github_url,
+                live_url,
                 banner: bannerImageUrl,
                 isFeatured,
                 gallery: galleryState
@@ -130,12 +136,15 @@ function ProjectDrawer({ button, project }: any) {
             setName("");
             setSlug("");
             setDiscription("");
+            setGithubURL("");
+            setLiveURL("");
+            setGallery([]);
             setTags([]);
             setTech([]);
             setIsFeatured(false);
             router.refresh();
         } catch (error) {
-            console.error("Error saving project:", error);
+            console.log("Error saving project:", error);
             setErrorMessage("Failed to save the project. Please try again.");
         } finally {
             setLoading(false);
@@ -181,6 +190,24 @@ function ProjectDrawer({ button, project }: any) {
                             placeholder="Banner Image"
                             onChange={(e) => setBannerImage(e.target.files?.[0] || null)}
                         />
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 w-full">
+
+                        <Input
+                            type="text"
+                            placeholder="Github URL"
+                            className="w-full"
+                            value={github_url}
+                            onChange={(e) => setGithubURL(e.target.value)}
+                        />
+                        <Input
+                            type="text"
+                            placeholder="Live URL"
+                            className="w-full"
+                            value={live_url}
+                            onChange={(e) => setLiveURL(e.target.value)}
+                        />
+
                     </div>
                     <div className="grid grid-cols-1 gap-3 w-full">
 

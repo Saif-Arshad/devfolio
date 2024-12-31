@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import LetsTalk from '../buttons/LetsTalk';
 import { usePathname } from 'next/navigation';
@@ -15,21 +15,6 @@ const ResponsiveNavbar = () => {
 
     const currentPath = usePathname();
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 640) {
-                setNavOpen(false); // Ensure mobile menu is closed on larger screens
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        handleResize(); // Run the check on initial load
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     const links = [
         { title: "Home", link: "/" },
         { title: "About", link: "/about-us" },
@@ -51,7 +36,6 @@ const ResponsiveNavbar = () => {
                 </div>
             </Link>
 
-            {/* Desktop Navigation Links */}
             <ul className="hidden sm:flex space-x-8 items-center z-50">
                 {links.map((item: any, index: number) => (
                     <Link href={item.link} key={index}>
@@ -70,13 +54,12 @@ const ResponsiveNavbar = () => {
                 <div className={`w-8 h-0.5 bg-gray-200 my-1 transition-transform duration-300 ${navOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </div>
 
-            {/* Mobile Navigation Links */}
             <ul
                 className={`fixed top-0 left-0 z-40 w-full h-screen bg-[#131418] flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-in-out sm:hidden ${navOpen ? 'clip-path-open' : 'clip-path-close'}`}
             >
                 {links.map((item: any, index: number) => (
                     <Link href={item.link} key={index}>
-                        <li className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110 transition-all"}`}>
+                        <li className={`capitalize ${currentPath.startsWith(item.link) ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110 transition-all"}`}>
                             {item.title}
                         </li>
                     </Link>

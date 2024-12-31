@@ -19,7 +19,7 @@ function ArticlesMain() {
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const limit = 12;
+    const limit = 6;
 
     const fetchArticles = useCallback(
         async (page: number, query: string, isLoadMore = false) => {
@@ -176,7 +176,7 @@ function ArticlesMain() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 w-full ">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5 w-full ">
                     {allArticles.map((article: any) => (
                         <Link href={`/articles/${article.slug}`} key={article.$id}>
                             <div className="p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
