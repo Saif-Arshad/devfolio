@@ -18,7 +18,7 @@ const ResponsiveNavbar = () => {
     const links = [
         { title: "Home", link: "/" },
         { title: "About", link: "/about-us" },
-        { title: "Portfolio", link: "/work" },
+        { title: "Projects", link: "/work" },
         { title: "Services", link: "/services" },
         { title: "Articles", link: "/articles" }
     ];

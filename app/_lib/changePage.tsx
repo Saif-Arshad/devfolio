@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import NextTopLoader from "nextjs-toploader";
 
 const rectangleVariants = {
     initial: {
@@ -67,18 +68,18 @@ export const PageTransition = ({ children }: any) => {
 
     useEffect(() => {
         if (isFirstLoad) {
-            setIsAnimating(true); 
+            setIsAnimating(true);
             setShowContent(false);
 
             const timeout = setTimeout(() => {
-                setIsAnimating(false); 
-                setShowContent(true); 
-                setIsFirstLoad(false); 
-            }, 1000); 
+                setIsAnimating(false);
+                setShowContent(true);
+                setIsFirstLoad(false);
+            }, 1000);
 
             return () => clearTimeout(timeout);
         } else {
-            setShowContent(true); 
+            setShowContent(true);
         }
     }, [isFirstLoad]);
 
@@ -87,7 +88,13 @@ export const PageTransition = ({ children }: any) => {
             <AnimatePresence>
                 {isAnimating && <Loading />}
             </AnimatePresence>
-            {showContent && ( 
+            <NextTopLoader
+                color="#3ccf91"
+                height={2}
+                zIndex={1000000}
+                showSpinner={false}
+            />
+            {showContent && (
                 <div
                     className={`relative ${isAnimating ? "pointer-events-none" : "pointer-events-auto"
                         }`}

@@ -202,17 +202,30 @@ function ArticleDetail({ slug }: { slug: string }) {
                     />
                 )}
 
-                <h1 className="md:text-4xl text-2xl font-semibold md:font-bold mb-4 text-gray-100">
+                <h1 className="md:text-4xl text-2xl font-semibold md:font-bold mb-8 text-gray-100">
                     {article.title}
                 </h1>
                 <div className="border-b border-white gap-4 border-dashed flex-wrap my-6 pb-6 flex items-center justify-between">
-                    <p className="text-gray-300 text-sm">
-                        Published on {article.$createdAt && formatDate(article.$createdAt)}
-                    </p>
-                    <p className="text-gray-300 text-sm flex items-center gap-x-1">
-                        <TimerIcon size={18} className="inline" />
-                        {readTime} min read
-                    </p>
+                    <div className="flex items-center gap-2">
+                        {article.tags.map((tag: string) => (
+                            <span
+                                key={tag}
+                                className="bg-neutral-600 capitalize text-white px-2 py-1 rounded-full text-xs"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="flex items-center gap-4 flex-col sm:flex-row">
+
+                        <p className="text-gray-300 text-sm">
+                            Published on {article.$createdAt && formatDate(article.$createdAt)}
+                        </p>
+                        <p className="text-gray-300 text-sm flex items-center gap-x-1">
+                            <TimerIcon size={18} className="inline" />
+                            {readTime} min read
+                        </p>
+                    </div>
                 </div>
 
                 <div className=" w-full flex">
