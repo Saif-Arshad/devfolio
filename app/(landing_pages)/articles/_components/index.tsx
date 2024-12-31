@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { databases } from "@/_lib/appwrite";
 import { Query } from "appwrite";
 import { Input } from "@/_components/ui/input";
@@ -13,70 +13,100 @@ const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
 const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 
 function ArticlesMain() {
-    const [allArticles, setAllArticles] = useState<any>([]);
-    console.log("🚀 ~ ArticlesMain ~ allArticles:", allArticles)
+    const [allArticles, setAllArticles] = useState<any[]>([]);
     const [randomBlog, setRandomBlog] = useState<any>(null);
-    console.log("🚀 ~ ArticlesMain ~ randomBlog:", randomBlog)
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const limit = 12;
 
-    const fetchArticles = async (page: number, query: string) => {
-        setLoading(true);
-        try {
-            const offset = (page - 1) * limit;
-            const queries = [
-                Query.equal("isPublish", true),
-                Query.limit(limit),
-                Query.offset(offset),
-            ];
-            if (query.trim()) {
-                queries.unshift(Query.search("title", query));
-            }
-            const result = await databases.listDocuments(
-                databaseId,
-                collectionId,
-                queries
-            );
-            console.log(result)
-            setAllArticles(result.documents);
-            setTotalPages(Math.ceil(result.total / limit));
+    const fetchArticles = useCallback(
+        async (page: number, query: string, isLoadMore = false) => {
+            setLoading(true);
+            try {
+                const offset = (page - 1) * limit;
+                const queries = [
+                    Query.equal("isPublish", true),
+                    Query.limit(limit),
+                    Query.offset(offset),
+                ];
 
-            if (result.documents.length > 0) {
-                const randomIndex = Math.floor(
-                    Math.random() * result.documents.length
+                if (query.trim()) {
+                    queries.unshift(Query.search("title", query));
+                }
+
+                const result = await databases.listDocuments(
+                    databaseId,
+                    collectionId,
+                    queries
                 );
-                setRandomBlog(result.documents[randomIndex]);
+
+                setTotalPages(Math.ceil(result.total / limit));
+
+                if (isLoadMore) {
+                    setAllArticles((prev) => [...prev, ...result.documents]);
+                } else {
+                    setAllArticles(result.documents);
+                }
+
+                if (!randomBlog && result.documents.length > 0) {
+                    const randomIndex = Math.floor(
+                        Math.random() * result.documents.length
+                    );
+                    setRandomBlog(result.documents[randomIndex]);
+                }
+            } catch (error) {
+                console.error("Error fetching articles:", error);
+            } finally {
+                setLoading(false);
             }
-        } catch (error) {
-            console.error("Error fetching articles:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+        },
+        [randomBlog]
+    );
 
     useEffect(() => {
-        fetchArticles(currentPage, searchQuery);
-    }, [currentPage, searchQuery]);
+        setAllArticles([]);
+        setCurrentPage(1);
+    }, [searchQuery]);
+
+    useEffect(() => {
+        fetchArticles(currentPage, searchQuery, currentPage > 1);
+    }, [currentPage, searchQuery, fetchArticles]);
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const bottomOffset = 300;
+            const reachedBottom =
+                window.innerHeight + window.scrollY >=
+                document.body.offsetHeight - bottomOffset;
+
+            if (!loading && reachedBottom && currentPage < totalPages) {
+                setCurrentPage((prev) => prev + 1);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [loading, currentPage, totalPages]);
 
     const formatDate = (date: string) => {
-        return new Intl.DateTimeFormat('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+        return new Intl.DateTimeFormat("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
         }).format(new Date(date));
     };
 
     return (
         <div className="flex flex-wrap h-full w-full z-20">
             <div className="w-full min-h-[75vh] lg:py-10 py-5 lg:px-10 px-4 flex flex-col">
-                {loading ? (
+                {loading && allArticles.length === 0 ? (
                     <div
                         role="status"
-                        className="flex w-full h-[500px] items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-[#151515]"
+                        className="flex w-full h-[350px] sm:h-[500px] items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-[#151515]"
                     >
                         <svg
                             className="w-10 h-10 text-gray-200 dark:text-gray-600"
@@ -90,105 +120,95 @@ function ArticlesMain() {
                         </svg>
                         <span className="sr-only">Loading...</span>
                     </div>
-                ) : (
-                    randomBlog && (
-                        <div className="relative">
-                            <div className="relative bg-white rounded-lg overflow-hidden">
-                                <Image
-                                    src={randomBlog.bannerImage}
-                                    height={1000}
-                                    width={1000}
-                                    alt="Blog Image"
-                                    className="w-full h-[500px] object-cover"
-                                />
-                            </div>
-                            <div className="lg:w-[500px] z-10 bg-white absolute lg:-bottom-10 lg:left-10 -bottom-10 lg:p-8 p-4 rounded-lg shadow-2xl dark:bg-[#151515] dark:text-white mx-3 sm:mx-8">
-                                {/* <h2 className="mt-2 text-xl capitalize sm:text-2xl font-semibold text-gray-900 dark:text-white">
-                                    {randomBlog.name}
-                                </h2> */}
-                                <Link href={`/articles/${randomBlog.slug}`}>
-                                    <div className="mt-4 flex items-center">
-                                        <Image
-                                            src="/images/icon.jpg"
-                                            alt="Author Avatar"
-                                            height={100}
-                                            width={100}
-                                            className="w-12 h-12 rounded-full object-cover"
-                                        />
-                                        <div className="ml-3">
-                                            <p className=" font-medium text-gray-900 dark:text-white">
-                                                Saif Ur Rehman
-                                            </p>
-                                            <p className="text-xs mb-2 text-gray-500">
-                                                {randomBlog.$createdAt && formatDate(randomBlog.$createdAt)}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </Link>
-
-                            </div>
+                ) : randomBlog ? (
+                    <div className="relative">
+                        <div className="relative bg-white rounded-lg overflow-hidden">
+                            <Image
+                                src={randomBlog.bannerImage}
+                                height={1000}
+                                width={1000}
+                                alt="Blog Image"
+                                className="w-full h-[350px] sm:h-[500px] object-cover"
+                            />
                         </div>
-                    )
-                )}
-            </div>
-            <div className="flex items-center justify-between w-full my-12">
-                <h2 className='text-2xl font-semibold flex items-center'>
-                    Latest Articles
-                    <span className="bg-neutral-800 text-lg p-1 rounded-full font-light px-3.5 mx-2 flex items-center justify-center">
-                        {allArticles?.length || 0}
-
-                    </span>
-                </h2>
-                <div className="flex items-center relative">
-                    <Search className="absolute left-2 text-gray-300" />
-                    <Input
-                        type="text"
-                        className="w-[200px] lg:w-[270px] pl-10"
-                        placeholder="Search articles..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
+                        <div className="lg:w-[500px] z-10 bg-white absolute lg:-bottom-10 lg:left-10 -bottom-10 lg:p-8 p-4 lg:px-6 rounded-lg shadow-2xl dark:bg-[#151515] dark:text-white mx-3 sm:mx-8">
+                            <Link href={`/articles/${randomBlog.slug}`}>
+                                <h2 className="mt-2 capitalize text-lg md:text-xl text-white">
+                                    {randomBlog.title}
+                                </h2>
+                                <div className="mt-4 flex items-center justify-end">
+                                    <Image
+                                        src="/images/icon.jpg"
+                                        alt="Author Avatar"
+                                        height={100}
+                                        width={100}
+                                        className="w-10 h-10 rounded-full object-cover"
+                                    />
+                                    <div className="ml-2">
+                                        <p className="text-gray-900 dark:text-white">
+                                            Saif Ur Rehman
+                                        </p>
+                                        <p className="text-xs text-gray-500">
+                                            {randomBlog.$createdAt && formatDate(randomBlog.$createdAt)}
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                ) : null}
+                <div className="flex gap-10 sm:items-center justify-between w-full my-20 mt-28 flex-col-reverse sm:flex-row">
+                    <h2 className="text-2xl font-semibold flex items-center">
+                        Latest Articles
+                        <span className="bg-neutral-800 text-lg p-1 rounded-full font-light px-3.5 mx-2 flex items-center justify-center">
+                            {allArticles?.length || 0}
+                        </span>
+                    </h2>
+                    <div className="flex items-center relative">
+                        <Search className="absolute left-2 text-gray-300" />
+                        <Input
+                            type="text"
+                            className="w-full sm:w-[200px] lg:w-[270px] pl-10"
+                            placeholder="Search articles..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </div>
                 </div>
-            </div>
 
-
-            <div className="grid grid-cols-1 ms:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 w-full">
-                {
-                    allArticles.map((article: any) => (
-
-                        <Link href={`/articles/${randomBlog.slug}`}
-                            key={article.slug}
-                        >
-
-                            <div className='p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full'>
-
-                                <div className='relative h-[200px] rounded-xl overflow-hidden'>
-
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 w-full ">
+                    {allArticles.map((article: any) => (
+                        <Link href={`/articles/${article.slug}`} key={article.$id}>
+                            <div className="p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
+                                <div className="relative h-[200px] rounded-xl overflow-hidden">
                                     <Image
                                         alt={article.title}
                                         src={article.bannerImage}
-                                        layout='fill'
-                                        className="group-hover:scale-110 transition-transform duration-700"
+                                        fill
+                                        className="group-hover:scale-110 transition-transform duration-700 object-cover"
                                     />
                                 </div>
-                                <div className='flex items-center justify-between mt-3'>
-                                    <div className='flex items-center gap-2'>
+                                <div className="flex items-center justify-between mt-3">
+                                    <div className="flex items-center gap-2">
                                         {article.tags.map((tag: string) => (
-                                            <span key={tag} className='bg-neutral-600 capitalize text-white px-2 py-1 rounded-full text-xs'>
+                                            <span
+                                                key={tag}
+                                                className="bg-neutral-600 capitalize text-white px-2 py-1 rounded-full text-xs"
+                                            >
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
                                 </div>
-                                <div className='mt-3'>
-                                    <h3 className='text-lg font-semibold capitalize'>
+                                <div className="mt-3">
+                                    <h3 className="text-lg font-semibold capitalize">
                                         {article.title}
                                     </h3>
-                                    <p className='text-sm text-gray-400 mt-2 capitalize'>
+                                    <p className="text-sm text-gray-400 mt-2 capitalize">
                                         {article.discription}
                                     </p>
                                 </div>
-                                <div className="mt-6 flex items-center ">
+                                <div className="mt-6 flex items-center">
                                     <Image
                                         src="/images/icon.jpg"
                                         alt="Author Avatar"
@@ -197,23 +217,23 @@ function ArticlesMain() {
                                         className="w-8 h-8 rounded-full object-cover"
                                     />
                                     <div className="ml-1">
-                                        <p className=" text-[13px] font-medium text-gray-900 dark:text-white">
+                                        <p className="text-[13px] font-medium text-gray-900 dark:text-white">
                                             Saif Ur Rehman
                                         </p>
                                         <p className="text-[10px] text-gray-400">
-                                            {randomBlog.$createdAt && formatDate(randomBlog.$createdAt)}
+                                            {article.$createdAt && formatDate(article.$createdAt)}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
                         </Link>
-                    ))
-                }
+                    ))}
+                </div>
+
+                {loading && allArticles.length > 0 && (
+                    <div className="text-center mt-6 text-gray-400">Loading more...</div>
+                )}
             </div>
-
-
-
         </div>
     );
 }
