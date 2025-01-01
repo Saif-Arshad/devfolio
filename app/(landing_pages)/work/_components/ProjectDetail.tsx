@@ -10,6 +10,7 @@ import { ArrowRightIcon, CircleArrowOutUpRightIcon, GithubIcon } from 'lucide-re
 import { STACKS } from '@/_lib/stack';
 import { EmblaOptionsType } from 'embla-carousel';
 import Carousel, { Slider, SliderContainer, SliderDotButton } from '@/_components/ui/slider';
+import { ScrollProgress } from '@/_components/ui/scroll-bar';
 
 function ProjectDetail({ slug }: { slug: string }) {
     console.log("🚀 ~ ProjectDetail ~ slug:", slug)
@@ -140,6 +141,8 @@ function ProjectDetail({ slug }: { slug: string }) {
 
     return (
         <div className="container mx-auto p-4 flex flex-col lg:flex-row scroll-smooth">
+            <ScrollProgress className="top-[0px]" />
+
             <div className="w-full lg:pr-8">
                 <h1 className="md:text-4xl text-2xl font-semibold md:font-bold mb-4 text-gray-100">
                     {project.name}
@@ -154,16 +157,20 @@ function ProjectDetail({ slug }: { slug: string }) {
                         {
                             project.github_url &&
                             <a href={project.github_url} target="_blank" rel="noreferrer">
-                                <span className="flex items-center gap-1 text-sm text-primaryColor hover:scale-105 transition-transform duration-300">
-                                    <GithubIcon size={20} /> Source Code
+                                <span className="flex items-center gap-1 text-sm text-primaryColor group transition-transform duration-300">
+                                    <GithubIcon size={20}
+                                        className='group-hover:scale-110 transition-transform duration-300'
+                                    /> Source Code
                                 </span>
                             </a>
                         }
                         {
                             project.live_url &&
                             <a href={project.live_url} target="_blank" rel="noreferrer">
-                                <span className="flex items-center gap-1 text-sm text-primaryColor hover:scale-105 transition-transform duration-300">
-                                    <CircleArrowOutUpRightIcon size={20} /> Live Demo
+                                <span className="flex items-center gap-1 group text-sm text-primaryColor ">
+                                    <CircleArrowOutUpRightIcon
+                                        className='group-hover:scale-110 transition-transform duration-300'
+                                        size={20} /> Live Demo
                                 </span>
                             </a>
                         }

@@ -22,6 +22,10 @@ export default function FirstAbout() {
                                 3000,
                                 'A Full Stack Developer',
                                 3000,
+                                'Mobile App Stack Developer',
+                                3000,
+                                'Web App Developer',
+                                3000,
                                 'A MERN Stack Developer',
                                 3000,
                                 'A Next Js Developer',
@@ -40,21 +44,21 @@ export default function FirstAbout() {
                 </div>
                 <div className=''>
 
-                    <p className="mt-7 text-white text-lg">
+                    <p className="mt-7 text-white sm:text-lg">
                         🚀 A passionate Software Developer based in Faislabad,
                         Pakistan
 
                         .
                     </p>
-                    <p className="mt-3 text-white text-lg">
+                    <p className="mt-2 text-white sm:text-lg">
                         ⚡ I help your
-                        <span className="text-primaryColor font-semibold px-1.5">
+                        <span className=" shine-text font-semibold px-1.5">
                             PRODUCT SHINE
                         </span>
                         in a crowded market
 
                     </p>
-                    <p className="mt-3 text-white text-lg">
+                    <p className="mt-2 text-white sm:text-lg">
                         💻
                         My main tech stack currently is
                         <span className="text-primaryColor font-semibold px-1.5">MERN</span>

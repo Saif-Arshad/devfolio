@@ -8,6 +8,7 @@ import parse, { domToReact } from "html-react-parser";
 import Image from "next/image";
 import { ArrowRightIcon, TimerIcon } from "lucide-react";
 import Link from "next/link";
+import { ScrollProgress } from "@/_components/ui/scroll-bar";
 
 interface Article {
     title: string;
@@ -180,6 +181,8 @@ function ArticleDetail({ slug }: { slug: string }) {
 
     return (
         <div className="container mx-auto p-4 flex flex-col lg:flex-row">
+            <ScrollProgress className="top-[0px]" />
+
             <div className="w-full lg:pr-8">
                 {article.bannerImage && (
                     <Image

@@ -43,38 +43,38 @@ function AboutHero() {
                         className="font-display text-4xl md:text-6xl font-bold -tracking-widest  text-black dark:text-white md:mt-3   md:leading-[5rem]"
                         text=" Saif Ur Rehman."
                     />
-                    <h3 className="text-primaryColor tracking-wide mt-1 ml-3  font-semibold text-xl">
+                    <h3 className="text-primaryColor tracking-wide ml-3  font-semibold text-xl">
                         Software Engineer
                     </h3>
                 </div>
-                <div >
-
-                    <p className="mt-7 text-white text-lg">
-                        ⚡ I help your
-                        <span className="text-primaryColor font-semibold px-1.5">
-                            PRODUCT SHINE
-                        </span>
-                        in a crowded market
+                <div className="flex flex-col items-start sm:pl-[10px]">
+                    <p className="mt-5 text-white text-lg">
+                        I am a Full-Stack Developer specializing in both
+                        <span className="text-primaryColor font-semibold px-1">web</span>
+                        and
+                        <span className="text-primaryColor font-semibold px-1">mobile</span>
+                        applications.
+                    </p>
+                    <p className="mt-1 text-white text-lg leading-relaxed">
+                        I handle both the
+                        <span className="text-primaryColor font-semibold px-1">frontend</span>
+                        (<span className="italic">the interface you see on the screen</span>)
+                        and the
+                        <span className="text-primaryColor font-semibold px-1">backend</span>
+                        (<span className="italic">the behind-the-scenes logic and infrastructure</span>).
+                    </p>
+                    <p className="mt-1 text-white text-lg leading-relaxed">
+                        I create clean, responsive, engaging, and accessible digital experiences. My expertise lies in crafting
+                        <span className="text-primaryColor font-semibold px-1">complex</span>,
+                        <span className="text-primaryColor font-semibold px-1">fast</span>, and
+                        <span className="text-primaryColor font-semibold px-1">functional</span> digital products that deliver
+                        <span className="text-primaryColor font-semibold px-1">exceptional user experiences</span>.
 
                     </p>
-                    <p className="mt-3 text-white text-lg">
-                        💻 Exploring opportunities and side projects.
-                    </p>
-                    <p className="mt-3 text-white text-lg">
-                        🚀 I create clean, responsive, engaging, and accessible digital experiences.
-                        I specialize in crafting
-                        <span className="text-primaryColor font-semibold px-1.5">complex</span>,
-                        <span className="text-primaryColor font-semibold px-1.5">fast</span>, and
-                        <span className="text-primaryColor font-semibold px-1.5">functional</span>
-                        digital products that deliver
-                        <span className="text-primaryColor font-semibold px-1.5">exceptional user experiences</span>.
-                    </p>
-
-
 
                     <SocialLinks />
-
                 </div>
+
             </div>
 
 

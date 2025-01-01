@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import NextTopLoader from 'nextjs-toploader';
 
+
 const LenisInitializer = () => {
     <NextTopLoader
         color="#3ccf91"
@@ -11,6 +12,7 @@ const LenisInitializer = () => {
         zIndex={1000000}
         showSpinner={false}
     />
+
     useEffect(() => {
         // Initialize Lenis on client side
         const lenis = new Lenis();

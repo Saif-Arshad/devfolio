@@ -10,7 +10,7 @@ function AboutUs() {
                     <div className="w-full justify-center items-start flex">
                         <div className="w-full h-full relative">
                             <img
-                                className="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover"
+                                className="sm:mt-5 w-full h-full rounded-3xl object-cover"
                                 src="/images/icons/Developer activity-bro.png"
                                 alt="About Us image"
                             />

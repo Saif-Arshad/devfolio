@@ -139,3 +139,29 @@ html.lenis body {
   border-radius: 7px !important;
   margin: 10px 0px !important;
 }
+.shine-text {
+  font-size: 1rem; /* Adjust size as needed */
+  font-weight: bold;
+  font-family: sans-serif;
+  background: linear-gradient(
+    to right,
+    #3ccf91 0%,
+    #ffffff 40%,
+    #3ccf91 80%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine-animation 2s linear infinite;
+}
+
+@keyframes shine-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}

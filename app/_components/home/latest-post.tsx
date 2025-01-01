@@ -62,7 +62,7 @@ function LatestPost() {
                 </Link>
             </div>
 
-            <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-14'>
+            <div className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-14'>
                 {
                     loading ?
 
@@ -90,53 +90,100 @@ function LatestPost() {
 
                         ))
                         :
-                        allArticles.map((article, index) => (
-                            <Link href={`/articles/${article.slug}`} key={article.$id}>
-                                <div key={index} className='flex flex-col w-full  relative cursor-pointer group'>
-                                    <div key={index} className='z-0 w-full min-h-[300px] relative  overflow-hidden rounded-xl'>
+                        allArticles.map((article) => (
+                            <Link href={`/articles/${article.slug}`} key={article.slug}>
+                                <div className="p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
+                                    <div className="relative h-[200px] rounded-xl overflow-hidden">
                                         <Image
                                             alt={article.title}
-                                            layout='fill'
-
-                                            src={article.bannerImage} className='w-full object-cover group-hover:scale-110 transition-all duration-700' />
-                                        <div className='bg-black h-full w-full absolute top-0 left-0 opacity-45 group-hover:opacity-55  transition-all duration-700 '></div>
+                                            src={article.bannerImage}
+                                            fill
+                                            className="group-hover:scale-110 transition-transform duration-700 object-cover"
+                                        />
                                     </div>
-                                    <div className='flex flex-col mt-4 absolute bottom-0 left-0 h-full w-full right-0 p-4 z-10  justify-between'>
+                                    <div className="flex items-center justify-between mt-3">
                                         <div className="flex items-center gap-2">
                                             {article.tags.map((tag: string) => (
                                                 <span
                                                     key={tag}
-                                                    className="bg-neutral-300 capitalize text-black px-2 py-1 rounded-full text-xs"
+                                                    className="bg-neutral-600 capitalize text-white px-2 py-1 rounded-full text-xs"
                                                 >
                                                     {tag}
                                                 </span>
                                             ))}
                                         </div>
-                                        <div className="flex flex-col gap-2">
+                                    </div>
+                                    <div className="mt-3">
+                                        <h3 className="text-lg font-semibold capitalize">
+                                            {article.title}
+                                        </h3>
 
-                                            <h3 className='text-lg font-medium text-gray-100'>{article.title}</h3>
-                                            <div className=" flex items-center justify-end">
-                                                <Image
-                                                    src="/images/icon.jpg"
-                                                    alt="Author Avatar"
-                                                    height={100}
-                                                    width={100}
-                                                    className="w-8 h-8 rounded-full object-cover"
-                                                />
-                                                <div className="ml-1">
-                                                    <p className="text-[13px] font-medium text-gray-900 dark:text-white">
-                                                        Saif Ur Rehman
-                                                    </p>
-                                                    <p className="text-[10px] text-gray-200">
-                                                        {article.$createdAt && formatDate(article.$createdAt)}
-                                                    </p>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div className="mt-6 flex items-center">
+                                        <Image
+                                            src="/images/icon.jpg"
+                                            alt="Author Avatar"
+                                            height={100}
+                                            width={100}
+                                            className="w-8 h-8 rounded-full object-cover"
+                                        />
+                                        <div className="ml-1">
+                                            <p className="text-[13px] font-medium text-gray-900 dark:text-white">
+                                                Saif Ur Rehman
+                                            </p>
+                                            <p className="text-[10px] text-gray-400">
+                                                {article.$createdAt && formatDate(article.$createdAt)}
+                                            </p>
                                         </div>
-
                                     </div>
                                 </div>
                             </Link>
+                            // <Link href={`/articles/${article.slug}`} key={article.$id}>
+                            //     <div key={index} className='flex flex-col w-full  relative cursor-pointer group'>
+                            //         <div key={index} className='z-0 w-full min-h-[300px] relative  overflow-hidden rounded-xl'>
+                            //             <Image
+                            //                 alt={article.title}
+                            //                 layout='fill'
+
+                            //                 src={article.bannerImage} className='w-full object-cover group-hover:scale-110 transition-all duration-700' />
+                            //             <div className='bg-black h-full w-full absolute top-0 left-0 opacity-55 group-hover:opacity-65  transition-all duration-700 '></div>
+                            //         </div>
+                            //         <div className='flex flex-col mt-4 absolute bottom-0 left-0 h-full w-full right-0 p-4 z-10  justify-between'>
+                            //             <div className="flex items-center gap-2">
+                            //                 {article.tags.map((tag: string) => (
+                            //                     <span
+                            //                         key={tag}
+                            //                         className="bg-neutral-300 capitalize text-black px-2 py-1 rounded-full text-xs"
+                            //                     >
+                            //                         {tag}
+                            //                     </span>
+                            //                 ))}
+                            //             </div>
+                            //             <div className="flex flex-col gap-2">
+
+                            //                 <h3 className='text-lg font-medium text-gray-100'>{article.title}</h3>
+                            //                 <div className=" flex items-center justify-end">
+                            //                     <Image
+                            //                         src="/images/icon.jpg"
+                            //                         alt="Author Avatar"
+                            //                         height={100}
+                            //                         width={100}
+                            //                         className="w-8 h-8 rounded-full object-cover"
+                            //                     />
+                            //                     <div className="ml-1">
+                            //                         <p className="text-[13px] font-medium text-gray-900 dark:text-white">
+                            //                             Saif Ur Rehman
+                            //                         </p>
+                            //                         <p className="text-[10px] text-gray-200">
+                            //                             {article.$createdAt && formatDate(article.$createdAt)}
+                            //                         </p>
+                            //                     </div>
+                            //                 </div>
+                            //             </div>
+
+                            //         </div>
+                            //     </div>
+                            // </Link>
                         ))
                 }
             </div>
