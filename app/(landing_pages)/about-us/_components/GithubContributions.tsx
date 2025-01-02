@@ -9,7 +9,6 @@ import OverviewItem from './OverviewGithub';
 import Calendar from './GithubCalender';
 
 function GithubContributions({ data }: any) {
-    console.log("🚀 ~ GithubContributions ~ data:", data)
     const contributionCalendar =
         data?.contributionsCollection?.contributionCalendar;
     const totalContributions = contributionCalendar?.totalContributions || 0;

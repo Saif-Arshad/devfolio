@@ -55,6 +55,7 @@ export const fetchGithubData = async () => {
         }
 
         return { status, data: responseJson.data.user };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error:any) {
         console.log("🚀 ~ fetchGithubData ~ error:", error)
         return { status: 500, data: {} };

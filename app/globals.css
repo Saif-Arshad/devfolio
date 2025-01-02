@@ -165,3 +165,38 @@ html.lenis body {
     background-position: 200% 50%;
   }
 }
+.infinite-loop-slider {
+    display: flex;
+    width: fit-content;
+    animation: looping-tag 70s linear infinite;
+}
+
+.infinite-loop-slider.reverse {
+    animation-direction: reverse;
+}
+.styled-fade {
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        #121212,
+        transparent 20%,
+        transparent 80%,
+        #121212
+    );
+    position: absolute;
+    inset: 0;
+}
+
+.infinite-loop-slider.normal {
+    animation-direction: normal;
+}
+
+@keyframes looping-tag {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+

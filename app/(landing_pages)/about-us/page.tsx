@@ -6,22 +6,30 @@ import WeeklyStats from './_components/WeeklyStats'
 import { getWakaStats } from '@/_actions/waka-time'
 import { fetchGithubData } from '@/_actions/github'
 import GithubContributions from './_components/GithubContributions'
+import Skills from './_components/Skills'
+import LatestPost from '@/_components/home/latest-post'
 
 async function page() {
 
-    const { data, error } = await getWakaStats()
-    console.log("🚀 ~ page ~ error:", error)
+    const { data } = await getWakaStats()
 
-    const { data: githubData, status } = await fetchGithubData()
-    console.log("🚀 ~ page ~ status:", status)
-    console.log("🚀 ~ page ~ githubData:", githubData)
+    const { data: githubData } = await fetchGithubData()
     return (
         <>
             <AboutHero />
             <WeeklyStats data={data} />
             <GithubContributions data={githubData} />
             <AboutUs />
-
+            <div className='flex items-center flex-col px-4 lg:px-10 xl:px-20 w-full'>
+                <div className='flex  justify-between w-full mb-6  border-b border-neutral-500 border-dashed pb-4'>
+                    <h2
+                        className="text-gray-100 text-2xl  font-bold font-manrope leading-normal lg:text-start sm:text-center">
+                        ⚡ Tools that I have used
+                    </h2>
+                </div>
+                <Skills />
+            </div>
+            <LatestPost />
             <WhatWeDo />
         </>
     )

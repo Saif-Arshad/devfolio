@@ -53,8 +53,9 @@ function LatestPost() {
         fetchArticles();
     }, []);
     return (
-        <div className='flex items-center flex-col w-full px-4 lg:px-10 xl:px-20'>
-            <div className='flex  justify-between w-full'>
+        <div className='flex items-center flex-col w-full mt-10 px-4 lg:px-10 xl:px-20'>
+
+            <div className='flex  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
                 <h3 className='text-2xl lg:text-3xl font-bold text-gray-200'>
                     Latest Articles
                 </h3>

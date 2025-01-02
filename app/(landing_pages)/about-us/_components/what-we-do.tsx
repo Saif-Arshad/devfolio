@@ -7,12 +7,12 @@ function WhatWeDo() {
             <div className='px-4 lg:px-10 mt-10' >
 
 
-                <h2
+                {/* <h2
                     className="font-display text-4xl text-start font-bold  text-black dark:text-white sm:text-7xl my-4 mt-10"
 
                 >
                     I help founders turn ideas into business-focused digital products
-                </h2>
+                </h2> */}
 
 
                 <div className='bg-neutral-800 my-7 mt-14 p-5 rounded-2xl sm:mx-5'>
