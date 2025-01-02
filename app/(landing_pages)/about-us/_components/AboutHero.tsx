@@ -35,7 +35,7 @@ function AboutHero() {
         "figma",
     ];
     return (
-        <div className="flex flex-wrap w-full px-1 sm:px-5 lg:px-10 items-start mb-20">
+        <div className="flex flex-wrap w-full px-4 sm:px-5 lg:px-10 items-start mb-20">
             <div className="flex flex-col w-full lg:w-1/2  mt-7 ">
                 <div className='flex flex-col items-start '>
 
@@ -48,14 +48,14 @@ function AboutHero() {
                     </h3>
                 </div>
                 <div className="flex flex-col items-start sm:pl-[10px]">
-                    <p className="mt-5 text-white text-lg">
+                    <p className="mt-5 text-white sm:text-lg">
                         I am a Full-Stack Developer specializing in both
                         <span className="text-primaryColor font-semibold px-1">web</span>
                         and
                         <span className="text-primaryColor font-semibold px-1">mobile</span>
                         applications.
                     </p>
-                    <p className="mt-1 text-white text-lg leading-relaxed">
+                    <p className="mt-1 text-white sm:text-lg leading-relaxed">
                         I handle both the
                         <span className="text-primaryColor font-semibold px-1">frontend</span>
                         (<span className="italic">the interface you see on the screen</span>)
@@ -63,7 +63,7 @@ function AboutHero() {
                         <span className="text-primaryColor font-semibold px-1">backend</span>
                         (<span className="italic">the behind-the-scenes logic and infrastructure</span>).
                     </p>
-                    <p className="mt-1 text-white text-lg leading-relaxed">
+                    <p className="mt-1 text-white sm:text-lg leading-relaxed">
                         I create clean, responsive, engaging, and accessible digital experiences. My expertise lies in crafting
                         <span className="text-primaryColor font-semibold px-1">complex</span>,
                         <span className="text-primaryColor font-semibold px-1">fast</span>, and

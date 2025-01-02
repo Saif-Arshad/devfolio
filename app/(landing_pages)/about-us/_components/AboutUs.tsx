@@ -4,7 +4,7 @@ import React from 'react';
 
 function AboutUs() {
     return (
-        <section className="py-14 px-2 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
+        <section className="py-14 px-4 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
             <div className="w-full  mx-auto">
                 <div className="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1">
                     <div className="w-full justify-center items-start flex">

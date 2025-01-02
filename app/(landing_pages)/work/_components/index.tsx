@@ -42,6 +42,7 @@ function Projects() {
             setAllProjects(result.documents);
             setTotalPages(Math.ceil(result.total / limit));
         } catch (error) {
+            console.log("🚀 ~ fetchProjects ~ error:", error)
             console.error("Error fetching articles:", error);
         } finally {
             setLoading(false);

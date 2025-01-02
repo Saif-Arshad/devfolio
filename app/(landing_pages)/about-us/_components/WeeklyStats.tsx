@@ -15,7 +15,6 @@ interface ItemProps {
 }
 
 function WeeklyStats({ data }: any) {
-    console.log("🚀 ~ WeeklyStats ~ data:", data)
     const [formattedLastUpdate, setFormattedLastUpdate] = useState<string | null>(
         null,
     );
@@ -125,18 +124,19 @@ function WeeklyStats({ data }: any) {
     }
 
     return (
-        <section className="py-14 px-2 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
+        <section className="py-14 px-4 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
             <div className="w-full  mx-auto">
-                <div className='w-full justify-between items-center flex  '>
+                <div className='w-full justify-between sm:items-center flex flex-col sm:flex-row  border-b border-neutral-500 border-dashed pb-2'>
                     <div className='flex-col justify-start flex '>
 
                         <h2
-                            className="text-gray-100 text-3xl sm:text-4xl font-semibold font-manrope leading-normal lg:text-start sm:text-center">
-                            💻 Weekly Statistics
+                            className="text-gray-100 text-3xl  font-semibold font-manrope leading-normal lg:text-start sm:text-center">
+                            💻 Weekly Coding Stats
                         </h2>
-                        <div className='dark:text-neutral-400 m-2   md:flex-row md:items-center'>
+                        <div className='dark:text-neutral-400 m-2 -mt-1  md:flex-row md:items-center'>
                             <span>My </span>
                             <Link
+                                target='_blank'
                                 href='https://wakatime.com/@saif'
                                 className='text-primaryColor hover:underline '
                             >
@@ -145,7 +145,7 @@ function WeeklyStats({ data }: any) {
                             <span> last 7 days stats.</span>
                         </div>
                     </div>
-                    <div className='text-sm text-neutral-600 dark:text-neutral-500'>
+                    <div className='text-sm sm:flex hidden text-neutral-600 dark:text-neutral-500'>
                         Last update: {renderLastUpdate()}
                     </div>
                 </div>

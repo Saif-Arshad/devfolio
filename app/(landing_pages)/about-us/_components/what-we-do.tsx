@@ -4,7 +4,7 @@ function WhatWeDo() {
     return (
         <>
 
-            <div className='px-2 lg:px-10 mt-10' >
+            <div className='px-4 lg:px-10 mt-10' >
 
 
                 <h2
