@@ -2,10 +2,17 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link'
-import { formatDistanceToNowStrict } from 'date-fns';
 import { toZonedTime } from 'date-fns-tz';
-
+import { format, parseISO, formatDistanceToNowStrict } from 'date-fns';
 import React, { useEffect, useState } from 'react'
+import WakaItem from './WakaItem';
+import Progress from '@/_components/ui/progress';
+
+interface ItemProps {
+    name: string;
+    hours: number;
+    minutes: number;
+}
 
 function WeeklyStats({ data }: any) {
     console.log("🚀 ~ WeeklyStats ~ data:", data)
@@ -13,7 +20,28 @@ function WeeklyStats({ data }: any) {
         null,
     );
     console.log("🚀 ~ WeeklyStats ~ formattedLastUpdate:", formattedLastUpdate)
+    const formatDate = (date: string, type = 'MMMM dd, yyyy') => {
+        if (!date) {
+            return '';
+        }
 
+        const formattedDate = format(
+            toZonedTime(parseISO(date), 'Asia/Karachi'),
+            type,
+        );
+        return formattedDate;
+    };
+
+    const dailyTotal = data?.human_readable_total || 'N/A';
+    const dailyAverage = data?.human_readable_daily_average || 'N/A';
+    const bestDayText = data?.best_day?.text || 'N/A';
+    const bestDayDate = data?.best_day?.date;
+    const allTimeSinceToday = data?.all_time_since_today?.text || 'N/A';
+    const startDate = data?.start_date ? formatDate(data.start_date) : '';
+    const endDate = data?.end_date ? formatDate(data.end_date) : '';
+    const bestDay = bestDayDate
+        ? `${formatDate(bestDayDate)} (${bestDayText})`
+        : 'N/A';
 
     useEffect(() => {
         const formatLastUpdate = (): void => {
@@ -39,6 +67,62 @@ function WeeklyStats({ data }: any) {
         }
         return null;
     };
+    const sumTotalFromArray = <T extends { hours: number; minutes: number }>(
+        data: T[],
+        key: keyof T,
+    ) => {
+        return (
+            data.reduce(
+                (previousValue, currentValue) =>
+                    previousValue + (currentValue[key] as number),
+                0,
+            ) ?? 0
+        );
+    };
+
+    const getLanguagesTotalHours = sumTotalFromArray<ItemProps>(
+        data?.languages || [],
+        'hours',
+    );
+    const getLanguagesTotalMinutes = sumTotalFromArray<ItemProps>(
+        data?.languages || [],
+        'minutes',
+    );
+    const getLanguagesTotalTimeDisplay = `${Math.floor((getLanguagesTotalMinutes % 3600) / 60) + getLanguagesTotalHours
+        } hrs ${getLanguagesTotalMinutes} mins`;
+
+    const getEditorTotalHours = sumTotalFromArray<ItemProps>(
+        data?.categories || [],
+        'hours',
+    );
+    const getEditorTotalMinutes = sumTotalFromArray<ItemProps>(
+        data?.categories || [],
+        'minutes',
+    );
+    const getEditorTotalTimeDisplay = `${Math.floor((getEditorTotalMinutes % 3600) / 60) + getEditorTotalHours
+        } hrs ${getEditorTotalMinutes} mins`;
+
+    const actives = [
+        {
+            title: 'Languages',
+            total: getLanguagesTotalTimeDisplay,
+            data: data?.languages,
+            styles: {
+                bg: 'bg-gradient-to-r from-amber-400 to-rose-600',
+            },
+        },
+        {
+            title: 'Categories',
+            total: getEditorTotalTimeDisplay,
+            data: data?.categories,
+            styles: {
+                bg: 'bg-gradient-to-r from-blue-400 to-purple-600',
+            },
+        },
+    ];
+    if (!data) {
+        return null;
+    }
 
     return (
         <section className="py-14 px-2 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
@@ -65,7 +149,36 @@ function WeeklyStats({ data }: any) {
                         Last update: {renderLastUpdate()}
                     </div>
                 </div>
+                <div className='mb-1 grid gap-3 py-2 md:grid-cols-2 xl:grid-cols-3 mt-8'>
+                    <WakaItem label='Start Date' value={startDate} />
+                    <WakaItem label='End Date' value={endDate} />
+                    <WakaItem label='Daily Coding Average' value={dailyAverage} />
+                    <WakaItem label='This Week Coding Time' value={dailyTotal} />
+                    <WakaItem label='Best Day Coding Time' value={bestDay} />
+                    <WakaItem label='All Time Since Today' value={allTimeSinceToday} />
+                </div>
+                <div className='mt-5 flex flex-col gap-6 sm:flex-row sm:gap-4'>
+                    {actives.map((item) => (
+                        <div
+                            key={item?.title}
+                            className={`${item?.styles?.bg} relative flex flex-1 flex-col gap-2 rounded-lg p-[2px]`}
+                        >
+                            <div className='h-full w-full rounded-lg bg-black p-2 '>
+                                <p className='absolute -top-3 left-3 bg-black px-2 '>
+                                    {item?.title}
+                                </p>
 
+                                <ul className='flex flex-col gap-1 px-4 py-3'>
+                                    {item?.data?.map((subItem: any) => (
+                                        <li key={subItem?.name}>
+                                            <Progress data={subItem} className={item?.styles?.bg} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     )
