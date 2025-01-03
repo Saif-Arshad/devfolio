@@ -1,38 +1,35 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import React, { useEffect, useState } from 'react';
+import ArticleDrawer from './ArticleDrawer';
 import { Query } from 'appwrite';
-import { ChevronLeftIcon, ChevronRightIcon, Edit3, PinIcon, TrashIcon } from 'lucide-react';
+import { ChevronLeftIcon, ChevronRightIcon, Edit3, TrashIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import ProjectDrawer from './ProjectDrawer';
 import { databases } from '@/app/_lib/appwrite';
 import { Input } from '@/app/_components/ui/input';
-import { STACKS } from '@/app/_lib/stack';
 
-function Projects() {
-    const [allProjects, setAllProjects] = useState<any>(null);
-    console.log("🚀 ~ Articles ~ allArticles:", allProjects)
+function Articles() {
+    const [allArticles, setAllArticles] = useState<any>(null);
+    console.log("🚀 ~ Articles ~ allArticles:", allArticles)
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const limit = 6;
 
     const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
+    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 
-
-    const fetchProjects = async (page: number, query: string) => {
+    const fetchArticles = async (page: number, query: string) => {
         try {
             const offset = (page - 1) * limit;
             const queries = [
-                // Query.select(["discription", "title", "content", "$id", "isPublish", "tags", "slug", "bannerImage"]),
+                Query.select(["discription", "title", "content", "$id", "isPublish", "tags", "slug", "bannerImage"]),
                 Query.limit(limit),
                 Query.offset(offset),
             ];
             if (query.trim()) {
-                console.log("🚀 ~ fetchProjects ~ query:", query)
+                console.log("🚀 ~ fetchArticles ~ query:", query)
                 queries.unshift(Query.search('title', query));
             }
             const result = await databases.listDocuments(
@@ -41,8 +38,8 @@ function Projects() {
                 queries
 
             );
-            console.log("🚀 ~ fetchProjects ~ result:", result)
-            setAllProjects(result.documents);
+            console.log("🚀 ~ fetchArticles ~ result:", result)
+            setAllArticles(result.documents);
             setTotalPages(Math.ceil(result.total / limit));
         } catch (error) {
             console.error("Error fetching articles:", error);
@@ -50,7 +47,7 @@ function Projects() {
     };
 
     useEffect(() => {
-        fetchProjects(currentPage, searchQuery);
+        fetchArticles(currentPage, searchQuery);
     }, [currentPage, searchQuery]);
 
     const handlePublish = (id: string, isPublish: boolean) => {
@@ -58,7 +55,7 @@ function Projects() {
             isPublish: !isPublish
         })
             .then(() => {
-                fetchProjects(currentPage, searchQuery);
+                fetchArticles(currentPage, searchQuery);
             })
             .catch((error) => {
                 console.error("Error updating article:", error);
@@ -81,7 +78,7 @@ function Projects() {
 
             try {
                 await databases.deleteDocument(databaseId, collectionId, id);
-                fetchProjects(currentPage, searchQuery);
+                fetchArticles(currentPage, searchQuery);
             } catch (error) {
                 console.error("Error deleting article:", error);
             }
@@ -95,22 +92,22 @@ function Projects() {
         <div className='py-10 px-5 lg:px-10 '>
             <div className='flex items-center justify-between'>
                 <h2 className='text-2xl font-bold'>
-                    All Projects ({allProjects?.length || 0})
+                    All Articles ({allArticles?.length || 0})
                 </h2>
                 <div className='flex items-center gap-x-5'>
                     <div className='flex items-center relative'>
                         <Input
                             type='text'
                             className='w-[200px] lg:w-[220px]'
-                            placeholder='Search Projects...'
+                            placeholder='Search articles...'
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-                    <ProjectDrawer
+                    <ArticleDrawer
                         button={
                             <button className='bg-primaryColor text-black hover:scale-105 duration-200 py-2 px-4 rounded-full'>
-                                Add Project
+                                Add Article
                             </button>
                         }
                     />
@@ -118,28 +115,16 @@ function Projects() {
             </div>
 
             <div className='mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
-                {allProjects?.map((article: any) => (
+                {allArticles?.map((article: any) => (
                     <div key={article.slug} className='p-4 border rounded-2xl mb-3 bg-neutral-800'>
                         <div className='flex items-center justify-between pb-3 mb-3 border-b border-neutral-700'>
+                            <span
+                                onClick={() => { handlePublish(article.$id, article.isPublish) }}
+                                className={`${article.isPublish ? "bg-primaryColor text-gray-800" : "bg-red-500 text-white"} cursor-pointer  px-3 py-1 rounded-full capitalize flex items-center justify-center text-sm`}>
+                                {article.isPublish ? "Published" : "Draft"}
+                            </span>
                             <div className='flex items-center gap-x-2'>
-                                <span
-                                    onClick={() => { handlePublish(article.$id, article.isPublish) }}
-                                    className={`${article.isPublish ? "bg-primaryColor text-gray-800" : "bg-red-500 text-white"} cursor-pointer  px-3 py-1 rounded-full capitalize flex items-center justify-center text-sm`}>
-                                    {article.isPublish ? "Published" : "Draft"}
-                                </span>
-                                {
-                                    article.isFeatured &&
-                                    <span
-                                        className={` bg-primaryColor gap-x-1 text-gray-800 cursor-pointer  px-3 py-1 rounded-full capitalize flex items-center justify-center text-sm`}>
-                                        <PinIcon className='h-4 w-4 text-gray-800' />
-                                        Featured
-                                    </span>
-
-                                }
-
-                            </div>
-                            <div className='flex items-center gap-x-2'>
-                                <ProjectDrawer
+                                <ArticleDrawer
                                     button={
                                         <button
 
@@ -147,7 +132,7 @@ function Projects() {
                                             <Edit3 className='h-5 w-5 cursor-pointer text-green-500' />
                                         </button>
                                     }
-                                    project={article}
+                                    article={article}
                                 />
 
                                 <button onClick={() => deleteHandler(article.$id)}>
@@ -159,19 +144,12 @@ function Projects() {
 
                             <Image
                                 alt={article.title}
-                                src={article.banner}
+                                src={article.bannerImage}
                                 layout='fill'
                             // className=' w-full object-cover rounded-xl'
                             />
                         </div>
-                        <div className='flex items-center gap-2 my-2 mt-5'>
-                            {
-                                article.tech.map((tag: string) => (
-                                    <span key={tag}>{STACKS[tag]}</span>
-                                ))
-                            }
-                        </div>
-                        <h3 className='font-bold capitalize mt-5 text-xl'>{article.name}</h3>
+                        <h3 className='font-bold capitalize mt-5 text-xl'>{article.title}</h3>
                         <div className='flex items-center gap-2 my-2'>
                             {
                                 article.tags.map((tag: string, index: number) => (
@@ -186,7 +164,7 @@ function Projects() {
                         </div>
                         <p className='text-sm text-gray-300 mt-5'>{article.discription}</p>
                         <div className='flex items-center justify-end'>
-                            <Link href={`/work/${article.slug}`}>
+                            <Link href={`/articles/${article.slug}`}>
                                 <button className='bg-primaryColor text-black hover:scale-105 duration-200 py-2 px-4 rounded-full'>
                                     Preview
                                 </button>
@@ -217,4 +195,4 @@ function Projects() {
     );
 }
 
-export default Projects;
+export default Articles;

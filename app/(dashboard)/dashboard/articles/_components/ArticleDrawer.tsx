@@ -216,8 +216,6 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
 
                     </div>
                 </div>
-                {/* <DrawerFooter>
-                </DrawerFooter> */}
             </DrawerContent>
         </Drawer>
     );
