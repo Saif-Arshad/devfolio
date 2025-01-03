@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// @ts-nocheck
 'use client';
 import React, {
     ReactNode,
@@ -22,7 +18,7 @@ import {
 } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import ClassNames from 'embla-carousel-class-names';
-import { cn } from '@/_lib/utils';
+import { cn } from '@/app/_lib/utils';
 type UseDotButtonType = {
     selectedIndex: number;
     scrollSnaps: number[];
@@ -260,6 +256,7 @@ const Carousel: React.FC<CarouselProps> = ({
                 isScale,
                 emblaThumbsRef,
                 onThumbClick,
+                // @ts-ignore
                 slidesrArr,
             }}
         >
@@ -404,9 +401,11 @@ export const SliderSnapDisplay = ({ className }: { className?: string }) => {
             <motion.div
                 key={selectedSnap}
                 custom={direction}
-                initial={(d: number) => ({ y: d * 20, opacity: 0 })}
+                // @ts-ignore
+                initial={(d: any) => ({ y: d * 20, opacity: 0 })}
                 animate={{ y: 0, opacity: 1 }}
-                exit={(d: number) => ({ y: d * -20, opacity: 0 })}
+                // @ts-ignore
+                exit={(d: any) => ({ y: d * -20, opacity: 0 })}
             >
                 {selectedSnap + 1}
             </motion.div>
@@ -583,13 +582,14 @@ export const ThumsSlider: React.FC = () => {
                     <div
                         key={`thumb-${index}`}
                         className={`min-w-0 w-full xl:h-24 aspect-auto border-2 rounded-md ${index === selectedIndex
-                                ? 'opacity-100'
-                                : 'border-transparent opacity-30'
+                            ? 'opacity-100'
+                            : 'border-transparent opacity-30'
                             }`}
                         style={{ flex: '0 0 15%' }}
                         onClick={() => onThumbClick(index)}
                     >
                         <motion.img
+                            // @ts-ignore
                             src={slide}
                             className='w-full h-full object-cover rounded-sm'
                             width={400}
