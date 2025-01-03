@@ -1,7 +1,7 @@
 "use client"
 
-import InfiniteLoopSlider from '@/_components/ui/InfiniteLoopSlider';
-import { STACKS } from '@/_lib/stack';
+import InfiniteLoopSlider from '@/app/_components/ui/InfiniteLoopSlider';
+import { STACKS } from '@/app/_lib/stack';
 import { memo, ReactNode, useEffect, useState } from 'react';
 
 

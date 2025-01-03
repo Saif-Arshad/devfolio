@@ -2,14 +2,14 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { databases } from '@/_lib/appwrite';
-import { Input } from '@/_components/ui/input';
 import { Query } from 'appwrite';
 import { ChevronLeftIcon, ChevronRightIcon, Edit3, PinIcon, TrashIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ProjectDrawer from './ProjectDrawer';
-import { STACKS } from '@/_lib/stack';
+import { databases } from '@/app/_lib/appwrite';
+import { Input } from '@/app/_components/ui/input';
+import { STACKS } from '@/app/_lib/stack';
 
 function Projects() {
     const [allProjects, setAllProjects] = useState<any>(null);

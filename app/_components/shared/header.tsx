@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import React from 'react';
@@ -20,7 +19,6 @@ const ResponsiveNavbar = () => {
 
     return (
         <nav className="w-full bg-black shadow-lg z-20 flex items-center justify-between p-4">
-            {/* Logo */}
             <Link href={"/"}>
                 <div className="flex items-center pl-4 mt-3 group -rotate-90">
                     <svg className="group-hover:stroke-[#3ccf91]" width="35" height="35" viewBox="0 0 43 35" xmlns="http://www.w3.org/2000/svg">

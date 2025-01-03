@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
-import { databases } from "@/_lib/appwrite";
 import { Query } from "appwrite";
-import { Input } from "@/_components/ui/input";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { databases } from "@/app/_lib/appwrite";
+import { Input } from "@/app/_components/ui/input";
 
 const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
 const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;

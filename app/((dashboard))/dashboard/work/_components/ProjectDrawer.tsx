@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -96,7 +95,6 @@ function ProjectDrawer({ button, project }: any) {
                 setLoading(false);
                 return;
             }
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const bannerImageUrl = bannerImage ? (await uploadImage(bannerImage)).href
                 : project.banner;

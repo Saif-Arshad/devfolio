@@ -1,12 +1,11 @@
 "use client"
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link'
 import { toZonedTime } from 'date-fns-tz';
 import { format, parseISO, formatDistanceToNowStrict } from 'date-fns';
 import React, { useEffect, useState } from 'react'
 import WakaItem from './WakaItem';
-import Progress from '@/_components/ui/progress';
+import Progress from '@/app/_components/ui/progress';
 
 interface ItemProps {
     name: string;

@@ -9,7 +9,6 @@ const Magnet = ({ children, padding = 100, disabled = false }: any) => {
 
     useEffect(() => {
         if (disabled) {
-            // Reset position when disabled
             setPosition({ x: 0, y: 0 });
             return;
         }
@@ -23,10 +22,8 @@ const Magnet = ({ children, padding = 100, disabled = false }: any) => {
                 const distX = Math.abs(centerX - e.clientX);
                 const distY = Math.abs(centerY - e.clientY);
 
-                // Check if the mouse is within the padding area
                 if (distX < width / 2 + padding && distY < height / 2 + padding) {
                     setIsActive(true);
-                    // Calculate the offset
                     const offsetX = (e.clientX - centerX) / 2;
                     const offsetY = (e.clientY - centerY) / 2;
                     setPosition({ x: offsetX, y: offsetY });
@@ -37,10 +34,8 @@ const Magnet = ({ children, padding = 100, disabled = false }: any) => {
             }
         };
 
-        // Attach mouse move event listener
         window.addEventListener("mousemove", handleMouseMove);
 
-        // Clean up event listener on component unmount
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);
         };

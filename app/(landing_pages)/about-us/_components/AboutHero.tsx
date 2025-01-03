@@ -1,7 +1,7 @@
 import React from 'react'
 import GradualSpacing from '../../../_components/ui/gradual-spacing'
 import IconCloud from '../../../_components/ui/icon-cloud'
-import SocialLinks from '@/_components/buttons/Social';
+import SocialLinks from '@/app/_components/buttons/Social';
 
 function AboutHero() {
     const slugs = [

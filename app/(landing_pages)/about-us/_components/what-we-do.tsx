@@ -1,4 +1,4 @@
-import SocialLinks from '@/_components/buttons/Social'
+import SocialLinks from '@/app/_components/buttons/Social'
 import React from 'react'
 function WhatWeDo() {
     return (

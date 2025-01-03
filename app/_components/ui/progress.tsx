@@ -1,4 +1,4 @@
-import { cn } from '@/_lib/utils';
+import { cn } from '@/app/_lib/utils';
 import { motion, Variants } from 'framer-motion';
 
 

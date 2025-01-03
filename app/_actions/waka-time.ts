@@ -1,4 +1,4 @@
-import { getALLTimeSinceToday, getReadStats } from '@/_lib/waka-time';
+import { getALLTimeSinceToday, getReadStats } from "../_lib/waka-time";
 
 export async function getWakaStats() {
     try {
@@ -11,7 +11,7 @@ export async function getWakaStats() {
         };
 
         return { data };
-    } catch (error) {
+    } catch (error:any) {
         return {
             error: "An error occurred while fetching Waka stats",
             details: error?.message || error,

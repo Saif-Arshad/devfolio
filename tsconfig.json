@@ -7,7 +7,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true, // Enforces strict typing
+    "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -16,9 +16,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noImplicitAny": true, // Ensure explicit types instead of `any`
-    "strictNullChecks": true, // Check for null/undefined values
-    "strictBindCallApply": true, // Strict checks for function calls
     "plugins": [
       {
         "name": "next"
@@ -26,7 +23,7 @@
     ],
     "paths": {
       "@/*": [
-        "./app/*"
+        "./*"
       ]
     }
   },

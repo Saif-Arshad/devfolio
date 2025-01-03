@@ -1,16 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import { databases } from '@/_lib/appwrite';
 import { Query } from 'appwrite';
 import React, { useEffect, useState } from 'react'
 import parse, { domToReact } from "html-react-parser";
 import Image from 'next/image';
 import { ArrowRightIcon, CircleArrowOutUpRightIcon, GithubIcon } from 'lucide-react';
-import { STACKS } from '@/_lib/stack';
 import { EmblaOptionsType } from 'embla-carousel';
-import Carousel, { Slider, SliderContainer, SliderDotButton } from '@/_components/ui/slider';
-import { ScrollProgress } from '@/_components/ui/scroll-bar';
+import { ScrollProgress } from '@/app/_components/ui/scroll-bar';
+import { STACKS } from '@/app/_lib/stack';
+import { databases } from '@/app/_lib/appwrite';
+import Carousel, { Slider, SliderContainer, SliderDotButton } from '@/app/_components/ui/slider';
 
 function ProjectDetail({ slug }: { slug: string }) {
     console.log("🚀 ~ ProjectDetail ~ slug:", slug)

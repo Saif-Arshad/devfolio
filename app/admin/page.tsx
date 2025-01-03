@@ -1,5 +1,4 @@
 "use client"
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { loginUser } from '../_lib/auth';
 import { useRouter } from 'next/navigation';

@@ -3,11 +3,11 @@ import AboutHero from './_components/AboutHero'
 import WhatWeDo from './_components/what-we-do'
 import AboutUs from './_components/AboutUs'
 import WeeklyStats from './_components/WeeklyStats'
-import { getWakaStats } from '@/_actions/waka-time'
-import { fetchGithubData } from '@/_actions/github'
 import GithubContributions from './_components/GithubContributions'
 import Skills from './_components/Skills'
-import LatestPost from '@/_components/home/latest-post'
+import { getWakaStats } from '@/app/_actions/waka-time'
+import { fetchGithubData } from '@/app/_actions/github'
+import LatestPost from '@/app/_components/home/latest-post'
 
 async function page() {
 
@@ -23,7 +23,7 @@ async function page() {
             <AboutUs />
             <WeeklyStats data={data} />
             <GithubContributions data={githubData} />
-            <LatestPost />
+            <LatestPost  />
             <WhatWeDo />
         </>
     )

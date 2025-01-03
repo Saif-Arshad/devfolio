@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import { databases } from '@/_lib/appwrite';
-import { STACKS } from '@/_lib/stack';
+import { databases } from '@/app/_lib/appwrite';
+import { STACKS } from '@/app/_lib/stack';
 import { Query } from 'appwrite';
 import { CircleArrowOutUpRightIcon } from 'lucide-react';
 import Image from 'next/image';

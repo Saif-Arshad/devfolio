@@ -1,6 +1,6 @@
 "use client";
 
-import { databases } from '@/_lib/appwrite';
+import { databases } from '@/app/_lib/appwrite';
 import { Query } from 'appwrite';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -17,7 +17,6 @@ import { uploadImage } from "../../../../_lib/upload-file";
 import RichTextEditor from "./editor";
 import { useRouter } from "next/navigation";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function ArticleDrawer({ button, article }: { button: any; article?: any }) {
     console.log("🚀 ~ ArticleDrawer ~ article:", article)
     const [content, setContent] = useState("");

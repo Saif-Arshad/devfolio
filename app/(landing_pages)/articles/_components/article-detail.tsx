@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { databases } from "@/_lib/appwrite";
 import { Query } from "appwrite";
 import React, { useEffect, useState } from "react";
 import parse, { domToReact } from "html-react-parser";
 import Image from "next/image";
 import { ArrowRightIcon, TimerIcon } from "lucide-react";
 import Link from "next/link";
-import { ScrollProgress } from "@/_components/ui/scroll-bar";
+import { databases } from "@/app/_lib/appwrite";
+import { ScrollProgress } from "@/app/_components/ui/scroll-bar";
 
 interface Article {
     title: string;

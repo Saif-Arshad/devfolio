@@ -1,6 +1,5 @@
 "use client";
-
-import { cn } from "@/_lib/utils";
+import { cn } from "@/app/_lib/utils";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 interface ScrollProgressProps {

@@ -3,12 +3,12 @@
 
 import React, { useEffect, useState } from 'react';
 import ArticleDrawer from './ArticleDrawer';
-import { databases } from '@/_lib/appwrite';
-import { Input } from '@/_components/ui/input';
 import { Query } from 'appwrite';
 import { ChevronLeftIcon, ChevronRightIcon, Edit3, TrashIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { databases } from '@/app/_lib/appwrite';
+import { Input } from '@/app/_components/ui/input';
 
 function Articles() {
     const [allArticles, setAllArticles] = useState<any>(null);

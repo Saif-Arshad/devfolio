@@ -106,6 +106,7 @@ const Carousel: React.FC<CarouselProps> = ({
     }
     const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
     const [selectedThumbIndex, setSelectedThumbIndex] = useState(0);
+    console.log("🚀 ~ selectedThumbIndex:", selectedThumbIndex)
     const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
         containScroll: 'keepSnaps',
         dragFree: true,
