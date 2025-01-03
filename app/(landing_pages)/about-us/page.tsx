@@ -17,18 +17,12 @@ async function page() {
     return (
         <>
             <AboutHero />
-            <WeeklyStats data={data} />
-            <GithubContributions data={githubData} />
-            <AboutUs />
-            <div className='flex items-center flex-col px-4 lg:px-10 xl:px-20 w-full'>
-                <div className='flex  justify-between w-full mb-6  border-b border-neutral-500 border-dashed pb-4'>
-                    <h2
-                        className="text-gray-100 text-2xl  font-bold font-manrope leading-normal lg:text-start sm:text-center">
-                        ⚡ Tools that I have used
-                    </h2>
-                </div>
+            <div className='flex items-center flex-col px-4 lg:px-10 xl:px-20 my-7 w-full'>
                 <Skills />
             </div>
+            <AboutUs />
+            <WeeklyStats data={data} />
+            <GithubContributions data={githubData} />
             <LatestPost />
             <WhatWeDo />
         </>

@@ -31,7 +31,7 @@ function Page() {
         setLoading(true);
         try {
             await loginUser(email, password);
-            console.log('User logged in successfully');
+            console.log('User logged in     ');
             router.replace('/dashboard');
         } catch (error: any) {
             console.error('Login failed:', error.message);

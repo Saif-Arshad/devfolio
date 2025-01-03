@@ -61,7 +61,7 @@ const Calendar = ({ data }: CalendarProps) => {
     return (
         <>
             <div className='relative flex flex-col w-full'>
-                <ul className='flex justify-end gap-[3px] xl:gap-[9px] overflow-hidden text-xs xl:text-sm dark:text-neutral-400 md:justify-start xl:justify-center'>
+                <ul className='flex justify-end gap-[3px] xl:gap-[20px] overflow-hidden text-xs xl:text-base xl:mb-2 dark:text-neutral-400 md:justify-start xl:justify-center'>
                     {months.map((month) => (
                         <li
                             key={month.firstDay}
@@ -96,7 +96,7 @@ const Calendar = ({ data }: CalendarProps) => {
                                                 transition: { delay: getRandomDelayAnimate },
                                             },
                                         }}
-                                        className='my-[2px] block h-[12px] w-[12px] xl:h-[14px] xl:w-[14px] xl:my-[3px]  rounded-sm bg-neutral-800'
+                                        className='my-[2px] block h-[10px] w-[10px]  lg:h-[12px] lg:w-[12px] xl:h-[19px] xl:w-[19px] 2xl:w-[22px] 2xl:h-[22px] xl:my-[5px]  rounded-sm bg-neutral-800'
                                         style={backgroundColor ? { backgroundColor } : undefined}
                                         onMouseEnter={() =>
                                             setSelectContribution({
@@ -115,11 +115,11 @@ const Calendar = ({ data }: CalendarProps) => {
                 </div>
             </div>
 
-            <div className='flex flex-wrap items-center justify-between gap-2'>
+            <div className='flex flex-wrap items-center justify-between gap-2 mt-3'>
                 <div className='flex items-center gap-2 text-sm'>
                     <span className='text-neutral-400'>Less</span>
                     <ul className='flex gap-1'>
-                        <motion.li className='h-[10px] w-[10px] rounded-sm bg-neutral-800' />
+                        <motion.li className='h-[10px] w-[10px]  lg:h-[12px] lg:w-[12px] xl:h-[19px] xl:w-[19px] 2xl:w-[22px] 2xl:h-[22px] rounded-sm bg-neutral-800' />
                         {contributionColors.map((item, index) => (
                             <motion.li
                                 key={item}
@@ -132,7 +132,7 @@ const Calendar = ({ data }: CalendarProps) => {
                                         transition: { delay: index * 0.3 },
                                     },
                                 }}
-                                className='h-[10px] w-[10px] rounded-sm'
+                                className='h-[10px] w-[10px]  lg:h-[12px] lg:w-[12px] xl:h-[19px] xl:w-[19px] 2xl:w-[22px] 2xl:h-[22px] rounded-sm'
                                 style={{ backgroundColor: item }}
                             />
                         ))}
