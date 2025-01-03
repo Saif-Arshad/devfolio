@@ -15,9 +15,12 @@ function Projects() {
     console.log("🚀 ~ Articles ~ allArticles:", allProjects)
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
+    const [isClient, setIsClient] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const limit = 6;
-
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
     const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
     const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
 
@@ -89,7 +92,7 @@ function Projects() {
         }
 
     }
-
+    if (!isClient) return null;
     return (
         <div className='py-10 px-5 lg:px-10 '>
             <div className='flex items-center justify-between'>

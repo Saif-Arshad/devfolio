@@ -38,7 +38,7 @@ const Skills = () => {
     return (
         <div className='space-y-8 w-full'>
             <div className='flex w-full mx-auto'>
-                <div className='relative flex  max-auto w-[95vw] flex-col justify-center gap-y-4 overflow-hidden py-2'>
+                <div className='relative flex  max-auto w-[98vw] flex-col justify-center gap-y-4 overflow-hidden py-2'>
                     {sliders}
                     <div className='fade flex styled-fade' />
                 </div>

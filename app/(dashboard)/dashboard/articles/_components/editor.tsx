@@ -1,17 +1,19 @@
-"use client"
+"use client";
 
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo, useRef } from 'react';
 import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css";
 import { uploadImage } from '../../../../_lib/upload-file';
 
 export default function RichTextEditor({ value, setValue }: any) {
-
     const quillRef = useRef<any>();
 
     const imageHandler = () => {
-        const editor = quillRef.current.getEditor();
-        const input = document.createElement("input");
+        const editor = quillRef.current?.getEditor();
+        if (!editor) return;
+
+        if (!document) return;
+        const input = document?.createElement("input");
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");
         input.click();
@@ -19,17 +21,18 @@ export default function RichTextEditor({ value, setValue }: any) {
         input.onchange = async () => {
             // @ts-ignore
             const file = input && input?.files[0];
-            if (/^image\//.test(file.type)) {
+            if (file && /^image\//.test(file.type)) {
                 const url = await uploadImage(file);
-                console.log("🚀 ~ input.onchange= ~ url:", url)
-                const href = url?.href
-                console.log("🚀 ~ input.onchange= ~ href:", href)
+                console.log("🚀 ~ input.onchange= ~ url:", url);
+                const href = url?.href;
+                console.log("🚀 ~ input.onchange= ~ href:", href);
                 editor.insertEmbed(editor.getSelection(), "image", href);
             } else {
                 console.log('You could only upload images.');
             }
         };
-    }
+    };
+
     const modules = useMemo(() => ({
         toolbar: {
             container: [
@@ -44,15 +47,17 @@ export default function RichTextEditor({ value, setValue }: any) {
                 image: imageHandler
             }
         },
-    }), [])
+    }), []);
+
+
     return (
-        <>
-
-            <ReactQuill theme="snow"
-                className="bg-neutral-800 w-full rounded-lg min-h-52 h-full "
-                ref={quillRef} value={value} modules={modules} onChange={setValue} />
-
-        </>
-
-    )
+        <ReactQuill
+            theme="snow"
+            className="bg-neutral-800 w-full rounded-lg min-h-52 h-full"
+            ref={quillRef}
+            value={value}
+            modules={modules}
+            onChange={setValue}
+        />
+    );
 }

@@ -14,10 +14,12 @@ import { Input } from "../../../../_components/ui/input";
 import { databases } from "../../../../_lib/appwrite";
 import { uploadImage } from "../../../../_lib/upload-file";
 import { useRouter } from "next/navigation";
-import RichTextEditor from "../../articles/_components/editor";
 import InputTags from "../../articles/_components/InputTags";
 import { FaTrash } from "react-icons/fa";
-
+import dynamic from "next/dynamic";
+const RichTextEditor = dynamic(() => import('../../articles/_components/editor'), {
+    ssr: false, 
+});
 function ProjectDrawer({ button, project }: any) {
     const [content, setContent] = useState("");
     const [isClient, setIsClient] = useState(false);

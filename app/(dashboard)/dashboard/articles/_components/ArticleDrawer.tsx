@@ -14,7 +14,10 @@ import { Input } from "../../../../_components/ui/input";
 import InputTags from "./InputTags";
 import { databases } from "../../../../_lib/appwrite";
 import { uploadImage } from "../../../../_lib/upload-file";
-import RichTextEditor from "./editor";
+import dynamic from "next/dynamic";
+const RichTextEditor = dynamic(() => import('./editor'), {
+    ssr: false, 
+});
 import { useRouter } from "next/navigation";
 
 function ArticleDrawer({ button, article }: { button: any; article?: any }) {
