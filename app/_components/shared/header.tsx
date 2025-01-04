@@ -6,18 +6,18 @@ import LetsTalk from '../buttons/LetsTalk';
 import { usePathname } from 'next/navigation';
 import { DrawerContent, DrawerFooter, DrawerHeader, Drawer, DrawerTrigger } from '../ui/drawer';
 import Image from 'next/image';
-import { Menu } from 'lucide-react';
+import { BriefcaseBusiness, Globe, Home, Menu, MessageCircleHeart, NotebookPen, UserRound } from 'lucide-react';
 
 const ResponsiveNavbar = () => {
 
     const currentPath = usePathname();
 
     const links = [
-        { title: "Home", link: "/" },
-        { title: "About", link: "/about-us" },
-        { title: "Projects", link: "/work" },
-        { title: "Services", link: "/services" },
-        { title: "Articles", link: "/articles" }
+        { title: "Home", link: "/", icon: <Home className='h-5 w-5' /> },
+        { title: "About", link: "/about-us", icon: < UserRound className='h-5 w-5' /> },
+        { title: "Projects", link: "/work", icon: <BriefcaseBusiness className='h-5 w-5' /> },
+        { title: "Services", link: "/services", icon: <Globe className='h-5 w-5' /> },
+        { title: "Articles", link: "/articles", icon: <NotebookPen className='h-5 w-5' /> },
     ];
 
     return (
@@ -32,7 +32,7 @@ const ResponsiveNavbar = () => {
                 </div>
             </Link>
 
-            <ul className="hidden md:flex space-x-4 items-center z-50">
+            <ul className="hidden md:flex space-x-7 items-center z-50">
                 {links.map((item: any, index: number) => (
                     <Link href={item.link} key={index}>
                         <li className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110 transition-all"}`}>
@@ -40,9 +40,7 @@ const ResponsiveNavbar = () => {
                         </li>
                     </Link>
                 ))}
-                <div className='pr-7 ' >
-                    <LetsTalk />
-                </div>
+                <LetsTalk />
             </ul>
             <div className="md:hidden">
 
@@ -64,17 +62,21 @@ const ResponsiveNavbar = () => {
                         <div className='flex h-full mt-12 items-start flex-col ml-5 gap-6'>
                             {links.map((item: any, index: number) => (
                                 <Link href={item.link} key={index}>
-                                    <span className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl font-medium`}>
+                                    <span className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center `}>
+                                        <span className="mr-2">{item.icon}</span>
                                         {item.title}
                                     </span>
                                 </Link>
                             ))}
+                            <Link href="/contact-us" >
+                                <span className={`capitalize ${currentPath == "/contact-us" ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center gap-2 `}>
+                                    <MessageCircleHeart className='h-5 w-5' />
+                                    Let's Talk
+                                </span>
+                            </Link>
+
                         </div>
-                        <DrawerFooter>
 
-                            <LetsTalk width="70%" />
-
-                        </DrawerFooter>
 
                     </DrawerContent>
                 </Drawer>

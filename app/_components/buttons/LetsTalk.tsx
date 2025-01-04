@@ -2,11 +2,9 @@ import React from 'react'
 import '../styles/letsTalk.scss'
 import Link from 'next/link'
 
-function LetsTalk({ width }: { width?: string }) {
+function LetsTalk() {
   return (
-    <Link href={"/contact-us"}
-      style={{ width: width }}
-    >
+    <Link href={"/contact-us"}>
 
       <button className="cssbuttons-io-button">
         Let&apos;s Talk

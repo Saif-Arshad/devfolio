@@ -12,7 +12,7 @@ export default function FirstAbout() {
                 <div className='flex flex-col items-start'>
 
                     <GradualSpacing
-                        className="font-display text-4xl font-bold -tracking-widest  text-black dark:text-white sm:text-7xl lg:text-[100px] md:my-3   md:leading-[5rem]"
+                        className="font-display text-4xl xs:text-5xl font-bold -tracking-widest  text-black dark:text-white sm:text-7xl lg:text-[100px] md:my-3   md:leading-[5rem]"
                         text=" Saif Ur Rehman"
                     />
                     <h3 className="text-primaryColor tracking-wide mt-2 ml-7 font-semibold sm:text-xl">

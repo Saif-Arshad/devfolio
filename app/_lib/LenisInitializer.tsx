@@ -19,7 +19,6 @@ const LenisInitializer = () => {
 
         // Log scroll events
         lenis.on('scroll', (e) => {
-            console.log(e);
         });
 
         // Use requestAnimationFrame to continuously update the scroll
