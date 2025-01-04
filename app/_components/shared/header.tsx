@@ -4,6 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import LetsTalk from '../buttons/LetsTalk';
 import { usePathname } from 'next/navigation';
+import { DrawerContent, DrawerFooter, DrawerHeader, Drawer, DrawerTrigger } from '../ui/drawer';
+import Image from 'next/image';
+import { Menu } from 'lucide-react';
 
 const ResponsiveNavbar = () => {
 
@@ -29,7 +32,7 @@ const ResponsiveNavbar = () => {
                 </div>
             </Link>
 
-            <ul className="hidden md:flex space-x-8 items-center z-50">
+            <ul className="hidden md:flex space-x-4 items-center z-50">
                 {links.map((item: any, index: number) => (
                     <Link href={item.link} key={index}>
                         <li className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110 transition-all"}`}>
@@ -37,8 +40,46 @@ const ResponsiveNavbar = () => {
                         </li>
                     </Link>
                 ))}
-                <LetsTalk />
+                <div className='pr-7 ' >
+                    <LetsTalk />
+                </div>
             </ul>
+            <div className="md:hidden">
+
+                <Drawer direction="left" >
+                    <DrawerTrigger >
+                        <Menu size={35} className="text-white" />
+                    </DrawerTrigger>
+                    <DrawerContent className='min-w-[300px]  h-full bg-black'>
+                        <DrawerHeader>
+                            <Image
+                                src="/images/icon.jpg"
+                                alt="Author Avatar"
+                                height={100}
+                                width={100}
+                                className="w-14 h-14 rounded-full object-cover"
+                            />
+                        </DrawerHeader>
+
+                        <div className='flex h-full mt-12 items-start flex-col ml-5 gap-6'>
+                            {links.map((item: any, index: number) => (
+                                <Link href={item.link} key={index}>
+                                    <span className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl font-medium`}>
+                                        {item.title}
+                                    </span>
+                                </Link>
+                            ))}
+                        </div>
+                        <DrawerFooter>
+
+                            <LetsTalk width="70%" />
+
+                        </DrawerFooter>
+
+                    </DrawerContent>
+                </Drawer>
+            </div>
+
         </nav>
     );
 };
