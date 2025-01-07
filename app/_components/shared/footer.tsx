@@ -31,6 +31,10 @@ function Footer() {
             title: "Services",
             link: "/services"
         },
+        // {
+        //     title: "Resume",
+        //     link: "/resume"
+        // },
     ]
     const currentPath = usePathname()
     return (

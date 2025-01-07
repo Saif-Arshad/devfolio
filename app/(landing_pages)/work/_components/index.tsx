@@ -75,8 +75,8 @@ function Projects() {
                         <h1 className='font-bold text-3xl lg:text-5xl '>
                             My Portfolio
                         </h1>
-                        <h2 className=' text-primaryColor mt-3 text-lg font-medium '>
-                            A collection of my best projects
+                        <h2 className=' text-primaryColor mt-1 text-lg '>
+                            Recent Projects and Achievements
                         </h2>
                         <p className='mt-3 mb-8'>
                             With many years in web development, I acquired extensive experience working on projects across multiple industries and technologies. Let me show you my best creations.

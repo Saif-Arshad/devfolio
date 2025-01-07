@@ -69,10 +69,10 @@ export default function FirstAbout() {
                         <span className="text-primaryColor font-semibold px-1.5">Next.js</span>.
                         I specialize in building
                         <span className="text-primaryColor font-semibold px-1.5">complex</span>,
-                        <span className="text-primaryColor font-semibold px-1.5">fast</span>, and
+                   fast, and
                         <span className="text-primaryColor font-semibold px-1.5">functional</span>
                         digital products that deliver
-                        <span className="text-primaryColor font-semibold px-1.5">exceptional user experiences</span>.
+                     exceptional user experiences.
                     </p>
 
 

@@ -4,7 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import LetsTalk from '../buttons/LetsTalk';
 import { usePathname } from 'next/navigation';
-import { DrawerContent, DrawerFooter, DrawerHeader, Drawer, DrawerTrigger } from '../ui/drawer';
+
+import {
+    DrawerContent, DrawerFooter,
+    DrawerClose,
+    DrawerHeader, Drawer, DrawerTrigger
+} from '../ui/drawer';
 import Image from 'next/image';
 import { BriefcaseBusiness, Globe, Home, Menu, MessageCircleHeart, NotebookPen, UserRound } from 'lucide-react';
 
@@ -62,18 +67,24 @@ const ResponsiveNavbar = () => {
                         <div className='flex h-full mt-12 items-start flex-col ml-5 gap-6'>
                             {links.map((item: any, index: number) => (
                                 <Link href={item.link} key={index}>
-                                    <span className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center `}>
-                                        <span className="mr-2">{item.icon}</span>
-                                        {item.title}
-                                    </span>
+                                    <DrawerClose >
+
+                                        <span className={`capitalize ${currentPath == item.link ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center `}>
+                                            <span className="mr-2">{item.icon}</span>
+                                            {item.title}
+                                        </span>
+                                    </DrawerClose>
                                 </Link>
                             ))}
                             <Link href="/contact-us" >
-                                <span className={`capitalize ${currentPath == "/contact-us" ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center gap-2 `}>
-                                    <MessageCircleHeart className='h-5 w-5' />
-                                    Let's Talk
-                                </span>
+                                <DrawerClose >
+                                    <span className={`capitalize ${currentPath == "/contact-us" ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center gap-2 `}>
+                                        <MessageCircleHeart className='h-5 w-5' />
+                                        Let's Talk
+                                    </span>
+                                </DrawerClose>
                             </Link>
+
 
                         </div>
 
