@@ -78,7 +78,7 @@ function AboutHero() {
             </div>
 
 
-            <div className="flex relative flex-col items-center justify-start w-full  lg:w-1/2 ">
+            <div className="hidden sm:flex relative flex-col items-center justify-start w-full  lg:w-1/2 ">
                 <IconCloud iconSlugs={slugs} />
 
             </div>

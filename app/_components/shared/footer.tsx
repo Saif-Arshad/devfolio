@@ -56,7 +56,7 @@ function Footer() {
                     <Magnet padding={50} disabled={false}>
                         <Link href={"mailto:saifarshad3344@gmail.com"}>
                             <p className="mb-3">
-                                Made with <span className="text-primaryColor">❤</span> by
+                                Made with <span className="">❤️</span> by
                                 <span className="text-primaryColor mx-2 font-semibold">
                                     Saif Ur Rehman
                                 </span>

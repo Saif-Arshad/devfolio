@@ -1,36 +1,39 @@
-import React from 'react';
-import { BsGithub, BsLinkedin } from 'react-icons/bs';
-import { FaWhatsapp } from 'react-icons/fa';
-import { SiGmail } from 'react-icons/si';
+"use client"; // Required in Next.js (App Router) for client-side interactions like fetch, useState, etc.
 
-function Page() {
+import React, { useState } from "react";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { FaWhatsapp } from "react-icons/fa";
+import { Clock, Mail, Phone, Send } from "lucide-react";
+import { SiGmail } from "react-icons/si";
+
+export default function Page() {
     const socials = [
         {
-            name: 'LinkedIn',
-            link: 'https://www.linkedin.com/in/saif-rehman-professional/',
-            bgColor: '#0077B5',
-            textColor: '#FFFFFF',
-            icon: <BsLinkedin className="sm:h-5 sm:w-5 h-4 w-4" />
+            name: "LinkedIn",
+            link: "https://www.linkedin.com/in/saif-rehman-professional/",
+            bgColor: "#0077B5",
+            textColor: "#FFFFFF",
+            icon: <BsLinkedin className="sm:h-5 sm:w-5 h-4 w-4" />,
         },
         {
-            name: 'GitHub',
-            link: 'https://github.com/Saif-Arshad',
-            bgColor: '#181717',
-            textColor: '#FFFFFF',
-            icon: <BsGithub className="sm:h-5 sm:w-5 h-4 w-4" />
+            name: "GitHub",
+            link: "https://github.com/Saif-Arshad",
+            bgColor: "#181717",
+            textColor: "#FFFFFF",
+            icon: <BsGithub className="sm:h-5 sm:w-5 h-4 w-4" />,
         },
         {
-            name: 'WhatsApp',
-            link: 'https://wa.me/+923267146133',
-            bgColor: '#108e3e',
-            textColor: '#FFFFFF',
-            icon: <FaWhatsapp className="sm:h-5 sm:w-5 h-4 w-4" />
+            name: "WhatsApp",
+            link: "https://wa.me/+923267146133",
+            bgColor: "#108e3e",
+            textColor: "#FFFFFF",
+            icon: <FaWhatsapp className="sm:h-5 sm:w-5 h-4 w-4" />,
         },
         {
-            name: 'Fiverr',
-            link: 'https://www.fiverr.com/saifurrehman360',
-            bgColor: '#118750',
-            textColor: '#FFFFFF',
+            name: "Fiverr",
+            link: "https://www.fiverr.com/saifurrehman360",
+            bgColor: "#118750",
+            textColor: "#FFFFFF",
             icon: (
                 <svg
                     fill="#000000"
@@ -40,30 +43,91 @@ function Page() {
                     className="sm:h-5 sm:w-5 h-4 w-4"
                 >
                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                    <g
+                        id="SVGRepo_tracerCarrier"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    ></g>
                     <g id="SVGRepo_iconCarrier">
                         <path d="M16.25 16.25v-10h-10v-.625c0-1.034.841-1.875 1.875-1.875H10V0H8.125A5.632 5.632 0 0 0 2.5 5.625v.625H0V10h2.5v6.25H0V20h8.75v-3.75h-2.5V10h6.285v6.25H10V20h8.75v-3.75h-2.5z"></path>
                         <circle cx="14.375" cy="1.875" r="1.875"></circle>
                     </g>
                 </svg>
-            )
+            ),
         },
-        {
-            name: 'Gmail',
-            link: 'mailto:saifarshad3344@gmail.com',
-            bgColor: '#D14836',
-            textColor: '#FFFFFF',
-            icon: <SiGmail className="sm:h-5 sm:w-5 h-4 w-4" />
-        }
+        // Uncomment if you want Gmail as a quick link
+        // {
+        //     name: 'Gmail',
+        //     link: 'mailto:saifarshad3344@gmail.com',
+        //     bgColor: '#D14836',
+        //     textColor: '#FFFFFF',
+        //     icon: <SiGmail className="sm:h-5 sm:w-5 h-4 w-4" />
+        // }
     ];
+
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [userMessage, setUserMessage] = useState("");
+
+    const [loading, setLoading] = useState(false);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!firstName.trim() || !email.trim() || !userMessage.trim()) {
+            setErrorMessage("Please fill out the required fields (First Name, Email, Message).");
+            setSuccessMessage(null);
+            return;
+        }
+
+        setLoading(true);
+        setErrorMessage(null);
+        setSuccessMessage(null);
+
+        try {
+            const response = await fetch("/api/contact-page", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    message: userMessage,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Something went wrong");
+            }
+
+            setSuccessMessage(
+                "Message sent successfully! Saif will surely see the mail in a few minutes and get back to you."
+            );
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setUserMessage("");
+        } catch (err: any) {
+            setErrorMessage(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="flex items-center flex-col px-4 lg:px-10 xl:px-20 my-7 w-full">
             <div className="border-b w-full border-white border-dashed mb-5 pb-7">
                 <h1 className="text-4xl font-bold text-start mb-1">Contact Us</h1>
-                <p>
-                    Get in touch with me via social media or send me an email.
-                </p>
+                <p>Get in touch with me via social media or send me an email.</p>
+
+                {/* Social Links */}
                 <div className="flex items-center gap-5 mt-8 flex-wrap">
                     {socials.map((social) => (
                         <a
@@ -74,10 +138,10 @@ function Page() {
                             className="flex items-center gap-2 px-3 text-sm sm:text-base sm:px-4 py-2 rounded-md hover:scale-95 duration-500"
                             style={{
                                 backgroundColor: social.bgColor,
-                                color: social.textColor
+                                color: social.textColor,
                             }}
                         >
-                            {social.name === 'Fiverr' ? (
+                            {social.name === "Fiverr" ? (
                                 <svg
                                     fill={social.textColor}
                                     viewBox="-2.5 -2 24 24"
@@ -105,84 +169,135 @@ function Page() {
                 </div>
             </div>
             <div className="w-full my-5">
-
-                <h1 className="text-4xl font-bold text-start mb-1">NEED A DEVELOPER?</h1>
-
-
                 <div className="max-w-7xl mx-auto p-8">
-                    <div className="bg-neutral-900 shadow-md rounded-lg p-6 grid md:grid-cols-3 gap-8">
+                    <div className=" border rounded-xl p-6  grid md:grid-cols-3 gap-8">
                         <div className="md:col-span-2">
-                            <h2 className="text-2xl font-bold mb-4 text-primaryColor">Contact Me</h2>
+                            <h1 className="text-3xl font-medium text-start mb-1">Send me a message</h1>
                             <p className="text-gray-400 mb-6">
-                                We are deeply committed to delivering unparalleled service and unwavering support to ensure your experience exceeds expectations.
+                                My inbox is always open. Whether you have a question or just want to
+                                talk more about your projects! Feel free to mail me about any relevant
+                                job updates.
                             </p>
-                            <form action="#" method="POST" className="space-y-4">
-                                <div className="grid md:grid-cols-2 gap-4">
+
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-primaryColor">First Name *</label>
+                                        <label className="block text-sm mb-2 font-medium text-primaryColor">
+                                            First Name *
+                                        </label>
                                         <input
                                             type="text"
                                             placeholder="First Name"
-                                            className="mt-1 block w-full px-4 py-2 border border-gray-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor"
+                                            className="mt-1 block w-full px-4 py-2 border border-neutral-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor outline-none"
+                                            value={firstName}
+                                            onChange={(e) => setFirstName(e.target.value)}
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-primaryColor">Last Name *</label>
+                                        <label className="block text-sm mb-2 font-medium text-primaryColor">
+                                            Last Name
+                                        </label>
                                         <input
                                             type="text"
                                             placeholder="Last Name"
-                                            className="mt-1 block w-full px-4 py-2 border border-gray-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor"
+                                            className="mt-1 block w-full px-4 py-2 border border-neutral-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor outline-none"
+                                            value={lastName}
+                                            onChange={(e) => setLastName(e.target.value)}
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-primaryColor">Email *</label>
+                                    <label className="block text-sm mb-2 font-medium text-primaryColor">
+                                        Email *
+                                    </label>
                                     <input
                                         type="email"
                                         placeholder="Email"
-                                        className="mt-1 block w-full px-4 py-2 border border-gray-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor"
+                                        className="mt-1 block w-full px-4 py-2 border border-neutral-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor outline-none"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-primaryColor">Message *</label>
+                                    <label className="block mb-2 text-sm font-medium text-primaryColor">
+                                        Message *
+                                    </label>
                                     <textarea
                                         placeholder="Message"
-                                        className="mt-1 block w-full px-4 py-2 border border-gray-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor"
+                                        className="mt-1 block w-full px-4 py-2 border border-neutral-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor outline-none"
+                                        value={userMessage}
+                                        onChange={(e) => setUserMessage(e.target.value)}
                                     ></textarea>
                                 </div>
-                                <div>
+
+                                <p className="flex items-center gap-x-1 text-xs text-gray-400">
+                                    <Clock className="h-3.5 w-3.5" />
+                                    Avg. response: 1-2 Hours (Working Hours, GMT+7)
+                                </p>
+
+                                {errorMessage && (
+                                    <p className="text-red-500 text-sm font-medium">{errorMessage}</p>
+                                )}
+                                {successMessage && (
+                                    <p className="text-green-500 text-sm font-medium">{successMessage}</p>
+                                )}
+
+                                <div className="my-10 w-full flex justify-end">
                                     <button
                                         type="submit"
-                                        className="w-full bg-primaryColor text-white px-4 py-2 rounded-md hover:bg-opacity-90">
-                                        Submit
+                                        disabled={loading}
+                                        className=" bg-emerald-700 w-[120px] text-white flex items-center justify-center gap-x-2 px-4 py-2 rounded-full hover:bg-emerald-800 transition-colors disabled:opacity-50"
+                                    >
+                                        {loading ? (
+                                    
+                                            <Send className="h-5 w-5 animate-spin" />
+                                        ) : (
+                                            <>
+                                                Send
+                                            </>
+                                        )}
                                     </button>
                                 </div>
                             </form>
                         </div>
+
                         <div className="space-y-6">
-                            <div className="bg-neutral-800 text-white p-4 rounded-md">
-                                <h3 className="text-lg font-medium text-primaryColor">Address</h3>
-                                <p>3680 Schamberger Pass, North Catalina<br />01984-8381</p>
-                            </div>
-                            <div className="bg-neutral-800 text-white p-4 rounded-md">
+                            <div className="bg-neutral-900 text-white p-4 rounded-xl">
                                 <h3 className="text-lg font-medium text-primaryColor">Contact</h3>
-                                <p>Talk to us and see how we can work<br />1800-14-0147</p>
+                                <p className="mb-3">Talk to us and see how we can work</p>
+                                <a
+                                    href="tel:+92491797803"
+                                    className="flex items-center gap-x-1 hover:underline"
+                                >
+                                    <Phone className="h-5 w-5" /> +92-491797803
+                                </a>
                             </div>
-                            <div className="bg-neutral-800 text-white p-4 rounded-md">
+
+                            <div className="bg-neutral-900 text-white p-4 rounded-xl">
                                 <h3 className="text-lg font-medium text-primaryColor">Email</h3>
-                                <p>We're usually replying within 24 hours<br />pagedone1234@gmail.com</p>
+                                <p className="mb-3">We're usually replying within 1-2 Hours</p>
+                                <a
+                                    href="mailto:Saifarshad3344@gmail.com"
+                                    className="flex items-center gap-x-1 hover:underline"
+                                >
+                                    <Mail className="h-5 w-5" /> Saifarshad3344@gmail.com
+                                </a>
                             </div>
-                            <div className="bg-neutral-800 text-white p-4 rounded-md">
-                                <h3 className="text-lg font-medium text-primaryColor">Working Hours</h3>
-                                <p>Mon to Sat - 10 am to 7 pm<br />Sunday - 11 am to 5 pm</p>
+
+                            <div className="bg-neutral-900  text-white p-4 rounded-xl">
+                                <h3 className="text-lg font-medium mb-3 text-primaryColor">
+                                    Working Hours
+                                </h3>
+                                <p>
+                                    Mon to Sat - 12 am to 12 pm
+                                    <br />
+                                    Sunday - 11 am to 5 pm
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );
 }
-
-export default Page;
