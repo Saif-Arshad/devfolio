@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
-import { Clock, Mail, Phone, Send } from "lucide-react";
+import { BriefcaseBusinessIcon, Clock, Mail, Phone, Send } from "lucide-react";
 import { SiGmail } from "react-icons/si";
 
 export default function Page() {
@@ -249,7 +249,7 @@ export default function Page() {
                                         className=" bg-emerald-700 w-[120px] text-white flex items-center justify-center gap-x-2 px-4 py-2 rounded-full hover:bg-emerald-800 transition-colors disabled:opacity-50"
                                     >
                                         {loading ? (
-                                    
+
                                             <Send className="h-5 w-5 animate-spin" />
                                         ) : (
                                             <>
@@ -261,31 +261,34 @@ export default function Page() {
                             </form>
                         </div>
 
-                        <div className="space-y-6">
-                            <div className="bg-neutral-900 text-white p-4 rounded-xl">
-                                <h3 className="text-lg font-medium text-primaryColor">Contact</h3>
-                                <p className="mb-3">Talk to us and see how we can work</p>
-                                <a
-                                    href="tel:+92491797803"
-                                    className="flex items-center gap-x-1 hover:underline"
-                                >
-                                    <Phone className="h-5 w-5" /> +92-491797803
-                                </a>
-                            </div>
+                        <div className=" flex flex-col gap-y-6">
+                            <a
+                                href="tel:+92491797803"
+                            >
+                                <div className="bg-neutral-900 text-white p-4 rounded-xl cursor-pointer">
+                                    <h3 className="text-lg font-medium text-primaryColor flex   items-center gap-x-2">
+                                        <Phone className="h-5 w-5" />
+                                        Contact</h3>
+                                    <p className="mb-3">Talk to us and see how we can work</p>
+                                    +92-491797803
+                                </div>
+                            </a>
 
-                            <div className="bg-neutral-900 text-white p-4 rounded-xl">
-                                <h3 className="text-lg font-medium text-primaryColor">Email</h3>
-                                <p className="mb-3">We're usually replying within 1-2 Hours</p>
-                                <a
-                                    href="mailto:Saifarshad3344@gmail.com"
-                                    className="flex items-center gap-x-1 hover:underline"
-                                >
-                                    <Mail className="h-5 w-5" /> Saifarshad3344@gmail.com
-                                </a>
-                            </div>
+                            <a
+                                href="mailto:Saifarshad3344@gmail.com"
+                            >
+                                <div className="bg-neutral-900 cursor-pointer text-white p-4 rounded-xl">
+                                    <h3 className="text-lg font-medium text-primaryColor flex  items-center gap-x-2">
+                                        <Mail className="h-5 w-5" />
+                                        Email</h3>
+                                    <p className="mb-3">We're usually replying within 1-2 Hours</p>
+                                    Saifarshad3344@gmail.com
+                                </div>
+                            </a>
 
                             <div className="bg-neutral-900  text-white p-4 rounded-xl">
-                                <h3 className="text-lg font-medium mb-3 text-primaryColor">
+                                <h3 className="text-lg font-medium text-primaryColor flex  items-center gap-x-2">
+                                    <BriefcaseBusinessIcon className="h-5 w-5" />
                                     Working Hours
                                 </h3>
                                 <p>
