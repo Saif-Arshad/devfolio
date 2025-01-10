@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Github, Linkedin } from 'lucide-react';
-import Magnet from "./megenet";
+import { Magnetic } from "./megenet";
 import { usePathname } from "next/navigation";
 
 function Footer() {
@@ -37,6 +37,7 @@ function Footer() {
         // },
     ]
     const currentPath = usePathname()
+    const springOptions = { bounce: 0.1 };
     return (
         <footer className="relative flex flex-col z-20 md:flex-row justify-evenly items-end w-full  my-6 p-5 sm:p-20 md:p-[5rem_2vw]">
             <div className="flex flex-col items-start justify-start  w-full md:w-[28%]">
@@ -52,8 +53,31 @@ function Footer() {
                     </Link>
                 </div>
                 <div className="mt-10">
-
-                    <Magnet padding={50} disabled={false}>
+                    <Magnetic
+                        intensity={0.2}
+                        springOptions={springOptions}
+                        actionArea='global'
+                        range={200}
+                    >
+                        <Link href={"mailto:saifarshad3344@gmail.com"}>
+                            <p className="mb-3 flex items-center">
+                                Made with
+                                <Magnetic
+                                    intensity={0.1}
+                                    springOptions={springOptions}
+                                    actionArea='global'
+                                    range={200}
+                                >
+                                    <span className="px-1">❤️</span>
+                                </Magnetic>
+                                by
+                                <span className="text-primaryColor mx-2 font-semibold">
+                                    Saif Ur Rehman
+                                </span>
+                            </p>
+                        </Link>
+                    </Magnetic>
+                    {/* <Magnet padding={50} disabled={false}>
                         <Link href={"mailto:saifarshad3344@gmail.com"}>
                             <p className="mb-3">
                                 Made with <span className="">❤️</span> by
@@ -62,7 +86,7 @@ function Footer() {
                                 </span>
                             </p>
                         </Link>
-                    </Magnet>
+                    </Magnet> */}
                 </div>
             </div>
 

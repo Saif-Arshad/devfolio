@@ -2,6 +2,7 @@ import React from 'react'
 import GradualSpacing from '../../../_components/ui/gradual-spacing'
 import IconCloud from '../../../_components/ui/icon-cloud'
 import SocialLinks from '@/app/_components/buttons/Social';
+import { TextLoop } from '@/app/_components/shared/loopText';
 
 function AboutHero() {
     const slugs = [
@@ -44,7 +45,43 @@ function AboutHero() {
                         text=" Saif Ur Rehman."
                     />
                     <h3 className="text-primaryColor tracking-wide ml-3  font-semibold text-xl">
-                        Software Engineer
+                        <TextLoop
+                            className='overflow-y-clip'
+                            transition={{
+                                type: 'spring',
+                                stiffness: 1400,
+                                damping: 80,
+                                mass: 10,
+                            }}
+                            variants={{
+                                initial: {
+                                    y: 20,
+                                    rotateX: 90,
+                                    opacity: 0,
+                                    filter: 'blur(4px)',
+                                },
+                                animate: {
+                                    y: 0,
+                                    rotateX: 0,
+                                    opacity: 1,
+                                    filter: 'blur(0px)',
+                                },
+                                exit: {
+                                    y: -20,
+                                    rotateX: -90,
+                                    opacity: 0,
+                                    filter: 'blur(4px)',
+                                },
+                            }}
+                        >
+                            <span>Software Engineer</span>
+                            <span>Full Stack Developer</span>
+                            <span>Mobile App Developer</span>
+                            <span>Web App Developer</span>
+                            <span>MERN Stack Developer</span>
+                            <span>Next Js Developer</span>
+                            <span>Member of the Jedi Order</span>
+                        </TextLoop>
                     </h3>
                 </div>
                 <div className="flex flex-col items-start sm:pl-[10px]">

@@ -169,8 +169,8 @@ export default function Page() {
                 </div>
             </div>
             <div className="w-full my-5">
-                <div className="max-w-7xl mx-auto p-8">
-                    <div className=" border rounded-xl p-6  grid md:grid-cols-3 gap-8">
+                <div className="max-w-7xl mx-auto">
+                    <div className=" border bg-neutral-900 rounded-xl p-6  grid md:grid-cols-3 gap-8 ow-md   border-neutral-700">
                         <div className="md:col-span-2">
                             <h1 className="text-3xl font-medium text-start mb-1">Send me a message</h1>
                             <p className="text-gray-400 mb-6">
@@ -235,12 +235,7 @@ export default function Page() {
                                     Avg. response: 1-2 Hours (Working Hours, GMT+7)
                                 </p>
 
-                                {errorMessage && (
-                                    <p className="text-red-500 text-sm font-medium">{errorMessage}</p>
-                                )}
-                                {successMessage && (
-                                    <p className="text-green-500 text-sm font-medium">{successMessage}</p>
-                                )}
+
 
                                 <div className="my-10 w-full flex justify-end">
                                     <button
@@ -253,11 +248,18 @@ export default function Page() {
                                             <Send className="h-5 w-5 animate-spin" />
                                         ) : (
                                             <>
+                                                <Send className="h-5 w-5" />
                                                 Send
                                             </>
                                         )}
                                     </button>
                                 </div>
+                                {errorMessage && (
+                                    <p className="text-red-500 text-sm font-medium">{errorMessage}</p>
+                                )}
+                                {successMessage && (
+                                    <p className="text-green-500 text-sm font-medium">{successMessage}</p>
+                                )}
                             </form>
                         </div>
 
@@ -265,7 +267,7 @@ export default function Page() {
                             <a
                                 href="tel:+92491797803"
                             >
-                                <div className="bg-neutral-900 text-white p-4 rounded-xl cursor-pointer">
+                                <div className="bg-neutral-800 border border-neutral-700  text-white p-4 rounded-xl">
                                     <h3 className="text-lg font-medium text-primaryColor flex   items-center gap-x-2">
                                         <Phone className="h-5 w-5" />
                                         Contact</h3>
@@ -277,7 +279,8 @@ export default function Page() {
                             <a
                                 href="mailto:Saifarshad3344@gmail.com"
                             >
-                                <div className="bg-neutral-900 cursor-pointer text-white p-4 rounded-xl">
+                                <div className="bg-neutral-800 border border-neutral-700  text-white p-4 rounded-xl">
+
                                     <h3 className="text-lg font-medium text-primaryColor flex  items-center gap-x-2">
                                         <Mail className="h-5 w-5" />
                                         Email</h3>
@@ -286,7 +289,7 @@ export default function Page() {
                                 </div>
                             </a>
 
-                            <div className="bg-neutral-900  text-white p-4 rounded-xl">
+                            <div className="bg-neutral-800 border border-neutral-700  text-white p-4 rounded-xl">
                                 <h3 className="text-lg font-medium text-primaryColor flex  items-center gap-x-2">
                                     <BriefcaseBusinessIcon className="h-5 w-5" />
                                     Working Hours

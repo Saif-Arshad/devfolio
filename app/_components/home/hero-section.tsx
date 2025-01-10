@@ -3,6 +3,7 @@ import React from 'react'
 import GradualSpacing from '../ui/gradual-spacing'
 import { TypeAnimation } from 'react-type-animation'
 import SocialLinks from '../buttons/Social'
+import { TextLoop } from '../shared/loopText'
 
 export default function FirstAbout() {
     return (
@@ -15,8 +16,48 @@ export default function FirstAbout() {
                         className="font-display text-4xl xs:text-5xl font-bold -tracking-widest  text-black dark:text-white sm:text-7xl lg:text-[100px] md:my-3   md:leading-[5rem]"
                         text=" Saif Ur Rehman"
                     />
-                    <h3 className="text-primaryColor tracking-wide mt-2 ml-7 font-semibold sm:text-xl">
-                        <TypeAnimation
+                    <h3 className="text-primaryColor tracking-wide mt-2 ml-7 font-medium sm:text-xl">
+                        <p className='inline-flex whitespace-pre-wrap '>
+                            A{' '}
+                            <TextLoop
+                                className='overflow-y-clip'
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 1400,
+                                    damping: 80,
+                                    mass: 10,
+                                }}
+                                variants={{
+                                    initial: {
+                                        y: 20,
+                                        rotateX: 90,
+                                        opacity: 0,
+                                        filter: 'blur(4px)',
+                                    },
+                                    animate: {
+                                        y: 0,
+                                        rotateX: 0,
+                                        opacity: 1,
+                                        filter: 'blur(0px)',
+                                    },
+                                    exit: {
+                                        y: -20,
+                                        rotateX: -90,
+                                        opacity: 0,
+                                        filter: 'blur(4px)',
+                                    },
+                                }}
+                            >
+                                <span>Software Engineer</span>
+                                <span>Full Stack Developer</span>
+                                <span>Mobile App Developer</span>
+                                <span>Web App Developer</span>
+                                <span>MERN Stack Developer</span>
+                                <span>Next Js Developer</span>
+                                <span>Member of the Jedi Order</span>
+                            </TextLoop>
+                        </p>
+                        {/* <TypeAnimation
                             sequence={[
                                 'Software Engineer',
                                 3000,
@@ -38,7 +79,7 @@ export default function FirstAbout() {
                             cursor={true}
                             repeat={Infinity}
                             style={{ display: 'inline-block' }}
-                        />
+                        /> */}
 
                     </h3>
                 </div>
@@ -51,11 +92,7 @@ export default function FirstAbout() {
                         .
                     </p>
                     <p className="mt-2 text-white sm:text-lg">
-                        ⚡ I help your
-                        <span className=" shine-text font-semibold px-1.5">
-                            PRODUCT SHINE
-                        </span>
-                        in a crowded market
+                        ⚡ Exploring opportunities and side projects.
 
                     </p>
                     <p className="mt-2 text-white sm:text-lg">
@@ -69,10 +106,10 @@ export default function FirstAbout() {
                         <span className="text-primaryColor font-semibold px-1.5">Next.js</span>.
                         I specialize in building
                         <span className="text-primaryColor font-semibold px-1.5">complex</span>,
-                   fast, and
+                        fast, and
                         <span className="text-primaryColor font-semibold px-1.5">functional</span>
                         digital products that deliver
-                     exceptional user experiences.
+                        exceptional user experiences.
                     </p>
 
 

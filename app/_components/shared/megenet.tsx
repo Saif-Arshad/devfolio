@@ -1,59 +1,112 @@
-"use client"
+'use client';
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  type SpringOptions,
+} from 'framer-motion';
 
-const Magnet = ({ children, padding = 100, disabled = false }: any) => {
-    const [isActive, setIsActive] = useState(false);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const magnetRef = useRef(null);
+const SPRING_CONFIG = { stiffness: 26.7, damping: 4.1, mass: 0.2 };
 
-    useEffect(() => {
-        if (disabled) {
-            setPosition({ x: 0, y: 0 });
-            return;
-        }
-
-        const handleMouseMove = (e: any) => {
-            if (magnetRef.current) {
-                // @ts-ignore
-                const { left, top, width, height } = magnetRef?.current?.getBoundingClientRect();
-                const centerX = left + width / 2;
-                const centerY = top + height / 2;
-                const distX = Math.abs(centerX - e.clientX);
-                const distY = Math.abs(centerY - e.clientY);
-
-                if (distX < width / 2 + padding && distY < height / 2 + padding) {
-                    setIsActive(true);
-                    const offsetX = (e.clientX - centerX) / 2;
-                    const offsetY = (e.clientY - centerY) / 2;
-                    setPosition({ x: offsetX, y: offsetY });
-                } else {
-                    setIsActive(false);
-                    setPosition({ x: 0, y: 0 });
-                }
-            }
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-        };
-    }, [padding, disabled]);
-
-    return (
-        <div ref={magnetRef} style={{ position: "relative", display: "inline-block" }}>
-            <div
-                style={{
-                    transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-                    transition: isActive ? "transform 0.3s ease-out" : "transform 0.5s ease-in-out",
-                    willChange: "transform",
-                }}
-            >
-                {children}
-            </div>
-        </div>
-    );
+export type MagneticProps = {
+  children: React.ReactNode;
+  intensity?: number;
+  range?: number;
+  actionArea?: 'self' | 'parent' | 'global';
+  springOptions?: SpringOptions;
 };
 
-export default Magnet;
+export function Magnetic({
+  children,
+  intensity = 0.6,
+  range = 100,
+  actionArea = 'self',
+  springOptions = SPRING_CONFIG,
+}: MagneticProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springX = useSpring(x, springOptions);
+  const springY = useSpring(y, springOptions);
+
+  useEffect(() => {
+    const calculateDistance = (e: MouseEvent) => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const distanceX = e.clientX - centerX;
+        const distanceY = e.clientY - centerY;
+
+        const absoluteDistance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+        if (isHovered && absoluteDistance <= range) {
+          const scale = 1 - absoluteDistance / range;
+          x.set(distanceX * intensity * scale);
+          y.set(distanceY * intensity * scale);
+        } else {
+          x.set(0);
+          y.set(0);
+        }
+      }
+    };
+
+    document.addEventListener('mousemove', calculateDistance);
+
+    return () => {
+      document.removeEventListener('mousemove', calculateDistance);
+    };
+  }, [ref, isHovered, intensity, range]);
+
+  useEffect(() => {
+    if (actionArea === 'parent' && ref.current?.parentElement) {
+      const parent = ref.current.parentElement;
+
+      const handleParentEnter = () => setIsHovered(true);
+      const handleParentLeave = () => setIsHovered(false);
+
+      parent.addEventListener('mouseenter', handleParentEnter);
+      parent.addEventListener('mouseleave', handleParentLeave);
+
+      return () => {
+        parent.removeEventListener('mouseenter', handleParentEnter);
+        parent.removeEventListener('mouseleave', handleParentLeave);
+      };
+    } else if (actionArea === 'global') {
+      setIsHovered(true);
+    }
+  }, [actionArea]);
+
+  const handleMouseEnter = () => {
+    if (actionArea === 'self') {
+      setIsHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (actionArea === 'self') {
+      setIsHovered(false);
+      x.set(0);
+      y.set(0);
+    }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseEnter={actionArea === 'self' ? handleMouseEnter : undefined}
+      onMouseLeave={actionArea === 'self' ? handleMouseLeave : undefined}
+      style={{
+        x: springX,
+        y: springY,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
