@@ -3,6 +3,8 @@ import GradualSpacing from '../../../_components/ui/gradual-spacing'
 import IconCloud from '../../../_components/ui/icon-cloud'
 import SocialLinks from '@/app/_components/buttons/Social';
 import { TextLoop } from '@/app/_components/shared/loopText';
+import Link from 'next/link';
+import { FileUser } from 'lucide-react';
 
 function AboutHero() {
     const slugs = [
@@ -10,6 +12,7 @@ function AboutHero() {
         "javascript",
         "mysql",
         "python",
+        "vue",
         "react",
         "reactnative",
         "postman",
@@ -108,8 +111,12 @@ function AboutHero() {
                         <span className="text-primaryColor font-semibold px-1">exceptional user experiences</span>.
 
                     </p>
+                    <Link href={`/resume`}>
+                        <button className='bg-primaryColor mt-7 items-center flex text-black p-2 rounded-full px-5 group'>
+                            <FileUser className='h-5 w-5 me-2 group-hover:animate-shake' />
+                            My Resume</button>
+                    </Link>
 
-                    <SocialLinks />
                 </div>
 
             </div>

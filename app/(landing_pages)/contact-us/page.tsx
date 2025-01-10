@@ -13,21 +13,21 @@ export default function Page() {
             link: "https://www.linkedin.com/in/saif-rehman-professional/",
             bgColor: "#0077B5",
             textColor: "#FFFFFF",
-            icon: <BsLinkedin className="sm:h-5 sm:w-5 h-4 w-4" />,
+            icon: <BsLinkedin className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake" />,
         },
         {
             name: "GitHub",
             link: "https://github.com/Saif-Arshad",
             bgColor: "#181717",
             textColor: "#FFFFFF",
-            icon: <BsGithub className="sm:h-5 sm:w-5 h-4 w-4" />,
+            icon: <BsGithub className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake" />,
         },
         {
             name: "WhatsApp",
             link: "https://wa.me/+923267146133",
             bgColor: "#108e3e",
             textColor: "#FFFFFF",
-            icon: <FaWhatsapp className="sm:h-5 sm:w-5 h-4 w-4" />,
+            icon: <FaWhatsapp className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake" />,
         },
         {
             name: "Fiverr",
@@ -40,7 +40,7 @@ export default function Page() {
                     viewBox="-2.5 -2 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="xMinYMin"
-                    className="sm:h-5 sm:w-5 h-4 w-4"
+                    className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake"
                 >
                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g
@@ -61,7 +61,7 @@ export default function Page() {
         //     link: 'mailto:saifarshad3344@gmail.com',
         //     bgColor: '#D14836',
         //     textColor: '#FFFFFF',
-        //     icon: <SiGmail className="sm:h-5 sm:w-5 h-4 w-4" />
+        //     icon: <SiGmail className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake" />
         // }
     ];
 
@@ -135,7 +135,7 @@ export default function Page() {
                             href={social.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-3 text-sm sm:text-base sm:px-4 py-2 rounded-md hover:scale-95 duration-500"
+                            className="flex items-center gap-2 group px-3 text-sm sm:text-base sm:px-4 py-2 rounded-md   duration-500"
                             style={{
                                 backgroundColor: social.bgColor,
                                 color: social.textColor,
@@ -147,7 +147,7 @@ export default function Page() {
                                     viewBox="-2.5 -2 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
                                     preserveAspectRatio="xMinYMin"
-                                    className="sm:h-5 sm:w-5 h-4 w-4"
+                                    className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake group-hover:animate-shake"
                                 >
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g
@@ -241,14 +241,14 @@ export default function Page() {
                                     <button
                                         type="submit"
                                         disabled={loading}
-                                        className=" bg-emerald-700 w-[120px] text-white flex items-center justify-center gap-x-2 px-4 py-2 rounded-full hover:bg-emerald-800 transition-colors disabled:opacity-50"
+                                        className=" bg-emerald-700 group w-[120px] text-white flex items-center justify-center gap-x-2 px-4 py-2 rounded-full hover:bg-emerald-800 transition-colors disabled:opacity-50"
                                     >
                                         {loading ? (
 
                                             <Send className="h-5 w-5 animate-spin" />
                                         ) : (
                                             <>
-                                                <Send className="h-5 w-5" />
+                                                <Send className="h-5 w-5 group-hover:animate-shake" />
                                                 Send
                                             </>
                                         )}
@@ -267,9 +267,9 @@ export default function Page() {
                             <a
                                 href="tel:+92491797803"
                             >
-                                <div className="bg-neutral-800 border border-neutral-700  text-white p-4 rounded-xl">
+                                <div className="bg-neutral-800 border group border-neutral-700  text-white p-4 rounded-xl">
                                     <h3 className="text-lg font-medium text-primaryColor flex   items-center gap-x-2">
-                                        <Phone className="h-5 w-5" />
+                                        <Phone className="h-5 w-5 group-hover:animate-shake" />
                                         Contact</h3>
                                     <p className="mb-3">Talk to us and see how we can work</p>
                                     +92-491797803
@@ -279,19 +279,19 @@ export default function Page() {
                             <a
                                 href="mailto:Saifarshad3344@gmail.com"
                             >
-                                <div className="bg-neutral-800 border border-neutral-700  text-white p-4 rounded-xl">
+                                <div className="bg-neutral-800 border group border-neutral-700  text-white p-4 rounded-xl">
 
                                     <h3 className="text-lg font-medium text-primaryColor flex  items-center gap-x-2">
-                                        <Mail className="h-5 w-5" />
+                                        <Mail className="h-5 w-5 group-hover:animate-shake" />
                                         Email</h3>
                                     <p className="mb-3">We're usually replying within 1-2 Hours</p>
                                     Saifarshad3344@gmail.com
                                 </div>
                             </a>
 
-                            <div className="bg-neutral-800 border border-neutral-700  text-white p-4 rounded-xl">
+                            <div className="bg-neutral-800 border group border-neutral-700  text-white p-4 rounded-xl">
                                 <h3 className="text-lg font-medium text-primaryColor flex  items-center gap-x-2">
-                                    <BriefcaseBusinessIcon className="h-5 w-5" />
+                                    <BriefcaseBusinessIcon className="h-5 w-5 group-hover:animate-shake" />
                                     Working Hours
                                 </h3>
                                 <p>

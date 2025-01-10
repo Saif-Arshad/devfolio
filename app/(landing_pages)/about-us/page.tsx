@@ -17,13 +17,13 @@ async function page() {
     return (
         <>
             <AboutHero />
-            <div className='flex items-center flex-col px-4 lg:px-10 xl:px-20 my-7 w-full'>
+            <div className='flex items-center flex-col px-4 lg:px-10 xl:px-10 my-7 w-full'>
                 <Skills />
             </div>
             <AboutUs />
             <WeeklyStats data={data} />
             <GithubContributions data={githubData} />
-            <LatestPost  />
+            <LatestPost />
             <WhatWeDo />
         </>
     )

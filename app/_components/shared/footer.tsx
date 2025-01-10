@@ -42,14 +42,14 @@ function Footer() {
         <footer className="relative flex flex-col z-20 md:flex-row justify-evenly items-end w-full  my-6 p-5 sm:p-20 md:p-[5rem_2vw]">
             <div className="flex flex-col items-start justify-start  w-full md:w-[28%]">
                 <div className="flex gap-4">
-                    <Link href="http://github.com/Saif-Arshad/" target="_blank" className="flex justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem] hover:scale-105 transition-all">
-                        <Github />
+                    <Link href="http://github.com/Saif-Arshad/" target="_blank" className="flex group justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem] transition-all">
+                        <Github className='group-hover:animate-shake' />
                     </Link>
-                    <Link href="https://www.linkedin.com/in/saif-rehman-professional/" target="_blank" className="flex hover:scale-105 transition-all justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem]">
-                        <Linkedin />
+                    <Link href="https://www.linkedin.com/in/saif-rehman-professional/" target="_blank" className="group flex transition-all justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem]">
+                        <Linkedin className='group-hover:animate-shake' />
                     </Link>
-                    <Link href="https://web.facebook.com/people/Saif-Ur-Rehman/pfbid02q6ZGZtrjSpcQkGtcLpccSVxc12BNcS2rUPHwB5FkvYF33de2thQGbeL66SmCVMw9l/" target="_blank" className="flex hover:scale-105 transition-all justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem]">
-                        <Facebook />
+                    <Link href="https://web.facebook.com/people/Saif-Ur-Rehman/pfbid02q6ZGZtrjSpcQkGtcLpccSVxc12BNcS2rUPHwB5FkvYF33de2thQGbeL66SmCVMw9l/" target="_blank" className="group flex  transition-all justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem]">
+                        <Facebook className='group-hover:animate-shake' />
                     </Link>
                 </div>
                 <div className="mt-10">

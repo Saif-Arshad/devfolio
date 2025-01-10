@@ -75,7 +75,7 @@ function Projects() {
                         <h1 className='font-bold text-3xl lg:text-5xl '>
                             My Portfolio
                         </h1>
-                        <h2 className=' text-primaryColor mt-1 text-lg '>
+                        <h2 className=' text-primaryColor text-lg mt-3  '>
                             Recent Projects and Achievements
                         </h2>
                         <p className='mt-3 mb-8'>

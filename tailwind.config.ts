@@ -61,7 +61,18 @@ const config: Config = {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
-			}
+			},
+			animation: {
+				shake: "shake 0.5s ease-in-out",
+			},
+			keyframes: {
+				shake: {
+					"0%, 100%": { transform: "translateX(0)" },
+					"25%": { transform: "translateX(-2px)" },
+					"50%": { transform: "translateX(2px)" },
+					"75%": { transform: "translateX(-2px)" },
+				},
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
