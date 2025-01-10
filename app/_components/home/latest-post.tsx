@@ -60,7 +60,8 @@ function LatestPost() {
                     Latest Articles
                 </h3>
                 <Link href={`/articles`}>
-                    <button className='bg-primaryColor text-black p-2 rounded-full px-5 hover:scale-105 duration-300 '>View All</button>
+                    <button className='bg-emerald-700 hover:bg-emerald-800 items-center flex text-white p-2 rounded-full px-5 group'>
+                        View All</button>
                 </Link>
             </div>
 

@@ -111,7 +111,7 @@ function AboutHero() {
 
                     </p>
                     <Link href={`/resume`}>
-                        <button className='bg-primaryColor mt-7 items-center flex text-black p-2 rounded-full px-5 group'>
+                        <button className='bg-emerald-700 hover:bg-emerald-800 mt-7 items-center flex text-white p-2 rounded-full px-5 group'>
                             <FileUser className='h-5 w-5 me-2 group-hover:animate-shake' />
                             My Resume</button>
                     </Link>

@@ -2,10 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import './BackTop.css';
+import { usePathname } from 'next/navigation';
 
 function BackTop() {
     const [isVisible, setIsVisible] = useState(false);
-
+    const path = usePathname()
+    const isResumePage = path == "/resume"
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > window.innerHeight) {
@@ -26,7 +28,9 @@ function BackTop() {
             behavior: 'smooth',
         });
     };
-
+    if (isResumePage) {
+        return null
+    }
     return (
         isVisible && (
             <button className="top" onClick={scrollToTop}>

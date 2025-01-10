@@ -55,7 +55,6 @@ export default function Page() {
                 </svg>
             ),
         },
-        // Uncomment if you want Gmail as a quick link
         // {
         //     name: 'Gmail',
         //     link: 'mailto:saifarshad3344@gmail.com',
@@ -170,7 +169,7 @@ export default function Page() {
             </div>
             <div className="w-full my-5">
                 <div className="max-w-7xl mx-auto">
-                    <div className=" border bg-neutral-900 rounded-xl p-6  grid md:grid-cols-3 gap-8 ow-md   border-neutral-700">
+                    <div className=" border bg-neutral-900 rounded-xl p-6  grid md:grid-cols-3 gap-12   border-neutral-700">
                         <div className="md:col-span-2">
                             <h1 className="text-3xl font-medium text-start mb-1">Send me a message</h1>
                             <p className="text-gray-400 mb-6">
