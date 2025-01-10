@@ -1,7 +1,6 @@
 import React from 'react'
 import GradualSpacing from '../../../_components/ui/gradual-spacing'
 import IconCloud from '../../../_components/ui/icon-cloud'
-import SocialLinks from '@/app/_components/buttons/Social';
 import { TextLoop } from '@/app/_components/shared/loopText';
 import Link from 'next/link';
 import { FileUser } from 'lucide-react';
