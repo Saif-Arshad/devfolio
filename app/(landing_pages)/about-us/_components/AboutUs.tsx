@@ -56,15 +56,16 @@ function AboutUs() {
                             <div className="w-full flex-col justify-center items-start gap-6 flex">
                                 <div className="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
                                     <div
-                                        className="w-full h-full p-3.5 rounded-2xl bg-neutral-800  transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex"
+                                        className="w-full h-full p-3.5 rounded-2xl bg-neutral-800 border border-neutral-700 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex"
                                     >
-                                        <h4 className="text-gray-100 text-2xl font-bold font-manrope leading-9">3+ Years</h4>
+                                        <h4 className="text-gray-100 text-2xl font-bold font-manrope leading-9">Quality Solutions</h4>
                                         <p className="text-gray-200 text-base font-normal leading-relaxed">
-                                            Professional Experience in Development
+                                            Expertise in delivering top-quality solutions
                                         </p>
                                     </div>
                                     <div
-                                        className="w-full h-full p-3.5 rounded-2xl bg-neutral-800  transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex"
+                                        className="w-full h-full p-3.5 rounded-2xl bg-neutral-800 border border-neutral-700 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex"
+
                                     >
                                         <h4 className="text-gray-100 text-2xl font-bold font-manrope leading-9">50+ Projects</h4>
                                         <p className="text-gray-200 text-base font-normal leading-relaxed">
@@ -74,7 +75,8 @@ function AboutUs() {
                                 </div>
                                 <div className="w-full h-full justify-start items-center gap-8 grid grid-cols-1">
                                     <div
-                                        className="w-full h-full p-3.5 rounded-2xl bg-neutral-800  transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex"
+                                        className="w-full h-full p-3.5 rounded-2xl bg-neutral-800 border border-neutral-700 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex"
+
                                     >
                                         <h4 className="text-gray-100 text-2xl font-bold font-manrope leading-9">100% Happy Clients</h4>
                                         <p className="text-gray-200 text-base font-normal leading-relaxed">

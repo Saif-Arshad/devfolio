@@ -43,7 +43,7 @@ function AboutHero() {
                 <div className='flex flex-col items-start '>
 
                     <GradualSpacing
-                        className="font-display text-4xl md:text-6xl font-bold -tracking-widest  text-black dark:text-white md:mt-3   md:leading-[5rem]"
+                        className="font-display text-4xl xs:text-5xl md:text-6xl font-bold -tracking-widest  text-black dark:text-white md:mt-3   md:leading-[5rem]"
                         text=" Saif Ur Rehman."
                     />
                     <h3 className="text-primaryColor tracking-wide ml-3  font-semibold text-xl">

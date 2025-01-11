@@ -8,6 +8,8 @@ import Skills from './_components/Skills'
 import { getWakaStats } from '@/app/_actions/waka-time'
 import { fetchGithubData } from '@/app/_actions/github'
 import LatestPost from '@/app/_components/home/latest-post'
+import WhyUs from './_components/WhyUs'
+import { TimelineDemo } from '@/app/_components/home/experience-timeline'
 
 async function page() {
 
@@ -21,8 +23,10 @@ async function page() {
                 <Skills />
             </div>
             <AboutUs />
+            <WhyUs />
             <WeeklyStats data={data} />
             <GithubContributions data={githubData} />
+            <TimelineDemo />
             <LatestPost />
             <WhatWeDo />
         </>
