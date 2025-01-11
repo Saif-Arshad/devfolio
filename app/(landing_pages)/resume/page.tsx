@@ -54,12 +54,12 @@ function page() {
 
     return (
         <div className="flex flex-wrap w-full sm:px-5 lg:px-10 items-start mb-20">
-            <div className="container  mx-auto py-10 px-5">
-                <a href={"/resume/Saif Ur Rehman Resume.pdf"} download={"/resume/Saif Ur Rehman Resume.pdf"}>
-                    <button className='bg-emerald-700 hover:bg-emerald-800 fixed bottom-4  right-4 z-50 items-center flex text-white p-2 rounded-full px-5 group'>
-                        <FileUser className='h-5 w-5 me-2 group-hover:animate-shake' />
-                        Download Resume</button>
-                </a>
+            <a href={"/resume/Saif Ur Rehman Resume.pdf"} download={"/resume/Saif Ur Rehman Resume.pdf"}>
+                <button className='bg-emerald-700 hover:bg-emerald-800 fixed bottom-4  right-4 z-50 items-center flex text-white p-2 rounded-full px-5 group'>
+                    <FileUser className='h-5 w-5 me-2 group-hover:animate-shake' />
+                    Download Resume</button>
+            </a>
+            <div className="  py-10 px-2 w-full sm:px-5">
                 <div className="max-w-4xl mx-auto bg-neutral-900 border border-neutral-700 rounded-lg shadow-md overflow-hidden">
                     <div className="p-4 sm:p-6">
                         <div className="flex flex-col sm:flex-row gap-5 sm:items-center justify-between">

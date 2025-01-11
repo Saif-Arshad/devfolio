@@ -8,7 +8,7 @@ import {
     MorphingDialogSubtitle,
     MorphingDialogClose,
     MorphingDialogContainer,
-} from '@/app/_components/ui/morphingDialog';
+} from '@/app/_components/ui/morphing-dialog';
 
 import { TextLoop } from '@/app/_components/shared/loopText'
 import React, { useEffect, useState } from 'react'
@@ -77,7 +77,6 @@ function page() {
 
         },
     ];
-    const sliderSkills = Object.entries(STACKS).sort(() => Math.random() - 0.5);
 
 
     return (
@@ -158,7 +157,7 @@ function page() {
 
 
             <div className="space-y-2 w-full mt-10 ">
-                <div className="grid gap-8 md:grid-cols-2">
+                <div className="grid gap-8 md:grid-cols-2 relative">
                     {myServices.map((service, index) => (
 
                         <MorphingDialog
@@ -223,29 +222,29 @@ function page() {
                                 <MorphingDialogContent
                                     style={{
                                         borderRadius: '12px',
+                                        maxHeight: '98vh',
+                                        overflowY: "auto"
                                     }}
-                                    className="relative max-h-[90vh] w-[500px] border border-neutral-700 bg-neutral-900 overflow-hidden"
+                                    className="relative w-full sm:w-[500px] border border-neutral-700 bg-neutral-900"
                                 >
-                                    <ScrollArea className="h-[90vh] overflow-y-auto" type="scroll">
-                                        <div className="relative p-6">
-                                            <MorphingDialogImage
-                                                src={service.image}
-                                                alt={service.title}
-                                                className="h-60 mb-4 w-full md:h-72"
-                                            />
-                                            <div>
-                                                <MorphingDialogTitle className="text-white font-semibold text-3xl">
-                                                    {service.title}
-                                                </MorphingDialogTitle>
-                                                <MorphingDialogSubtitle className="font-light text-gray-200 mt-3">
-                                                    {service.discription}
-                                                </MorphingDialogSubtitle>
-                                                <div className="mt-4 text-sm text-gray-700">
-                                                    {service.Detail}
-                                                </div>
+                                    <div className="relative p-6">
+                                        <MorphingDialogImage
+                                            src={service.image}
+                                            alt={service.title}
+                                            className="h-60 mb-4 w-full md:h-72"
+                                        />
+                                        <div >
+                                            <MorphingDialogTitle className="text-white font-semibold text-3xl">
+                                                {service.title}
+                                            </MorphingDialogTitle>
+                                            <MorphingDialogSubtitle className="font-light text-gray-200 mt-3">
+                                                {service.discription}
+                                            </MorphingDialogSubtitle>
+                                            <div className="font-light text-gray-200 mt-1">
+                                                {service.Detail}
                                             </div>
                                         </div>
-                                    </ScrollArea>
+                                    </div>
                                     <MorphingDialogClose className="text-zinc-100" />
                                 </MorphingDialogContent>
 
@@ -254,11 +253,10 @@ function page() {
                         </MorphingDialog>
                     ))}
                 </div>
-
             </div >
 
             <h2
-                className="font-display text-4xl text-start font-bold mt-20  text-black dark:text-gray-100 sm:text-6xl mb-10"
+                className="font-display text-4xl text-start w-full font-bold mt-20  text-black dark:text-gray-100 sm:text-6xl mb-10"
 
             >
                 I help founders turn{' '}

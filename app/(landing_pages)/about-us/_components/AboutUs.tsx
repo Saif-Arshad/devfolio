@@ -26,9 +26,9 @@ function AboutUs() {
                                         Let’s create something amazing together! 🚀</h2>
                                     <p
                                         className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
-                                        I&apos;m Saif Ur Rehman I&lsquo;ve been working in web development for over 3 years (and if you count the sleepless nights,
+                                        I&apos;m Saif Ur Rehman I&lsquo;ve been working in web development for over 2 years (and if you count the sleepless nights,
                                         <span className="text-primaryColor font-semibold px-1.5">
-                                            it’s easily 4!
+                                            it’s easily 3!
                                         </span>
                                         ) doing both
 
@@ -58,7 +58,7 @@ function AboutUs() {
                                     <div
                                         className="w-full h-full p-3.5 rounded-2xl bg-neutral-800  transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex"
                                     >
-                                        <h4 className="text-gray-100 text-2xl font-bold font-manrope leading-9">4+ Years</h4>
+                                        <h4 className="text-gray-100 text-2xl font-bold font-manrope leading-9">3+ Years</h4>
                                         <p className="text-gray-200 text-base font-normal leading-relaxed">
                                             Professional Experience in Development
                                         </p>

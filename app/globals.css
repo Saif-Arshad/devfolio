@@ -135,21 +135,21 @@ html.lenis body {
   background-color: #3ccf91 !important;
 }
 
-.content-detail img{
+.content-detail img {
   border-radius: 7px !important;
   margin: 10px 0px !important;
 }
+
 .shine-text {
-  font-size: 1rem; /* Adjust size as needed */
+  font-size: 1rem;
+  /* Adjust size as needed */
   font-weight: bold;
   font-family: sans-serif;
-  background: linear-gradient(
-    to right,
-    #3ccf91 0%,
-    #ffffff 40%,
-    #3ccf91 80%,
-    #ffffff 100%
-  );
+  background: linear-gradient(to right,
+      #3ccf91 0%,
+      #ffffff 40%,
+      #3ccf91 80%,
+      #ffffff 100%);
   background-size: 200% auto;
   color: transparent;
   background-clip: text;
@@ -161,43 +161,43 @@ html.lenis body {
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 200% 50%;
   }
 }
+
 .infinite-loop-slider {
-    display: flex;
-    width: fit-content;
-    animation: looping-tag 70s linear infinite;
+  display: flex;
+  width: fit-content;
+  animation: looping-tag 70s linear infinite;
 }
 
 .infinite-loop-slider.reverse {
-    animation-direction: reverse;
+  animation-direction: reverse;
 }
+
 .styled-fade {
-    pointer-events: none;
-    background: linear-gradient(
-        90deg,
-        #121212,
-        transparent 20%,
-        transparent 80%,
-        #121212
-    );
-    position: absolute;
-    inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+      #121212,
+      transparent 20%,
+      transparent 80%,
+      #121212);
+  position: absolute;
+  inset: 0;
 }
 
 .infinite-loop-slider.normal {
-    animation-direction: normal;
+  animation-direction: normal;
 }
 
 @keyframes looping-tag {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
-
-

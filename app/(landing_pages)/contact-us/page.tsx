@@ -77,7 +77,7 @@ export default function Page() {
         e.preventDefault();
 
         if (!firstName.trim() || !email.trim() || !userMessage.trim()) {
-            setErrorMessage("Please fill out the required fields (First Name, Email, Message).");
+            setErrorMessage("Please fill out the required fields (Name, Email, Message).");
             setSuccessMessage(null);
             return;
         }
@@ -223,6 +223,7 @@ export default function Page() {
                                     </label>
                                     <textarea
                                         placeholder="Message"
+                                        rows={5}
                                         className="mt-1 block w-full px-4 py-2 border border-neutral-600 bg-neutral-800 text-white rounded-md shadow-sm focus:ring-primaryColor focus:border-primaryColor outline-none"
                                         value={userMessage}
                                         onChange={(e) => setUserMessage(e.target.value)}
@@ -244,7 +245,10 @@ export default function Page() {
                                     >
                                         {loading ? (
 
-                                            <Send className="h-5 w-5 animate-spin" />
+                                            <>
+                                                <Send className="h-5 w-5 animate-spin" />
+                                                Send
+                                            </>
                                         ) : (
                                             <>
                                                 <Send className="h-5 w-5 group-hover:animate-shake" />
