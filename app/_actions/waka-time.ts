@@ -1,4 +1,5 @@
 import { getALLTimeSinceToday, getReadStats } from "../_lib/waka-time";
+export const dynamic = 'force-dynamic'
 
 export async function getWakaStats() {
     try {
@@ -11,7 +12,7 @@ export async function getWakaStats() {
         };
 
         return { data };
-    } catch (error:any) {
+    } catch (error: any) {
         return {
             error: "An error occurred while fetching Waka stats",
             details: error?.message || error,

@@ -1,93 +1,114 @@
-'use client';
-import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Plus } from 'lucide-react';
+// @ts-nocheck
+"use client";
 
-const tabs = [
-    {
-        title: 'How do UI components improve UX?',
-        description:
-            'UI components can improve UX by providing familiar, consistent interactions that make it easy for users to navigate and interact with an application.',
+import React from "react";
+import {
+    Accordion,
+    AccordionContainer,
+    AccordionHeader,
+    AccordionItem,
+    AccordionPanel,
+    AccordionWrapper,
+} from "../ui/accordion";
+import Link from "next/link";
 
-    },
-    {
-        title: 'Common UI component design challenges?',
-        description:
-            'Some common challenges include maintaining consistency across different devices and screen sizes, ensuring compatibility with various browsers and assistive technologies, and balancing flexibility with ease of use.',
-
-    },
-    {
-        title: 'Ensuring UI component responsiveness?',
-        description:
-            '     Developers can ensure the responsiveness of UI components by using techniques such as fluid layouts, flexible grids, and media queries to adapt the components to different screen sizes and orientations.',
-
-    },
-];
 function Faqs() {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0);
-    const [activeItem, setActiveItem] = useState<
-        | {
-            title: string;
-            description: string;
-        }
-        | undefined
-    >(tabs[0]);
+    const leftSideFAQs = [
+        {
+            id: "item-1",
+            question: "Can you fix bugs or errors in my existing backend?",
+            answer:
+                "Yes, I offer comprehensive backend troubleshooting and bug-fixing services. I ensure your system operates without issues and provide recommendations to enhance its performance and reliability.",
+        },
+        {
+            id: "item-2",
+            question: "Do you offer support after project delivery?",
+            answer:
+                "Yes, I provide post-delivery support to ensure your backend system and APIs function smoothly. If any issues arise, I’ll assist you promptly to resolve them. Extended maintenance services are also available upon request.",
+        },
+        {
+            id: "item-3",
+            question: "What technologies do you use for backend development?",
+            answer:
+                "I work with modern frameworks and tools like Node.js. For databases, I use MySQL, MongoDB, and PostgreSQL. The choice of technology depends on your project requirements.",
+        },
+        {
+            id: "item-4",
+            question: "How long does it take to complete a project?",
+            answer:
+                "Project timelines depend on the scope and complexity of the work. For small to medium-sized projects, it typically takes 1-3 weeks. Larger projects or custom solutions may require more time, but I always strive to deliver within the agreed deadline.",
+        },
+    ];
 
-    const handleClick = async (index: number) => {
-        setActiveIndex(activeIndex === index ? null : index);
-        const newActiveItem = tabs.find((_, i) => i === index);
-        setActiveItem(newActiveItem);
-    };
+    const rightSideFAQs = [
+        {
+            id: "item-5",
+            question: "Can you fix issues or update my existing website?",
+            answer:
+                "Yes! I can fix errors, bugs, or broken features and also update your website with new functionality or a fresh design.",
+        },
+        {
+            id: "item-6",
+            question: "What do I need to provide before starting the project?",
+            answer:
+                "To get started, I’ll need: A clear description of your requirements. Any design references or mockups (if available). Additional details like specific features or integrations you need.",
+        },
+        {
+            id: "item-7",
+            question: "Do you provide deployment services?",
+            answer:
+                "Yes, I can deploy your website to hosting platforms like Vercel, Netlify, or your preferred hosting service.",
+        },
+        {
+            id: "item-8",
+            question: "Which technologies do you use for frontend development?",
+            answer:
+                "I primarily use modern technologies like React.js, Next.js, HTML, CSS, and Tailwind CSS to ensure high-quality and scalable solutions.",
+        },
+    ];
 
     return (
-        <>
-            <div className='container mx-auto pb-10 pt-2 px-4 sm:px-10  lg:px-20'>
-                <h1 className='uppercase text-center text-4xl font-bold pt-2 pb-4'>
-                    Frequently Aseked Question
-                </h1>
-                <div className='h-fit border  rounded-lg p-2 dark:bg-[#111111] bg-[#F2F2F2]'>
-                    {tabs.map((tab, index) => (
-                        <motion.div
-                            key={index}
-                            className={`overflow-hidden ${index !== tabs.length - 1 ? 'border-b' : ''
-                                }`}
-                            onClick={() => handleClick(index)}
-                        >
-                            <button
-                                className={`p-3 px-2 w-full cursor-pointer sm:text-base text-xs items-center transition-all font-semibold dark:text-white text-black   flex gap-2 
-               `}
-                            >
-                                <Plus
-                                    className={`${activeIndex === index ? 'rotate-45' : 'rotate-0 '
-                                        } transition-transform ease-in-out w-5 h-5  dark:text-gray-200 text-gray-600`}
-                                />
-                                {tab.title}
-                            </button>
-                            <AnimatePresence mode='sync'>
-                                {activeIndex === index && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{
-                                            duration: 0.3,
-                                            ease: 'easeInOut',
-                                            delay: 0.14,
-                                        }}
-                                    >
-                                        <p
-                                            className={`dark:text-white text-black p-3 xl:text-base sm:text-sm text-xs pt-0 w-[90%]`}
-                                        >
-                                            {tab.description}
-                                        </p>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-                    ))}
-                </div>
+        <div className="flex flex-col items-center justify-center px-2 sm:px-4 md:px-10 lg:px-14 mt-20">
+            <div className='flex mb-14  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
+                <h3 className='text-2xl lg:text-3xl font-bold text-gray-200'>
+                    Frequently asked questions
+                </h3>
+                <Link href={`/services`}>
+                    <button className='bg-emerald-700 hover:bg-emerald-800 items-center flex text-white p-2 rounded-full px-5 group'>
+                        Book a Service</button>
+                </Link>
             </div>
-        </>
+            <AccordionContainer className="md:grid-cols-2 grid-cols-1 w-full">
+                <AccordionWrapper>
+                    <Accordion >
+                        {leftSideFAQs.map((faq) => (
+                            <AccordionItem key={faq.id} value={faq.id}>
+                                <AccordionHeader className="2xl:text-base text-sm">
+                                    {faq.question}
+                                </AccordionHeader>
+                                <AccordionPanel className="2xl:text-base text-sm">
+                                    {faq.answer}
+                                </AccordionPanel>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </AccordionWrapper>
+                <AccordionWrapper>
+                    <Accordion >
+                        {rightSideFAQs.map((faq) => (
+                            <AccordionItem key={faq.id} value={faq.id}>
+                                <AccordionHeader className="2xl:text-base text-sm">
+                                    {faq.question}
+                                </AccordionHeader>
+                                <AccordionPanel className="2xl:text-base text-sm">
+                                    {faq.answer}
+                                </AccordionPanel>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </AccordionWrapper>
+            </AccordionContainer>
+        </div>
     );
 }
 

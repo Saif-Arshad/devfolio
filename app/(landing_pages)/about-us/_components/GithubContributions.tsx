@@ -8,6 +8,7 @@ import OverviewItem from './OverviewGithub';
 import Calendar from './GithubCalender';
 
 function GithubContributions({ data }: any) {
+    console.log("🚀 ~ GithubContributions ~ data:", data)
     const contributionCalendar =
         data?.contributionsCollection?.contributionCalendar;
     const totalContributions = contributionCalendar?.totalContributions || 0;
@@ -56,7 +57,7 @@ function GithubContributions({ data }: any) {
                             <span>contributions from last year on github.</span>
                         </div>
                     </div>
-                 
+
                 </div>
                 <div className='grid grid-cols-2 gap-3 py-2 mt-6 sm:grid-cols-4'>
                     <OverviewItem label='Total' value={totalContributions} />

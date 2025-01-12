@@ -27,7 +27,6 @@ async function page() {
             <WeeklyStats data={data} />
             <GithubContributions data={githubData} />
             <TimelineDemo />
-            <LatestPost />
             <WhatWeDo />
         </>
     )

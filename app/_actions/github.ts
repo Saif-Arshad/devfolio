@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-
+export const dynamic = 'force-dynamic'
 const GITHUB_USER_ENDPOINT = 'https://api.github.com/graphql';
 
 const GITHUB_USER_QUERY = `query($username: String!) {

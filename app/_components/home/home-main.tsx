@@ -6,6 +6,7 @@ import LatestPost from './latest-post'
 import Skills from '@/app/(landing_pages)/about-us/_components/Skills'
 import WhyUs from '@/app/(landing_pages)/about-us/_components/WhyUs'
 import Faqs from './Faqs'
+import WhatWeDo from '@/app/(landing_pages)/about-us/_components/what-we-do'
 
 function HomeMain() {
     return (
@@ -18,7 +19,9 @@ function HomeMain() {
             <WhyUs />
             <TimelineDemo />
             <LatestPost />
-            <Faqs/>
+            <Faqs />
+            <WhatWeDo />
+
         </>
     )
 }

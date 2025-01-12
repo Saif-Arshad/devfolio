@@ -18,6 +18,7 @@ import { ChevronRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
+import Faqs from '@/app/_components/home/Faqs';
 
 
 function page() {
@@ -80,233 +81,237 @@ function page() {
 
 
     return (
-        <div className="flex items-center flex-col px-4 lg:px-10 xl:px-20 my-7 w-full">
-            <div className="border-b w-full border-white border-dashed mb-5 pb-7">
+        <>
+            <div className="flex items-center flex-col px-4 lg:px-10 xl:px-20 my-7 w-full">
+                <div className="border-b w-full border-white border-dashed mb-5 pb-7">
 
-                <div className='w-full'>
+                    <div className='w-full'>
 
 
-                    <h1 className="text-4xl font-bold text-start mb-1">Explore My Services</h1>
-                    <p className='inline-flex whitespace-pre-wrap text-primaryColor'>
-                        Looking for{' '}
-                        <TextLoop
-                            className='overflow-y-clip'
-                            transition={{
-                                type: 'spring',
-                                stiffness: 1400,
-                                damping: 80,
-                                mass: 10,
-                            }}
-                            variants={{
-                                initial: {
-                                    y: 20,
-                                    rotateX: 90,
-                                    opacity: 0,
-                                    filter: 'blur(4px)',
-                                },
-                                animate: {
-                                    y: 0,
-                                    rotateX: 0,
-                                    opacity: 1,
-                                    filter: 'blur(0px)',
-                                },
-                                exit: {
-                                    y: -20,
-                                    rotateX: -90,
-                                    opacity: 0,
-                                    filter: 'blur(4px)',
-                                },
-                            }}
-                        >
-                            <span>a Web App?</span>
-                            <span>a Mobile App?</span>
-                            <span>Backend Services?</span>
-                            <span>Database Management?</span>
-                            <span>Frontend Development?</span>
-                            <span>Full Stack Services?</span>
-                        </TextLoop>
+                        <h1 className="text-4xl font-bold text-start mb-1">Explore My Services</h1>
+                        <p className='inline-flex whitespace-pre-wrap text-primaryColor'>
+                            Looking for{' '}
+                            <TextLoop
+                                className='overflow-y-clip'
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 1400,
+                                    damping: 80,
+                                    mass: 10,
+                                }}
+                                variants={{
+                                    initial: {
+                                        y: 20,
+                                        rotateX: 90,
+                                        opacity: 0,
+                                        filter: 'blur(4px)',
+                                    },
+                                    animate: {
+                                        y: 0,
+                                        rotateX: 0,
+                                        opacity: 1,
+                                        filter: 'blur(0px)',
+                                    },
+                                    exit: {
+                                        y: -20,
+                                        rotateX: -90,
+                                        opacity: 0,
+                                        filter: 'blur(4px)',
+                                    },
+                                }}
+                            >
+                                <span>a Web App?</span>
+                                <span>a Mobile App?</span>
+                                <span>Backend Services?</span>
+                                <span>Database Management?</span>
+                                <span>Frontend Development?</span>
+                                <span>Full Stack Services?</span>
+                            </TextLoop>
+                        </p>
+
+                    </div>
+
+                    <p className='max-w-5xl mt-4'>
+                        Whether you're a startup looking to build your first app
+                        <span className="text-primaryColor font-semibold px-1.5">
+                            (Web or Mobile)
+                        </span>
+                        or an established company aiming to optimize your digital presence, I offer a wide range of services designed to help you succeed. From
+                        <span className="text-primaryColor font-semibold px-1.5">
+                            web development
+                        </span>
+                        ,
+                        <span className="text-primaryColor font-semibold px-1.5">
+                            mobile App development
+                        </span>
+                        and
+                        <span className="text-primaryColor font-semibold px-1.5">
+                            AI solutions
+                        </span>
+                        to cloud infrastructure and beyond, I’m here to provide innovative, custom solutions that fit your unique needs. Ready to take your project to the
+                        <span className="text-primaryColor font-semibold px-1.5">
+                            next level?
+                        </span>
+                        Let’s collaborate and turn your vision into reality.
                     </p>
-
                 </div>
 
-                <p className='max-w-5xl mt-4'>
-                    Whether you're a startup looking to build your first app
-                    <span className="text-primaryColor font-semibold px-1.5">
-                        (Web or Mobile)
-                    </span>
-                    or an established company aiming to optimize your digital presence, I offer a wide range of services designed to help you succeed. From
-                    <span className="text-primaryColor font-semibold px-1.5">
-                        web development
-                    </span>
-                    ,
-                    <span className="text-primaryColor font-semibold px-1.5">
-                        mobile App development
-                    </span>
-                    and
-                    <span className="text-primaryColor font-semibold px-1.5">
-                        AI solutions
-                    </span>
-                    to cloud infrastructure and beyond, I’m here to provide innovative, custom solutions that fit your unique needs. Ready to take your project to the
-                    <span className="text-primaryColor font-semibold px-1.5">
-                        next level?
-                    </span>
-                    Let’s collaborate and turn your vision into reality.
-                </p>
-            </div>
 
 
+                <div className="space-y-2 w-full mt-10 ">
+                    <div className="grid gap-8 md:grid-cols-2 relative">
+                        {myServices.map((service, index) => (
 
-            <div className="space-y-2 w-full mt-10 ">
-                <div className="grid gap-8 md:grid-cols-2 relative">
-                    {myServices.map((service, index) => (
-
-                        <MorphingDialog
-                            transition={{
-                                type: 'spring',
-                                stiffness: 200,
-                                damping: 24,
-                            }}
-                        >
-                            <MorphingDialogTrigger
-                                className='h-full'
+                            <MorphingDialog
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 200,
+                                    damping: 24,
+                                }}
                             >
-                                <div
-                                    key={index}
-                                    className={` border bg-neutral-900  border-neutral-700 text-white overflow-hidden rounded-xl 
+                                <MorphingDialogTrigger
+                                    className='h-full'
+                                >
+                                    <div
+                                        key={index}
+                                        className={` border bg-neutral-900  border-neutral-700 text-white overflow-hidden rounded-xl 
                 `}
-                                >
-                                    <MorphingDialogImage
-                                        src={service.image}
-                                        alt={service.title}
-                                        className={` h-60 mb-4 w-full md:h-72`}
-                                    />
-                                    <div className='flex flex-col p-6 pb-4   justify-between'>
-                                        <div >
-                                            <MorphingDialogTitle className="text-2xl lg:text-3xl font-semibold">{service.title}</MorphingDialogTitle>
-                                            <MorphingDialogSubtitle className="text-sm text-gray-400 mt-2">{service.discription}</MorphingDialogSubtitle>
-                                        </div>
-                                        <div className='flex items-center justify-between mt-6 '>
-                                            <div className='flex items-center gap-3'>
-                                                <svg
-                                                    fill="#1DBF73"
-                                                    viewBox="-2.5 -2 24 24"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    preserveAspectRatio="xMinYMin"
-                                                    className="sm:h-8  sm:w-8 h-6 w-6 hover:animate-shake"
-                                                >
-                                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                                    <g
-                                                        id="SVGRepo_tracerCarrier"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                    ></g>
-                                                    <g id="SVGRepo_iconCarrier">
-                                                        <path d="M16.25 16.25v-10h-10v-.625c0-1.034.841-1.875 1.875-1.875H10V0H8.125A5.632 5.632 0 0 0 2.5 5.625v.625H0V10h2.5v6.25H0V20h8.75v-3.75h-2.5V10h6.285v6.25H10V20h8.75v-3.75h-2.5z"></path>
-                                                        <circle cx="14.375" cy="1.875" r="1.875"></circle>
-                                                    </g>
-                                                </svg>
-                                                <FaWhatsapp className="sm:h-8 text-[#108e42]  sm:w-8 h-6 w-6 hover:animate-shake" />
-                                                <SiGmail className="sm:h-8 text-[#D14836]  sm:w-8 h-6 w-6 hover:animate-shake" />
-                                            </div>
-
-                                            <button className='bg-primaryColor items-center flex text-black p-2 rounded-full px-5 group'>
-                                                Detail
-                                                <ChevronRight className='h-5 w-5 me-2 group-hover:animate-shake' />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </MorphingDialogTrigger>
-                            <MorphingDialogContainer>
-                                <MorphingDialogContent
-                                    style={{
-                                        borderRadius: '12px',
-                                        maxHeight: '98vh',
-                                        overflowY: "auto"
-                                    }}
-                                    className="relative w-full sm:w-[500px] border border-neutral-700 bg-neutral-900"
-                                >
-                                    <div className="relative p-6">
+                                    >
                                         <MorphingDialogImage
                                             src={service.image}
                                             alt={service.title}
-                                            className="h-60 mb-4 w-full md:h-72"
+                                            className={` h-60 mb-4 w-full md:h-72`}
                                         />
-                                        <div >
-                                            <MorphingDialogTitle className="text-white font-semibold text-3xl">
-                                                {service.title}
-                                            </MorphingDialogTitle>
-                                            <MorphingDialogSubtitle className="font-light text-gray-200 mt-3">
-                                                {service.discription}
-                                            </MorphingDialogSubtitle>
-                                            <div className="font-light text-gray-200 mt-1">
-                                                {service.Detail}
+                                        <div className='flex flex-col p-6 pb-4   justify-between'>
+                                            <div >
+                                                <MorphingDialogTitle className="text-2xl lg:text-3xl font-semibold">{service.title}</MorphingDialogTitle>
+                                                <MorphingDialogSubtitle className="text-sm text-gray-400 mt-2">{service.discription}</MorphingDialogSubtitle>
+                                            </div>
+                                            <div className='flex items-center justify-between mt-6 '>
+                                                <div className='flex items-center gap-3'>
+                                                    <svg
+                                                        fill="#1DBF73"
+                                                        viewBox="-2.5 -2 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        preserveAspectRatio="xMinYMin"
+                                                        className="sm:h-8  sm:w-8 h-6 w-6 hover:animate-shake"
+                                                    >
+                                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                                        <g
+                                                            id="SVGRepo_tracerCarrier"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                        ></g>
+                                                        <g id="SVGRepo_iconCarrier">
+                                                            <path d="M16.25 16.25v-10h-10v-.625c0-1.034.841-1.875 1.875-1.875H10V0H8.125A5.632 5.632 0 0 0 2.5 5.625v.625H0V10h2.5v6.25H0V20h8.75v-3.75h-2.5V10h6.285v6.25H10V20h8.75v-3.75h-2.5z"></path>
+                                                            <circle cx="14.375" cy="1.875" r="1.875"></circle>
+                                                        </g>
+                                                    </svg>
+                                                    <FaWhatsapp className="sm:h-8 text-[#108e42]  sm:w-8 h-6 w-6 hover:animate-shake" />
+                                                    <SiGmail className="sm:h-8 text-[#D14836]  sm:w-8 h-6 w-6 hover:animate-shake" />
+                                                </div>
+
+                                                <button className='bg-primaryColor items-center flex text-black p-2 rounded-full px-5 group'>
+                                                    Detail
+                                                    <ChevronRight className='h-5 w-5 me-2 group-hover:animate-shake' />
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <MorphingDialogClose className="text-zinc-100" />
-                                </MorphingDialogContent>
+
+                                </MorphingDialogTrigger>
+                                <MorphingDialogContainer>
+                                    <MorphingDialogContent
+                                        style={{
+                                            borderRadius: '12px',
+                                            maxHeight: '98vh',
+                                            overflowY: "auto"
+                                        }}
+                                        className="relative w-full sm:w-[500px] border border-neutral-700 bg-neutral-900"
+                                    >
+                                        <div className="relative p-6">
+                                            <MorphingDialogImage
+                                                src={service.image}
+                                                alt={service.title}
+                                                className="h-60 mb-4 w-full md:h-72"
+                                            />
+                                            <div >
+                                                <MorphingDialogTitle className="text-white font-semibold text-3xl">
+                                                    {service.title}
+                                                </MorphingDialogTitle>
+                                                <MorphingDialogSubtitle className="font-light text-gray-200 mt-3">
+                                                    {service.discription}
+                                                </MorphingDialogSubtitle>
+                                                <div className="font-light text-gray-200 mt-1">
+                                                    {service.Detail}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <MorphingDialogClose className="text-zinc-100" />
+                                    </MorphingDialogContent>
 
 
-                            </MorphingDialogContainer>
-                        </MorphingDialog>
-                    ))}
-                </div>
-            </div >
+                                </MorphingDialogContainer>
+                            </MorphingDialog>
+                        ))}
+                    </div>
+                </div >
 
-            <h2
-                className="font-display text-4xl text-start w-full font-bold mt-20  text-black dark:text-gray-100 sm:text-6xl mb-10"
+                <h2
+                    className="font-display text-4xl text-start w-full font-bold mt-20  text-black dark:text-gray-100 sm:text-6xl mb-10"
 
-            >
-                I help founders turn{' '}
-                <TextLoop
-                    className="inline text-primaryColor"
-                    transition={{
-                        type: 'spring',
-                        stiffness: 2400,
-                        damping: 140,
-                        interval: 5,
-                        duration: 0.5,
-                        mass: 10,
-                    }}
-                    variants={{
-                        initial: {
-                            y: 20,
-                            rotateX: 90,
-                            opacity: 0,
-                            filter: 'blur(4px)',
-                        },
-                        animate: {
-                            y: 0,
-                            rotateX: 0,
-                            opacity: 1,
-                            filter: 'blur(0px)',
-                        },
-                        exit: {
-                            y: -20,
-                            rotateX: -90,
-                            opacity: 0,
-                            filter: 'blur(4px)',
-                        },
-                    }}
                 >
-                    <span>ideas</span>
-                    <span>visions</span>
-                    <span>dreams</span>
-                </TextLoop>{' '}
-                into business-focused digital products.
+                    I help founders turn{' '}
+                    <TextLoop
+                        className="inline text-primaryColor"
+                        transition={{
+                            type: 'spring',
+                            stiffness: 2400,
+                            damping: 140,
+                            interval: 5,
+                            duration: 0.5,
+                            mass: 10,
+                        }}
+                        variants={{
+                            initial: {
+                                y: 20,
+                                rotateX: 90,
+                                opacity: 0,
+                                filter: 'blur(4px)',
+                            },
+                            animate: {
+                                y: 0,
+                                rotateX: 0,
+                                opacity: 1,
+                                filter: 'blur(0px)',
+                            },
+                            exit: {
+                                y: -20,
+                                rotateX: -90,
+                                opacity: 0,
+                                filter: 'blur(4px)',
+                            },
+                        }}
+                    >
+                        <span>ideas</span>
+                        <span>visions</span>
+                        <span>dreams</span>
+                    </TextLoop>{' '}
+                    into business-focused digital products.
 
-            </h2>
-            <div className='flex items-center flex-col   w-full'>
-                <Skills />
-            </div>
+                </h2>
+                <div className='flex items-center flex-col   w-full'>
+                    <Skills />
+                </div>
 
 
 
 
 
-        </div >
+            </div >
+            <Faqs />
+        </>
+
     )
 }
 
