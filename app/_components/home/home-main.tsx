@@ -7,6 +7,7 @@ import Skills from '@/app/(landing_pages)/about-us/_components/Skills'
 import WhyUs from '@/app/(landing_pages)/about-us/_components/WhyUs'
 import Faqs from './Faqs'
 import WhatWeDo from '@/app/(landing_pages)/about-us/_components/what-we-do'
+import FeatureProjects from './feature-projects'
 
 function HomeMain() {
     return (
@@ -17,6 +18,7 @@ function HomeMain() {
                 <Skills />
             </div>
             <WhyUs />
+            <FeatureProjects />
             <TimelineDemo />
             <LatestPost />
             <Faqs />

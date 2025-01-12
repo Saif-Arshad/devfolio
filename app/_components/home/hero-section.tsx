@@ -4,8 +4,15 @@ import GradualSpacing from '../ui/gradual-spacing'
 import { TypeAnimation } from 'react-type-animation'
 import SocialLinks from '../buttons/Social'
 import { TextLoop } from '../shared/loopText'
+import { logoutUser } from '@/app/_lib/auth'
+
 
 export default function FirstAbout() {
+    const logoutCurrentUser = () => {
+        logoutUser();
+        document.cookie = 'admin-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+    }
     return (
         <div className="flex flex-wrap h-full w-full">
             <div className="flex flex-col h-full w-full lg:w-8/12  mt-7 px-3 sm:px-5 lg:px-10">
@@ -86,7 +93,10 @@ export default function FirstAbout() {
                 <div className=''>
 
                     <p className="mt-7 text-white sm:text-lg">
-                        🚀 A passionate Software Developer based in Faislabad,
+                        <span onClick={logoutCurrentUser}>
+                            🚀
+                        </span> {" "}
+                        A passionate Software Developer based in Faislabad,
                         Pakistan
 
                         .

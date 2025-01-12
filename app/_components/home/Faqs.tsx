@@ -70,9 +70,13 @@ function Faqs() {
     return (
         <div className="flex flex-col items-center justify-center px-2 sm:px-4 md:px-10 lg:px-14 mt-20">
             <div className='flex mb-14  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
-                <h3 className='text-2xl lg:text-3xl font-bold text-gray-200'>
-                    Frequently asked questions
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-200">
+                    FAQ's.
+                    <span className="block text-sm text-primaryColor font-normal">
+                        Find answers to common queries and concerns below.
+                    </span>
                 </h3>
+
                 <Link href={`/services`}>
                     <button className='bg-emerald-700 hover:bg-emerald-800 items-center flex text-white p-2 rounded-full px-5 group'>
                         Book a Service</button>

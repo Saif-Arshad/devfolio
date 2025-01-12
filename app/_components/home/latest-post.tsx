@@ -56,9 +56,13 @@ function LatestPost() {
         <div className='flex items-center flex-col w-full mt-10 px-4 lg:px-10 xl:px-20'>
 
             <div className='flex  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
-                <h3 className='text-2xl lg:text-3xl font-bold text-gray-200'>
-                    Latest Articles
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-200">
+                    Latest Articles.
+                    <span className="block text-sm text-primaryColor font-normal">
+                        Stories and perspectives worth exploring.
+                    </span>
                 </h3>
+
                 <Link href={`/articles`}>
                     <button className='bg-emerald-700 hover:bg-emerald-800 items-center flex text-white p-2 rounded-full px-5 group'>
                         View All</button>
