@@ -97,7 +97,7 @@ function ProjectDetail({ slug }: { slug: string }) {
                         {
                             id,
                             className:
-                                "mt-8 mb-4 text-2xl font-bold bg-neutral-800 py-2 rounded-tr-md rounded-br-md pl-5 border-l-[5px] border-primaryColor",
+                                "mt-8 mb-4 text-xl sm:text-2xl font-semibold sm:font-bold bg-neutral-800 py-2 rounded-tr-md rounded-br-md pl-5 border-l-[5px] border-primaryColor",
                         },
                         textContent
                     );
@@ -115,7 +115,7 @@ function ProjectDetail({ slug }: { slug: string }) {
 
     if (!project) {
         return (
-            <div className="container mx-auto p-4 flex flex-col lg:flex-row">
+            <div className="container mx-auto p-1 sm:p-4 flex flex-col lg:flex-row">
                 <div className="w-full lg:pr-8">
                     <div
                         role="status"

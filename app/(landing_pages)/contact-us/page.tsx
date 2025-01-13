@@ -1,12 +1,16 @@
 "use client"; // Required in Next.js (App Router) for client-side interactions like fetch, useState, etc.
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
 import { BriefcaseBusinessIcon, Clock, Mail, Phone, Send } from "lucide-react";
 import { SiGmail } from "react-icons/si";
 
-export default function Page() {
+export default function Page({ searchParams }: any) {
+    console.log("🚀 ~ Page ~ searchParams:", searchParams)
+    const params = searchParams
+    console.log("🚀 ~ Page ~ params:", params)
+    const { service } = params
     const socials = [
         {
             name: "LinkedIn",
@@ -68,7 +72,7 @@ export default function Page() {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [userMessage, setUserMessage] = useState("");
-
+    const contactRef = useRef<HTMLDivElement>(null);
     const [loading, setLoading] = useState(false);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -119,6 +123,14 @@ export default function Page() {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (service && userMessage.length === 0) {
+            setUserMessage(service)
+            setErrorMessage("Please fill out the required fields (Name and Email)")
+            contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [service])
 
     return (
         <div className="flex items-center flex-col px-4 lg:px-10 xl:px-20 my-7 w-full">
@@ -178,8 +190,11 @@ export default function Page() {
                                 job updates.
                             </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="grid grid-cols-2 gap-4">
+                            <form onSubmit={handleSubmit} className="space-y-4"
+                            >
+                                <div
+                                    ref={contactRef}
+                                    className="grid grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm mb-2 font-medium text-primaryColor">
                                             First Name *
@@ -275,7 +290,7 @@ export default function Page() {
                                         <Phone className="h-5 w-5 group-hover:animate-shake" />
                                         Contact</h3>
                                     <p className="mb-3">Talk to us and see how we can work</p>
-                                    +92-491797803
+                                    +92-3491797803
                                 </div>
                             </a>
 
