@@ -1,9 +1,9 @@
 import React from 'react'
-import GradualSpacing from '../../../_components/ui/gradual-spacing'
-import IconCloud from '../../../_components/ui/icon-cloud'
 import { TextLoop } from '@/app/_components/shared/loopText';
 import Link from 'next/link';
 import { FileUser } from 'lucide-react';
+import GradualSpacing from '@/app/_components/ui/gradual-spacing';
+import IconCloud from '@/app/_components/ui/icon-cloud';
 
 function AboutHero() {
     const slugs = [

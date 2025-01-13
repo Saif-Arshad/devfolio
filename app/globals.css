@@ -207,7 +207,7 @@ html.lenis body {
 }
 
 .btn-ping_dot {
-  @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
+  @apply relative inline-flex rounded-full h-4 w-4 bg-green-500;
 }
 
 .waving-hand {

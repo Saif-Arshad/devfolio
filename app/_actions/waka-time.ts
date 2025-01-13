@@ -1,21 +1,18 @@
-import { getALLTimeSinceToday, getReadStats } from "../_lib/waka-time";
-export const dynamic = 'force-dynamic'
+"use server"
 
-export async function getWakaStats() {
+
+import axios from 'axios';
+
+export const getWakaStats = async () => {
     try {
-        const readStatsResponse = await getReadStats();
-        const allTimeSinceTodayResponse = await getALLTimeSinceToday();
-
-        const data = {
-            ...readStatsResponse.data,
-            all_time_since_today: allTimeSinceTodayResponse.data,
-        };
-
-        return { data };
+        const response = await axios.get(`${process.env.BASE_URL}/api/waka-stats`);
+        if (response.status >= 400) {
+            throw new Error('Error fetching waka data');
+        }
+        return response.data;
     } catch (error: any) {
-        return {
-            error: "An error occurred while fetching Waka stats",
-            details: error?.message || error,
-        };
+        console.log("🚀 ~ fetchGithubData ~ error:", error)
+        console.error("Frontend Error:", error.message);
+        return { error: 'Failed to fetch data. Please try again later.' };
     }
-}
+};

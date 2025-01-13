@@ -13,13 +13,14 @@ import {
 import { TextLoop } from '@/app/_components/shared/loopText'
 import React from 'react'
 import { STACKS } from '@/app/_lib/stack';
-import Skills from '../about-us/_components/Skills';
 import { ChevronRight } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import Faqs from '@/app/_components/home/Faqs';
 import { useRouter } from 'next/navigation';
+import Skills from '../((scrollAnimation))/about-us/_components/Skills';
+import Link from 'next/link';
 
 
 function page() {
@@ -243,9 +244,7 @@ function page() {
 
     const router = useRouter()
 
-    const handleEmailClick = (message: string) => {
-        router.push(`/contact-us?service=${encodeURIComponent(message)}`);
-    };
+
     const handleWhatsAppClick = (message: string) => {
         const encodedMessage = encodeURIComponent(message);
         const whatsappLink = `https://wa.me/+923267146133?text=${encodedMessage}`;
@@ -455,15 +454,14 @@ function page() {
                                                                 </g>
                                                             </svg>
                                                         </a>
-
-
                                                         <FaWhatsapp
                                                             onClick={() => handleWhatsAppClick(service.message)}
                                                             className="sm:h-8 sm:w-8 h-6 w-6 text-[#108e42] hover:animate-shake cursor-pointer" />
 
-                                                        <SiGmail
-                                                            onClick={() => handleEmailClick(service.message)}
-                                                            className="sm:h-8 sm:w-8 h-6 w-6 text-[#D14836] hover:animate-shake cursor-pointer" />
+                                                        <Link href={`/contact-us?service=${encodeURIComponent(service.message)}`}>
+                                                            <SiGmail
+                                                                className="sm:h-8 sm:w-8 h-6 w-6 text-[#D14836] hover:animate-shake cursor-pointer" />
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

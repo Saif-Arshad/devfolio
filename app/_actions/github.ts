@@ -1,63 +1,18 @@
-import axios from 'axios';
-export const dynamic = 'force-dynamic'
-const GITHUB_USER_ENDPOINT = 'https://api.github.com/graphql';
+"use server"
 
-const GITHUB_USER_QUERY = `query($username: String!) {
-  user(login: $username) {
-    contributionsCollection {
-      contributionCalendar {
-        colors
-        totalContributions
-        months {
-          firstDay
-          name
-          totalWeeks
-        }
-        weeks {
-          contributionDays {
-            color
-            contributionCount
-            date
-          }
-          firstDay
-        }
-      }
-    }
-  }
-}`;
+
+import axios from 'axios';
 
 export const fetchGithubData = async () => {
-  const username = 'saif-arshad';
-  const token = process.env.GITHUB_READ_USER_TOKEN_PERSONAL;
   try {
-
-    const response = await axios.post(
-      GITHUB_USER_ENDPOINT,
-      {
-        query: GITHUB_USER_QUERY,
-        variables: {
-          username: username,
-        },
-      },
-      {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      },
-    );
-
-    const status: number = response.status;
-    const responseJson = response.data;
-
-    if (status > 400) {
-      return { status, data: {} };
+    const response = await axios.get(`${process.env.BASE_URL}/api/github`);
+    if (response.status >= 400) {
+      throw new Error('Error fetching GitHub data');
     }
-
-    return { status, data: responseJson.data.user };
+    return response.data;
   } catch (error: any) {
     console.log("🚀 ~ fetchGithubData ~ error:", error)
-    return { status: 500, data: {} };
-
+    console.error("Frontend Error:", error.message);
+    return { error: 'Failed to fetch data. Please try again later.' };
   }
 };
-
