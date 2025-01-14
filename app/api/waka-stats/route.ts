@@ -1,11 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import axios from 'axios';
 import { getALLTimeSinceToday, getReadStats } from "@/app/_lib/waka-time";
 export const dynamic = 'force-dynamic'
 
 
-export async function GET(res: NextResponse) {
-
+export async function GET(req: NextRequest, res: NextResponse) {
   try {
 
 

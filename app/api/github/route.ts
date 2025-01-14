@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import axios from 'axios';
 export const dynamic = 'force-dynamic'
 const GITHUB_USER_ENDPOINT = 'https://api.github.com/graphql';
@@ -27,7 +27,7 @@ const GITHUB_USER_QUERY = `query($username: String!) {
   }
 }`;
 
-export async function GET(res: NextResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
   const username = 'saif-arshad';
   console.log("🚀 ~ GET ~ username:", username)
   const token = process.env.GITHUB_READ_USER_TOKEN_PERSONAL;
