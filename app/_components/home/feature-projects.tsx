@@ -3,7 +3,7 @@
 import { databases } from '@/app/_lib/appwrite';
 import { STACKS } from '@/app/_lib/stack';
 import { Query } from 'appwrite';
-import { CircleArrowOutUpRightIcon } from 'lucide-react';
+import { ArrowRight, CircleArrowOutUpRightIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -58,7 +58,7 @@ function FeatureProjects() {
     return (
         <div className='flex items-center flex-col w-full mt-10 px-4 lg:px-10 xl:px-20'>
 
-            <div className='flex  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
+            <div className='flex flex-col-reverse sm:flex-row  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
 
                 <h3 className='text-xl sm:text-2xl font-semibold text-gray-200'>
                     All Creative Works.
@@ -68,8 +68,11 @@ function FeatureProjects() {
                 </h3>
 
                 <Link href={`/work`}>
-                    <button className='bg-emerald-700 hover:bg-emerald-800 items-center flex text-white p-2 rounded-full px-5 group'>
-                        View All</button>
+                    <button className='sm:bg-emerald-700 sm:hover:bg-emerald-800 items-center flex text-primaryColor sm:text-white sm:p-2 sm:rounded-full mb-5 sm:mb-0 sm:px-5 group'>
+                        <CircleArrowOutUpRightIcon className='h-4 me-2 w-4 sm:hidden' />
+                        View All
+
+                    </button>
                 </Link>
             </div>
 

@@ -11,6 +11,7 @@ import {
     AccordionWrapper,
 } from "../ui/accordion";
 import Link from "next/link";
+import { ArrowRight, CircleArrowOutUpRightIcon } from "lucide-react";
 
 function Faqs() {
     const leftSideFAQs = [
@@ -69,7 +70,7 @@ function Faqs() {
 
     return (
         <div className="flex flex-col items-center justify-center px-2 sm:px-4 md:px-10 lg:px-14 mt-20">
-            <div className='flex mb-14  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
+            <div className='flex mb-14 flex-col-reverse sm:flex-row  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
                 <h3 className="text-xl sm:text-2xl font-semibold text-gray-200">
                     FAQ's.
                     <span className="block text-sm text-primaryColor font-normal">
@@ -77,9 +78,14 @@ function Faqs() {
                     </span>
                 </h3>
 
-                <Link href={`/services`} className="hidden sm:flex">
-                    <button className='bg-emerald-700 hover:bg-emerald-800 items-center flex text-white p-2 rounded-full px-5 group'>
-                        Book a Service</button>
+                <Link href={`/services`} >
+                    <button className='sm:bg-emerald-700 sm:hover:bg-emerald-800 items-center flex text-primaryColor sm:text-white sm:p-2 sm:rounded-full mb-5 sm:mb-0 sm:px-5 group'>
+                        <CircleArrowOutUpRightIcon className='h-4 me-2 w-4 sm:hidden' />
+
+                        Book a Service 
+
+                    </button>
+                  
                 </Link>
             </div>
             <AccordionContainer className="md:grid-cols-2 grid-cols-1 w-full">
