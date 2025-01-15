@@ -39,7 +39,7 @@ function Footer() {
     const currentPath = usePathname()
     const springOptions = { bounce: 0.1 };
     return (
-        <footer className="relative flex flex-col z-20 md:flex-row justify-evenly items-end w-full  my-6 p-5 sm:p-20 md:p-[5rem_2vw]">
+        <footer className="relative flex flex-col z-20 md:flex-row justify-evenly items-end w-full  mt-6 p-5 sm:p-20 md:p-[5rem_2vw]">
             <div className="flex flex-col items-start justify-start  w-full md:w-[28%]">
                 <div className="flex gap-4">
                     <Link href="http://github.com/Saif-Arshad/" target="_blank" className="flex group justify-center items-center w-[3.2rem] h-[3.2rem] bg-white/10 rounded-[0.4rem] transition-all">
@@ -77,16 +77,7 @@ function Footer() {
                             </p>
                         </Link>
                     </Magnetic>
-                    {/* <Magnet padding={50} disabled={false}>
-                        <Link href={"mailto:saifarshad3344@gmail.com"}>
-                            <p className="mb-3">
-                                Made with <span className="">❤️</span> by
-                                <span className="text-primaryColor mx-2 font-semibold">
-                                    Saif Ur Rehman
-                                </span>
-                            </p>
-                        </Link>
-                    </Magnet> */}
+                 
                 </div>
             </div>
 

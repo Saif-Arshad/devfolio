@@ -14,13 +14,10 @@ export default function FirstAbout() {
 
     }
     return (
-        <div className="flex flex-wrap h-full w-full">
-            <div className="flex flex-col h-full w-full lg:w-8/12  mt-7 px-3 sm:px-5 lg:px-10">
+        <div className="flex flex-wrap h-full w-full relative">
+            <div className="flex flex-col h-full w-full lg:w-9/12 xl:w-8/12  mt-7 px-3 sm:px-5 lg:px-10">
                 <h3 className="text-primaryColor tracking-wide md:text-xl">Hi
-                    {/* <span className="relative flex h-3 w-3">
-                        <span className="btn-ping"></span>
-                        <span className="btn-ping_dot"></span>
-                    </span> */}
+                   
                     <span className="waving-hand">👋</span>
                     , I am
 

@@ -22,9 +22,9 @@ function SocialLinks() {
                     <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
             </a>
-            <a href="https://www.fiverr.com/saifurrehman360" target='_blank' className="ml-5 mt-1 hover:text-primaryColor transform hover:scale-110 transition duration-500">
+            {/* <a href="https://www.fiverr.com/saifurrehman360" target='_blank' className="ml-5 mt-1 hover:text-primaryColor transform hover:scale-110 transition duration-500">
                 <SiFiverr className='h-12 w-14' />
-            </a>
+            </a> */}
         </div>
     )
 }
