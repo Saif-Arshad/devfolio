@@ -130,7 +130,7 @@ function WeeklyStats({ data }: any) {
 
                         <h2
                             className="text-gray-100 text-3xl  font-semibold font-manrope leading-normal lg:text-start sm:text-center">
-                            💻 Weekly Coding Stats
+                            💻Weekly Coding Stats
                         </h2>
                         <div className='dark:text-neutral-400 m-2 -mt-1  md:flex-row md:items-center'>
                             <span>My </span>

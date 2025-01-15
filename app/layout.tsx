@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${poppins.variable} antialiased bg-gray-900 text-white`}
+        className={`${poppins.variable} antialiased bg-[#0a0d0f] text-white`}
       >
         <div className=" mx-auto relative flex items-center justify-center ">
 

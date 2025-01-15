@@ -30,7 +30,7 @@ function WhyUs() {
         },
         {
             title: "My Approach",
-            description: "Driven by innovation, our approach ensures that every project is handled with care, from conceptualization to deployment. Leveraging cutting-edge tools like MERN stack and Next.js, we create scalable, efficient, and user-friendly digital experiences.",
+            description: "Driven by innovation, My approach ensures that every project is handled with care, from conceptualization to deployment. Leveraging cutting-edge tools like MERN stack and Next.js, we create scalable, efficient, and user-friendly digital experiences.",
             bullets: [
                 "Providing daily updates to keep clients informed",
                 "Conducting weekly meetings to gather feedback",
@@ -51,7 +51,7 @@ function WhyUs() {
                             </h6>
                             <h2
                                 className="text-gray-100 text-3xl sm:text-4xl font-bold font-manrope leading-normal lg:text-start sm:text-center">
-                                Solutions That Elevate Your Visions </h2>
+                                Let's make it happen together!</h2>
                             <div className="my-4 mb-1 flex space-x-2">
                                 {ITEMS.map((item, index) => (
                                     <button

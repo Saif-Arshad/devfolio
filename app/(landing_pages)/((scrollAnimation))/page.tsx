@@ -3,7 +3,6 @@ import AboutUs from "./about-us/_components/AboutUs";
 import Skills from "./about-us/_components/Skills";
 import WhyUs from "./about-us/_components/WhyUs";
 import FeatureProjects from "@/app/_components/home/feature-projects";
-import { TimelineDemo } from "@/app/_components/home/experience-timeline";
 import LatestPost from "@/app/_components/home/latest-post";
 import Faqs from "@/app/_components/home/Faqs";
 import WhatWeDo from "./about-us/_components/what-we-do";
@@ -18,7 +17,6 @@ export default function Home() {
       </div>
       <WhyUs />
       <FeatureProjects />
-      <TimelineDemo />
       <LatestPost />
       <Faqs />
       <WhatWeDo />

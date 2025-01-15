@@ -15,9 +15,11 @@ export default function FirstAbout() {
     }
     return (
         <div className="flex flex-wrap h-full w-full relative">
+            {/* <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4a90e22e_1px,transparent_1px),linear-gradient(to_bottom,#4a90e22e_1px,transparent_1px)] bg-[size:22px_30px]"></div> */}
+
             <div className="flex flex-col h-full w-full lg:w-9/12 xl:w-8/12  mt-7 px-3 sm:px-5 lg:px-10">
                 <h3 className="text-primaryColor tracking-wide md:text-xl">Hi
-                   
+
                     <span className="waving-hand">👋</span>
                     , I am
 
@@ -115,7 +117,7 @@ export default function FirstAbout() {
 
                     </p>
                     <p className="mt-2 text-white sm:text-lg">
-                        💻
+                        🛠️
                         My main tech stack currently is
                         <span className="text-primaryColor font-semibold px-1.5">MERN</span>
                         in combination with
