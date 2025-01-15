@@ -217,10 +217,12 @@ html.lenis body {
   transform-origin: 70% 70%;
   display: inline-block;
 }
-.service_icons svg{
-  height: 20px !important;
-  width: 20px !important;
+
+.service_icons svg {
+  height: 17px !important;
+  width: 17px !important;
 }
+
 @keyframes wave-animation {
   0% {
     transform: rotate(0deg);

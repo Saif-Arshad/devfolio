@@ -77,7 +77,7 @@ function Faqs() {
                     </span>
                 </h3>
 
-                <Link href={`/services`}>
+                <Link href={`/services`} className="hidden sm:flex">
                     <button className='bg-emerald-700 hover:bg-emerald-800 items-center flex text-white p-2 rounded-full px-5 group'>
                         Book a Service</button>
                 </Link>

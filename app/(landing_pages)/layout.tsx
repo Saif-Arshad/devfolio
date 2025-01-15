@@ -24,7 +24,7 @@ export default function RootLayout({
       <PageTransition>
         <div className="relative h-full z-0">
           <Header />
-          <div className=" h-full  w-full z-20">
+          <div className=" h-full relative  w-full z-20">
             {children}
           </div>
 
@@ -32,10 +32,10 @@ export default function RootLayout({
             <BackTop />
           </div>
 
-          <div className="z-0 relative h-full w-full">
-            <ShootingStars />
-            <StarsBackground />
-          </div>
+          {/* <div className="z-0 relative h-full w-full"> */}
+          <ShootingStars />
+          <StarsBackground />
+          {/* </div> */}
           <Footer />
 
         </div>

@@ -371,7 +371,7 @@ function page() {
                                 <MorphingDialogContainer>
                                     <MorphingDialogContent
                                         style={{ borderRadius: '12px' }}
-                                        className="relative w-full h-[95vh] sm:w-[500px] border border-neutral-700 bg-neutral-900"
+                                        className="relative w-full h-[90vh] sm:w-[500px] border border-neutral-700 bg-neutral-900"
                                     >
                                         <div className="relative flex flex-col w-full h-full">
                                             <ScrollArea className="flex-1 overflow-y-auto overflow-x-auto p-6 pb-20">
