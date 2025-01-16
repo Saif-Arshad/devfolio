@@ -14,9 +14,10 @@ import {
     SiPrisma,
     SiSocketdotio
 } from "react-icons/si";
-import { MdAnimation } from "react-icons/md";
-import { FaNodeJs } from "react-icons/fa";
-import { GitBranchPlusIcon } from "lucide-react";
+import { GiClaymoreExplosive } from "react-icons/gi";
+import { MdAnimation, MdDevicesOther } from "react-icons/md";
+import { FaCode, FaLaptopCode, FaNodeJs } from "react-icons/fa";
+import { Database, GitBranchPlusIcon } from "lucide-react";
 
 const toolIcons: any = {
     HTML: SiHtml5,
@@ -55,6 +56,13 @@ const toolIcons: any = {
     Postman: SiPostman,
     Prisma: SiPrisma,
 };
+
+const toolCategoryIcons = [
+    MdDevicesOther,
+    FaCode,
+    Database,
+    GiClaymoreExplosive,
+]
 
 function Tools() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -120,18 +128,23 @@ function Tools() {
 
             <div className="flex flex-col md:flex-row w-full mt-7">
                 <div className="md:w-1/4 mb-4 sm:mb-0">
-                    {TOOLS_DATA.map((item, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setActiveIndex(index)}
-                            className={`md:w-full text-sm sm:text-base flex items-center justify-center text-left px-4 py-2 mx-1 sm:mx-0 mb-4 rounded-full transition-all duration-300 ${activeIndex === index
-                                ? "bg-emerald-900 text-white"
-                                : "dark:border-neutral-700 dark:bg-neutral-800 text-gray-300 hover:bg-neutral-700"
-                                }`}
-                        >
-                            {item.category}
-                        </button>
-                    ))}
+                    {TOOLS_DATA.map((item, index) => {
+                        const IconComponent = toolCategoryIcons[index];
+
+                        return (
+                            <button
+                                key={index}
+                                onClick={() => setActiveIndex(index)}
+                                className={`md:w-full text-sm sm:text-base flex items-center gap-1  justify-center text-left px-4 py-2 mx-1 sm:mx-0 mb-4 rounded-full transition-all duration-300 ${activeIndex === index
+                                    ? "bg-emerald-900 text-white"
+                                    : "dark:border-neutral-700 dark:bg-neutral-800 text-gray-300 hover:bg-neutral-700"
+                                    }`}
+                            >
+                                {IconComponent && <IconComponent size={20} />}
+                                {item.category}
+                            </button>
+                        );
+                    })}
                 </div>
 
                 <div className="md:w-3/4 pl-0 sm:pl-6">
