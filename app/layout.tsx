@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         <div className=" mx-auto relative flex items-center justify-center ">
 
-          <div className=" max-w-[1440px] w-full">
+          <div className=" max-w-[1640px] w-full">
             {children}
 
           </div>
