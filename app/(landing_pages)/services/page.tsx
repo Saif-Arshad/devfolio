@@ -36,30 +36,30 @@ function page() {
             detail: (
                 <>
                     Full-stack development means I handle everything—frontend, backend, and databases. I use technologies like{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['React Js']} React
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['React Js']}
                     </span>
-                    ,{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['Next Js']} Next.js
+                    React,{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['Next Js']}
                     </span>
-                    ,{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['Node Js']} Node.js
+                    Next.js,{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['Node Js']}
                     </span>
-                    ,{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Express} Express
+                    Node.js,{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Express}
                     </span>
-                    , and databases like{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.MongoDB} MongoDB
-                    </span>{' '}
-                    and{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.MySQL} MySQL
+                    Express, and databases like{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.MongoDB}
                     </span>
-                    .
+                    MongoDB and{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.MySQL}
+                    </span>
+                    MySQL.
                     <br />
                     <br />
                     You get fast, secure, and scalable applications. I also make sure your app is modern by integrating payment
@@ -67,10 +67,10 @@ function page() {
                     <br />
                     <br />
                     Plus, with cloud services like{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Firebase} Firebase
-                    </span>{' '}
-                    and tools like Docker, your app will be easy to maintain and deploy.
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Firebase}
+                    </span>
+                    Firebase and tools like Docker, your app will be easy to maintain and deploy.
                 </>
             ),
             subheading: 'Why Full-Stack?',
@@ -95,44 +95,45 @@ function page() {
             detail: (
                 <>
                     Backend development is all about making your app work. I specialize in creating{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.GraphQL} GraphQL
-                    </span>{' '}
-                    and REST APIs using{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['Node Js']} Node.js
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.GraphQL}
                     </span>
-                    ,{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Express} Express
+                    GraphQL and REST APIs using{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['Node Js']}
                     </span>
-                    , and databases like{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.MongoDB} MongoDB
-                    </span>{' '}
-                    and{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Postgresql} PostgreSQL
+                    Node.js,{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Express}
                     </span>
-                    .
+                    Express, and databases like{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.MongoDB}
+                    </span>
+                    MongoDB and{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Postgresql}
+                    </span>
+                    PostgreSQL.
                     <br />
                     <br />
                     Need something faster? I also use{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Prima} Prisma
-                    </span>{' '}
-                    to optimize database performance. If you're looking for quick deployment, tools like{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Firebase} Firebase
-                    </span>{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.AppWrite} AppWrite
-                    </span>{' '}
-                    and{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Supabase} Supabase
-                    </span>{' '}
-                    get the job done.
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Prima}
+                    </span>
+                    Prisma to optimize database performance. If you're looking for quick deployment, tools like{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Firebase}
+                    </span>
+                    Firebase{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.AppWrite}
+                    </span>
+                    AppWrite and{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Supabase}
+                    </span>
+                    Supabase get the job done.
                     <br />
                     <br />
                     Real-time chat? Payments? Notifications? I can integrate all of that while making sure your app is secure and
@@ -161,10 +162,10 @@ function page() {
             detail: (
                 <>
                     Mobile apps are everywhere, and I make sure yours stands out. Using frameworks like{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['React Js']} React Native
-                    </span>{' '}
-                    , I build apps that work on both iOS and Android.
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['React Js']}
+                    </span>
+                    React Native, I build apps that work on both iOS and Android.
                     <br />
                     <br />
                     I focus on fast performance, great design, and secure features like encryption and authentication. Whether it’s
@@ -173,10 +174,10 @@ function page() {
                     <br />
                     <br />
                     If you’re looking for cutting-edge technology, I can integrate{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.AI} AI
-                    </span>{' '}
-                    and IoT for smarter apps.
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.AI}
+                    </span>
+                    AI and IoT for smarter apps.
                 </>
             ),
             subheading: 'Why Mobile?',
@@ -199,29 +200,29 @@ function page() {
             detail: (
                 <>
                     Frontend development is all about making your app look great and feel easy to use. I work with{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['React Js']} React
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['React Js']}
                     </span>
-                    ,{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['Next Js']} Next.js
+                    React,{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['Next Js']}
                     </span>
-                    , and{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS['TypeScript']} TypeScript
-                    </span>{' '}
-                    to build fast, responsive interfaces.
+                    Next.js, and{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['TypeScript']}
+                    </span>
+                    TypeScript to build fast, responsive interfaces.
                     <br />
                     <br />
                     I make sure everything looks good on all devices using{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons   ">
-                        {STACKS['Tailwind Css']} Tailwind CSS
-                    </span>{' '}
-                    and{' '}
-                    <span className="inline-flex items-end gap-x-1 service_icons ">
-                        {STACKS.Bootstrap} Bootstrap
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS['Tailwind Css']}
                     </span>
-                    . Plus, I optimize performance so pages load fast and users stick around.
+                    Tailwind CSS and{' '}
+                    <span className="inline-flex items-end ml-1 service_icons">
+                        {STACKS.Bootstrap}
+                    </span>
+                    Bootstrap. Plus, I optimize performance so pages load fast and users stick around.
                     <br />
                     <br />
                     Accessibility is key too. Following WCAG guidelines, I ensure everyone, including people with disabilities, can
@@ -242,7 +243,6 @@ function page() {
     ];
 
 
-    const router = useRouter()
 
 
     const handleWhatsAppClick = (message: string) => {

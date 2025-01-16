@@ -26,7 +26,7 @@ const ResponsiveNavbar = () => {
     ];
 
     return (
-        <nav className="w-full bg-black shadow-lg z-20 flex items-center justify-between p-4">
+        <nav className="w-full bg-black relative shadow-lg z-50 flex items-center justify-between p-4">
             <Link href={"/"}>
                 <Image
                     src={"/images/logo.png"}
@@ -57,7 +57,7 @@ const ResponsiveNavbar = () => {
 
                 <Drawer direction="left" >
                     <DrawerTrigger >
-                        <Menu size={35} className="text-white" />
+                        <Menu size={35} className="text-white z-50" />
                     </DrawerTrigger>
                     <DrawerContent className='min-w-[300px]  h-full bg-black'>
                         <DrawerHeader>

@@ -5,8 +5,8 @@ const experiences = [
     {
         role: "Full Stack Developer",
         location: "Faisalabad, Pakistan - Full Time",
-        startDate: "2024-11-01", // YYYY-MM-DD
-        endDate: "Present", // Use "Present" for ongoing jobs
+        startDate: "2024-11-01", 
+        endDate: "Present", 
         image: "/company/fuzion_dev.png",
     },
     {
