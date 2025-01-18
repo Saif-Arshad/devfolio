@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Poppins } from 'next/font/google'; // Import Poppins from Google
+import { Poppins } from 'next/font/google';
 import "./globals.css";
-
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -24,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} antialiased bg-[#0a0d0f] text-white`}
       >
+        <GoogleAnalytics gaId="G-X83152KEJK" />
         <div className=" mx-auto relative flex items-center justify-center ">
 
           <div className=" max-w-[1640px] w-full">
