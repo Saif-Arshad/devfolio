@@ -123,7 +123,7 @@ export default function Page({ searchParams }: any) {
     };
 
     useEffect(() => {
-        if (service && userMessage.length === 0) {
+        if (service && userMessage.length == 0) {
             setUserMessage(service)
             setErrorMessage("Please fill out the required fields (Name and Email)")
             contactRef.current?.scrollIntoView({ behavior: 'smooth' });

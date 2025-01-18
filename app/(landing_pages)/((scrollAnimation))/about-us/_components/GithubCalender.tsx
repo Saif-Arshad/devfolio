@@ -61,7 +61,7 @@ const Calendar = ({ data }: CalendarProps) => {
     return (
         <>
             <div className='relative flex flex-col w-full'>
-                <ul className='flex justify-end gap-[3px] xl:gap-[20px] overflow-hidden text-xs xl:text-base xl:mb-2 dark:text-neutral-400 md:justify-start xl:justify-center'>
+                <ul className='flex justify-end gap-[3px] xl:gap-[25px] overflow-hidden text-xs xl:text-base xl:mb-2 dark:text-neutral-400 md:justify-start xl:justify-center'>
                     {months.map((month) => (
                         <li
                             key={month.firstDay}

@@ -20,7 +20,6 @@ export async function POST(req: NextRequest) {
             },
         });
 
-        // Email content
         const mailOptions = {
             from: process.env.MAIL_USER,
             to: process.env.MAIL_USER,
