@@ -75,11 +75,11 @@ function page() {
                         </div>
                         <hr className="my-4 bg-neutral-500" />
                         <div>
-                            <h3 className="text-lg font-semibold mb-2">Summary</h3>
+                            <h3 className="text-lg text-primaryColor font-semibold mb-2">Summary</h3>
                             <p className="text-sm leading-relaxed">I am a full-stack web developer specializing in the MERN stack, Next.js, and React Native, with expertise in Tailwind CSS and TypeScript. With a proven track record of delivering robust web applications, I aim to contribute to innovative projects that challenge my skills and foster professional growth.</p>
                         </div>
                         <div className="mt-4">
-                            <h3 className="text-lg font-semibold mb-2">Experience</h3>
+                            <h3 className="text-lg font-semibold text-primaryColor mb-2">Experience</h3>
                             {
                                 experiences.map((item, index) => (
                                     <div key={index}>
@@ -103,7 +103,7 @@ function page() {
                         </div>
 
                         <div className="mt-4">
-                            <h3 className="text-lg font-semibold mb-2">Qualification</h3>
+                            <h3 className="text-lg text-primaryColor font-semibold mb-2">Qualification</h3>
                             <div className='flex flex-col gap-3 sm:flex-row sm:items-center justify-between mb-3'>
                                 <div className='flex flex-col'>
                                     <strong>Bachelor in Computer Science</strong>
@@ -137,7 +137,7 @@ function page() {
 
                         </div>
                         <div className="mt-4">
-                            <h3 className="text-lg font-semibold mb-2">Skills</h3>
+                            <h3 className="text-lg text-primaryColor font-semibold mb-2">Skills</h3>
                             <ul className="list-disc list-inside text-sm">
                                 <li><strong>Languages:</strong> JavaScript, TypeScript, C++, HTML, EJS</li>
                                 <li><strong>Styles:</strong> CSS, SCSS, BootStrap, TailwindCSS, MUI, ShadCN</li>

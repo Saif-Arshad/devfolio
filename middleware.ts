@@ -20,7 +20,6 @@ export async function middleware(request: NextRequest) {
         }
 
         return NextResponse.next();
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         console.error('Middleware error:', error.message);
         if (isAdminPath) {

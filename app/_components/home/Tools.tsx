@@ -135,7 +135,7 @@ function Tools() {
                             <button
                                 key={index}
                                 onClick={() => setActiveIndex(index)}
-                                className={`md:w-full text-sm sm:text-base flex items-center gap-1  justify-center text-left px-4 py-2 mx-1 sm:mx-0 mb-4 rounded-full transition-all duration-300 ${activeIndex === index
+                                className={`w-full text-base flex items-center gap-1  justify-center text-left px-4 py-2 mx-1 sm:mx-0 mb-4 rounded-full transition-all duration-300 ${activeIndex === index
                                     ? "bg-emerald-900 text-white"
                                     : "dark:border-neutral-700 dark:bg-neutral-800 text-gray-300 hover:bg-neutral-700"
                                     }`}
