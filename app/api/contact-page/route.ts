@@ -20,7 +20,6 @@ export async function POST(req: NextRequest) {
             },
         });
 
-        // Email content
         const mailOptions = {
             from: process.env.MAIL_USER,
             to: process.env.MAIL_USER,
@@ -39,7 +38,6 @@ export async function POST(req: NextRequest) {
             { status: 200 }
         );
     } catch (error) {
-        console.error("Error sending email:", error);
         return NextResponse.json(
             { error: "Failed to send email." },
             { status: 500 }

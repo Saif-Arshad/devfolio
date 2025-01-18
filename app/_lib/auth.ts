@@ -3,14 +3,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { account } from './appwrite';
 
-// export const registerUser = async (email: string, password: string, name: string) => {
-//     try {
-//         await account.create('unique()', email, password, name);
-//         console.log('User registered successfully');
-//     } catch (error: any) {
-//         console.error('Registration failed:', error.message);
-//     }
-// };
 const setCookie = (cName: string, cValue: any, exDays: any) => {
     const d = new Date();
     d.setTime(d.getTime() + exDays * 24 * 60 * 60 * 1000);
@@ -21,10 +13,7 @@ const setCookie = (cName: string, cValue: any, exDays: any) => {
 export const loginUser = async (email: any, password: any) => {
     try {
         const res = await account.createEmailPasswordSession(email, password);
-        console.log("🚀 ~ loginUser ~ res:", res)
-        // cookies.setItem('admin-token', res.userId);
         setCookie("admin-token", res.userId, 300)
-        console.log('User logged in successfully');
     } catch (error: any) {
         console.error('Login failed:', error.message);
     }
@@ -33,7 +22,6 @@ export const loginUser = async (email: any, password: any) => {
 export const logoutUser = async () => {
     try {
         await account.deleteSession('current');
-        console.log('User logged out successfully');
     } catch (error: any) {
         console.error('Logout failed:', error.message);
     }

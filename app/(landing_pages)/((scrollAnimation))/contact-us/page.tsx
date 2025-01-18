@@ -7,9 +7,7 @@ import { BriefcaseBusinessIcon, Clock, Mail, Phone, Send } from "lucide-react";
 import { SiGmail } from "react-icons/si";
 
 export default function Page({ searchParams }: any) {
-    console.log("🚀 ~ Page ~ searchParams:", searchParams)
     const params = searchParams
-    console.log("🚀 ~ Page ~ params:", params)
     const { service } = params
     const socials = [
         {
@@ -125,7 +123,7 @@ export default function Page({ searchParams }: any) {
     };
 
     useEffect(() => {
-        if (service && userMessage.length === 0) {
+        if (service && userMessage.length == 0) {
             setUserMessage(service)
             setErrorMessage("Please fill out the required fields (Name and Email)")
             contactRef.current?.scrollIntoView({ behavior: 'smooth' });

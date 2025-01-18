@@ -10,7 +10,6 @@ import React, { useEffect, useState } from 'react'
 
 function Projects() {
     const [allProjects, setAllProjects] = useState<any>(null);
-    console.log("🚀 ~ Articles ~ allArticles:", allProjects)
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
 
@@ -37,11 +36,9 @@ function Projects() {
                 queries
 
             );
-            console.log("🚀 ~ fetchProjects ~ result:", result)
             setAllProjects(result.documents);
             setTotalPages(Math.ceil(result.total / limit));
         } catch (error) {
-            console.log("🚀 ~ fetchProjects ~ error:", error)
             console.error("Error fetching articles:", error);
         } finally {
             setLoading(false);

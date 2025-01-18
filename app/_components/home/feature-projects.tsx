@@ -12,7 +12,6 @@ function FeatureProjects() {
     const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [allProjects, setAllProjects] = useState<any[]>([]);
-    console.log("🚀 ~ LatestPost ~ allArticles:", allProjects)
     const [loading, setLoading] = useState(false);
     const formatDate = (date: string) => {
         return new Intl.DateTimeFormat("en-US", {
@@ -43,7 +42,6 @@ function FeatureProjects() {
                 collectionId,
                 queries
             );
-            console.log("🚀 ~ fetchArticles ~ result:", result)
             setAllProjects(result.documents);
 
         } catch (error) {

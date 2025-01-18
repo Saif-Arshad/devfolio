@@ -12,7 +12,8 @@ import {
     SiAppwrite,
     SiMaterialformkdocs,
     SiPrisma,
-    SiSocketdotio
+    SiSocketdotio,
+    SiStrapi
 } from "react-icons/si";
 import { GiClaymoreExplosive } from "react-icons/gi";
 import { MdAnimation, MdDevicesOther } from "react-icons/md";
@@ -55,6 +56,7 @@ const toolIcons: any = {
     Jest: SiJest,
     Postman: SiPostman,
     Prisma: SiPrisma,
+    "Strapi CMS": SiStrapi
 };
 
 const toolCategoryIcons = [
@@ -101,6 +103,7 @@ function Tools() {
                 "Prisma",
                 "Firebase",
                 "Supabase",
+                "Strapi CMS",
                 "Stripe",
             ],
         },

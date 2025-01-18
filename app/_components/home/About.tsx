@@ -6,38 +6,9 @@ import { FaUserAlt, FaBriefcase, FaGraduationCap, FaFileAlt } from "react-icons/
 import { FileUser } from 'lucide-react';
 import Link from 'next/link';
 import { ScrollArea } from '../ui/scroll-area';
+import { experiences } from '@/app/(landing_pages)/((scrollAnimation))/about-us/_components/CareerPath';
 
 
-const experiences = [
-    {
-        role: "Full Stack Developer",
-        location: "Faisalabad, Pakistan - Full Time",
-        startDate: "2024-11-01",
-        endDate: "Present",
-        image: "/company/fuzion_dev.png",
-    },
-    {
-        role: "MERN Stack Developer",
-        location: "Faisalabad, Pakistan - Full Time",
-        startDate: "2024-03-01",
-        endDate: "2024-11-01",
-        image: "/company/devshine_logo.jpeg",
-    },
-    {
-        role: "Junior MERN Stack Developer",
-        location: "Faisalabad, Pakistan - Full Time",
-        startDate: "2023-07-01",
-        endDate: "2024-02-01",
-        image: "/company/devontix.jpg",
-    },
-    {
-        role: "Web Developer",
-        location: "Faisalabad, Pakistan - Training & Internship",
-        startDate: "2022-06-01",
-        endDate: "2023-07-01",
-        image: "/company/weversity.png",
-    },
-];
 const calculateDuration = (startDate: any, endDate: any) => {
     const start = new Date(startDate);
     const end = endDate === "Present" ? new Date() : new Date(endDate);
@@ -85,23 +56,31 @@ function Intro() {
     return (
 
         <p className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
-            Hey there! I'm <span className="text-primaryColor font-semibold">Saif Ur Rehman</span>, and I've been fascinated by computers since I was young.
-            I’ve been working in <span className="text-primaryColor font-semibold">web development</span> for over 2 years
-            (<span className="text-primaryColor font-semibold">and if you count the sleepless nights, it’s easily 3! 😄</span>).
+            Hey there! I'm <span className="text-primaryColor ">Saif Ur Rehman</span>, and I've been fascinated by computers since I was young.
+            I’ve been working in <span className="text-primaryColor ">web development</span> for over 2 years
+            (<span className="text-primaryColor ">and if you count the sleepless nights, it’s easily 3! 😄</span>)
+            doing both
+
+            <span className="text-primaryColor px-1.5">
+
+                frontend
+            </span>
+            (The stuff you see on the screen)
+            and
+            <span className="text-primaryColor px-1.5">
+                backend
+            </span>
+            (The stuff that happens behind the scenes)
             <br /><br />
-            My expertise spans both <span className="text-primaryColor font-semibold">frontend</span>
-            (the stuff you see on the screen) and <span className="text-primaryColor font-semibold">backend</span>
-            (the stuff that happens behind the scenes).
-            <br /><br />
-            I pride myself on being a strong <span className="text-primaryColor font-semibold">communicator</span>,
+            I am also a strong <span className="text-primaryColor ">communicator</span>,
             capable of effectively collaborating with clients and team members to understand their needs and translate them
             into functional specifications. I am confident in my ability to deliver
-            <span className="text-primaryColor font-semibold"> high-quality solutions</span> that meet and exceed expectations.
-            <br /><br />
-            I love experimenting with <span className="text-primaryColor font-semibold">the latest web technologies</span> and continuously strive to improve my skills and knowledge.
+            <span className="text-primaryColor "> high-quality solutions</span> that meet and exceed expectations.
+            <br />
+            I love experimenting with <span className="text-primaryColor ">the latest web technologies</span> and continuously strive to improve my skills and knowledge.
             When I'm not coding, you'll find me gaming with friends or binge-watching Netflix shows.
             <br /><br />
-            Let’s join forces to shape a brighter future in <span className="text-primaryColor font-semibold">technology</span> together! 🚀
+            Let’s join forces to shape a brighter future in <span className="text-primaryColor ">technology</span> together! 🚀
         </p>
 
 
@@ -165,11 +144,10 @@ function Career() {
     return (
         <div className="flex flex-col w-full md:w-11/12 mx-auto">
             {experiences.map((experience, index) => {
-                const duration = calculateDuration(experience.startDate, experience.endDate);
                 return (
                     <React.Fragment key={index}>
                         <div
-                            className={`w-full rounded-xl flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 p-3 sm:p-5 bg-[#1C1C1C] ${index === 0 ? "border border-dashed border-green-500" : ""
+                            className={`w-full rounded-xl flex flex-col xs:flex-row sm:items-center gap-6 sm:gap-10 p-3 sm:p-5 bg-[#1C1C1C] ${index === 0 ? "border border-dashed border-green-500" : ""
                                 }`}
                         >
                             <div className="h-[50px] w-[60px]">
@@ -180,13 +158,23 @@ function Career() {
                                 />
                             </div>
                             <div className="flex flex-col sm:flex-row justify-between w-full">
-                                <div className="flex flex-col gap-1 w-[70%]">
+                                <div className="flex flex-col gap-1 w-full sm:w-[70%]">
                                     <h4 className="text-white font-medium">{experience.role}</h4>
                                     <p className="text-gray-500 text-sm">{experience.location}</p>
+                                    <p className="text-gray-500 flex sm:hidden  sm:text-gray-300 text-sm">
+                                        {new Date(experience.startDate).toLocaleDateString("en-US", {
+                                            year: "numeric",
+                                            month: "short",
+                                        })}{" "}
+                                        - {experience.endDate === "Present" ? "Present" :
+                                            new Date(experience.endDate).toLocaleDateString("en-US", {
+                                                year: "numeric",
+                                                month: "short",
+                                            })}
+                                    </p>
                                 </div>
-                                <div className="flex flex-col items-end gap-1">
-                                    <h4 className="text-white font-medium">{duration}</h4>
-                                    <p className="text-gray-500 text-sm">
+                                <div className=" flex-col hidden sm:flex items-end gap-1">
+                                    <p className="text-gray-500   sm:text-gray-300 text-sm">
                                         {new Date(experience.startDate).toLocaleDateString("en-US", {
                                             year: "numeric",
                                             month: "short",

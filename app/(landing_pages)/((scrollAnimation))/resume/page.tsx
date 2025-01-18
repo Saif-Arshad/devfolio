@@ -6,51 +6,52 @@ function page() {
             title: "Full Stack Developer",
             company: "Fuziondev",
             description: [
-                "Designed and implemented scalable web applications using the MERN stack, ensuring seamless user experiences.",
-                "Enhanced application performance by optimizing backend APIs and database queries, reducing response time by 30%.",
-                "Collaborated with cross-functional teams to deliver high-quality, user-centric web solutions using React and Node.js.",
-                "Led the integration of third-party services, streamlining development workflows and expanding application capabilities."
+                "Developed multiple web applications using the MERN stack, ensuring seamless and user-friendly experiences.",
+                "Optimized applications for maximum speed and scalability using advanced Next.js features.",
+                "Built dynamic, user-centric interfaces with React.js and Node.js, improving overall user engagement.",
+                "Collaborated with cross-functional teams to deliver high-quality, scalable solutions."
             ],
-            date: "2/2025 – Present",
+            date: "12/2024 – Present",
             location: "Faisalabad, Pakistan"
         },
         {
             title: "MERN Developer",
             company: "DevShine",
             description: [
-                "Developed and maintained web applications with a focus on modular, reusable components using React.js and Next.js.",
-                "Optimized front-end performance, achieving a 25% faster load time through efficient asset management and code splitting.",
-                "Implemented robust RESTful APIs and integrated them with MongoDB to handle dynamic user data efficiently.",
-                "Actively participated in Agile sprints, ensuring timely delivery of key features and enhancements."
+                "Implemented robust RESTful APIs integrated with MongoDB for efficient data handling.",
+                "Actively contributed to Agile sprints, ensuring the timely delivery of features and enhancements.",
+                "Developed and maintained modular, reusable components using React.js and Next.js.",
+                "Enhanced front-end performance by reducing load time through code splitting and efficient asset management."
             ],
-            date: "10/2024 – 2/2025",
+            date: "08/2024 – 12/2024",
             location: "Faisalabad, Pakistan"
         },
         {
             title: "Junior MERN Developer",
             company: "Devontix Solutions",
             description: [
-                "Optimized web application performance, ensuring scalability and reliability using advanced Next.js features.",
-                "Streamlined administrative workflows, enhancing user efficiency by designing intuitive dashboards and tools.",
-                "Collaborated with UI/UX designers to implement modern, responsive interfaces tailored to end-user needs.",
-                "Integrated real-time data features, improving the overall interactivity of applications."
+                "Developed the Saudi Stadium website with a focus on creating an efficient and user-friendly admin interface.",
+                "Streamlined administrative workflows, enhancing efficiency and user experience.",
+                "Optimized web applications for performance and scalability using Next.js.",
+                "Collaborated with UI/UX designers to implement responsive and modern interfaces tailored to user needs."
             ],
-            date: "10/2023 – 10/2024",
+            date: "12/2023 – 08/2024",
             location: "Faisalabad, Pakistan"
         },
         {
-            title: "MERN Stack Internship",
+            title: "MERN Stack Intern",
             company: "Weversity",
             description: [
-                "Managed and updated the Weversity.org website, improving its performance and usability.",
-                "Collaborated with senior developers to enhance key functionalities, contributing to a 20% increase in user engagement.",
-                "Assisted in the development and implementation of new features, including interactive forms and user dashboards.",
-                "Provided mentorship to junior team members and students, fostering best practices in web development."
+                "Managed and updated the Weversity.org website, enhancing its performance and usability.",
+                "Collaborated with senior developers to refine web functionalities, leading to a 20% increase in user engagement.",
+                "Contributed to the development and implementation of new features, including interactive forms and dashboards.",
+                "Mentored students in web development techniques and best practices."
             ],
-            date: "05/2023 – 9/2023",
+            date: "01/2023 – 11/2023",
             location: "Faisalabad, Pakistan"
         }
     ];
+
 
     return (
         <div className="flex flex-wrap w-full sm:px-5 lg:px-10 items-start mb-20">

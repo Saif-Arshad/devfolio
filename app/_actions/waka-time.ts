@@ -11,7 +11,6 @@ export const getWakaStats = async () => {
         }
         return response.data;
     } catch (error: any) {
-        console.log("🚀 ~ fetchGithubData ~ error:", error)
         console.error("Frontend Error:", error.message);
         return { error: 'Failed to fetch data. Please try again later.' };
     }

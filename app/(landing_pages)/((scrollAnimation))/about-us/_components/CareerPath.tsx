@@ -1,52 +1,38 @@
 import React from "react";
 import { FcBusinessman } from "react-icons/fc";
 
-const experiences = [
+export const experiences = [
     {
         role: "Full Stack Developer",
         location: "Faisalabad, Pakistan - Full Time",
-        startDate: "2024-11-01", 
-        endDate: "Present", 
+        startDate: "2024-12-01",
+        endDate: "Present",
         image: "/company/fuzion_dev.png",
     },
     {
         role: "MERN Stack Developer",
         location: "Faisalabad, Pakistan - Full Time",
-        startDate: "2024-03-01",
-        endDate: "2024-11-01",
+        startDate: "2024-08-01",
+        endDate: "2024-12-01",
         image: "/company/devshine_logo.jpeg",
     },
     {
         role: "Junior MERN Stack Developer",
         location: "Faisalabad, Pakistan - Full Time",
-        startDate: "2023-07-01",
-        endDate: "2024-02-01",
+        startDate: "2023-12-01",
+        endDate: "2024-08-01",
         image: "/company/devontix.jpg",
     },
     {
         role: "Web Developer",
         location: "Faisalabad, Pakistan - Training & Internship",
-        startDate: "2022-06-01",
-        endDate: "2023-07-01",
+        startDate: "2023-01-01",
+        endDate: "2023-11-01",
         image: "/company/weversity.png",
     },
 ];
 
-const calculateDuration = (startDate: any, endDate: any) => {
-    const start = new Date(startDate);
-    const end = endDate === "Present" ? new Date() : new Date(endDate);
-    const months = (end.getFullYear() - start.getFullYear()) * 12 + end.getMonth() - start.getMonth();
-    const years = Math.floor(months / 12);
-    const remainingMonths = months % 12;
 
-    if (years > 0 && remainingMonths > 0) {
-        return `${years} year${years > 1 ? "s" : ""} ${remainingMonths}+ month${remainingMonths > 1 ? "s" : ""}`;
-    } else if (years > 0) {
-        return `${years}+ year${years > 1 ? "s" : ""}`;
-    } else {
-        return `${remainingMonths}+ month${remainingMonths > 1 ? "s" : ""}`;
-    }
-};
 
 const CareerPath = () => {
     return (
@@ -71,11 +57,10 @@ const CareerPath = () => {
 
                 <div className="flex flex-col w-full md:w-11/12 mx-auto mt-10">
                     {experiences.map((experience, index) => {
-                        const duration = calculateDuration(experience.startDate, experience.endDate);
                         return (
                             <React.Fragment key={index}>
                                 <div
-                                    className={`w-full rounded-xl flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 p-3 sm:p-5 bg-[#1C1C1C] ${index === 0 ? "border border-dashed border-green-500" : ""
+                                    className={`w-full rounded-xl flex flex-col xs:flex-row sm:items-center gap-6 sm:gap-10 p-3 sm:p-5 bg-[#1C1C1C] ${index === 0 ? "border border-dashed border-green-500" : ""
                                         }`}
                                 >
                                     <div className="h-[50px] w-[60px]">
@@ -86,13 +71,23 @@ const CareerPath = () => {
                                         />
                                     </div>
                                     <div className="flex flex-col sm:flex-row justify-between w-full">
-                                        <div className="flex flex-col gap-1 w-[70%]">
+                                        <div className="flex flex-col gap-1 w-full sm:w-[70%]">
                                             <h4 className="text-white font-medium">{experience.role}</h4>
                                             <p className="text-gray-500 text-sm">{experience.location}</p>
+                                            <p className="text-gray-500 flex sm:hidden  sm:text-gray-300 text-sm">
+                                                {new Date(experience.startDate).toLocaleDateString("en-US", {
+                                                    year: "numeric",
+                                                    month: "short",
+                                                })}{" "}
+                                                - {experience.endDate === "Present" ? "Present" :
+                                                    new Date(experience.endDate).toLocaleDateString("en-US", {
+                                                        year: "numeric",
+                                                        month: "short",
+                                                    })}
+                                            </p>
                                         </div>
-                                        <div className="flex flex-col items-end gap-1">
-                                            <h4 className="text-white font-medium">{duration}</h4>
-                                            <p className="text-gray-500 text-sm">
+                                        <div className=" flex-col hidden sm:flex items-end gap-1">
+                                            <p className="text-gray-500   sm:text-gray-300 text-sm">
                                                 {new Date(experience.startDate).toLocaleDateString("en-US", {
                                                     year: "numeric",
                                                     month: "short",
