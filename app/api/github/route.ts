@@ -29,7 +29,6 @@ const GITHUB_USER_QUERY = `query($username: String!) {
 
 export async function GET(req: NextRequest, res: NextResponse) {
   const username = 'saif-arshad';
-  console.log("🚀 ~ GET ~ username:", username)
   const token = process.env.GITHUB_READ_USER_TOKEN_PERSONAL;
   try {
 
@@ -57,7 +56,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     return NextResponse.json({ status, data: responseJson.data.user });
   } catch (error: any) {
-    console.log("🚀 ~ fetchGithubData ~ error:", error)
     return NextResponse.json({ status: 500, data: {} });
 
   }

@@ -12,12 +12,10 @@ import { databases } from '@/app/_lib/appwrite';
 import Carousel, { Slider, SliderContainer, SliderDotButton } from '@/app/_components/ui/slider';
 
 function ProjectDetail({ slug }: { slug: string }) {
-    console.log("🚀 ~ ProjectDetail ~ slug:", slug)
     const [project, setProjects] = useState<any>(null);
     const [headers, setHeaders] = useState<{ id: string; text: string }[]>([]);
     const [parsedContent, setParsedContent] = useState<React.ReactNode>(null);
     const [slides, setSlides] = useState<any>([])
-    console.log("🚀 ~ ProjectDetail ~ slides:", slides)
     const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
     const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
     const OPTIONS: EmblaOptionsType = {

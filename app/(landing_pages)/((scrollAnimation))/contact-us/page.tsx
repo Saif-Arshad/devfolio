@@ -7,9 +7,7 @@ import { BriefcaseBusinessIcon, Clock, Mail, Phone, Send } from "lucide-react";
 import { SiGmail } from "react-icons/si";
 
 export default function Page({ searchParams }: any) {
-    console.log("🚀 ~ Page ~ searchParams:", searchParams)
     const params = searchParams
-    console.log("🚀 ~ Page ~ params:", params)
     const { service } = params
     const socials = [
         {

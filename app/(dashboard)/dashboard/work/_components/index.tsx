@@ -12,7 +12,6 @@ import { STACKS } from '@/app/_lib/stack';
 
 function Projects() {
     const [allProjects, setAllProjects] = useState<any>(null);
-    console.log("🚀 ~ Articles ~ allArticles:", allProjects)
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [isClient, setIsClient] = useState(false);
@@ -34,7 +33,6 @@ function Projects() {
                 Query.offset(offset),
             ];
             if (query.trim()) {
-                console.log("🚀 ~ fetchProjects ~ query:", query)
                 queries.unshift(Query.search('title', query));
             }
             const result = await databases.listDocuments(
@@ -43,7 +41,6 @@ function Projects() {
                 queries
 
             );
-            console.log("🚀 ~ fetchProjects ~ result:", result)
             setAllProjects(result.documents);
             setTotalPages(Math.ceil(result.total / limit));
         } catch (error) {
@@ -76,7 +73,6 @@ function Projects() {
         }
     };
     const deleteHandler = async (id: any) => {
-        console.log("🚀 ~ deleteHandler ~ id:", id)
 
         const isConfirm = confirm("Are you sure you want to delete this article?");
         if (isConfirm) {

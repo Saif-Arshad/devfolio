@@ -21,7 +21,6 @@ const RichTextEditor = dynamic(() => import('./editor'), {
 import { useRouter } from "next/navigation";
 
 function ArticleDrawer({ button, article }: { button: any; article?: any }) {
-    console.log("🚀 ~ ArticleDrawer ~ article:", article)
     const [content, setContent] = useState("");
     const [isClient, setIsClient] = useState(false);
     const [tags, setTags] = useState<string[]>([]);
@@ -38,8 +37,6 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
     const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
     useEffect(() => {
         if (article) {
-            console.log("🚀 ~ useEffect ~ article:", article)
-            console.log(article.content)
             setContent(article.content)
             setTitle(article.title)
             setSlug(article.slug)
@@ -88,7 +85,6 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
                 setTags([])
                 router.refresh()
             } catch (error) {
-                console.error("Error publishing article:", error);
                 setErrorMessage("Failed to publish the article. Please try again.");
             } finally {
                 setLoading(false);
@@ -127,7 +123,6 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
 
 
             } catch (error) {
-                console.error("Error publishing article:", error);
                 setErrorMessage("Failed to publish the article. Please try again.");
             } finally {
                 setLoading(false);

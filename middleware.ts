@@ -8,7 +8,6 @@ export async function middleware(request: NextRequest) {
     const isAdminPath = /^\/dashboard(\/[^\/]+)*\/?$/.test(path);
     const userToken = request.cookies.get('admin-token')?.value;
     try {
-        console.log("🚀 ~ middleware ~ user:", userToken)
 
 
         if (isAuthRoute && userToken) {
@@ -21,7 +20,6 @@ export async function middleware(request: NextRequest) {
 
         return NextResponse.next();
     } catch (error: any) {
-        console.error('Middleware error:', error.message);
         if (isAdminPath) {
             return NextResponse.redirect(new URL('/admin', request.nextUrl));
         }

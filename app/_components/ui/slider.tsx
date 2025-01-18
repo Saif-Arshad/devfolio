@@ -102,7 +102,6 @@ const Carousel: React.FC<CarouselProps> = ({
     }
     const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
     const [selectedThumbIndex, setSelectedThumbIndex] = useState(0);
-    console.log("🚀 ~ selectedThumbIndex:", selectedThumbIndex)
     const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
         containScroll: 'keepSnaps',
         dragFree: true,
@@ -298,11 +297,9 @@ export const Slider: React.FC<SliderProps> = ({
     thumnailSrc,
 }) => {
     const { isScale, setSlidesArr } = useCarouselContext();
-    // console.log(thumnailSrc)
 
     const addImgToSlider = useCallback(() => {
         setSlidesArr((prev: any) => {
-            // Prevent adding duplicate images
             return [...prev, thumnailSrc];
         });
     }, [setSlidesArr, thumnailSrc]);
@@ -573,7 +570,6 @@ export const useSelectedSnapDisplay = (
 export const ThumsSlider: React.FC = () => {
     const { emblaThumbsRef, slidesrArr, selectedIndex, onThumbClick } =
         useCarouselContext();
-    // console.log(slidesrArr);
 
     return (
         <div className='overflow-hidden mt-2' ref={emblaThumbsRef}>

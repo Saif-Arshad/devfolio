@@ -44,7 +44,6 @@ function ProjectDrawer({ button, project }: any) {
 
     useEffect(() => {
         if (project) {
-            console.log("🚀 ~ useEffect ~ project:", project)
             setContent(project.content);
             setName(project.name);
             setSlug(project.slug);
@@ -119,7 +118,6 @@ function ProjectDrawer({ button, project }: any) {
                 isFeatured,
                 gallery: galleryState
             };
-            console.log("🚀 ~ handleSubmit ~ data:", data)
 
             if (isEdit) {
 
@@ -144,7 +142,6 @@ function ProjectDrawer({ button, project }: any) {
             setIsFeatured(false);
             router.refresh();
         } catch (error) {
-            console.log("Error saving project:", error);
             setErrorMessage("Failed to save the project. Please try again.");
         } finally {
             setLoading(false);

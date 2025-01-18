@@ -11,7 +11,6 @@ import { Input } from '@/app/_components/ui/input';
 
 function Articles() {
     const [allArticles, setAllArticles] = useState<any>(null);
-    console.log("🚀 ~ Articles ~ allArticles:", allArticles)
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -29,7 +28,6 @@ function Articles() {
                 Query.offset(offset),
             ];
             if (query.trim()) {
-                console.log("🚀 ~ fetchArticles ~ query:", query)
                 queries.unshift(Query.search('title', query));
             }
             const result = await databases.listDocuments(
@@ -38,7 +36,6 @@ function Articles() {
                 queries
 
             );
-            console.log("🚀 ~ fetchArticles ~ result:", result)
             setAllArticles(result.documents);
             setTotalPages(Math.ceil(result.total / limit));
         } catch (error) {
@@ -71,7 +68,6 @@ function Articles() {
         }
     };
     const deleteHandler = async (id: any) => {
-        console.log("🚀 ~ deleteHandler ~ id:", id)
 
         const isConfirm = confirm("Are you sure you want to delete this article?");
         if (isConfirm) {

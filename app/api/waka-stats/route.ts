@@ -19,7 +19,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     return NextResponse.json({ data: data });
   } catch (error: any) {
-    console.log("🚀 ~ fetchGithubData ~ error:", error)
     return NextResponse.json({ status: 500, data: {}, message: "An error occurred while fetching Waka stats" });
 
   }

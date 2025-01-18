@@ -11,7 +11,6 @@ function LatestPost() {
     const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [allArticles, setAllArticles] = useState<any[]>([]);
-    console.log("🚀 ~ LatestPost ~ allArticles:", allArticles)
     const [loading, setLoading] = useState(false);
     const formatDate = (date: string) => {
         return new Intl.DateTimeFormat("en-US", {
@@ -41,7 +40,6 @@ function LatestPost() {
                 collectionId,
                 queries
             );
-            console.log("🚀 ~ fetchArticles ~ result:", result)
             setAllArticles(result.documents);
 
         } catch (error) {
