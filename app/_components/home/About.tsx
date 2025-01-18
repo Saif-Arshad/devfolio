@@ -54,36 +54,7 @@ const calculateDuration = (startDate: any, endDate: any) => {
     }
 };
 
-const experiencesResume = [
-    {
-        title: "Full Stack Developer",
-        company: "Fuziondev",
 
-        date: "2/2025 – Present",
-        location: "Faisalabad, Pakistan"
-    },
-    {
-        title: "MERN Developer",
-        company: "DevShine",
-
-        date: "10/2024 – 2/2025",
-        location: "Faisalabad, Pakistan"
-    },
-    {
-        title: "Junior MERN Developer",
-        company: "Devontix Solutions",
-
-        date: "10/2023 – 10/2024",
-        location: "Faisalabad, Pakistan"
-    },
-    {
-        title: "MERN Stack Internship",
-        company: "Weversity",
-
-        date: "05/2023 – 9/2023",
-        location: "Faisalabad, Pakistan"
-    }
-];
 
 const qualifications = [
     {
@@ -113,33 +84,27 @@ const qualifications = [
 function Intro() {
     return (
 
-        <p
-            className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
-            I&apos;m Saif Ur Rehman I&lsquo;ve been working in web development for over 2 years (and if you count the sleepless nights,
-            <span className="text-primaryColor font-semibold px-1.5">
-                it’s easily 3!
-            </span>
-            ) doing both
-
-            <span className="text-primaryColor font-semibold px-1.5">
-
-                frontend
-            </span>
-            (The stuff you see on the screen)
-            and
-            <span className="text-primaryColor font-semibold px-1.5">
-                backend
-            </span>
-            (The stuff that happens behind the scenes)
-
-
-
-            I focus on building practical and reliable solutions that help businesses solve problems and achieve their goals. I am a firm believer in the
-            <span className="text-primaryColor font-semibold px-1.5">
-                power of technology
-            </span>
-            to transform businesses and lives.
+        <p className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
+            Hey there! I'm <span className="text-primaryColor font-semibold">Saif Ur Rehman</span>, and I've been fascinated by computers since I was young.
+            I’ve been working in <span className="text-primaryColor font-semibold">web development</span> for over 2 years
+            (<span className="text-primaryColor font-semibold">and if you count the sleepless nights, it’s easily 3! 😄</span>).
+            <br /><br />
+            My expertise spans both <span className="text-primaryColor font-semibold">frontend</span>
+            (the stuff you see on the screen) and <span className="text-primaryColor font-semibold">backend</span>
+            (the stuff that happens behind the scenes).
+            <br /><br />
+            I pride myself on being a strong <span className="text-primaryColor font-semibold">communicator</span>,
+            capable of effectively collaborating with clients and team members to understand their needs and translate them
+            into functional specifications. I am confident in my ability to deliver
+            <span className="text-primaryColor font-semibold"> high-quality solutions</span> that meet and exceed expectations.
+            <br /><br />
+            I love experimenting with <span className="text-primaryColor font-semibold">the latest web technologies</span> and continuously strive to improve my skills and knowledge.
+            When I'm not coding, you'll find me gaming with friends or binge-watching Netflix shows.
+            <br /><br />
+            Let’s join forces to shape a brighter future in <span className="text-primaryColor font-semibold">technology</span> together! 🚀
         </p>
+
+
     )
 }
 
@@ -259,68 +224,7 @@ function Career() {
         </div>
     )
 }
-function Resume() {
-    return (
 
-        <div className="  w-full px-2  lg:px-5">
-
-            <Link href={`/resume`}>
-                <button className='bg-emerald-700 hover:bg-emerald-800 mb-4 items-center flex text-white p-2 rounded-full px-5 group'>
-                    <FileUser className='h-5 w-5 me-2 group-hover:animate-shake' />
-                    View Full Resume</button>
-            </Link>
-            <div className="max-w-4xl mx-auto bg-neutral-900 border border-neutral-700 rounded-lg shadow-md overflow-hidden">
-                <div className="p-4 sm:p-6">
-                    <div className="flex flex-col sm:flex-row gap-5 sm:items-center justify-between">
-                        <div>
-                            <h2 className="text-3xl font-semibold">Saif Ur Rehman</h2>
-                            <p className="text-sm text-gray-300">Full Stack Developer</p>
-                        </div>
-                        <div>
-                            <p className="text-sm text-gray-300">Phone: +92 3491797803</p>
-                            <p className="text-sm text-gray-300">Email: Saifarshad3344@gmail.com</p>
-                            <p className="text-sm text-gray-300">Location: Faisalabad, Pakistan</p>
-                        </div>
-                    </div>
-                    <hr className="my-4 bg-neutral-500" />
-                    <div>
-                        <h3 className="text-lg font-semibold mb-2">Summary</h3>
-                        <p className="text-sm leading-relaxed">I am a full-stack web developer specializing in the MERN stack, Next.js, and React Native, with expertise in Tailwind CSS and TypeScript. With a proven track record of delivering robust web applications, I aim to contribute to innovative projects that challenge my skills and foster professional growth.</p>
-                    </div>
-                    <div className="mt-4">
-                        <h3 className="text-lg font-semibold mb-2">Experience</h3>
-                        {
-                            experiencesResume.map((item, index) => (
-                                <div key={index}>
-                                    <h4 className="text-md font-semibold">{item.company}</h4>
-                                    <p className="text-sm text-gray-300">{item.title} | {item.date}</p>
-                                </div>
-
-                            ))
-                        }
-
-                    </div>
-                    <div className="mt-4">
-                        <h3 className="text-lg font-semibold mb-2">Skills</h3>
-                        <ul className="list-disc list-inside text-sm">
-                            <li><strong>Languages:</strong> JavaScript, TypeScript, C++, HTML, EJS</li>
-                            <li><strong>Styles:</strong> CSS, SCSS, BootStrap, TailwindCSS, MUI, ShadCN</li>
-                            <li><strong>Libraries:</strong> ReactJs, Vue.js, GSAP, Redux Toolkit, ExpressJs</li>
-                            <li><strong>Runtime:</strong> NodeJs</li>
-                            <li><strong>Frameworks:</strong> NextJs</li>
-                            <li><strong>Database:</strong> MongoDB, PostgreSQL, SQLite</li>
-                            <li><strong>Cloud & Backend:</strong> Supabase, Firebase, Appwrite</li>
-                            <li><strong>Payments:</strong> Stripe</li>
-                            <li><strong>DevTools:</strong> Git, GitHub, Postman</li>
-                        </ul>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    )
-}
 
 function About() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -329,28 +233,23 @@ function About() {
         {
             title: "Intro",
             block: <Intro />,
-            icon: <FaUserAlt className="mr-2 hidden sm:flex" />,
+            icon: <FaUserAlt className="mr-2 flex" />,
         },
         {
             title: "Career",
             block: <Career />,
-            icon: <FaBriefcase className="mr-2 hidden sm:flex" />,
+            icon: <FaBriefcase className="mr-2 flex" />,
         },
         {
             title: "Education",
             block: <Education />,
-            icon: <FaGraduationCap className="mr-2 hidden sm:flex" />,
+            icon: <FaGraduationCap className="mr-2 flex" />,
         },
-        {
-            title: "Resume",
-            block: <Resume />,
 
-            icon: <FaFileAlt className="mr-2 hidden sm:flex" />,
-        },
     ];
 
     return (
-        <section className="py-14 px-4 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
+        <section className="py-14 px-2 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
             <div className="w-full mx-auto">
                 <div className="w-full justify-start items-center xl:gap-12 gap-10 grid xl:grid-cols-7 grid-cols-1">
                     <div className="w-full xl:sticky top-0 justify-center items-start xl:flex hidden  xl:row-span-3 xl:col-span-3">
@@ -371,7 +270,7 @@ function About() {
                             </p>
                         </div>
                         <div className="w-full bg-neutral-800 border border-neutral-600 overflow-hidden rounded-xl flex-col justify-center items-start flex">
-                            <div className="mb-4 bg-neutral-900 w-full grid grid-cols-4 p-2 gap-x-2 sm:gap-x-3">
+                            <div className="mb-4 bg-neutral-900 w-full grid grid-cols-3 sm:grid-cols-4 p-2 gap-x-2 sm:gap-x-3">
                                 {TAB_ITEMS.map((item, index) => (
                                     <button
                                         key={index}
@@ -385,9 +284,20 @@ function About() {
                                         {item.title}
                                     </button>
                                 ))}
+
+                                <Link href={"/resume"} className='hidden sm:flex'>
+                                    <button
+                                        className={`transition-all duration-300 text-sm sm:text-base w-full py-3 rounded-lg flex items-center justify-center 
+                                            bg-neutral-800 text-gray-300 hover:bg-neutral-600
+                                            `}
+                                    >
+                                        <FaFileAlt className="mr-2 hidden sm:flex" />
+                                        Resume
+                                    </button>
+                                </Link>
                             </div>
 
-                            <div className="w-full p-1 sm:p-3">
+                            <div className="w-full p-2 sm:p-3">
                                 <TransitionPanel
                                     activeIndex={activeIndex}
                                     transition={{ duration: 0.2, ease: 'easeInOut' }}
@@ -399,7 +309,7 @@ function About() {
                                 >
                                     {TAB_ITEMS.map((item, index) => (
                                         <div key={index} className="py-2 min-h-[80vh] 2xl:min-h-[50vh]">
-                                            {item.block}
+                                            {item.block && item.block}
                                         </div>
                                     ))}
                                 </TransitionPanel>

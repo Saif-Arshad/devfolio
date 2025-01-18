@@ -119,16 +119,16 @@ export default function FirstAbout() {
                     <p className="mt-2 text-white sm:text-lg">
                         🛠️
                         My main tech stack currently is
-                        <span className="text-primaryColor font-semibold px-1.5">MERN</span>
+                        <span className="text-primaryColor px-1.5">MERN</span>
                         in combination with
                         Tailwind CSS,
                         TypeScript,
                         and
-                        <span className="text-primaryColor font-semibold px-1.5">Next.js</span>.
+                        <span className="text-primaryColor px-1.5">Next.js</span>.
                         I specialize in building
-                        <span className="text-primaryColor font-semibold px-1.5">complex</span>,
+                        <span className="text-primaryColor px-1.5">complex</span>,
                         fast, and
-                        <span className="text-primaryColor font-semibold px-1.5">functional</span>
+                        <span className="text-primaryColor px-1.5">functional</span>
                         digital products that deliver
                         exceptional user experiences.
                     </p>

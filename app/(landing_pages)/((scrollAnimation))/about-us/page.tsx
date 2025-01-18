@@ -7,9 +7,9 @@ import GithubContributions from './_components/GithubContributions'
 import Skills from './_components/Skills'
 import { getWakaStats } from '@/app/_actions/waka-time'
 import { fetchGithubData } from '@/app/_actions/github'
-import LatestPost from '@/app/_components/home/latest-post'
 import WhyUs from './_components/WhyUs'
 import CareerPath from './_components/CareerPath'
+import Tools from '@/app/_components/home/Tools'
 
 async function page() {
 
@@ -23,9 +23,10 @@ async function page() {
                 <Skills />
             </div>
             <AboutUs />
-            <CareerPath />
             <WeeklyStats data={data} />
             <GithubContributions data={githubData} />
+            <Tools />
+            <CareerPath />
             <WhyUs />
             <WhatWeDo />
         </>

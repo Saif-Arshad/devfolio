@@ -303,23 +303,23 @@ function page() {
 
                     <p className='max-w-5xl mt-4'>
                         Whether you're a startup looking to build your first app
-                        <span className="text-primaryColor font-semibold px-1.5">
+                        <span className="text-primaryColor px-1.5">
                             (Web or Mobile)
                         </span>
                         or an established company aiming to optimize your digital presence, I offer a wide range of services designed to help you succeed. From
-                        <span className="text-primaryColor font-semibold px-1.5">
+                        <span className="text-primaryColor px-1.5">
                             web development
                         </span>
                         ,
-                        <span className="text-primaryColor font-semibold px-1.5">
+                        <span className="text-primaryColor px-1.5">
                             mobile App development
                         </span>
                         and
-                        <span className="text-primaryColor font-semibold px-1.5">
+                        <span className="text-primaryColor px-1.5">
                             AI solutions
                         </span>
                         to cloud infrastructure and beyond, I’m here to provide innovative, custom solutions that fit your unique needs. Ready to take your project to the
-                        <span className="text-primaryColor font-semibold px-1.5">
+                        <span className="text-primaryColor px-1.5">
                             next level?
                         </span>
                         Let’s collaborate and turn your vision into reality.
