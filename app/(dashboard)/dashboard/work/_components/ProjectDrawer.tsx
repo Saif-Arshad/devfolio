@@ -18,7 +18,7 @@ import InputTags from "../../articles/_components/InputTags";
 import { FaTrash } from "react-icons/fa";
 import dynamic from "next/dynamic";
 const RichTextEditor = dynamic(() => import('../../articles/_components/editor'), {
-    ssr: false, 
+    ssr: false,
 });
 function ProjectDrawer({ button, project }: any) {
     const [content, setContent] = useState("");
@@ -112,12 +112,13 @@ function ProjectDrawer({ button, project }: any) {
                 slug,
                 tech,
                 discription,
-                github_url,
-                live_url,
                 banner: bannerImageUrl,
                 isFeatured,
-                gallery: galleryState
+                gallery: galleryState,
+                ...(github_url && { github_url }),
+                ...(live_url && { live_url })
             };
+
 
             if (isEdit) {
 
