@@ -26,7 +26,6 @@ function ArticleDetail({ slug }: { slug: string }) {
 
     const [article, setArticle] = useState<Article | null>(null);
     const [headers, setHeaders] = useState<{ id: string; text: string }[]>([]);
-    const [readTime, setReadTime] = useState<number>(0);
     const [parsedContent, setParsedContent] = useState<React.ReactNode>(null);
 
     useEffect(() => {
@@ -40,7 +39,6 @@ function ArticleDetail({ slug }: { slug: string }) {
                         const fetchedArticle = result.documents[0] as any;
                         setArticle(fetchedArticle);
 
-                        calculateReadTime(fetchedArticle.content);
                         const parsed = extractHeaders(fetchedArticle.content);
                         setParsedContent(parsed);
                     } else {
@@ -55,12 +53,7 @@ function ArticleDetail({ slug }: { slug: string }) {
         }
     }, [slug]);
 
-    const calculateReadTime = (htmlContent: string) => {
-        const text = htmlContent.replace(/<[^>]+>/g, "");
-        const words = text.trim().split(/\s+/).length;
-        const time = Math.ceil(words / 400);
-        setReadTime(time);
-    };
+
 
     const extractHeaders = (htmlContent: string): React.ReactNode => {
         const headerList: { id: string; text: string }[] = [];
@@ -212,10 +205,7 @@ function ArticleDetail({ slug }: { slug: string }) {
                         <p className="text-gray-300 text-sm">
                             Published on {article.$createdAt && formatDate(article.$createdAt)}
                         </p>
-                        <p className="text-gray-300 text-sm flex items-center gap-x-1">
-                            <TimerIcon size={18} className="inline" />
-                            {readTime} min read
-                        </p>
+
                     </div>
                 </div>
 
@@ -236,7 +226,7 @@ function ArticleDetail({ slug }: { slug: string }) {
                                             href={`#${header.id}`}
                                             className="text-primaryColor flex items-center hover:underline"
                                         >
-                                            <ArrowRightIcon size={18} className="inline mr-2 mt-1" />
+                                            {/* <ArrowRightIcon size={18} className="inline mr-2 mt-1" /> */}
                                             {header.text}
                                         </Link>
                                     </li>

@@ -258,7 +258,7 @@ function ProjectDetail({ slug }: { slug: string }) {
                                             href={`#${header.id}`}
                                             className="text-primaryColor flex items-center hover:underline"
                                         >
-                                            <ArrowRightIcon size={18} className="inline mr-2 mt-1" />
+                                            {/* <ArrowRightIcon size={18} className="inline mr-2 mt-1" /> */}
                                             {header.text}
                                         </a>
                                     </li>
