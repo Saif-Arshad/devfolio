@@ -296,7 +296,7 @@ function About() {
                                     }}
                                 >
                                     {TAB_ITEMS.map((item, index) => (
-                                        <div key={index} className="py-2 min-h-[80vh] 2xl:min-h-[50vh]">
+                                        <div key={index} className="py-2 ">
                                             {item.block && item.block}
                                         </div>
                                     ))}
