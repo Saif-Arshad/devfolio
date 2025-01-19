@@ -16,7 +16,7 @@ import { databases } from "../../../../_lib/appwrite";
 import { uploadImage } from "../../../../_lib/upload-file";
 import dynamic from "next/dynamic";
 const RichTextEditor = dynamic(() => import('./editor'), {
-    ssr: false, 
+    ssr: false,
 });
 import { useRouter } from "next/navigation";
 
@@ -46,11 +46,12 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
         }
     }, [article])
     useEffect(() => {
-        if (title) {
-            const slug = title.split(" ").join("-").toLowerCase();
-            setSlug(slug)
+        if (!isEdit && title) {
+            const generatedSlug = title.split(" ").join("-").toLowerCase();
+            setSlug(generatedSlug);
         }
-    }, [title])
+    }, [title, isEdit]);
+
     useEffect(() => {
         setIsClient(true);
     }, []);
