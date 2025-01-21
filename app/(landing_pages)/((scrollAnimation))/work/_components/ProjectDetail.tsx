@@ -177,7 +177,7 @@ function ProjectDetail({ slug }: { slug: string }) {
                 <div className='flex sm:items-center justify-between w-full mb-6 '>
                     <div className='flex items-center gap-4 text-lg font-medium text-gray-100 '>
                         Tech Stack
-                        <div className='flex items-center gap-1 text-lg font-medium text-gray-300 '>
+                        <div className='flex gap-x-1 items-center gap-1 text-lg font-medium text-gray-300 '>
                             {
                                 project.tech.map((tag: string) => (
                                     <span key={tag}>{STACKS[tag]}</span>
@@ -201,43 +201,55 @@ function ProjectDetail({ slug }: { slug: string }) {
                     </div>
                 </div>
 
+                <div className='hidden md:flex'>
 
-                {
-                    slides.length > 1 ?
-                        <Carousel options={OPTIONS}
-                            isAutoPlay={true}
-                        >
-                            <SliderContainer>
-                                {
-                                    slides.map((slide: string, index: number) => (
-                                        <Slider key={index}>
-                                            <Image
-                                                src={slide}
-                                                alt={project.name}
-                                                width={1000}
-                                                height={1000}
-                                                className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-6"
-                                            />
-                                        </Slider>
-                                    ))
-                                }
+                    {
+                        slides.length > 1 ?
+                            <Carousel options={OPTIONS}
+                                isAutoPlay={true}
+                            >
+                                <SliderContainer>
+                                    {
+                                        slides.map((slide: string, index: number) => (
+                                            <Slider key={index}>
+                                                <Image
+                                                    src={slide}
+                                                    alt={project.name}
+                                                    width={1000}
+                                                    height={1000}
+                                                    className="md:w-full  md:h-[500px] object-cover rounded-xl mb-6"
+                                                />
+                                            </Slider>
+                                        ))
+                                    }
 
-                            </SliderContainer>
-                            <div className='flex justify-center py-4'>
-                                <SliderDotButton />
-                            </div>
-                        </Carousel>
-                        :
-                        <>
-                            <Image
-                                src={project.banner}
-                                alt={project.name}
-                                width={1000}
-                                height={1000}
-                                className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-6"
-                            />
-                        </>
-                }
+                                </SliderContainer>
+                                <div className='flex justify-center py-4'>
+                                    <SliderDotButton />
+                                </div>
+                            </Carousel>
+                            :
+                            <>
+                                <Image
+                                    src={project.banner}
+                                    alt={project.name}
+                                    width={1000}
+                                    height={1000}
+                                    className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-6"
+                                />
+                            </>
+                    }
+                </div>
+                <div className='flex md:hidden'>
+                    <Image
+                        src={project.banner}
+                        alt={project.name}
+                        width={1000}
+                        height={1000}
+                        className="w-full h-auto  rounded-xl mb-6"
+                    />
+                </div>
+
 
 
 
@@ -245,6 +257,27 @@ function ProjectDetail({ slug }: { slug: string }) {
                     <div className=" w-full lg:w-3/4 lg:pr-9">
 
                         <div className="prose-lg content-detail text-gray-200">{parsedContent}</div>
+                        <div className='flex md:hidden flex-col'>
+                            <h1
+
+                                className="mt-8 mb-4 text-xl sm:text-2xl font-semibold sm:font-bold bg-neutral-800 py-2 rounded-tr-md rounded-br-md pl-5 border-l-[5px] border-primaryColor">
+                                Gallery
+                            </h1>
+                            {
+                                slides.length > 1 &&
+                                slides.slice(1).map((item: any, index: number) => (
+
+                                    <Image
+                                        src={item}
+                                        key={index}
+                                        alt={project.name}
+                                        width={1000}
+                                        height={1000}
+                                        className="w-full h-auto  rounded-xl mb-6"
+                                    />
+                                ))
+                            }
+                        </div>
                     </div>
                     <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
                         <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">

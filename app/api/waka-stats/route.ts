@@ -17,7 +17,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     };
 
 
-    return NextResponse.json({ data: data });
+    const res = NextResponse.json({ data: data });
+    res.headers.set("Cache-Control", "no-store");
+    return res;
   } catch (error: any) {
     return NextResponse.json({ status: 500, data: {}, message: "An error occurred while fetching Waka stats" });
 

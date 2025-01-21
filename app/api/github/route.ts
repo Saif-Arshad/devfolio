@@ -54,7 +54,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return NextResponse.json({ status, data: {} });
     }
 
-    return NextResponse.json({ status, data: responseJson.data.user });
+    const res = NextResponse.json({ status, data: responseJson.data.user });
+    res.headers.set("Cache-Control", "no-store");
+    return res;
   } catch (error: any) {
     return NextResponse.json({ status: 500, data: {} });
 

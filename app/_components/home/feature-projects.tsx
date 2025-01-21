@@ -112,7 +112,7 @@ function FeatureProjects() {
                             {allProjects && allProjects.length > 0 && allProjects.map((project: any) => (
                                 <Link href={`/work/${project.slug}`} key={project.$id}>
                                     <div className="p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
-                                        <div className="relative h-[250px] rounded-xl overflow-hidden">
+                                        <div className="hidden md:flex relative h-[250px] rounded-xl overflow-hidden">
                                             <Image
                                                 alt={project.name}
                                                 src={project.banner}
@@ -126,6 +126,14 @@ function FeatureProjects() {
                                         </p>
                                     </div> */}
                                         </div>
+                                        <Image
+                                            alt={project.name}
+                                            width={1000}
+                                            height={1000}
+                                            src={project.banner}
+                                            className="w-full h-auto flex md:hidden  rounded-xl mb-6"
+                                        />
+
                                         <div className='flex items-center justify-end gap-2 my-2 mt-5'>
                                             {
                                                 project.tech.map((tag: string) => (
