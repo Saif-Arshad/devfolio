@@ -72,13 +72,13 @@ function Intro() {
             </span>
             (The stuff that happens behind the scenes)
             <br /><br />
+            I love experimenting with <span className="text-primaryColor ">the latest web technologies</span> and continuously strive to improve my skills and knowledge.
             I am also a strong <span className="text-primaryColor ">communicator</span>,
             capable of effectively collaborating with clients and team members to understand their needs and translate them
             into functional specifications. I am confident in my ability to deliver
             <span className="text-primaryColor "> high-quality solutions</span> that meet and exceed expectations.
             <br />
-            I love experimenting with <span className="text-primaryColor ">the latest web technologies</span> and continuously strive to improve my skills and knowledge.
-            When I'm not coding, you'll find me gaming with friends or binge-watching Netflix shows.
+            When I'm not coding, you'll find me gaming🏀 with friends or binge-watching Netflix shows.
             <br /><br />
             Let’s join forces to shape a brighter future in <span className="text-primaryColor ">technology</span> together! 🚀
         </p>
