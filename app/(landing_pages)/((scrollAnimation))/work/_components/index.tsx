@@ -121,27 +121,29 @@ function Projects() {
                                 {allProjects && allProjects.length > 0 && allProjects.map((project: any) => (
                                     <Link href={`/work/${project.slug}`} key={project.$id} className='h-full'>
                                         <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
-                                            <div className="hidden md:flex relative h-[250px] rounded-xl overflow-hidden">
-                                                <Image
-                                                    alt={project.name}
-                                                    src={project.banner}
-                                                    fill
-                                                    className="group-hover:scale-110 transition-transform duration-700 object-cover"
-                                                />
-                                                {/* <div className="absolute inset-0 bg-black bg-opacity-80 scale-0 group-hover:scale-100 origin-center duration-300 flex items-center justify-center">
-                                            
-                                                                                    <p className='flex items-center gap-x-1 text-primaryColor font-medium'>
-                                                                                        View Project <ArrowRight className='h-5 w-5' />
-                                                                                    </p>
-                                                                                </div> */}
+                                            <div className="md:p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
+                                                <div className="flex relative h-[250px] rounded-xl overflow-hidden">
+                                                    <Image
+                                                        alt={project.name}
+                                                        src={project.banner}
+                                                        fill
+                                                        className="group-hover:scale-110 transition-transform duration-700 object-cover"
+                                                    />
+                                                    {/* <div className="absolute inset-0 bg-black bg-opacity-80 scale-0 group-hover:scale-100 origin-center duration-300 flex items-center justify-center">
+                                          
+                                                                                  <p className='flex items-center gap-x-1 text-primaryColor font-medium'>
+                                                                                      View Project <ArrowRight className='h-5 w-5' />
+                                                                                  </p>
+                                                                              </div> */}
+                                                </div>
                                             </div>
-                                            <Image
+                                            {/* <Image
                                                 alt={project.name}
                                                 width={1000}
                                                 height={1000}
                                                 src={project.banner}
                                                 className="w-full h-auto flex md:hidden  rounded-xl mb-6"
-                                            />
+                                            /> */}
                                             <div className='flex items-center justify-end gap-2 my-2 mt-5'>
                                                 {
                                                     project.tech.map((tag: string) => (
