@@ -31,6 +31,8 @@ function Projects() {
                 // Query.select(["discription", "title", "content", "$id", "isPublish", "tags", "slug", "bannerImage"]),
                 Query.limit(limit),
                 Query.offset(offset),
+                Query.orderDesc('$createdAt')
+
             ];
             if (query.trim()) {
                 queries.unshift(Query.search('title', query));

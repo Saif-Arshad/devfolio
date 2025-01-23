@@ -30,7 +30,8 @@ function FeatureProjects() {
             const queries = [
                 Query.equal("isPublish", true),
                 Query.equal("isFeatured", true),
-                Query.orderAsc("$createdAt"),
+                Query.orderDesc('$createdAt'),
+
                 Query.limit(3),
 
             ];
