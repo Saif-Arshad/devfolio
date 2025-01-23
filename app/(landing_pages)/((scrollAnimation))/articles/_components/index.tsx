@@ -29,6 +29,8 @@ function ArticlesMain() {
                     Query.equal("isPublish", true),
                     Query.limit(limit),
                     Query.offset(offset),
+                    Query.orderDesc('$createdAt')
+
                 ];
 
                 if (query.trim()) {

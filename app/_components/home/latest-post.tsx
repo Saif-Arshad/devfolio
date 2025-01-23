@@ -28,7 +28,7 @@ function LatestPost() {
             const queries = [
                 Query.equal("isPublish", true),
                 Query.select(["title", "bannerImage", "$createdAt", "slug", "tags"]),
-                Query.orderAsc("$createdAt"),
+                Query.orderDesc('$createdAt'),
                 Query.limit(3),
 
             ];
@@ -66,7 +66,7 @@ function LatestPost() {
                     <button className='sm:bg-emerald-700 sm:hover:bg-emerald-800 items-center flex text-primaryColor sm:text-white sm:p-2 sm:rounded-full mb-5 sm:mb-0 sm:px-5 group'>
                         <CircleArrowOutUpRightIcon className='h-4 me-2 w-4 sm:hidden' />
 
-                        View All 
+                        View All
                     </button>
                 </Link>
             </div>

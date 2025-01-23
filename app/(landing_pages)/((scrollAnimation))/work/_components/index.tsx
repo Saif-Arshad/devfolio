@@ -28,6 +28,7 @@ function Projects() {
                 Query.equal('isPublish', true),
                 Query.limit(limit),
                 Query.offset(offset),
+                Query.orderDesc('$createdAt')
             ];
 
             const result = await databases.listDocuments(
