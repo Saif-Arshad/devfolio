@@ -180,7 +180,7 @@ function ArticlesMain() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5 w-full ">
                     {allArticles.map((article: any) => (
                         <Link href={`/articles/${article.slug}`} key={article.$id}>
-                            <div className="p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
+                            <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
                                 <div className="relative h-[200px] rounded-xl overflow-hidden">
                                     <Image
                                         alt={article.title}
