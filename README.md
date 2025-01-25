@@ -44,7 +44,7 @@ This is a portfolio website that showcases my work using Next.js. The website is
 4.Create a .env file in the root directory and add the environment variables which are in:
 
 `.env-example`
- https://github.com/Saif-Arshad/devfolio/main/.env-example
+https://github.com/Saif-Arshad/devfolio/blob/main/.env.example
 
 
 
