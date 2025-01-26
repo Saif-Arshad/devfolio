@@ -37,7 +37,17 @@ function Projects() {
                 queries
 
             );
-            setAllProjects(result.documents);
+            setAllProjects((prevProjects: any) => {
+                const newProjects = result.documents.filter((newProject: any) =>
+                    !(prevProjects || []).some((existingProject: any) => existingProject.$id === newProject.$id)
+                );
+
+                return [
+                    ...(prevProjects || []),
+                    ...newProjects,
+                ];
+            });
+
             setTotalPages(Math.ceil(result.total / limit));
         } catch (error) {
             console.error("Error fetching articles:", error);
@@ -50,7 +60,7 @@ function Projects() {
     }, [currentPage]);
     useEffect(() => {
         const handleScroll = () => {
-            const bottomOffset = 300;
+            const bottomOffset = 600;
             const reachedBottom =
                 window.innerHeight + window.scrollY >=
                 document.body.offsetHeight - bottomOffset;
