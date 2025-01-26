@@ -60,7 +60,7 @@ function FeatureProjects() {
             <div className='flex flex-col-reverse sm:flex-row  justify-between w-full  border-b border-neutral-500 border-dashed pb-4'>
 
                 <h3 className='text-xl sm:text-2xl font-semibold text-gray-200'>
-                    All Creative Works.
+                    Featured Projects.
                     <span className='block text-sm text-primaryColor font-normal'>
                         Here's some of my projects that I have worked on.
                     </span>
