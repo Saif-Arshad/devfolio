@@ -78,7 +78,7 @@ function FeatureProjects() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 mt-20 gap-5 w-full ">
 
                 {
-                    !allProjects ? (
+                    allProjects.length == 0 ? (
                         <>
                             {
 
@@ -112,7 +112,7 @@ function FeatureProjects() {
                         <>
                             {allProjects && allProjects.length > 0 && allProjects.map((project: any) => (
                                 <Link href={`/work/${project.slug}`} key={project.$id}>
-                                    <div className="p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
+                                    <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
                                         <div className="flex relative h-[250px] rounded-xl overflow-hidden">
                                             <Image
                                                 alt={project.name}

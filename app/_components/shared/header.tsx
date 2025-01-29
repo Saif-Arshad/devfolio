@@ -11,7 +11,7 @@ import {
     DrawerHeader, Drawer, DrawerTrigger
 } from '../ui/drawer';
 import Image from 'next/image';
-import { BriefcaseBusiness, Globe, Home, Menu, MessageCircleHeart, NotebookPen, UserRound } from 'lucide-react';
+import { BriefcaseBusiness, FileUser, Globe, Home, Menu, MessageCircleHeart, NotebookPen, UserRound } from 'lucide-react';
 
 const ResponsiveNavbar = () => {
 
@@ -82,6 +82,14 @@ const ResponsiveNavbar = () => {
                                     </DrawerClose>
                                 </Link>
                             ))}
+                            <Link href="/resume" >
+                                <DrawerClose >
+                                    <span className={`capitalize ${currentPath == "/contact-us" ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center gap-2 `}>
+                                        <FileUser className='h-5 w-5' />
+                                        My Resume
+                                    </span>
+                                </DrawerClose>
+                            </Link>
                             <Link href="/contact-us" >
                                 <DrawerClose >
                                     <span className={`capitalize ${currentPath == "/contact-us" ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center gap-2 `}>
@@ -90,6 +98,7 @@ const ResponsiveNavbar = () => {
                                     </span>
                                 </DrawerClose>
                             </Link>
+                           
 
 
                         </div>

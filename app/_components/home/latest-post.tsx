@@ -101,7 +101,7 @@ function LatestPost() {
                         :
                         allArticles.map((article) => (
                             <Link href={`/articles/${article.slug}`} key={article.slug}>
-                                <div className="p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
+                                <div className="p-4 cursor-pointer group border rounded-2xl mb-3 h-full bg-neutral-800 w-full">
                                     <div className="relative h-[200px] rounded-xl overflow-hidden">
                                         <Image
                                             alt={article.title}

@@ -172,7 +172,8 @@ function ArticleDetail({ slug }: { slug: string }) {
     }
 
     return (
-        <div className="container mx-auto p-2 sm:p-4 flex flex-col lg:flex-row">
+        <div className="w-full sm:container mx-auto p-4 flex flex-col lg:flex-row scroll-smooth">
+
             <ScrollProgress className="top-[0px]" />
 
             <div className="w-full lg:pr-8">

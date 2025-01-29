@@ -13,9 +13,7 @@ import Tools from '@/app/_components/home/Tools'
 
 async function page() {
 
-    const { data } = await getWakaStats()
 
-    const { data: githubData } = await fetchGithubData()
     return (
         <>
             <AboutHero />
@@ -23,8 +21,8 @@ async function page() {
                 <Skills />
             </div>
             <AboutUs />
-            <WeeklyStats data={data} />
-            <GithubContributions data={githubData} />
+            <WeeklyStats  />
+            <GithubContributions />
             <Tools />
             <CareerPath />
             <WhyUs />
