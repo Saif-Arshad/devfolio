@@ -10,6 +10,7 @@ import { ScrollProgress } from '@/app/_components/ui/scroll-bar';
 import { STACKS } from '@/app/_lib/stack';
 import { databases } from '@/app/_lib/appwrite';
 import Carousel, { Slider, SliderContainer, SliderDotButton } from '@/app/_components/ui/slider';
+import WhatWeDo from '../../about-us/_components/what-we-do';
 
 function ProjectDetail({ slug }: { slug: string }) {
     const [project, setProjects] = useState<any>(null);
@@ -137,7 +138,7 @@ function ProjectDetail({ slug }: { slug: string }) {
     }
 
     return (
-        <div className="container mx-auto p-4 flex flex-col lg:flex-row scroll-smooth">
+        <div className="w-full sm:container mx-auto p-4 flex flex-col lg:flex-row scroll-smooth">
             <ScrollProgress className="top-[0px]" />
 
             <div className="w-full lg:pr-8">
@@ -253,7 +254,7 @@ function ProjectDetail({ slug }: { slug: string }) {
 
 
 
-                <div className=" w-full flex mt-6">
+                <div className=" w-full flex my-6 mb-10">
                     <div className=" w-full lg:w-3/4 lg:pr-9">
 
                         <div className="prose-lg content-detail text-gray-200">{parsedContent}</div>
@@ -300,9 +301,10 @@ function ProjectDetail({ slug }: { slug: string }) {
                         </div>
                     </div>
                 </div>
+                <WhatWeDo />
             </div>
 
-        </div>
+        </div>  
     )
 }
 

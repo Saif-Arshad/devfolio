@@ -6,6 +6,8 @@ import { format, parseISO, formatDistanceToNowStrict } from 'date-fns';
 import React, { useEffect, useState } from 'react'
 import WakaItem from './WakaItem';
 import Progress from '@/app/_components/ui/progress';
+import { getWakaStats } from '@/app/_actions/waka-time';
+import axios from 'axios';
 
 interface ItemProps {
     name: string;
@@ -13,7 +15,24 @@ interface ItemProps {
     minutes: number;
 }
 
-function WeeklyStats({ data }: any) {
+function WeeklyStats() {
+    const [data, setData] = useState<any>(null)
+
+    useEffect(() => {
+        const getWakaStats = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/waka-stats`);
+                if (response.status >= 400) {
+                    throw new Error('Error fetching waka data');
+                }
+                setData(response.data.data)
+            } catch (error: any) {
+                console.error("Frontend Error:", error.message);
+            }
+        };
+        getWakaStats()
+
+    }, [])
     const [formattedLastUpdate, setFormattedLastUpdate] = useState<string | null>(
         null,
     );
@@ -118,9 +137,7 @@ function WeeklyStats({ data }: any) {
             },
         },
     ];
-    if (!data) {
-        return null;
-    }
+
 
     return (
         <section className="py-14 px-4 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
@@ -148,36 +165,63 @@ function WeeklyStats({ data }: any) {
                         Last update: {renderLastUpdate()}
                     </div>
                 </div>
-                <div className='mb-1 grid gap-3 py-2 md:grid-cols-2 xl:grid-cols-3 mt-8'>
-                    <WakaItem label='Start Date' value={startDate} />
-                    <WakaItem label='End Date' value={endDate} />
-                    <WakaItem label='Daily Coding Average' value={dailyAverage} />
-                    <WakaItem label='This Week Coding Time' value={dailyTotal} />
-                    <WakaItem label='Best Day Coding Time' value={bestDay} />
-                    <WakaItem label='All Time Since Today' value={allTimeSinceToday} />
-                </div>
-                <div className='mt-5 flex flex-col gap-6 sm:flex-row sm:gap-4'>
-                    {actives.map((item) => (
-                        <div
-                            key={item?.title}
-                            className={`${item?.styles?.bg} relative flex flex-1 flex-col gap-2 rounded-lg p-[2px]`}
-                        >
-                            <div className='h-full w-full rounded-lg bg-black p-2 '>
-                                <p className='absolute -top-3 left-3 bg-black px-2 '>
-                                    {item?.title}
-                                </p>
+                {
+                    data ?
+                        <>
+                            <div className='mb-1 grid gap-3 py-2 md:grid-cols-2 xl:grid-cols-3 mt-8'>
+                                <WakaItem label='Start Date' value={startDate} />
+                                <WakaItem label='End Date' value={endDate} />
+                                <WakaItem label='Daily Coding Average' value={dailyAverage} />
+                                <WakaItem label='This Week Coding Time' value={dailyTotal} />
+                                <WakaItem label='Best Day Coding Time' value={bestDay} />
+                                <WakaItem label='All Time Since Today' value={allTimeSinceToday} />
+                            </div>
+                            <div className='mt-5 flex flex-col gap-6 sm:flex-row sm:gap-4'>
+                                {actives.map((item) => (
+                                    <div
+                                        key={item?.title}
+                                        className={`${item?.styles?.bg} relative flex flex-1 flex-col gap-2 rounded-lg p-[2px]`}
+                                    >
+                                        <div className='h-full w-full rounded-lg bg-black p-2 '>
+                                            <p className='absolute -top-3 left-3 bg-black px-2 '>
+                                                {item?.title}
+                                            </p>
 
-                                <ul className='flex flex-col gap-1 px-4 py-3'>
-                                    {item?.data?.map((subItem: any) => (
-                                        <li key={subItem?.name}>
-                                            <Progress data={subItem} className={item?.styles?.bg} />
-                                        </li>
-                                    ))}
-                                </ul>
+                                            <ul className='flex flex-col gap-1 px-4 py-3'>
+                                                {item?.data?.map((subItem: any) => (
+                                                    <li key={subItem?.name}>
+                                                        <Progress data={subItem} className={item?.styles?.bg} />
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                        :
+                        <div className="container mx-auto p-1 mt-8  flex flex-col lg:flex-row">
+                            <div className="w-full ">
+                                <div
+                                    role="status"
+                                    className="flex w-full h-[300px] items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-[#151515]"
+                                >
+                                    <svg
+                                        className="w-10 h-10 text-gray-200 dark:text-gray-600"
+                                        aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 16 20"
+                                    >
+                                        <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                                        <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
+                                    </svg>
+                                    <span className="sr-only">Loading...</span>
+                                </div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                }
+
             </div>
         </section>
     )

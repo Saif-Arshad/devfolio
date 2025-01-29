@@ -7,7 +7,7 @@ function WhatWeDo() {
             <div className='px-4 lg:px-10 mt-10' >
 
 
-             
+
 
 
                 <div className='bg-neutral-800 my-7 mt-14 p-5 rounded-2xl sm:mx-5'>
@@ -22,7 +22,11 @@ function WhatWeDo() {
                     <p className=' mt-10 hidden sm:flex  text-gray-200'>
                         I help create exceptional digital experiences for businesses by leveraging strategic development and innovative solutions, ensuring every product aligns with their unique goals and delivers measurable success.
                     </p>
-                    <p className='mt-2'>
+                    <p className='mt-2 flex items-center'>
+                        <span className="relative flex h-4 w-4 me-2 ">
+                            <span className="btn-ping"></span>
+                            <span className="btn-ping_dot"></span>
+                        </span>
                         I&lsquo;m open for freelance projects, feel free to email me to see how can we collaborate.
                     </p>
 
