@@ -6,7 +6,6 @@ import { format, parseISO, formatDistanceToNowStrict } from 'date-fns';
 import React, { useEffect, useState } from 'react'
 import WakaItem from './WakaItem';
 import Progress from '@/app/_components/ui/progress';
-import { getWakaStats } from '@/app/_actions/waka-time';
 import axios from 'axios';
 
 interface ItemProps {
