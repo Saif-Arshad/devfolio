@@ -31,9 +31,6 @@ function FeatureProjects() {
                 Query.equal("isPublish", true),
                 Query.equal("isFeatured", true),
                 Query.orderDesc('$createdAt'),
-
-                Query.limit(3),
-
             ];
 
 
