@@ -31,7 +31,7 @@ function InputTags({ value, onChange, placeholder }: InputTagsProps) {
                     value={pendingDataPoint}
                     onChange={(e) => setPendingDataPoint(e.target.value)}
                     onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === "," || e.key === " ") {
+                        if (e.key === "Enter" || e.key === "," ) {
                             e.preventDefault();
                             addPendingDataPoint();
                         }

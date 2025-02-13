@@ -1,4 +1,5 @@
 import React from 'react'
+import { BsWhatsapp } from 'react-icons/bs'
 import { SiFiverr } from 'react-icons/si'
 
 function SocialLinks() {
@@ -22,9 +23,9 @@ function SocialLinks() {
                     <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
             </a>
-            {/* <a href="https://www.fiverr.com/saifurrehman360" target='_blank' className="ml-5 mt-1 hover:text-primaryColor transform hover:scale-110 transition duration-500">
-                <SiFiverr className='h-12 w-14' />
-            </a> */}
+            <a href="https://wa.me/923491797803" target='_blank' rel="noreferrer" className="ml-5 mt-4 hover:text-primaryColor transform hover:scale-110 transition duration-500">
+                <BsWhatsapp className='h-[24px] w-[24px]' />
+            </a>
         </div>
     )
 }
