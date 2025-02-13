@@ -84,7 +84,7 @@ function Projects() {
                             My Portfolio
                         </h1>
                         <h2 className=' text-primaryColor text-lg mt-3  '>
-                            Recent Projects and Achievements
+                            Some Things I’ve Built.
                         </h2>
                         <p className='mt-3 mb-8'>
                             With many years in web development, I acquired extensive experience working on projects across multiple industries and technologies. Let me show you my best creations.
@@ -94,7 +94,7 @@ function Projects() {
                 </div>
 
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 mt-20 gap-5 w-full ">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 3xl:grid-cols-3 mt-20 gap-5 w-full ">
 
                     {
                         !allProjects ? (

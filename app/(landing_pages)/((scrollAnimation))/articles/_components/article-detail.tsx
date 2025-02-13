@@ -27,6 +27,8 @@ function ArticleDetail({ slug }: { slug: string }) {
     const [article, setArticle] = useState<Article | null>(null);
     const [headers, setHeaders] = useState<{ id: string; text: string }[]>([]);
     const [parsedContent, setParsedContent] = useState<React.ReactNode>(null);
+    // New state for active header
+    const [activeHeader, setActiveHeader] = useState<string>("");
 
     useEffect(() => {
         if (slug) {
@@ -53,8 +55,6 @@ function ArticleDetail({ slug }: { slug: string }) {
         }
     }, [slug]);
 
-
-
     const extractHeaders = (htmlContent: string): React.ReactNode => {
         const headerList: { id: string; text: string }[] = [];
 
@@ -75,7 +75,6 @@ function ArticleDetail({ slug }: { slug: string }) {
                         </li>
                     );
                 }
-
 
                 if (domNode.name === "h2") {
                     const textContent = domNode.children
@@ -117,6 +116,33 @@ function ArticleDetail({ slug }: { slug: string }) {
         return parsedData;
     };
 
+    // Set up Intersection Observer to track active header
+    useEffect(() => {
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: "0px 0px -80% 0px", // adjust this to trigger earlier/later
+            threshold: 0,
+        };
+
+        const callback = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveHeader(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(callback, observerOptions);
+
+        // Select all h2 elements within the content area
+        const headerElements = document.querySelectorAll(".content-detail h2");
+        headerElements.forEach((element) => observer.observe(element));
+
+        return () => {
+            headerElements.forEach((element) => observer.unobserve(element));
+        };
+    }, [parsedContent]);
+
     const formatDate = (date: string) => {
         return new Intl.DateTimeFormat("en-US", {
             weekday: "long",
@@ -147,33 +173,12 @@ function ArticleDetail({ slug }: { slug: string }) {
                         <span className="sr-only">Loading...</span>
                     </div>
                 </div>
-                {/* <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
-                    <div className="w-full lg:w-3/4 lg:pr-8">
-                        <div
-                            role="status"
-                            className="flex w-full h-[200px] items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-[#151515]"
-                        >
-                            <svg
-                                className="w-10 h-10 text-gray-200 dark:text-gray-600"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 16 20"
-                            >
-                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-                            </svg>
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         );
     }
 
     return (
         <div className="w-full sm:container mx-auto p-4 flex flex-col lg:flex-row scroll-smooth">
-
             <ScrollProgress className="top-[0px]" />
 
             <div className="w-full lg:pr-8">
@@ -202,18 +207,17 @@ function ArticleDetail({ slug }: { slug: string }) {
                         ))}
                     </div>
                     <div className="flex sm:items-center gap-4 flex-col sm:flex-row">
-
                         <p className="text-gray-300 text-sm">
                             Published on {article.$createdAt && formatDate(article.$createdAt)}
                         </p>
-
                     </div>
                 </div>
 
-                <div className=" w-full flex">
-                    <div className=" w-full lg:w-3/4 lg:pr-9">
-
-                        <div className="prose-lg content-detail text-gray-200">{parsedContent}</div>
+                <div className="flex">
+                    <div className="w-full lg:w-3/4 lg:pr-9">
+                        <div className="prose-lg content-detail text-gray-200">
+                            {parsedContent}
+                        </div>
                     </div>
                     <div className="hidden lg:inline lg:w-1/4 mt-8 lg:mt-0">
                         <div className="sticky top-4 p-4 bg-neutral-800 rounded-lg shadow">
@@ -225,9 +229,11 @@ function ArticleDetail({ slug }: { slug: string }) {
                                     <li key={header.id}>
                                         <Link
                                             href={`#${header.id}`}
-                                            className="text-primaryColor flex items-center hover:underline"
+                                            className={`
+                        flex items-center transition-all duration-300 hover:underline
+                        ${activeHeader === header.id ? "text-white font-semibold scale-[1.03]" : "text-primaryColor"}
+                      `}
                                         >
-                                            {/* <ArrowRightIcon size={18} className="inline mr-2 mt-1" /> */}
                                             {header.text}
                                         </Link>
                                     </li>
@@ -237,7 +243,6 @@ function ArticleDetail({ slug }: { slug: string }) {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

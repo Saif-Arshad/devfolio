@@ -4,13 +4,8 @@ function WhatWeDo() {
     return (
         <>
 
-            <div className='px-4 lg:px-10 mt-10' >
-
-
-
-
-
-                <div className='bg-neutral-800 my-7 mt-14 p-5 rounded-2xl sm:mx-5'>
+            <div className='px-2 sm:px-4 lg:px-10 mt-10' >
+                <div className='bg-neutral-800 my-7 mt-14 p-2 sm:p-5 rounded-2xl sm:mx-5'>
 
                     <h2
                         className="font-display flex items-center gap-x-1 text-xl text-start font-bold  text-black dark:text-white sm:text-4xl my-1"

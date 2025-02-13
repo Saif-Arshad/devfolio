@@ -101,7 +101,8 @@ function LatestPost() {
                         :
                         allArticles.map((article) => (
                             <Link href={`/articles/${article.slug}`} key={article.slug}>
-                                <div className="p-4 cursor-pointer group border rounded-2xl mb-3 h-full bg-neutral-800 w-full">
+                                <div className="p-4 flex flex-col justify-between cursor-pointer group border rounded-2xl mb-3 h-full bg-neutral-800 w-full">
+                                <div >
                                     <div className="relative h-[200px] rounded-xl overflow-hidden">
                                         <Image
                                             alt={article.title}
@@ -127,6 +128,7 @@ function LatestPost() {
                                             {article.title}
                                         </h3>
 
+                                    </div>
                                     </div>
                                     <div className="mt-6 flex items-center">
                                         <Image
