@@ -84,7 +84,7 @@ const ResponsiveNavbar = () => {
                             ))}
                             <Link href="/resume" >
                                 <DrawerClose >
-                                    <span className={`capitalize ${currentPath == "/contact-us" ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center gap-2 `}>
+                                    <span className={`capitalize ${currentPath == "/resume" ? "text-primaryColor" : "text-white hover:text-primaryColor hover:scale-x-110  transition-all"} text-xl flex items-center gap-2 `}>
                                         <FileUser className='h-5 w-5' />
                                         My Resume
                                     </span>
