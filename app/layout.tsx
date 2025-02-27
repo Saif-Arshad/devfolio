@@ -118,6 +118,7 @@ export default function RootLayout({
             {children}
           </div>
         </div>
+        <script defer data-domain="saifurrehman.info" src="https://plausible.io/js/script.js"></script>
       </body>
     </html>
   );

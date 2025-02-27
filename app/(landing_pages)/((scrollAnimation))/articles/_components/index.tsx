@@ -161,9 +161,9 @@ function ArticlesMain() {
                 <div className="flex gap-10 sm:items-center justify-between w-full my-20 mt-28 flex-col-reverse sm:flex-row">
                     <h2 className="text-2xl font-semibold flex items-center">
                         Latest Articles
-                        <span className="bg-neutral-800 text-lg p-1 rounded-full font-light px-3.5 mx-2 flex items-center justify-center">
+                        {/* <span className="bg-neutral-800 text-lg p-1 rounded-full font-light px-3.5 mx-2 flex items-center justify-center">
                             {allArticles?.length || 0}
-                        </span>
+                        </span> */}
                     </h2>
                     <div className="flex items-center relative">
                         <Search className="absolute left-2 text-gray-300" />
