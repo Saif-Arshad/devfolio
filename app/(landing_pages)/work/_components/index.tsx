@@ -129,14 +129,18 @@ function Projects() {
                         )
                             :
                             <>
-                                {allProjects && allProjects.length > 0 && allProjects.map((project: any) => (
+                                {allProjects && allProjects.length > 0 && allProjects.map((project: any) => {
+                                    const downloadURL = project && project.banner && project.banner.replace('/preview?', '/download?');
+
+                                    return(
+
                                     <Link href={`/work/${project.slug}`} key={project.$id} className='h-full'>
                                         <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
                                             <div className="md:p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
                                                 <div className="flex relative h-[250px] rounded-xl overflow-hidden">
                                                     <Image
                                                         alt={project.name}
-                                                        src={project.banner}
+                                                            src={downloadURL}
                                                         fill
                                                         className="group-hover:scale-110 transition-transform duration-700 object-cover"
                                                     />
@@ -189,7 +193,7 @@ function Projects() {
 
                                         </div>
                                     </Link>
-                                ))}
+                                )})}
                             </>
                     }
 

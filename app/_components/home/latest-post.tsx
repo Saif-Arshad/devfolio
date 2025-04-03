@@ -99,14 +99,17 @@ function LatestPost() {
 
                         ))
                         :
-                        allArticles.map((article) => (
+                        allArticles.map((article) => {
+                            const downloadURL = article && article.bannerImage && article.bannerImage.replace('/preview?', '/download?');
+
+                            return(
                             <Link href={`/articles/${article.slug}`} key={article.slug}>
                                 <div className="p-4 flex flex-col justify-between cursor-pointer group border rounded-2xl mb-3 h-full bg-neutral-800 w-full">
                                 <div >
                                     <div className="relative h-[200px] rounded-xl overflow-hidden">
                                         <Image
                                             alt={article.title}
-                                            src={article.bannerImage}
+                                                    src={downloadURL}
                                             fill
                                             className="group-hover:scale-110 transition-transform duration-700 object-cover"
                                         />
@@ -195,7 +198,7 @@ function LatestPost() {
                             //         </div>
                             //     </div>
                             // </Link>
-                        ))
+                          )})
                 }
             </div>
 

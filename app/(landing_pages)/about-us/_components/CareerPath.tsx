@@ -4,7 +4,7 @@ import { FcBusinessman } from "react-icons/fc";
 export const experiences = [
     {
         role: "Full Stack Developer",
-        location: "Faisalabad, Pakistan - Full Time",
+        location: "Faisalabad, Pakistan - Part Time",
         startDate: "2024-12-01",
         endDate: "Present",
         image: "/company/fuzion_dev.png",
