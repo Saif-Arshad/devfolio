@@ -19,8 +19,8 @@ import { SiGmail } from 'react-icons/si';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import Faqs from '@/app/_components/home/Faqs';
 import { useRouter } from 'next/navigation';
-import Skills from '../((scrollAnimation))/about-us/_components/Skills';
 import Link from 'next/link';
+import Skills from '../about-us/_components/Skills';
 
 
 function page() {
