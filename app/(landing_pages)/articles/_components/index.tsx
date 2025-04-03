@@ -100,7 +100,7 @@ function ArticlesMain() {
             day: "numeric",
         }).format(new Date(date));
     };
-
+    const downloadURL = randomBlog && randomBlog.bannerImage.replace('/preview?', '/download?');
     return (
         <div className="flex flex-wrap h-full w-full z-20">
             <div className="w-full min-h-[75vh] lg:py-10 py-5 lg:px-10 px-4 flex flex-col">
@@ -124,8 +124,8 @@ function ArticlesMain() {
                 ) : randomBlog ? (
                     <div className="relative">
                         <div className="relative bg-white rounded-lg overflow-hidden">
-                            <Image
-                                src={randomBlog.bannerImage}
+                                <img
+                                    src={downloadURL}
                                 height={1000}
                                 width={1000}
                                 alt="Blog Image"
@@ -138,7 +138,7 @@ function ArticlesMain() {
                                     {randomBlog.title}
                                 </h2>
                                 <div className="mt-4 flex items-center justify-end">
-                                    <Image
+                                    <img
                                         src="/images/icon.jpg"
                                         alt="Author Avatar"
                                         height={100}
@@ -178,14 +178,17 @@ function ArticlesMain() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5 w-full ">
-                    {allArticles.map((article: any) => (
+                    {allArticles.map((article: any) => {
+                        const downloadURL = article.bannerImage.replace('/preview?', '/download?');
+
+                return(
                         <Link href={`/articles/${article.slug}`} key={article.$id}>
                             <div className="p-4 flex flex-col justify-between cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
                             <div >
                                 <div className="relative h-[200px] rounded-xl overflow-hidden">
                                     <Image
                                         alt={article.title}
-                                        src={article.bannerImage}
+                                        src={downloadURL}
                                         fill
                                         className="group-hover:scale-110 transition-transform duration-700 object-cover"
                                     />
@@ -230,7 +233,7 @@ function ArticlesMain() {
                                 </div>
                             </div>
                         </Link>
-                    ))}
+                    )})}
                 </div>
 
                 {loading && allArticles.length > 0 && (

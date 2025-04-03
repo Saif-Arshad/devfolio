@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     "backend developer",
     "JavaScript developer",
     "Node.js developer",
-    "Flutter developer",
     "cross-platform app developer",
     "custom web development",
     "custom mobile app development",

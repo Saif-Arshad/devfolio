@@ -22,7 +22,7 @@ function WhatWeDo() {
                             <span className="btn-ping"></span>
                             <span className="btn-ping_dot"></span>
                         </span>
-                        I&lsquo;m open for freelance projects, feel free to email me to see how can we collaborate.
+                        I&lsquo;m open for freelance projects, feel free to text me to see how can we collaborate.
                     </p>
 
                     <SocialLinks />

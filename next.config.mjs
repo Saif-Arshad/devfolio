@@ -2,6 +2,7 @@
 const nextConfig = {
 
     images: {
+        unoptimized: true,
         domains: ['assets.aceternity.com', "cloud.appwrite.io"]
     },
 };

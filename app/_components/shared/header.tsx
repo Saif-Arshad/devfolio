@@ -20,7 +20,7 @@ const ResponsiveNavbar = () => {
     const links = [
         { title: "Home", link: "/", icon: <Home className='h-5 w-5' /> },
         { title: "About", link: "/about-us", icon: < UserRound className='h-5 w-5' /> },
-        { title: "Projects", link: "/work", icon: <BriefcaseBusiness className='h-5 w-5' /> },
+        { title: "Portfolio", link: "/work", icon: <BriefcaseBusiness className='h-5 w-5' /> },
         { title: "Services", link: "/services", icon: <Globe className='h-5 w-5' /> },
         { title: "Articles", link: "/articles", icon: <NotebookPen className='h-5 w-5' /> },
     ];

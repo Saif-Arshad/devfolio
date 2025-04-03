@@ -151,6 +151,7 @@ function ArticleDetail({ slug }: { slug: string }) {
             day: "numeric",
         }).format(new Date(date));
     };
+    const downloadURL = article && article.bannerImage && article.bannerImage.replace('/preview?', '/download?');
 
     if (!article) {
         return (
@@ -182,9 +183,9 @@ function ArticleDetail({ slug }: { slug: string }) {
             <ScrollProgress className="top-[0px]" />
 
             <div className="w-full lg:pr-8">
-                {article.bannerImage && (
+                {downloadURL && (
                     <Image
-                        src={article.bannerImage}
+                        src={downloadURL}
                         alt={article.title}
                         width={1000}
                         height={1000}

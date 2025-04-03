@@ -118,7 +118,10 @@ function Projects() {
             </div>
 
             <div className='mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
-                {allProjects?.map((article: any) => (
+                {allProjects?.map((article: any) => {
+                    const downloadURL = article && article.banner && article.banner.replace('/preview?', '/download?');
+
+                    return(
                     <div key={article.slug} className='p-4 border rounded-2xl mb-3 bg-neutral-800'>
                         <div className='flex items-center justify-between pb-3 mb-3 border-b border-neutral-700'>
                             <div className='flex items-center gap-x-2'>
@@ -159,7 +162,7 @@ function Projects() {
 
                             <Image
                                 alt={article.title}
-                                src={article.banner}
+                                    src={downloadURL}
                                 layout='fill'
                             // className=' w-full object-cover rounded-xl'
                             />
@@ -193,7 +196,7 @@ function Projects() {
                             </Link>
                         </div>
                     </div>
-                ))}
+                )})}
             </div>
 
             <div className='flex items-center mt-10 justify-center gap-4'>

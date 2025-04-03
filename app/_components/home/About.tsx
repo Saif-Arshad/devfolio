@@ -6,7 +6,7 @@ import { FaUserAlt, FaBriefcase, FaGraduationCap, FaFileAlt } from "react-icons/
 import { FileUser } from 'lucide-react';
 import Link from 'next/link';
 import { ScrollArea } from '../ui/scroll-area';
-import { experiences } from '@/app/(landing_pages)/((scrollAnimation))/about-us/_components/CareerPath';
+import { experiences } from '@/app/(landing_pages)/about-us/_components/CareerPath';
 
 
 const calculateDuration = (startDate: any, endDate: any) => {

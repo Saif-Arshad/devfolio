@@ -45,7 +45,12 @@ function ProjectDetail({ slug }: { slug: string }) {
                     if (result.documents.length > 0) {
                         const fetchedProject = result.documents[0] as any;
                         setProjects(fetchedProject);
-                        setSlides([fetchedProject.banner, ...fetchedProject.gallery]);
+                        const downloadURL = fetchedProject && fetchedProject.banner && fetchedProject.banner.replace('/preview?', '/download?');
+                        const galleryDownloadURLs = fetchedProject.gallery.map((url: string) => 
+                            url.replace('/preview?', '/download?')
+                        );
+
+                        setSlides([downloadURL, ...galleryDownloadURLs]);
                         const parsed = extractHeaders(fetchedProject.content);
                         setParsedContent(parsed);
                     } else {
@@ -169,6 +174,7 @@ function ProjectDetail({ slug }: { slug: string }) {
             </div>
         );
     }
+    const downloadURL = project && project.banner && project.banner.replace('/preview?', '/download?');
 
     return (
         <div className="w-full sm:container mx-auto p-4 flex flex-col lg:flex-row scroll-smooth">
@@ -253,7 +259,7 @@ function ProjectDetail({ slug }: { slug: string }) {
                     ) : (
                         <>
                             <Image
-                                src={project.banner}
+                                    src={downloadURL}
                                 alt={project.name}
                                 width={1000}
                                 height={1000}
@@ -264,7 +270,7 @@ function ProjectDetail({ slug }: { slug: string }) {
                 </div>
                 <div className="flex md:hidden">
                     <Image
-                        src={project.banner}
+                        src={downloadURL}
                         alt={project.name}
                         width={1000}
                         height={1000}
