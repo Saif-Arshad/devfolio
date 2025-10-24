@@ -57,8 +57,8 @@ function Intro() {
 
         <p className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
             Hey there! I'm <span className="text-primaryColor ">Saif Ur Rehman</span>, and I've been fascinated by computers since I was young.
-            I’ve been working in <span className="text-primaryColor ">web development</span> for over 2 years
-            (<span className="text-primaryColor ">and if you count the sleepless nights, it’s easily 3! 😄</span>)
+            I’ve been working in <span className="text-primaryColor ">web development</span> for over 3 years
+            (<span className="text-primaryColor ">and if you count the sleepless nights, it’s easily 4! 😄</span>)
             doing both
 
             <span className="text-primaryColor px-1.5">
@@ -97,7 +97,7 @@ function Education() {
                         className={`w-full rounded-xl flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 p-3 sm:p-5 bg-[#1C1C1C] ${index === 0 ? "border border-dashed border-green-500" : ""
                             }`}
                     >
-                        <div className="flex flex-col sm:flex-row justify-between w-full">
+                        <div className="flex flex-col sm:flex-row gap-6 w-full">
                             <div className="h-[60px] w-[60px]">
                                 <img
                                     src={qualification.image}
@@ -110,11 +110,11 @@ function Education() {
                                 <p className="text-gray-500 text-sm">{qualification.institution}</p>
                                 <p className="text-gray-500 text-sm">{qualification.location}</p>
                             </div>
-                            {qualification.duration && (
+                            {/* {qualification.duration && (
                                 <div className="flex flex-col items-end gap-1">
                                     <h4 className="text-white font-medium">{qualification.duration}</h4>
                                 </div>
-                            )}
+                            )} */}
                         </div>
                     </div>
                     {index < qualifications.length - 1 && (
@@ -173,7 +173,7 @@ function Career() {
                                             })}
                                     </p>
                                 </div>
-                                <div className=" flex-col hidden sm:flex items-end gap-1">
+                                {/* <div className=" flex-col hidden sm:flex items-end gap-1">
                                     <p className="text-gray-500   sm:text-gray-300 text-sm">
                                         {new Date(experience.startDate).toLocaleDateString("en-US", {
                                             year: "numeric",
@@ -185,7 +185,7 @@ function Career() {
                                                 month: "short",
                                             })}
                                     </p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         {index < experiences.length - 1 && (
@@ -237,6 +237,8 @@ function About() {
     ];
 
     return (
+        <>
+     
         <section className="py-14 px-2 sm:px-5 lg:px-10 relative xl:mr-0 lg:mr-5 mr-0">
             <div className="w-full mx-auto">
                 <div className="w-full justify-start items-center xl:gap-12 gap-10 grid xl:grid-cols-7 grid-cols-1">
@@ -258,7 +260,7 @@ function About() {
                             </p>
                         </div>
                         <div className="w-full bg-neutral-800 border border-neutral-600 overflow-hidden rounded-xl flex-col justify-center items-start flex">
-                            <div className="mb-4 bg-neutral-900 w-full grid grid-cols-3 sm:grid-cols-4 p-2 gap-x-2 sm:gap-x-3">
+                            <div className="mb-4 bg-neutral-900 w-full grid grid-cols-3 sm:grid-cols-3 p-2 gap-x-2 sm:gap-x-3">
                                 {TAB_ITEMS.map((item, index) => (
                                     <button
                                         key={index}
@@ -273,7 +275,7 @@ function About() {
                                     </button>
                                 ))}
 
-                                <Link href={"/resume"} className='hidden sm:flex'>
+                                {/* <Link href={"/resume"} className='hidden sm:flex'>
                                     <button
                                         className={`transition-all duration-300 text-sm sm:text-base w-full py-3 rounded-lg flex items-center justify-center 
                                             bg-neutral-800 text-gray-300 hover:bg-neutral-600
@@ -282,7 +284,7 @@ function About() {
                                         <FaFileAlt className="mr-2 hidden sm:flex" />
                                         Resume
                                     </button>
-                                </Link>
+                                </Link> */}
                             </div>
 
                             <div className="w-full p-2 sm:p-3">
@@ -307,6 +309,7 @@ function About() {
                 </div>
             </div>
         </section>
+        </>
     );
 }
 
