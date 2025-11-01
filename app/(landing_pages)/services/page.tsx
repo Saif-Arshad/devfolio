@@ -21,6 +21,7 @@ import Faqs from '@/app/_components/home/Faqs';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Skills from '../about-us/_components/Skills';
+import Services2 from './_components/Services';
 
 
 function page() {
@@ -301,183 +302,12 @@ function page() {
 
                     </div>
 
-                    <p className='max-w-5xl mt-4'>
-                        Whether you're a startup looking to build your first app
-                        <span className="text-primaryColor px-1.5">
-                            (Web or Mobile)
-                        </span>
-                        or an established company aiming to optimize your digital presence, I offer a wide range of services designed to help you succeed. From
-                        <span className="text-primaryColor px-1.5">
-                            web development
-                        </span>
-                        ,
-                        <span className="text-primaryColor px-1.5">
-                            mobile App development
-                        </span>
-                        and
-                        <span className="text-primaryColor px-1.5">
-                            AI solutions
-                        </span>
-                        to cloud infrastructure and beyond, I’m here to provide innovative, custom solutions that fit your unique needs. Ready to take your project to the
-                        <span className="text-primaryColor px-1.5">
-                            next level?
-                        </span>
-                        Let’s collaborate and turn your vision into reality.
-                    </p>
+                
                 </div>
 
 
 
-                <div className="space-y-2 w-full mt-10 ">
-                    <div className="grid gap-8 md:grid-cols-2 relative">
-                        {myServices.map((service, index) => (
-                            <MorphingDialog
-                                key={index}
-                                transition={{
-                                    type: 'spring',
-                                    stiffness: 200,
-                                    damping: 24,
-                                }}
-                            >
-                                <MorphingDialogTrigger className="h-full">
-                                    <div
-                                        className={`border bg-neutral-900 border-neutral-700 h-full text-white overflow-hidden rounded-xl`}
-                                    >
-                                        <MorphingDialogImage
-                                            src={service.image}
-                                            alt={service.title}
-                                            className="h-60 mb-4 w-full md:h-72"
-                                        />
-                                        <div className="flex flex-col p-6 pb-4 justify-between">
-                                            <div>
-                                                <MorphingDialogTitle className="text-2xl lg:text-3xl font-semibold">
-                                                    {service.title}
-                                                </MorphingDialogTitle>
-                                                <MorphingDialogSubtitle className="text-sm text-gray-400 mt-2">
-                                                    {service.discription}
-                                                </MorphingDialogSubtitle>
-                                            </div>
-                                            <div className="flex items-center justify-end mt-6">
-
-                                                <button className="bg-primaryColor flex items-center text-black p-2 rounded-full px-5 group">
-                                                    Detail
-                                                    <ChevronRight className="h-5 w-5 me-2 group-hover:animate-shake" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </MorphingDialogTrigger>
-
-                                <MorphingDialogContainer>
-                                    <MorphingDialogContent
-                                        style={{ borderRadius: '12px' }}
-                                        className="relative w-full max-h-[90vh] h-full  sm:w-[500px] border border-neutral-700 bg-neutral-900"
-                                    >
-                                        <div className="relative flex flex-col w-full h-full">
-                                            <ScrollArea className="flex-1 overflow-y-auto overflow-x-auto p-6 pb-20">
-                                                <MorphingDialogImage
-                                                    src={service.image}
-                                                    alt={service.title}
-                                                    className="h-60 mb-4 rounded-xl w-full md:h-72"
-                                                />
-
-                                                {/* Title & Description */}
-                                                <MorphingDialogTitle className="text-white font-semibold text-3xl">
-                                                    {service.title}
-                                                </MorphingDialogTitle>
-                                                <MorphingDialogSubtitle className="font-normal text-gray-200 mt-1 text-sm">
-                                                    {service.discription}
-                                                </MorphingDialogSubtitle>
-
-                                                <div className="font-normal text-gray-200 mt-4 whitespace-pre-line">
-                                                    {service.detail}
-                                                </div>
-
-                                                {service.subheading && (
-                                                    <h3 className="text-white font-semibold text-xl mt-6">
-                                                        {service.subheading}
-                                                    </h3>
-                                                )}
-
-                                                {service.moreInfo && (
-                                                    <p className="font-light text-gray-200 mt-2 whitespace-pre-line">
-                                                        {service.moreInfo}
-                                                    </p>
-                                                )}
-
-                                                {service.skills && service.skills.length > 0 && (
-                                                    <div className="mt-4">
-                                                        <h4 className="text-white font-semibold text-lg">Key Skills:</h4>
-                                                        <ul className="list-disc list-inside mt-2">
-                                                            {service.skills.map((skill) => (
-                                                                <li key={skill} className="text-gray-200 text-sm">
-                                                                    {skill}
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                )}
-                                            </ScrollArea>
-
-                                            {/* Fixed icons at bottom */}
-                                            <div className="absolute bottom-0 left-0 w-full p-4 border-t border-neutral-700 bg-neutral-800 bg-opacity-50 backdrop-blur-md">
-                                                <div className="flex items-center gap-4 justify-between">
-                                                    <a href={service.fiverrLink} target='_blank'
-
-                                                        className=" flex items-center outline-none border-none text-white rounded-full group">
-                                                        <button
-                                                            className=" flex items-center outline-none border-none text-white p-2 rounded-full px-5 group">
-                                                            Order Now
-                                                            <ChevronRight className="h-5 w-5 me-2 mt-1 group-hover:animate-shake text-primaryColor" />
-                                                        </button>
-                                                    </a>
-
-                                                    <div className="flex items-center gap-4 ">
-                                                        <a href={service.fiverrLink} target='_blank' >
-
-                                                            <svg
-                                                                fill="#1DBF73"
-                                                                viewBox="-2.5 -2 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                preserveAspectRatio="xMinYMin"
-                                                                className="sm:h-8 sm:w-8 h-6 w-6 hover:animate-shake"
-                                                            >
-                                                                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                                                <g
-                                                                    id="SVGRepo_tracerCarrier"
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                ></g>
-                                                                <g id="SVGRepo_iconCarrier">
-                                                                    <path d="M16.25 16.25v-10h-10v-.625c0-1.034.841-1.875 1.875-1.875H10V0H8.125A5.632 5.632 0 0 0 2.5 5.625v.625H0V10h2.5v6.25H0V20h8.75v-3.75h-2.5V10h6.285v6.25H10V20h8.75v-3.75h-2.5z"></path>
-                                                                    <circle cx="14.375" cy="1.875" r="1.875"></circle>
-                                                                </g>
-                                                            </svg>
-                                                        </a>
-                                                        <FaWhatsapp
-                                                            onClick={() => handleWhatsAppClick(service.message)}
-                                                            className="sm:h-8 sm:w-8 h-6 w-6 text-[#108e42] hover:animate-shake cursor-pointer" />
-
-                                                        <Link href={`/contact-us?service=${encodeURIComponent(service.message)}`}>
-                                                            <SiGmail
-                                                                className="sm:h-8 sm:w-8 h-6 w-6 text-[#D14836] hover:animate-shake cursor-pointer" />
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Close Button */}
-                                        <MorphingDialogClose className="text-zinc-100" />
-                                    </MorphingDialogContent>
-                                </MorphingDialogContainer>
-
-
-                            </MorphingDialog>
-                        ))}
-
-                    </div>
-                </div >
+                <Services2/>
 
                 <h2
                     className="font-display text-4xl text-start w-full font-bold mt-20  text-black dark:text-gray-100 sm:text-6xl mb-10"

@@ -16,7 +16,7 @@ export default function Home() {
       </div>
       <About />
       <Tools />
-      <FeatureProjects />
+      {/* <FeatureProjects /> */}
       <LatestPost />
       <Faqs />
       <WhatWeDo />
