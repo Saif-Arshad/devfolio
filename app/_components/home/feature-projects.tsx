@@ -113,7 +113,7 @@ function FeatureProjects() {
                                 return (
                                     <Link href={`/work/${project.slug}`} key={project.$id}>
                                         <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
-                                            <div className="flex relative h-[250px] rounded-xl overflow-hidden">
+                                            <div className="flex relative h-[400px] rounded-xl overflow-hidden">
                                                 <Image
                                                     alt={project.name}
                                                     src={downloadURL}
@@ -144,12 +144,12 @@ function FeatureProjects() {
                                             </div>
 
                                             <div className="mt-3">
-                                                <h3 className="text-lg font-semibold capitalize">
+                                                <h3 className="text-lg md:text-xl font-semibold capitalize">
                                                     {project.name}
                                                 </h3>
-                                                <p className="text-sm text-gray-400 mt-2 capitalize">
+                                                {/* <p className="text-sm text-gray-400 mt-2 capitalize">
                                                     {project.discription}
-                                                </p>
+                                                </p> */}
                                             </div>
                                             <div className="flex items-center justify-between mt-6">
                                                 <div className="flex items-center gap-2">
