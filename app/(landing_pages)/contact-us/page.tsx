@@ -31,32 +31,32 @@ export default function Page({ searchParams }: any) {
             textColor: "#FFFFFF",
             icon: <FaWhatsapp className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake" />,
         },
-        {
-            name: "Fiverr",
-            link: "https://www.fiverr.com/saifurrehman360",
-            bgColor: "#118750",
-            textColor: "#FFFFFF",
-            icon: (
-                <svg
-                    fill="#000000"
-                    viewBox="-2.5 -2 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMinYMin"
-                    className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake"
-                >
-                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                    <g
-                        id="SVGRepo_tracerCarrier"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path d="M16.25 16.25v-10h-10v-.625c0-1.034.841-1.875 1.875-1.875H10V0H8.125A5.632 5.632 0 0 0 2.5 5.625v.625H0V10h2.5v6.25H0V20h8.75v-3.75h-2.5V10h6.285v6.25H10V20h8.75v-3.75h-2.5z"></path>
-                        <circle cx="14.375" cy="1.875" r="1.875"></circle>
-                    </g>
-                </svg>
-            ),
-        },
+        // {
+        //     name: "Fiverr",
+        //     link: "https://www.fiverr.com/saifurrehman360",
+        //     bgColor: "#118750",
+        //     textColor: "#FFFFFF",
+        //     icon: (
+        //         <svg
+        //             fill="#000000"
+        //             viewBox="-2.5 -2 24 24"
+        //             xmlns="http://www.w3.org/2000/svg"
+        //             preserveAspectRatio="xMinYMin"
+        //             className="sm:h-5 sm:w-5 h-4 w-4 group-hover:animate-shake"
+        //         >
+        //             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        //             <g
+        //                 id="SVGRepo_tracerCarrier"
+        //                 strokeLinecap="round"
+        //                 strokeLinejoin="round"
+        //             ></g>
+        //             <g id="SVGRepo_iconCarrier">
+        //                 <path d="M16.25 16.25v-10h-10v-.625c0-1.034.841-1.875 1.875-1.875H10V0H8.125A5.632 5.632 0 0 0 2.5 5.625v.625H0V10h2.5v6.25H0V20h8.75v-3.75h-2.5V10h6.285v6.25H10V20h8.75v-3.75h-2.5z"></path>
+        //                 <circle cx="14.375" cy="1.875" r="1.875"></circle>
+        //             </g>
+        //         </svg>
+        //     ),
+        // },
         // {
         //     name: 'Gmail',
         //     link: 'mailto:saifarshad3344@gmail.com',

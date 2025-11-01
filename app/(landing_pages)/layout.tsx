@@ -111,7 +111,7 @@ export default function RootLayout({
       <PageTransition>
         <div className="relative h-full z-0">
           <Header />
-          <div className=" h-full relative  w-full z-50">
+          <div className=" h-full relative sm:pt-24  w-full z-50">
             {children}
           </div>
 

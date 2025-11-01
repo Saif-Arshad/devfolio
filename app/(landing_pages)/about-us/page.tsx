@@ -8,6 +8,7 @@ import Skills from './_components/Skills'
 import WhyUs from './_components/WhyUs'
 import CareerPath from './_components/CareerPath'
 import Tools from '@/app/_components/home/Tools'
+import Process from './_components/Process'
 
 async function page() {
 
@@ -19,12 +20,9 @@ async function page() {
                 <Skills />
             </div>
             <AboutUs />
+            <Process/>
             <WeeklyStats  />
             <GithubContributions />
-            <Tools />
-            <CareerPath />
-            <WhyUs />
-            <WhatWeDo />
         </>
     )
 }

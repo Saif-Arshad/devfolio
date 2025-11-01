@@ -109,6 +109,7 @@ export default function FirstAbout() {
 
                         .
                     </p>
+               
                     <p className="mt-2 text-white sm:text-lg flex items-center ">
                         <span className="relative flex h-4 w-4 me-2 ">
                             <span className="btn-ping"></span>
@@ -116,22 +117,22 @@ export default function FirstAbout() {
                         </span> Open to opportunities and freelance projects.
 
                     </p>
+                  
                     <p className="mt-2 text-white sm:text-lg">
-                        🛠️
-                        My main tech stack currently is
-                        <span className="text-primaryColor px-1.5">MERN</span>
-                        in combination with
-                        Tailwind CSS,
-                        TypeScript,
-                        and
-                        <span className="text-primaryColor px-1.5">Next.js</span>.
-                        I specialize in building
-                        <span className="text-primaryColor px-1.5">complex</span>,
-                        fast, and
-                        <span className="text-primaryColor px-1.5">functional</span>
-                        digital products that deliver
-                        exceptional user experiences.
-                    </p>
+  🛠️ I'm mainly into{" "}
+  <span className="text-primaryColor px-1.5">full-stack development</span>, 
+  working across{" "}
+  <span className="text-primaryColor px-1.5">MEAN</span>,{" "}
+  <span className="text-primaryColor px-1.5">PERN</span>, and{" "}
+  <span className="text-primaryColor px-1.5">MERN</span> stacks,
+  with a strong focus on{" "}
+  <span className="text-primaryColor px-1.5">AI integration</span> 
+  and{" "}
+  <span className="text-primaryColor px-1.5">automation</span>. 
+  I take full ownership of projects from idea to deployment, ensuring everything 
+  runs smoothly and efficiently.
+</p>
+
 
 
                     <SocialLinks />

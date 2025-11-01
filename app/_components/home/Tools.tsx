@@ -13,12 +13,28 @@ import {
     SiMaterialformkdocs,
     SiPrisma,
     SiSocketdotio,
-    SiStrapi
+    SiStrapi,
+    SiPython,
+    SiKlarna,
+    SiNestjs,
+    SiRedis,
+    SiElasticsearch,
+    SiLangchain,
+    SiDocker,
+    SiKubernetes,
+    SiJenkins,
+    SiCircleci,
+    SiTravisci,
+    SiVercel,
+    SiNetlify,
+    SiRabbitmq,
+    SiAmazon,
+    SiGraphql
 } from "react-icons/si";
 import { GiClaymoreExplosive } from "react-icons/gi";
 import { MdAnimation, MdDevicesOther } from "react-icons/md";
 import { FaCode, FaLaptopCode, FaNodeJs } from "react-icons/fa";
-import { Database, GitBranchPlusIcon } from "lucide-react";
+import { Database, GitBranchPlusIcon, Workflow } from "lucide-react";
 
 const toolIcons: any = {
     HTML: SiHtml5,
@@ -27,6 +43,7 @@ const toolIcons: any = {
     JavaScript: SiJavascript,
     TypeScript: SiTypescript,
     "C++": SiCplusplus,
+    Python: SiPython,
     EJS: SiEjs,
     React: SiReact,
     Redux: SiRedux,
@@ -42,29 +59,100 @@ const toolIcons: any = {
     "Next UI": SiNextdotjs,
     NodeJs: FaNodeJs,
     ExpressJs: SiExpress,
+    NestJs: SiNestjs,
     Sockets: SiSocketdotio,
+    GraphQL: SiGraphql,
+    LangChain: SiLangchain,
     Appwrite: SiAppwrite,
     Firebase: SiFirebase,
     Supabase: SiSupabase,
     Stripe: SiStripe,
+    Klarna: SiKlarna,
     MySQL: SiMysql,
     PostgreSQL: SiPostgresql,
     MongoDB: SiMongodb,
     SQLite: SiSqlite,
+    Redis: SiRedis,
+    Elasticsearch: SiElasticsearch,
+    RabbitMQ: SiRabbitmq,
     Git: GitBranchPlusIcon,
     GitHub: SiGithub,
     Jest: SiJest,
     Postman: SiPostman,
     Prisma: SiPrisma,
-    "Strapi CMS": SiStrapi
+    "Strapi CMS": SiStrapi,
+    Docker: SiDocker,
+    Kubernetes: SiKubernetes,
+    Jenkins: SiJenkins,
+    CircleCI: SiCircleci,
+    TravisCI: SiTravisci,
+    Vercel: SiVercel,
+    Netlify: SiNetlify,
+    AWS: SiAmazon
 };
 
 const toolCategoryIcons = [
     MdDevicesOther,
     FaCode,
     Database,
+    Workflow,
     GiClaymoreExplosive,
 ]
+
+const iconColors: any = {
+    HTML: "text-orange-500",
+    CSS: "text-blue-500",
+    SCSS: "text-pink-500",
+    JavaScript: "text-yellow-400",
+    TypeScript: "text-blue-600",
+    "C++": "text-blue-700",
+    Python: "text-blue-500",
+    EJS: "text-green-500",
+    React: "text-cyan-400",
+    Redux: "text-purple-500",
+    "Redux Toolkit": "text-purple-500",
+    "Tailwind CSS": "text-cyan-400",
+    "Next.js": "text-white",
+    "Vue.js": "text-green-500",
+    GSAP: "text-green-400",
+    "Ant Design": "text-blue-600",
+    Bootstrap: "text-purple-600",
+    "Material UI": "text-blue-500",
+    Shadcn: "text-cyan-400",
+    "Next UI": "text-white",
+    NodeJs: "text-green-600",
+    ExpressJs: "text-gray-200",
+    NestJs: "text-red-600",
+    Sockets: "text-black dark:text-white",
+    GraphQL: "text-pink-600",
+    LangChain: "text-purple-400",
+    Appwrite: "text-red-500",
+    Firebase: "text-orange-500",
+    Supabase: "text-green-500",
+    Stripe: "text-blue-600",
+    Klarna: "text-pink-600",
+    MySQL: "text-blue-600",
+    PostgreSQL: "text-blue-800",
+    MongoDB: "text-green-600",
+    SQLite: "text-blue-400",
+    Redis: "text-red-600",
+    Elasticsearch: "text-yellow-500",
+    RabbitMQ: "text-orange-600",
+    Git: "text-orange-600",
+    GitHub: "text-white",
+    Jest: "text-red-500",
+    Postman: "text-orange-500",
+    Prisma: "text-blue-700",
+    "Strapi CMS": "text-purple-600",
+    Docker: "text-blue-500",
+    Kubernetes: "text-blue-600",
+    Jenkins: "text-blue-800",
+    CircleCI: "text-black dark:text-white",
+    TravisCI: "text-blue-500",
+    Vercel: "text-white",
+    Netlify: "text-green-600",
+    AWS: "text-orange-500"
+};
 
 function Tools() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -78,6 +166,7 @@ function Tools() {
                 "JavaScript",
                 "TypeScript",
                 "C++",
+                "Python",
                 "EJS",
                 "React",
                 "Redux",
@@ -98,18 +187,27 @@ function Tools() {
             tools: [
                 "NodeJs",
                 "ExpressJs",
+                "NestJs",
+                "Python",
                 "Sockets",
+                "GraphQL",
+                "LangChain",
                 "Appwrite",
                 "Prisma",
                 "Firebase",
                 "Supabase",
                 "Strapi CMS",
                 "Stripe",
+                "Klarna",
             ],
         },
         {
             category: "Database Management",
-            tools: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+            tools: ["MySQL", "PostgreSQL", "MongoDB", "SQLite", "Redis", "Elasticsearch"],
+        },
+        {
+            category: "CI/CD & DevOps",
+            tools: ["Docker", "Kubernetes", "Jenkins",  "Vercel", "Netlify", "AWS", "RabbitMQ"],
         },
         {
             category: "Others",
@@ -165,12 +263,13 @@ function Tools() {
                                 <ul className="flex items-center gap-4 flex-wrap">
                                     {item.tools.map((tool, toolIndex) => {
                                         const IconComponent = toolIcons[tool];
+                                        const iconColor = iconColors[tool] || "text-gray-400";
                                         return (
                                             <li
                                                 key={toolIndex}
                                                 className="flex w-max items-center gap-2 rounded-full border border-neutral-300 bg-neutral-50 px-5 py-2 text-[12px] sm:text-[15px] shadow-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-50"
                                             >
-                                                {IconComponent && <IconComponent size={20} />}
+                                                {IconComponent && <IconComponent size={20} className={iconColor} />}
                                                 <span>{tool}</span>
                                             </li>
                                         );

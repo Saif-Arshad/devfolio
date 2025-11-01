@@ -2,6 +2,21 @@ import React from "react";
 import { FcBusinessman } from "react-icons/fc";
 
 export const experiences = [
+    // {
+    //     role: "Full Stack Engineer",
+    //     location: "Remote, United Kingdom - Part Time",
+    //     startDate: "2025-01-01",
+    //     endDate: "Present",
+    //     image: "/company/rubicons.png",
+    // },
+    {
+        role: "Backend Engineer",
+        location: "Islamabad, Pakistan - Full Time",
+        startDate: "2024-12-01",
+        endDate: "Present",
+        image: "/company/devconst.avif",
+    },
+
     {
         role: "Full Stack Developer",
         location: "Faisalabad, Pakistan - Part Time",
