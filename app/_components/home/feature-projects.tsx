@@ -72,7 +72,7 @@ function FeatureProjects() {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 3xl:grid-cols-3 mt-20 gap-5 w-full ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-20 gap-5 w-full ">
 
                 {
                     allProjects.length == 0 ? (
@@ -113,7 +113,7 @@ function FeatureProjects() {
                                 return (
                                     <Link href={`/work/${project.slug}`} key={project.$id}>
                                         <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
-                                            <div className="flex relative h-[400px] rounded-xl overflow-hidden">
+                                            <div className="flex relative h-[300px] rounded-xl overflow-hidden">
                                                 <Image
                                                     alt={project.name}
                                                     src={downloadURL}
@@ -147,9 +147,9 @@ function FeatureProjects() {
                                                 <h3 className="text-lg md:text-xl font-semibold capitalize">
                                                     {project.name}
                                                 </h3>
-                                                {/* <p className="text-sm text-gray-400 mt-2 capitalize">
+                                                <p className="text-sm text-gray-400 mt-2 capitalize">
                                                     {project.discription}
-                                                </p> */}
+                                                </p>
                                             </div>
                                             <div className="flex items-center justify-between mt-6">
                                                 <div className="flex items-center gap-2">
