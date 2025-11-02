@@ -60,7 +60,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ service }) => {
         <div className="max-w-6xl relative flex flex-col items-center justify-center  w-full p-6 max-md:px-5 rounded-2xl mx-auto">
             <div className="flex flex-col items-center justify-start gap-11 max-w-6xl w-full mx-auto">
                 
-                <div className="grid grid-cols-2 gap-3 w-full" style={{ alignItems: 'start', gridAutoRows: 'max-content' }}>
+                <div className="grid sm:grid-cols-2 gap-3 w-full" style={{ alignItems: 'start', gridAutoRows: 'max-content' }}>
                     {service.faqs.map((faq, index) => (
                         <motion.div
                             key={faq.id}
