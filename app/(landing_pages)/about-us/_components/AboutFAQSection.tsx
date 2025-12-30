@@ -8,25 +8,25 @@ const aboutFAQs = [
     id: 1,
     question: "Experience",
     answer:
-      "With over 3-4 years working in tech, I've gained extensive knowledge and hands-on experience. I can help your business grow with the right solutions and strategies.",
+      "3+ years building scalable web applications with React, Next.js, Node.js, and TypeScript. I've shipped production-ready solutions across various industries.",
   },
   {
     id: 2,
     question: "Why Me?",
     answer:
-      "I have successfully completed multiple projects that delivered real results. This is not part-time work—it's my full-time commitment. I have two stable internet connections to ensure seamless productivity and reliable service.",
+      "I deliver results. Clean code, clear communication, and a track record of successful projects. I treat every project with full dedication and professionalism.",
   },
   {
     id: 3,
     question: "My Approach",
     answer:
-      "I provide daily updates, weekly progress reports, and live demonstrations of the work being done. I address issues and implement updates promptly to keep projects on track.",
+      "Transparent communication with regular updates, iterative development, and a focus on shipping quality work on time. No surprises, just steady progress.",
   },
   {
     id: 4,
-    question: "Team",
+    question: "Collaboration",
     answer:
-      "I'm not working alone. I have a qualified team of skilled professionals who bring expertise and dedication to every project. Together, we deliver exceptional results and exceed expectations.",
+      "I work seamlessly with teams and stakeholders. Whether it's integrating with existing workflows or leading development, I adapt to what the project needs.",
   },
 ];
 

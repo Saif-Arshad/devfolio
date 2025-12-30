@@ -17,54 +17,54 @@ function Faqs() {
     const leftSideFAQs = [
         {
             id: "item-1",
-            question: "Can you fix bugs or errors in my existing backend?",
+            question: "What's your tech stack?",
             answer:
-                "Yes, I offer comprehensive backend troubleshooting and bug-fixing services. I ensure your system operates without issues and provide recommendations to enhance its performance and reliability.",
+                "React, Next.js, Node.js, TypeScript, and databases like MongoDB & PostgreSQL.",
         },
         {
             id: "item-2",
-            question: "Do you offer support after project delivery?",
+            question: "Do you work remotely?",
             answer:
-                "Yes, I provide post-delivery support to ensure your backend system and APIs function smoothly. If any issues arise, I’ll assist you promptly to resolve them. Extended maintenance services are also available upon request.",
+                "Yes! I'm comfortable working remotely and collaborating across different time zones.",
         },
         {
             id: "item-3",
-            question: "What technologies do you use for backend development?",
+            question: "What kind of projects do you work on?",
             answer:
-                "I work with modern frameworks and tools like Node.js. For databases, I use MySQL, MongoDB, and PostgreSQL. The choice of technology depends on your project requirements.",
+                "Full-stack web apps, dashboards, APIs, and scalable systems — from MVPs to production-ready products.",
         },
         {
             id: "item-4",
-            question: "How long does it take to complete a project?",
+            question: "Can you work with existing codebases?",
             answer:
-                "Project timelines depend on the scope and complexity of the work. For small to medium-sized projects, it typically takes 1-3 weeks. Larger projects or custom solutions may require more time, but I always strive to deliver within the agreed deadline.",
+                "Absolutely. I'm experienced in jumping into existing projects and contributing quickly.",
         },
     ];
 
     const rightSideFAQs = [
         {
             id: "item-5",
-            question: "Can you fix issues or update my existing website?",
+            question: "How do you handle communication?",
             answer:
-                "Yes! I can fix errors, bugs, or broken features and also update your website with new functionality or a fresh design.",
+                "I provide regular updates, maintain clear documentation, and ensure smooth collaboration throughout.",
         },
         {
             id: "item-6",
-            question: "What do I need to provide before starting the project?",
+            question: "Do you have experience with Agile?",
             answer:
-                "To get started, I’ll need: A clear description of your requirements. Any design references or mockups (if available). Additional details like specific features or integrations you need.",
+                "Yes, I've worked with Scrum and Kanban methodologies in team settings.",
         },
         {
             id: "item-7",
-            question: "Do you provide deployment services?",
+            question: "What's your availability?",
             answer:
-                "Yes, I can deploy your website to hosting platforms like Vercel, Netlify, or your preferred hosting service.",
+                "I'm currently open to new projects and collaborations. Let's discuss your timeline!",
         },
         {
             id: "item-8",
-            question: "Which technologies do you use for frontend development?",
+            question: "How can I contact you?",
             answer:
-                "I primarily use modern technologies like React.js, Next.js, HTML, CSS, and Tailwind CSS to ensure high-quality and scalable solutions.",
+                "Feel free to reach out via email or LinkedIn. I'd love to connect!",
         },
     ];
 
@@ -74,18 +74,15 @@ function Faqs() {
                 <h3 className="text-xl sm:text-2xl font-semibold text-gray-200">
                     FAQ's.
                     <span className="block text-sm text-primaryColor font-normal">
-                        Find answers to common queries and concerns below.
+                        Quick answers about working with me.
                     </span>
                 </h3>
 
-                <Link href={`/services`} >
+                <Link href={`/contact-us`} >
                     <button className='sm:bg-emerald-700 sm:hover:bg-emerald-800 items-center flex text-primaryColor sm:text-white sm:p-2 sm:rounded-full mb-5 sm:mb-0 sm:px-5 group'>
                         <CircleArrowOutUpRightIcon className='h-4 me-2 w-4 sm:hidden' />
-
-                        Book a Service 
-
+                        Get in Touch
                     </button>
-                  
                 </Link>
             </div>
             <AccordionContainer className="md:grid-cols-2 grid-cols-1 w-full">
