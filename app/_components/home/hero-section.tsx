@@ -114,7 +114,7 @@ export default function FirstAbout() {
                         <span className="relative flex h-4 w-4 me-2 ">
                             <span className="btn-ping"></span>
                             <span className="btn-ping_dot"></span>
-                        </span> Open to opportunities and freelance projects.
+                        </span> Open to opportunities.
 
                     </p>
                   

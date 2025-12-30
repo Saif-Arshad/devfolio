@@ -3,51 +3,60 @@ import React from 'react'
 function page() {
     const experiences = [
         {
-            title: "Full Stack Developer",
+            title: "AI Backend Developer",
+            company: "DevConst",
+            description: [
+                "Designed and developed scalable backend services in Node.js and Express to support AI-powered application workflows.",
+                "Integrated MongoDB for managing structured and unstructured data used in AI features, prompts, and model responses.",
+                "Built and optimized REST APIs for consuming and orchestrating third-party AI services (LLMs, vision APIs, and automation tools)."
+            ],
+            date: "07/2025 – Present",
+            location: "Islamabad, Pakistan"
+        },
+        {
+            title: "MERN Developer",
             company: "Fuziondev",
             description: [
-                "Developed multiple web applications using the MERN stack, ensuring seamless and user-friendly experiences.",
-                "Optimized applications for maximum speed and scalability using advanced Next.js features.",
-                "Built dynamic, user-centric interfaces with React.js and Node.js, improving overall user engagement.",
-                "Collaborated with cross-functional teams to deliver high-quality, scalable solutions."
+                "Built and maintained multiple full-stack web applications using React, Next.js, Node.js, and MongoDB.",
+                "Optimized Next.js apps for performance, SEO, and scalability, improving load times and user experience.",
+                "Implemented TypeScript across frontend and backend for better maintainability and type safety.",
+                "Developed serverless APIs using AWS Lambda and API Gateway."
             ],
-            date: "12/2024 – Present",
+            date: "11/2024 – 06/2025",
             location: "Faisalabad, Pakistan"
         },
         {
             title: "MERN Developer",
-            company: "DevShine",
+            company: "Devshine",
             description: [
-                "Implemented robust RESTful APIs integrated with MongoDB for efficient data handling.",
-                "Actively contributed to Agile sprints, ensuring the timely delivery of features and enhancements.",
-                "Developed and maintained modular, reusable components using React.js and Next.js.",
-                "Enhanced front-end performance by reducing load time through code splitting and efficient asset management."
+                "Developed RESTful backend services and integrated MongoDB for data persistence.",
+                "Delivered features on time by actively participating in Agile ceremonies.",
+                "Enhanced API reliability and frontend-backend data synchronization."
             ],
-            date: "08/2024 – 12/2024",
+            date: "06/2024 – 10/2024",
             location: "Faisalabad, Pakistan"
         },
         {
-            title: "Junior MERN Developer",
+            title: "MERN Stack Developer",
             company: "Devontix Solutions",
             description: [
-                "Developed the Saudi Stadium website with a focus on creating an efficient and user-friendly admin interface.",
-                "Streamlined administrative workflows, enhancing efficiency and user experience.",
-                "Optimized web applications for performance and scalability using Next.js.",
-                "Collaborated with UI/UX designers to implement responsive and modern interfaces tailored to user needs."
+                "Contributed to the development of a large-scale Saudi Stadium web platform.",
+                "Built an admin dashboard focused on usability and operational efficiency.",
+                "Improved workflow automation, reducing manual admin tasks."
             ],
-            date: "12/2023 – 08/2024",
+            date: "12/2023 – 05/2024",
             location: "Faisalabad, Pakistan"
         },
         {
             title: "MERN Stack Intern",
             company: "Weversity",
             description: [
-                "Managed and updated the Weversity.org website, enhancing its performance and usability.",
-                "Collaborated with senior developers to refine web functionalities, leading to a 20% increase in user engagement.",
-                "Contributed to the development and implementation of new features, including interactive forms and dashboards.",
-                "Mentored students in web development techniques and best practices."
+                "Maintained and optimized the Weversity.org platform.",
+                "Assisted senior engineers in implementing new features and performance improvements.",
+                "Mentored junior students on web development best practices.",
+                "Gained hands-on experience with production-level MERN applications."
             ],
-            date: "01/2023 – 11/2023",
+            date: "03/2022 – 06/2022",
             location: "Faisalabad, Pakistan"
         }
     ];
@@ -56,7 +65,7 @@ function page() {
     return (
         <div className="flex flex-wrap w-full sm:px-5 lg:px-10 items-start mb-20">
             <a href={"/resume/Saif Ur Rehman Resume.pdf"} download={"/resume/Saif Ur Rehman Resume.pdf"}>
-                <button className='bg-emerald-700 hover:bg-emerald-800 fixed bottom-4  right-4 z-50 items-center flex text-white p-2 rounded-full px-5 group'>
+                <button className='bg-emerald-700 hover:bg-emerald-800 fixed bottom-4  left-4 z-50 items-center flex text-white p-2 rounded-full px-5 group'>
                     <FileUser className='h-5 w-5 me-2 group-hover:animate-shake' />
                     Download Resume</button>
             </a>
@@ -66,7 +75,7 @@ function page() {
                         <div className="flex flex-col sm:flex-row gap-5 sm:items-center justify-between">
                             <div>
                                 <h2 className="text-3xl font-semibold">Saif Ur Rehman</h2>
-                                <p className="text-sm text-gray-300">Full Stack Developer</p>
+                                <p className="text-sm text-gray-300">Full Stack Engineer</p>
                             </div>
                             <div>
                                 <p className="text-sm text-gray-300">Phone: +92 3491797803</p>
@@ -76,8 +85,8 @@ function page() {
                         </div>
                         <hr className="my-4 bg-neutral-500" />
                         <div>
-                            <h3 className="text-lg text-primaryColor font-semibold mb-2">Summary</h3>
-                            <p className="text-sm leading-relaxed">I am a full-stack web developer specializing in the MERN stack, Next.js, and React Native, with expertise in Tailwind CSS and TypeScript. With a proven track record of delivering robust web applications, I aim to contribute to innovative projects that challenge my skills and foster professional growth.</p>
+                            <h3 className="text-lg text-primaryColor font-semibold mb-2">Profile</h3>
+                            <p className="text-sm leading-relaxed">Full Stack Software Engineer with 3+ years of experience building scalable, high-performance web applications using React, Next.js, Node.js, MongoDB, and TypeScript. Experienced in Agile environments, RESTful API design, cloud-based deployments, and modern UI frameworks. Strong focus on clean architecture, performance optimization, and delivering production-ready solutions aligned with business goals.</p>
                         </div>
                         <div className="mt-4">
                             <h3 className="text-lg font-semibold text-primaryColor mb-2">Experience</h3>
@@ -138,17 +147,19 @@ function page() {
 
                         </div>
                         <div className="mt-4">
-                            <h3 className="text-lg text-primaryColor font-semibold mb-2">Skills</h3>
+                            <h3 className="text-lg text-primaryColor font-semibold mb-2">Technical Skills</h3>
                             <ul className="list-disc list-inside text-sm">
-                                <li><strong>Languages:</strong> JavaScript, TypeScript, C++, HTML, EJS</li>
-                                <li><strong>Styles:</strong> CSS, SCSS, BootStrap, TailwindCSS, MUI, ShadCN</li>
-                                <li><strong>Libraries:</strong> ReactJs, Vue.js, GSAP, Redux Toolkit, ExpressJs</li>
-                                <li><strong>Runtime:</strong> NodeJs</li>
-                                <li><strong>Frameworks:</strong> NextJs</li>
-                                <li><strong>Database:</strong> MongoDB, PostgreSQL, SQLite</li>
-                                <li><strong>Cloud & Backend:</strong> Supabase, Firebase, Appwrite</li>
+                                <li><strong>Languages:</strong> JavaScript (ES6+), TypeScript, C++, HTML5</li>
+                                <li><strong>Frontend:</strong> React.js, Next.js, Redux Toolkit, GSAP</li>
+                                <li><strong>Backend:</strong> Node.js, Express.js, REST APIs</li>
+                                <li><strong>Databases:</strong> MongoDB, PostgreSQL, SQLite</li>
+                                <li><strong>Cloud & DevOps:</strong> AWS, AWS Lambda, API Gateway, Serverless Framework</li>
+                                <li><strong>BaaS:</strong> Firebase, Supabase, Appwrite</li>
                                 <li><strong>Payments:</strong> Stripe</li>
-                                <li><strong>DevTools:</strong> Git, GitHub, Postman</li>
+                                <li><strong>CMS:</strong> Strapi</li>
+                                <li><strong>Styling:</strong> Tailwind CSS, CSS3, SCSS, Bootstrap, MUI, ShadCN</li>
+                                <li><strong>Tools:</strong> Git, GitHub, Postman, Jira, Vite, VS Code</li>
+                                <li><strong>Methodologies:</strong> Agile, Scrum</li>
                             </ul>
                         </div>
 

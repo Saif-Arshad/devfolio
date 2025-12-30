@@ -27,14 +27,14 @@ function Footer() {
             title: "Articles",
             link: "/articles"
         },
-        {
-            title: "Services",
-            link: "/services"
-        },
         // {
-        //     title: "Resume",
-        //     link: "/resume"
+        //     title: "Services",
+        //     link: "/services"
         // },
+        {
+            title: "Resume",
+            link: "/resume"
+        },
     ]
     const currentPath = usePathname()
     const springOptions = { bounce: 0.1 };

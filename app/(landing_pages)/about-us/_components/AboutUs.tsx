@@ -8,7 +8,7 @@ import AboutFAQSection from './AboutFAQSection';
 function AboutUs() {
     return (
         <>
-        <section className="py-8 relative z-10">
+        <section className="py-8 pt-20 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Left Column - About Company Card */}
@@ -36,33 +36,27 @@ function AboutUs() {
                   </div>
 
                   {/* Description */}
-                  <p
-                                        className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
-                                        I&apos;m Saif Ur Rehman I&lsquo;ve been working in tech for over 3 years (and if you count the sleepless nights,
-                                        <span className="text-primaryColor px-1.5">
-                                            it’s easily 4!
-                                        </span>
-                                        ) doing both
-
-                                        <span className="text-primaryColor px-1.5">
-
-                                            frontend
-                                        </span>
-                                        (The stuff you see on the screen)
-                                        and
-                                        <span className="text-primaryColor px-1.5">
-                                            backend
-                                        </span>
-                                        (The stuff that happens behind the scenes)
-
-
-
-                                        I focus on building practical and reliable solutions that help businesses solve problems and achieve their goals. I am a firm believer in the
-                                        <span className="text-primaryColor px-1.5">
-                                            power of technology
-                                        </span>
-                                        to transform businesses and lives.
-                                    </p>
+                  <p className="text-gray-300 text-base font-normal leading-relaxed lg:text-start sm:text-center">
+                    I&apos;m Saif Ur Rehman, a
+                    <span className="text-primaryColor px-1.5">
+                      Full Stack Engineer
+                    </span>
+                    with 3+ years of experience building scalable, high-performance web applications. I work across the entire stack —
+                    <span className="text-primaryColor px-1.5">
+                      frontend
+                    </span>
+                    (crafting intuitive user experiences) and
+                    <span className="text-primaryColor px-1.5">
+                      backend
+                    </span>
+                    (architecting robust systems).
+                    <br /><br />
+                    My expertise spans
+                    <span className="text-primaryColor px-1.5">
+                      React, Next.js, Node.js, TypeScript,
+                    </span>
+                    and modern databases. I thrive in collaborative environments and love turning complex problems into elegant, production-ready solutions.
+                  </p>
                 </div>
               </motion.div>
 

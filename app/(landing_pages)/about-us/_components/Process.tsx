@@ -53,27 +53,27 @@ interface StepData {
 const stepsData: StepData[] = [
   {
     number: 1,
-    title: "Discovery Phase",
+    title: "Understanding Requirements",
     detail:
-      "During the initial phase, we delve deep into understanding your business objectives, target audience, and project requirements. This involves comprehensive research, stakeholder interviews, and competitive analysis to lay the foundation for a successful project.",
+      "I start by understanding your goals, users, and technical needs. Clear requirements lead to better solutions — so I ask the right questions upfront to ensure we're aligned from day one.",
   },
   {
     number: 2,
-    title: "Strategy Development",
+    title: "Planning & Architecture",
     detail:
-      "With insights gathered from the discovery phase, we develop a comprehensive strategy that aligns with your business goals. This includes creating user personas, defining project scope, establishing timelines, and outlining the technical architecture that will drive your project forward.",
+      "Once requirements are clear, I design the technical architecture and plan the development roadmap. This includes defining the tech stack, database schema, and breaking work into manageable milestones.",
   },
   {
     number: 3,
-    title: "Implementation and Execution",
+    title: "Development & Iteration",
     detail:
-      "Our experienced team brings the strategy to life through careful implementation. We follow agile development methodologies, maintain regular communication throughout the process, and ensure quality through rigorous testing and iterative improvements.",
+      "I build in iterative cycles — shipping working features regularly. You'll see progress through demos and updates, with room for feedback and adjustments along the way.",
   },
   {
     number: 4,
-    title: "Monitoring and Optimization",
+    title: "Delivery & Support",
     detail:
-      "Post-launch, we continuously monitor performance metrics and user feedback to identify areas for improvement. We provide ongoing support, implement optimizations, and ensure your solution continues to deliver exceptional results and meets evolving business needs.",
+      "After thorough testing and deployment, I ensure a smooth handoff with documentation and support. I'm available for post-launch fixes, optimizations, and future enhancements.",
   },
 ];
 

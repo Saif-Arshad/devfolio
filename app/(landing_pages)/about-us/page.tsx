@@ -15,14 +15,15 @@ async function page() {
 
     return (
         <>
-            <AboutHero />
+                       <AboutUs />
+
             <div className='flex items-center flex-col px-4 lg:px-10 xl:px-10 my-7 w-full'>
                 <Skills />
             </div>
-            <AboutUs />
-            <Process/>
             <WeeklyStats  />
             <GithubContributions />
+            <Process/>
+          
         </>
     )
 }
