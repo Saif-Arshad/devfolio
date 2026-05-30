@@ -1,29 +1,25 @@
 "use client";
 
-import { Query } from "appwrite";
 import React, { useEffect, useState } from "react";
 import parse, { domToReact } from "html-react-parser";
 import Image from "next/image";
 import { ArrowRightIcon, TimerIcon } from "lucide-react";
 import Link from "next/link";
-import { databases } from "@/app/_lib/appwrite";
+import { createClient } from "@/utils/supabase/client";
 import { ScrollProgress } from "@/app/_components/ui/scroll-bar";
 
 interface Article {
     title: string;
-    isPublish: boolean;
+    is_publish: boolean;
     content: string;
     tags: string[];
-    bannerImage: string;
-    discription: string;
+    banner_image: string;
+    description: string;
     slug: string;
-    $createdAt: string;
+    created_at: string;
 }
 
 function ArticleDetail({ slug }: { slug: string }) {
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
-
     const [article, setArticle] = useState<Article | null>(null);
     const [headers, setHeaders] = useState<{ id: string; text: string }[]>([]);
     const [parsedContent, setParsedContent] = useState<React.ReactNode>(null);
@@ -34,11 +30,15 @@ function ArticleDetail({ slug }: { slug: string }) {
         if (slug) {
             const fetchData = async () => {
                 try {
-                    const result = await databases.listDocuments(databaseId, collectionId, [
-                        Query.equal("slug", slug),
-                    ]);
-                    if (result.documents.length > 0) {
-                        const fetchedArticle = result.documents[0] as any;
+                    const supabase = createClient();
+                    const { data, error } = await supabase
+                        .from("articles")
+                        .select("*")
+                        .eq("slug", slug)
+                        .limit(1);
+                    if (error) throw error;
+                    if (data && data.length > 0) {
+                        const fetchedArticle = data[0] as any;
                         setArticle(fetchedArticle);
 
                         const parsed = extractHeaders(fetchedArticle.content);
@@ -151,7 +151,7 @@ function ArticleDetail({ slug }: { slug: string }) {
             day: "numeric",
         }).format(new Date(date));
     };
-    const downloadURL = article && article.bannerImage && article.bannerImage.replace('/preview?', '/download?');
+    const downloadURL = article?.banner_image;
 
     if (!article) {
         return (
@@ -209,7 +209,7 @@ function ArticleDetail({ slug }: { slug: string }) {
                     </div>
                     <div className="flex sm:items-center gap-4 flex-col sm:flex-row">
                         <p className="text-gray-300 text-sm">
-                            Published on {article.$createdAt && formatDate(article.$createdAt)}
+                            Published on {article.created_at && formatDate(article.created_at)}
                         </p>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ function WhatWeDo() {
 
                             <p className='text-gray-300 text-base sm:text-lg leading-relaxed mb-4'>
                                 I specialize in building scalable, high-performance web applications. 
-                                Whether it&apos;s a new product from scratch or improving an existing system — I&apos;m here to help.
+                                Whether it&apos;s a new product from scratch or improving an existing system. I&apos;m here to help.
                             </p>
 
                             <p className='text-gray-400 text-sm sm:text-base leading-relaxed'>

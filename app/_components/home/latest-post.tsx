@@ -1,14 +1,12 @@
 "use client";
 
-import { databases } from '@/app/_lib/appwrite';
-import { Query } from 'appwrite';
+import { createClient } from '@/utils/supabase/client';
 import { ArrowRight, CircleArrowOutUpRightIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
 function LatestPost() {
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [allArticles, setAllArticles] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
@@ -21,26 +19,18 @@ function LatestPost() {
         }).format(new Date(date));
     };
 
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
     const fetchArticles = async () => {
         setLoading(true);
         try {
-            const queries = [
-                Query.equal("isPublish", true),
-                Query.select(["title", "bannerImage", "$createdAt", "slug", "tags"]),
-                Query.orderDesc('$createdAt'),
-                Query.limit(3),
-
-            ];
-
-
-
-            const result = await databases.listDocuments(
-                databaseId,
-                collectionId,
-                queries
-            );
-            setAllArticles(result.documents);
+            const supabase = createClient();
+            const { data, error } = await supabase
+                .from("articles")
+                .select("title,banner_image,created_at,slug,tags")
+                .eq("is_publish", true)
+                .order("created_at", { ascending: false })
+                .limit(3);
+            if (error) throw error;
+            setAllArticles(data || []);
 
         } catch (error) {
             console.error("Error fetching articles:", error);
@@ -100,7 +90,7 @@ function LatestPost() {
                         ))
                         :
                         allArticles.map((article) => {
-                            const downloadURL = article && article.bannerImage && article.bannerImage.replace('/preview?', '/download?');
+                            const downloadURL = article?.banner_image;
 
                             return(
                             <Link href={`/articles/${article.slug}`} key={article.slug}>
@@ -146,58 +136,12 @@ function LatestPost() {
                                                 Saif Ur Rehman
                                             </p>
                                             <p className="text-[10px] text-gray-400">
-                                                {article.$createdAt && formatDate(article.$createdAt)}
+                                                {article.created_at && formatDate(article.created_at)}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </Link>
-                            // <Link href={`/articles/${article.slug}`} key={article.$id}>
-                            //     <div key={index} className='flex flex-col w-full  relative cursor-pointer group'>
-                            //         <div key={index} className='z-0 w-full min-h-[300px] relative  overflow-hidden rounded-xl'>
-                            //             <Image
-                            //                 alt={article.title}
-                            //                 layout='fill'
-
-                            //                 src={article.bannerImage} className='w-full object-cover group-hover:scale-110 transition-all duration-700' />
-                            //             <div className='bg-black h-full w-full absolute top-0 left-0 opacity-55 group-hover:opacity-65  transition-all duration-700 '></div>
-                            //         </div>
-                            //         <div className='flex flex-col mt-4 absolute bottom-0 left-0 h-full w-full right-0 p-4 z-10  justify-between'>
-                            //             <div className="flex items-center gap-2">
-                            //                 {article.tags.map((tag: string) => (
-                            //                     <span
-                            //                         key={tag}
-                            //                         className="bg-neutral-300 capitalize text-black px-2 py-1 rounded-full text-xs"
-                            //                     >
-                            //                         {tag}
-                            //                     </span>
-                            //                 ))}
-                            //             </div>
-                            //             <div className="flex flex-col gap-2">
-
-                            //                 <h3 className='text-lg font-medium text-gray-100'>{article.title}</h3>
-                            //                 <div className=" flex items-center justify-end">
-                            //                     <Image
-                            //                         src="/images/icon.jpg"
-                            //                         alt="Author Avatar"
-                            //                         height={100}
-                            //                         width={100}
-                            //                         className="w-8 h-8 rounded-full object-cover"
-                            //                     />
-                            //                     <div className="ml-1">
-                            //                         <p className="text-[13px] font-medium text-gray-900 dark:text-white">
-                            //                             Saif Ur Rehman
-                            //                         </p>
-                            //                         <p className="text-[10px] text-gray-200">
-                            //                             {article.$createdAt && formatDate(article.$createdAt)}
-                            //                         </p>
-                            //                     </div>
-                            //                 </div>
-                            //             </div>
-
-                            //         </div>
-                            //     </div>
-                            // </Link>
                           )})
                 }
             </div>

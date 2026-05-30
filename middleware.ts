@@ -1,31 +1,25 @@
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
+import { updateSession } from '@/utils/supabase/middleware';
 
 export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const authRoute = '/admin';
     const isAuthRoute = path === authRoute;
     const isAdminPath = /^\/dashboard(\/[^\/]+)*\/?$/.test(path);
-    const userToken = request.cookies.get('admin-token')?.value;
-    try {
 
+    // Refresh the Supabase session and find the current user.
+    const { supabaseResponse, user } = await updateSession(request);
 
-        if (isAuthRoute && userToken) {
-            return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
-        }
-
-        if (isAdminPath && !userToken) {
-            return NextResponse.redirect(new URL('/admin', request.nextUrl));
-        }
-
-        return NextResponse.next();
-    } catch (error: any) {
-        if (isAdminPath) {
-            return NextResponse.redirect(new URL('/admin', request.nextUrl));
-        }
-
-        return NextResponse.next();
+    if (isAuthRoute && user) {
+        return NextResponse.redirect(new URL('/dashboard', request.nextUrl));
     }
+
+    if (isAdminPath && !user) {
+        return NextResponse.redirect(new URL('/admin', request.nextUrl));
+    }
+
+    return supabaseResponse;
 }
 
 export const config = {

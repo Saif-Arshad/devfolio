@@ -1,22 +1,29 @@
-import { ID, Permission, Role } from "appwrite";
-import { storage } from "./appwrite";
+import { createClient } from "@/utils/supabase/client";
 
+const BUCKET = "assets";
 
-export const uploadImage = async (file: File) => {
-    const storageId = process.env.NEXT_PUBLIC_APPWRITE_STORAGE_ID!;
+/**
+ * Uploads an image to Supabase Storage and returns its public URL (string).
+ */
+export const uploadImage = async (file: File): Promise<string | undefined> => {
+    const supabase = createClient();
+
+    const ext = file.name.includes(".") ? file.name.split(".").pop() : "png";
+    const path = `${crypto.randomUUID()}.${ext}`;
 
     try {
-        const response = await storage.createFile(storageId, ID.unique(), file,
-            [
-                Permission.read(Role.any()),
-                Permission.update(Role.users()),
-                Permission.delete(Role.users()),
-            ]
-        );
-        return storage.getFilePreview(storageId, response.$id);
+        const { error } = await supabase.storage
+            .from(BUCKET)
+            .upload(path, file, { cacheControl: "3600", upsert: false });
+
+        if (error) {
+            console.log("Error uploading image:", error);
+            return;
+        }
+
+        const { data } = supabase.storage.from(BUCKET).getPublicUrl(path);
+        return data.publicUrl;
     } catch (error) {
-
         console.log("Error uploading image:", error);
-
     }
 };

@@ -12,7 +12,7 @@ import {
 import "react-quill/dist/quill.snow.css";
 import { Input } from "../../../../_components/ui/input";
 import InputTags from "./InputTags";
-import { databases } from "../../../../_lib/appwrite";
+import { createClient } from "@/utils/supabase/client";
 import { uploadImage } from "../../../../_lib/upload-file";
 import dynamic from "next/dynamic";
 const RichTextEditor = dynamic(() => import('./editor'), {
@@ -26,21 +26,19 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
     const [tags, setTags] = useState<string[]>([]);
     const [title, setTitle] = useState("");
     const [slug, setSlug] = useState("");
-    const [discription, setDiscription] = useState("");
+    const [description, setDescription] = useState("");
     const [bannerImage, setBannerImage] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [isEdit, setIsEdit] = useState(false);
     const router = useRouter()
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
     useEffect(() => {
         if (article) {
             setContent(article.content)
             setTitle(article.title)
             setSlug(article.slug)
-            setDiscription(article.discription)
+            setDescription(article.description)
             setTags(article.tags)
             setIsEdit(true)
         }
@@ -57,8 +55,9 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
     }, []);
 
     const handleSubmit = async () => {
+        const supabase = createClient();
         if (isEdit) {
-            if (!title || !content || !tags.length || !discription) {
+            if (!title || !content || !tags.length || !description) {
                 setErrorMessage("Please fill in all the fields.");
                 return;
             }
@@ -67,22 +66,23 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
             setSuccessMessage("");
 
             try {
-                const bannerImageUrl = bannerImage ? await uploadImage(bannerImage) : article.bannerImage;
-                await databases.updateDocument(databaseId, collectionId, article.$id, {
+                const bannerImageUrl = bannerImage ? await uploadImage(bannerImage) : article.banner_image;
+                const { error } = await supabase.from("articles").update({
                     title,
                     tags,
                     content,
                     slug,
-                    discription,
-                    bannerImage: bannerImageUrl,
-                });
+                    description,
+                    banner_image: bannerImageUrl,
+                }).eq("id", article.id);
+                if (error) throw error;
 
                 setSuccessMessage("Article Updated successfully!");
                 setBannerImage(null);
                 setContent("")
                 setTitle("")
                 setSlug("")
-                setDiscription("")
+                setDescription("")
                 setTags([])
                 router.refresh()
             } catch (error) {
@@ -94,7 +94,7 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
         else {
 
 
-            if (!title || !content || !bannerImage || !tags.length || !discription) {
+            if (!title || !content || !bannerImage || !tags.length || !description) {
                 setErrorMessage("Please fill in all the fields.");
                 return;
             }
@@ -104,21 +104,22 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
 
             try {
                 const bannerImageUrl = bannerImage ? await uploadImage(bannerImage) : null;
-                await databases.createDocument(databaseId, collectionId, "unique()", {
+                const { error } = await supabase.from("articles").insert({
                     title,
                     tags,
                     content,
                     slug,
-                    discription,
-                    bannerImage: bannerImageUrl,
+                    description,
+                    banner_image: bannerImageUrl,
                 });
+                if (error) throw error;
 
                 setSuccessMessage("Article published successfully!");
                 setBannerImage(null);
                 setContent("")
                 setTitle("")
                 setSlug("")
-                setDiscription("")
+                setDescription("")
                 setTags([])
                 router.refresh()
 
@@ -181,9 +182,9 @@ function ArticleDrawer({ button, article }: { button: any; article?: any }) {
                         <Input
                             type="text"
                             className="w-full"
-                            value={discription}
-                            placeholder="Discription"
-                            onChange={(e) => setDiscription(e.target.value)}
+                            value={description}
+                            placeholder="Description"
+                            onChange={(e) => setDescription(e.target.value)}
                         />
 
                     </div>

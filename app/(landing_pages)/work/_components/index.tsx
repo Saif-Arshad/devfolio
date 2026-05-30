@@ -1,8 +1,7 @@
 "use client"
 
-import { databases } from '@/app/_lib/appwrite';
+import { createClient } from '@/utils/supabase/client';
 import { STACKS } from '@/app/_lib/stack';
-import { Query } from 'appwrite';
 import { CircleArrowOutUpRightIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,30 +15,24 @@ function Projects() {
     const [totalPages, setTotalPages] = useState(0);
     const limit = 6;
 
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
-
     const fetchProjects = async (page: number) => {
         setLoading(true);
 
         try {
-            const offset = (page - 1) * limit;
-            const queries = [
-                Query.equal('isPublish', true),
-                Query.limit(limit),
-                Query.offset(offset),
-                Query.orderDesc('$createdAt')
-            ];
+            const supabase = createClient();
+            const from = (page - 1) * limit;
+            const to = from + limit - 1;
+            const { data, count, error } = await supabase
+                .from("projects")
+                .select("*", { count: "exact" })
+                .eq("is_publish", true)
+                .order("created_at", { ascending: false })
+                .range(from, to);
+            if (error) throw error;
 
-            const result = await databases.listDocuments(
-                databaseId,
-                collectionId,
-                queries
-
-            );
             setAllProjects((prevProjects: any) => {
-                const newProjects = result.documents.filter((newProject: any) =>
-                    !(prevProjects || []).some((existingProject: any) => existingProject.$id === newProject.$id)
+                const newProjects = (data || []).filter((newProject: any) =>
+                    !(prevProjects || []).some((existingProject: any) => existingProject.id === newProject.id)
                 );
 
                 return [
@@ -48,7 +41,7 @@ function Projects() {
                 ];
             });
 
-            setTotalPages(Math.ceil(result.total / limit));
+            setTotalPages(Math.ceil((count || 0) / limit));
         } catch (error) {
             console.error("Error fetching articles:", error);
         } finally {
@@ -130,11 +123,11 @@ function Projects() {
                             :
                             <>
                                 {allProjects && allProjects.length > 0 && allProjects.map((project: any) => {
-                                    const downloadURL = project && project.banner && project.banner.replace('/preview?', '/download?');
+                                    const downloadURL = project?.banner;
 
                                     return(
 
-                                    <Link href={`/work/${project.slug}`} key={project.$id} className='h-full'>
+                                    <Link href={`/work/${project.slug}`} key={project.id} className='h-full'>
                                         <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
                                             <div className="md:p-4 cursor-pointer group border rounded-2xl mb-3 bg-neutral-800 w-full">
                                                 <div className="flex relative h-[250px] rounded-xl overflow-hidden">
@@ -145,7 +138,7 @@ function Projects() {
                                                         className="group-hover:scale-110 transition-transform duration-700 object-cover"
                                                     />
                                                     {/* <div className="absolute inset-0 bg-black bg-opacity-80 scale-0 group-hover:scale-100 origin-center duration-300 flex items-center justify-center">
-                                          
+
                                                                                   <p className='flex items-center gap-x-1 text-primaryColor font-medium'>
                                                                                       View Project <ArrowRight className='h-5 w-5' />
                                                                                   </p>
@@ -172,7 +165,7 @@ function Projects() {
                                                     {project.name}
                                                 </h3>
                                                 <p className="text-sm text-gray-400 mt-2 capitalize">
-                                                    {project.discription}
+                                                    {project.description}
                                                 </p>
                                             </div>
                                             <div className="flex items-center justify-between mt-6">

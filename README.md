@@ -12,7 +12,7 @@ This is a portfolio website that showcases my work using Next.js. The website is
 - **Next.js**: A React framework for building fast and scalable web applications.
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
 - **TypeScript**: A superset of JavaScript that adds static type checking and other features.
-- **Appwrite**: A backend server for managing authentication, databases, and storage.
+- **Supabase**: A backend platform for managing authentication, Postgres databases, and storage.
 
 
 
