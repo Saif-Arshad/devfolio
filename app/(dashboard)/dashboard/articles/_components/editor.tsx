@@ -22,8 +22,7 @@ export default function RichTextEditor({ value, setValue }: any) {
             // @ts-ignore
             const file = input && input?.files[0];
             if (file && /^image\//.test(file.type)) {
-                const url = await uploadImage(file);
-                const href = url?.href;
+                const href = await uploadImage(file);
                 editor.insertEmbed(editor.getSelection(), "image", href);
             } else {
                 console.log('You could only upload images.');
