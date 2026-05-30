@@ -1,6 +1,5 @@
 "use client";
 
-import { Query } from "appwrite";
 import React, { useEffect, useState } from "react";
 import parse, { domToReact } from "html-react-parser";
 import Image from "next/image";
@@ -12,7 +11,7 @@ import {
 import { EmblaOptionsType } from "embla-carousel";
 import { ScrollProgress } from "@/app/_components/ui/scroll-bar";
 import { STACKS } from "@/app/_lib/stack";
-import { databases } from "@/app/_lib/appwrite";
+import { createClient } from "@/utils/supabase/client";
 import Carousel, {
     Slider,
     SliderContainer,
@@ -28,9 +27,6 @@ function ProjectDetail({ slug }: { slug: string }) {
     // New state for active header
     const [activeHeader, setActiveHeader] = useState<string>("");
 
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-    const collectionId =
-        process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
     const OPTIONS: EmblaOptionsType = {
         loop: true,
     };
@@ -39,16 +35,18 @@ function ProjectDetail({ slug }: { slug: string }) {
         if (slug) {
             const fetchData = async () => {
                 try {
-                    const result = await databases.listDocuments(databaseId, collectionId, [
-                        Query.equal("slug", slug),
-                    ]);
-                    if (result.documents.length > 0) {
-                        const fetchedProject = result.documents[0] as any;
+                    const supabase = createClient();
+                    const { data, error } = await supabase
+                        .from("projects")
+                        .select("*")
+                        .eq("slug", slug)
+                        .limit(1);
+                    if (error) throw error;
+                    if (data && data.length > 0) {
+                        const fetchedProject = data[0] as any;
                         setProjects(fetchedProject);
-                        const downloadURL = fetchedProject && fetchedProject.banner && fetchedProject.banner.replace('/preview?', '/download?');
-                        const galleryDownloadURLs = fetchedProject.gallery.map((url: string) => 
-                            url.replace('/preview?', '/download?')
-                        );
+                        const downloadURL = fetchedProject?.banner;
+                        const galleryDownloadURLs = (fetchedProject.gallery || []);
 
                         setSlides([downloadURL, ...galleryDownloadURLs]);
                         const parsed = extractHeaders(fetchedProject.content);
@@ -174,7 +172,7 @@ function ProjectDetail({ slug }: { slug: string }) {
             </div>
         );
     }
-    const downloadURL = project && project.banner && project.banner.replace('/preview?', '/download?');
+    const downloadURL = project?.banner;
 
     return (
         <div className="w-full sm:container mx-auto p-4 flex flex-col lg:flex-row scroll-smooth">
@@ -185,7 +183,7 @@ function ProjectDetail({ slug }: { slug: string }) {
                     {project.name}
                 </h1>
 
-                <p className="max-w-2xl text-gray-300 mb-6">{project.discription}</p>
+                <p className="max-w-2xl text-gray-300 mb-6">{project.description}</p>
 
                 <div className="border-b border-white gap-4 border-dashed flex-wrap my-6 pb-6 flex items-center justify-end">
                     <div className="flex items-center gap-5">

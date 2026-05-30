@@ -8,10 +8,8 @@ import { logoutUser } from '@/app/_lib/auth'
 
 
 export default function FirstAbout() {
-    const logoutCurrentUser = () => {
-        logoutUser();
-        document.cookie = 'admin-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-
+    const logoutCurrentUser = async () => {
+        await logoutUser();
     }
     return (
         <div className="flex flex-wrap h-full w-full relative">

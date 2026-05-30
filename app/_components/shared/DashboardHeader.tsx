@@ -9,11 +9,9 @@ import { LogOut } from 'lucide-react';
 function DashboardHeader() {
    
     const router = useRouter()
-    const logoutCurrentUser = () => {
-        logoutUser();
-        document.cookie = 'admin-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    const logoutCurrentUser = async () => {
+        await logoutUser();
         router.push("/")
-
     }
     return (
         <nav className="w-full shadow-lg z-20 flex items-center justify-between px-4">

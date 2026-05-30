@@ -11,7 +11,7 @@ import {
 } from "../../../../_components/ui/drawer";
 import "react-quill/dist/quill.snow.css";
 import { Input } from "../../../../_components/ui/input";
-import { databases } from "../../../../_lib/appwrite";
+import { createClient } from "@/utils/supabase/client";
 import { uploadImage } from "../../../../_lib/upload-file";
 import { useRouter } from "next/navigation";
 import InputTags from "../../articles/_components/InputTags";
@@ -29,7 +29,7 @@ function ProjectDrawer({ button, project }: any) {
     const [github_url, setGithubURL] = useState("");
     const [live_url, setLiveURL] = useState("");
     const [slug, setSlug] = useState("");
-    const [discription, setDiscription] = useState("");
+    const [description, setDescription] = useState("");
     const [bannerImage, setBannerImage] = useState<File | null>(null);
     const [uploadedImages, setUploadedImages] = useState<File[]>([]);
     const [galleryState, setGallery] = useState<string[]>([]);
@@ -39,22 +39,20 @@ function ProjectDrawer({ button, project }: any) {
     const [successMessage, setSuccessMessage] = useState("");
     const [isEdit, setIsEdit] = useState(false);
     const router = useRouter();
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
 
     useEffect(() => {
         if (project) {
             setContent(project.content);
             setName(project.name);
             setSlug(project.slug);
-            setDiscription(project.discription);
+            setDescription(project.description);
             setGallery(project.gallery);
             setTags(project.tags);
             setTech(project.tech);
             setLiveURL(project.live_url);
             setGithubURL(project.github_url);
             setIsEdit(true);
-            setIsFeatured(project.isFeatured);
+            setIsFeatured(project.is_featured);
         }
     }, [project]);
 
@@ -82,7 +80,7 @@ function ProjectDrawer({ button, project }: any) {
     };
 
     const handleSubmit = async () => {
-        if (!name || !content || !tags.length || !tech.length || !discription) {
+        if (!name || !content || !tags.length || !tech.length || !description) {
             setErrorMessage("Please fill in all the fields.");
             return;
         }
@@ -91,41 +89,43 @@ function ProjectDrawer({ button, project }: any) {
         setSuccessMessage("");
 
         try {
+            const supabase = createClient();
             if (!bannerImage && !isEdit) {
                 setErrorMessage("Please upload a banner image.");
                 setLoading(false);
                 return;
             }
-            // @ts-ignore
-            const bannerImageUrl = bannerImage ? (await uploadImage(bannerImage)).href
+            const bannerImageUrl = bannerImage ? await uploadImage(bannerImage)
                 : project.banner;
             if (!bannerImageUrl) {
                 setErrorMessage("Please upload a banner image.");
                 setLoading(false);
                 return;
             }
-            await Promise.all(uploadedImages.map((file) => uploadImage(file).then((res: any) => galleryState.push(res.href))))
+            await Promise.all(uploadedImages.map((file) => uploadImage(file).then((res) => { if (res) galleryState.push(res); })))
             const data = {
                 name,
                 tags,
                 content,
                 slug,
                 tech,
-                discription,
+                description,
                 banner: bannerImageUrl,
-                isFeatured,
+                is_featured: isFeatured,
                 gallery: galleryState,
-                ...(github_url && { github_url }),
-                ...(live_url && { live_url })
+                github_url: github_url || null,
+                live_url: live_url || null,
             };
 
 
             if (isEdit) {
 
-                await databases.updateDocument(databaseId, collectionId, project.$id, data);
+                const { error } = await supabase.from("projects").update(data).eq("id", project.id);
+                if (error) throw error;
                 setSuccessMessage("Project updated successfully!");
             } else {
-                await databases.createDocument(databaseId, collectionId, "unique()", data);
+                const { error } = await supabase.from("projects").insert(data);
+                if (error) throw error;
                 setSuccessMessage("Project created successfully!");
             }
 
@@ -134,7 +134,7 @@ function ProjectDrawer({ button, project }: any) {
             setContent("");
             setName("");
             setSlug("");
-            setDiscription("");
+            setDescription("");
             setGithubURL("");
             setLiveURL("");
             setGallery([]);
@@ -279,9 +279,9 @@ function ProjectDrawer({ button, project }: any) {
                         <Input
                             type="text"
                             className="w-full"
-                            value={discription}
+                            value={description}
                             placeholder="Description"
-                            onChange={(e) => setDiscription(e.target.value)}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
 
                     </div>

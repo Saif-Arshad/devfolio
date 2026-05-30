@@ -1,12 +1,11 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { Query } from 'appwrite';
 import { ChevronLeftIcon, ChevronRightIcon, Edit3, PinIcon, TrashIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ProjectDrawer from './ProjectDrawer';
-import { databases } from '@/app/_lib/appwrite';
+import { createClient } from '@/utils/supabase/client';
 import { Input } from '@/app/_components/ui/input';
 import { STACKS } from '@/app/_lib/stack';
 
@@ -20,31 +19,24 @@ function Projects() {
     useEffect(() => {
         setIsClient(true);
     }, []);
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
-
 
     const fetchProjects = async (page: number, query: string) => {
         try {
-            const offset = (page - 1) * limit;
-            const queries = [
-                // Query.select(["discription", "title", "content", "$id", "isPublish", "tags", "slug", "bannerImage"]),
-                Query.limit(limit),
-                Query.offset(offset),
-                Query.orderDesc('$createdAt')
-
-            ];
+            const supabase = createClient();
+            const from = (page - 1) * limit;
+            const to = from + limit - 1;
+            let request = supabase
+                .from("projects")
+                .select("*", { count: "exact" })
+                .order("created_at", { ascending: false })
+                .range(from, to);
             if (query.trim()) {
-                queries.unshift(Query.search('title', query));
+                request = request.ilike("name", `%${query}%`);
             }
-            const result = await databases.listDocuments(
-                databaseId,
-                collectionId,
-                queries
-
-            );
-            setAllProjects(result.documents);
-            setTotalPages(Math.ceil(result.total / limit));
+            const { data, count, error } = await request;
+            if (error) throw error;
+            setAllProjects(data);
+            setTotalPages(Math.ceil((count || 0) / limit));
         } catch (error) {
             console.error("Error fetching articles:", error);
         }
@@ -55,16 +47,18 @@ function Projects() {
     }, [currentPage, searchQuery]);
 
     const handlePublish = (id: string, isPublish: boolean) => {
-        databases.updateDocument(databaseId, collectionId, id, {
-            isPublish: !isPublish
-        })
-            .then(() => {
-                fetchProjects(currentPage, searchQuery);
-            })
-            .catch((error) => {
-                console.error("Error updating article:", error);
+        const supabase = createClient();
+        supabase
+            .from("projects")
+            .update({ is_publish: !isPublish })
+            .eq("id", id)
+            .then(({ error }) => {
+                if (error) {
+                    console.error("Error updating article:", error);
+                } else {
+                    fetchProjects(currentPage, searchQuery);
+                }
             });
-
     }
 
     const handlePagination = (direction: "next" | "prev") => {
@@ -80,7 +74,9 @@ function Projects() {
         if (isConfirm) {
 
             try {
-                await databases.deleteDocument(databaseId, collectionId, id);
+                const supabase = createClient();
+                const { error } = await supabase.from("projects").delete().eq("id", id);
+                if (error) throw error;
                 fetchProjects(currentPage, searchQuery);
             } catch (error) {
                 console.error("Error deleting article:", error);
@@ -119,19 +115,19 @@ function Projects() {
 
             <div className='mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5'>
                 {allProjects?.map((article: any) => {
-                    const downloadURL = article && article.banner && article.banner.replace('/preview?', '/download?');
+                    const downloadURL = article?.banner;
 
                     return(
                     <div key={article.slug} className='p-4 border rounded-2xl mb-3 bg-neutral-800'>
                         <div className='flex items-center justify-between pb-3 mb-3 border-b border-neutral-700'>
                             <div className='flex items-center gap-x-2'>
                                 <span
-                                    onClick={() => { handlePublish(article.$id, article.isPublish) }}
-                                    className={`${article.isPublish ? "bg-primaryColor text-gray-800" : "bg-red-500 text-white"} cursor-pointer  px-3 py-1 rounded-full capitalize flex items-center justify-center text-sm`}>
-                                    {article.isPublish ? "Published" : "Draft"}
+                                    onClick={() => { handlePublish(article.id, article.is_publish) }}
+                                    className={`${article.is_publish ? "bg-primaryColor text-gray-800" : "bg-red-500 text-white"} cursor-pointer  px-3 py-1 rounded-full capitalize flex items-center justify-center text-sm`}>
+                                    {article.is_publish ? "Published" : "Draft"}
                                 </span>
                                 {
-                                    article.isFeatured &&
+                                    article.is_featured &&
                                     <span
                                         className={` bg-primaryColor gap-x-1 text-gray-800 cursor-pointer  px-3 py-1 rounded-full capitalize flex items-center justify-center text-sm`}>
                                         <PinIcon className='h-4 w-4 text-gray-800' />
@@ -153,7 +149,7 @@ function Projects() {
                                     project={article}
                                 />
 
-                                <button onClick={() => deleteHandler(article.$id)}>
+                                <button onClick={() => deleteHandler(article.id)}>
                                     <TrashIcon className='h-5 w-5 cursor-pointer text-red-500' />
                                 </button>
                             </div>
@@ -161,7 +157,7 @@ function Projects() {
                         <div className='relative h-[200px] rounded-xl overflow-hidden'>
 
                             <Image
-                                alt={article.title}
+                                alt={article.name}
                                     src={downloadURL}
                                 layout='fill'
                             // className=' w-full object-cover rounded-xl'
@@ -187,7 +183,7 @@ function Projects() {
                                 ))
                             }
                         </div>
-                        <p className='text-sm text-gray-300 mt-5'>{article.discription}</p>
+                        <p className='text-sm text-gray-300 mt-5'>{article.description}</p>
                         <div className='flex items-center justify-end'>
                             <Link href={`/work/${article.slug}`}>
                                 <button className='bg-primaryColor text-black hover:scale-105 duration-200 py-2 px-4 rounded-full'>

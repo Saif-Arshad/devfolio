@@ -1,15 +1,11 @@
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
-import { Query } from "appwrite";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { databases } from "@/app/_lib/appwrite";
+import { createClient } from "@/utils/supabase/client";
 import { Input } from "@/app/_components/ui/input";
-
-const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
-const collectionId = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 
 function ArticlesMain() {
     const [randomBlog, setRandomBlog] = useState<any>(null);
@@ -24,38 +20,36 @@ function ArticlesMain() {
         async (page: number, query: string, isLoadMore = false) => {
             setLoading(true);
             try {
-                const offset = (page - 1) * limit;
-                const queries = [
-                    Query.equal("isPublish", true),
-                    Query.limit(limit),
-                    Query.offset(offset),
-                    Query.orderDesc('$createdAt')
-
-                ];
+                const supabase = createClient();
+                const from = (page - 1) * limit;
+                const to = from + limit - 1;
+                let request = supabase
+                    .from("articles")
+                    .select("*", { count: "exact" })
+                    .eq("is_publish", true)
+                    .order("created_at", { ascending: false })
+                    .range(from, to);
 
                 if (query.trim()) {
-                    queries.unshift(Query.search("title", query));
+                    request = request.ilike("title", `%${query}%`);
                 }
 
-                const result = await databases.listDocuments(
-                    databaseId,
-                    collectionId,
-                    queries
-                );
+                const { data, count, error } = await request;
+                if (error) throw error;
 
-                setTotalPages(Math.ceil(result.total / limit));
+                setTotalPages(Math.ceil((count || 0) / limit));
 
                 if (isLoadMore) {
-                    setAllArticles((prev) => [...prev, ...result.documents]);
+                    setAllArticles((prev) => [...prev, ...(data || [])]);
                 } else {
-                    setAllArticles(result.documents);
+                    setAllArticles(data || []);
                 }
 
-                if (!randomBlog && result.documents.length > 0) {
+                if (!randomBlog && data && data.length > 0) {
                     const randomIndex = Math.floor(
-                        Math.random() * result.documents.length
+                        Math.random() * data.length
                     );
-                    setRandomBlog(result.documents[randomIndex]);
+                    setRandomBlog(data[randomIndex]);
                 }
             } catch (error) {
                 console.error("Error fetching articles:", error);
@@ -100,7 +94,7 @@ function ArticlesMain() {
             day: "numeric",
         }).format(new Date(date));
     };
-    const downloadURL = randomBlog && randomBlog.bannerImage.replace('/preview?', '/download?');
+    const downloadURL = randomBlog?.banner_image;
     return (
         <div className="flex flex-wrap h-full w-full z-20">
             <div className="w-full min-h-[75vh] lg:py-10 py-5 lg:px-10 px-4 flex flex-col">
@@ -150,7 +144,7 @@ function ArticlesMain() {
                                             Saif Ur Rehman
                                         </p>
                                         <p className="text-xs text-gray-500">
-                                            {randomBlog.$createdAt && formatDate(randomBlog.$createdAt)}
+                                            {randomBlog.created_at && formatDate(randomBlog.created_at)}
                                         </p>
                                     </div>
                                 </div>
@@ -179,10 +173,10 @@ function ArticlesMain() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5 w-full ">
                     {allArticles.map((article: any) => {
-                        const downloadURL = article.bannerImage.replace('/preview?', '/download?');
+                        const downloadURL = article?.banner_image;
 
                 return(
-                        <Link href={`/articles/${article.slug}`} key={article.$id}>
+                        <Link href={`/articles/${article.slug}`} key={article.id}>
                             <div className="p-4 flex flex-col justify-between cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
                             <div >
                                 <div className="relative h-[200px] rounded-xl overflow-hidden">
@@ -210,7 +204,7 @@ function ArticlesMain() {
                                         {article.title}
                                     </h3>
                                     <p className="text-sm text-gray-400 mt-2 capitalize">
-                                        {article.discription}
+                                        {article.description}
                                     </p>
                                 </div>
                                 </div>
@@ -227,7 +221,7 @@ function ArticlesMain() {
                                             Saif Ur Rehman
                                         </p>
                                         <p className="text-[10px] text-gray-400">
-                                            {article.$createdAt && formatDate(article.$createdAt)}
+                                            {article.created_at && formatDate(article.created_at)}
                                         </p>
                                     </div>
                                 </div>

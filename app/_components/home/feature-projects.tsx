@@ -1,15 +1,13 @@
 "use client"
 
-import { databases } from '@/app/_lib/appwrite';
+import { createClient } from '@/utils/supabase/client';
 import { STACKS } from '@/app/_lib/stack';
-import { Query } from 'appwrite';
 import { ArrowRight, CircleArrowOutUpRightIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 function FeatureProjects() {
-    const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [allProjects, setAllProjects] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
@@ -22,25 +20,18 @@ function FeatureProjects() {
         }).format(new Date(date));
     };
 
-    const collectionId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_COLLECTION_ID!;
-
     const fetchProjects = async () => {
         setLoading(true);
         try {
-            const queries = [
-                Query.equal("isPublish", true),
-                Query.equal("isFeatured", true),
-                Query.orderDesc('$createdAt'),
-            ];
-
-
-
-            const result = await databases.listDocuments(
-                databaseId,
-                collectionId,
-                queries
-            );
-            setAllProjects(result.documents);
+            const supabase = createClient();
+            const { data, error } = await supabase
+                .from("projects")
+                .select("*")
+                .eq("is_publish", true)
+                .eq("is_featured", true)
+                .order("created_at", { ascending: false });
+            if (error) throw error;
+            setAllProjects(data || []);
 
         } catch (error) {
             console.error("Error fetching projects:", error);
@@ -72,7 +63,7 @@ function FeatureProjects() {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-20 gap-5 w-full ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 5xl:grid-cols-3 mt-20 gap-5 w-full ">
 
                 {
                     allProjects.length == 0 ? (
@@ -108,10 +99,10 @@ function FeatureProjects() {
                         :
                         <>
                             {allProjects && allProjects.length > 0 && allProjects.map((project: any) => {
-                                const downloadURL = project && project.banner && project.banner.replace('/preview?', '/download?');
+                                const downloadURL = project?.banner;
 
                                 return (
-                                    <Link href={`/work/${project.slug}`} key={project.$id}>
+                                    <Link href={`/work/${project.slug}`} key={project.id}>
                                         <div className="p-4 cursor-pointer group h-full border rounded-2xl mb-3 bg-neutral-800 w-full">
                                             <div className="flex relative h-[300px] rounded-xl overflow-hidden">
                                                 <Image
@@ -148,7 +139,7 @@ function FeatureProjects() {
                                                     {project.name}
                                                 </h3>
                                                 <p className="text-sm text-gray-400 mt-2 capitalize">
-                                                    {project.discription}
+                                                    {project.description}
                                                 </p>
                                             </div>
                                             <div className="flex items-center justify-between mt-6">
